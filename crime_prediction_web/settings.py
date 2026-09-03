@@ -5,6 +5,9 @@ Configured for production deployment on Render with WhiteNoise static
 serving, dynamic database routing, and environment variable decoupling.
 """
 
+import os
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+
 from pathlib import Path
 import dj_database_url
 from decouple import config, Csv

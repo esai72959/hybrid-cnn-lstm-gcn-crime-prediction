@@ -24,6 +24,9 @@ Author: Final Year B.Tech Project - Hybrid CNN-LSTM Crime Prediction
 
 from __future__ import annotations
 
+import os
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+
 import json
 import logging
 from pathlib import Path
