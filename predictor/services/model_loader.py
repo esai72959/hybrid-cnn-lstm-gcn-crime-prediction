@@ -231,22 +231,22 @@ class ModelLoader:
                     )
                     from tensorflow.keras import layers, Input, Model
                     in_h2 = Input(shape=(96,), name="fused_embedding_input")
-                    x = layers.Dense(128, activation="relu", name="dense")(in_h2)
+                    x = layers.Dense(128, name="dense")(in_h2)
                     x = layers.BatchNormalization(name="batch_normalization")(x)
                     x = layers.ReLU(name="re_lu")(x)
                     x = layers.Dropout(0.3, name="dropout")(x)
-                    x = layers.Dense(64, activation="relu", name="dense_1")(x)
+                    x = layers.Dense(64, name="dense_1")(x)
                     x = layers.BatchNormalization(name="batch_normalization_1")(x)
                     x = layers.ReLU(name="re_lu_1")(x)
                     x = layers.Dropout(0.3, name="dropout_1")(x)
-                    emb_h2 = layers.Dense(32, activation="relu", name="hybrid_embedding")(x)
+                    emb_h2 = layers.Dense(32, name="hybrid_embedding")(x)
                     x = layers.BatchNormalization(name="batch_normalization_2")(emb_h2)
                     out_h2 = layers.Dense(1, name="crime_count_output")(x)
                     self.model = Model(inputs=in_h2, outputs=out_h2, name="hybrid_cnn_lstm_model")
                     try:
-                        self.model.load_weights(model_path, by_name=True, skip_mismatch=True)
+                        self.model.load_weights(model_path, by_name=True)
                     except Exception as wexc:
-                        logger.warning("Hybrid weight loading with skip_mismatch: %s", wexc)
+                        logger.warning("Hybrid weight loading: %s", wexc)
 
                 self._verify_and_log_artifact("hybrid_2way", model_path)
             except ModelLoaderError:
@@ -736,22 +736,22 @@ class ModelLoader:
                     )
                     from tensorflow.keras import layers, Input, Model
                     in_h3 = Input(shape=(128,), name="fused_embedding_input")
-                    x = layers.Dense(128, activation="relu", name="dense_2")(in_h3)
+                    x = layers.Dense(128, name="dense_2")(in_h3)
                     x = layers.BatchNormalization(name="batch_normalization_3")(x)
                     x = layers.ReLU(name="re_lu_2")(x)
                     x = layers.Dropout(0.3, name="dropout_2")(x)
-                    x = layers.Dense(64, activation="relu", name="dense_3")(x)
+                    x = layers.Dense(64, name="dense_3")(x)
                     x = layers.BatchNormalization(name="batch_normalization_4")(x)
                     x = layers.ReLU(name="re_lu_3")(x)
                     x = layers.Dropout(0.3, name="dropout_3")(x)
-                    emb_h3 = layers.Dense(32, activation="relu", name="hybrid_gcn_embedding")(x)
+                    emb_h3 = layers.Dense(32, name="hybrid_gcn_embedding")(x)
                     x = layers.BatchNormalization(name="batch_normalization_5")(emb_h3)
                     out_h3 = layers.Dense(1, name="crime_count_output")(x)
                     self.hybrid_gcn_model = Model(inputs=in_h3, outputs=out_h3, name="hybrid_cnn_lstm_gcn_model")
                     try:
-                        self.hybrid_gcn_model.load_weights(model_path, by_name=True, skip_mismatch=True)
+                        self.hybrid_gcn_model.load_weights(model_path, by_name=True)
                     except Exception as wexc:
-                        logger.warning("Hybrid-GCN weight loading with skip_mismatch: %s", wexc)
+                        logger.warning("Hybrid-GCN weight loading: %s", wexc)
 
                 self._verify_and_log_artifact("hybrid_3way_gcn", model_path)
             except ModelLoaderError:
