@@ -808,6 +808,7 @@ def api_forecast_trend(request):
         }, status=500)
 
 
+@csrf_exempt
 def api_predict(request):
     if request.method != "POST":
         return JsonResponse(
