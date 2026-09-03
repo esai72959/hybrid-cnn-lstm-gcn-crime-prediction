@@ -34,7 +34,10 @@ from threading import Lock
 from typing import Any, Dict, List, Optional
 
 import joblib
-from tensorflow import keras
+try:
+    import tf_keras as keras
+except ImportError:
+    from tensorflow import keras
 
 import hashlib
 
