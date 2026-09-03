@@ -1522,18 +1522,12 @@ class CrimePredictor:
             number.
         """
         try:
-            count = float(predicted_crime_count)
+            count = max(0.0, float(predicted_crime_count))
         except (TypeError, ValueError) as exc:
             raise PredictionError(
                 f"Unable to classify risk level: invalid predicted "
                 f"crime count '{predicted_crime_count}': {exc}"
             ) from exc
-
-        if count < 0:
-            raise PredictionError(
-                "Unable to classify risk level: predicted crime count "
-                f"cannot be negative (got {count})."
-            )
 
         if count <= self._RISK_LOW_MAX:
             risk_level = self._RISK_LEVEL_LOW
@@ -1746,6 +1740,8 @@ class CrimePredictor:
                 fused_embedding = self.fuse_embeddings(cnn_embedding, lstm_embedding)
                 predicted_crime_count = self.predict_hybrid(fused_embedding)
                 model_name = self._MODEL_NAME
+
+            predicted_crime_count = max(0.0, float(predicted_crime_count))
 
             # 10. Classify risk level.
             risk_level = self.calculate_risk_level(predicted_crime_count)
