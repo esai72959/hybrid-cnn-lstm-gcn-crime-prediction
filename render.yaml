@@ -6,15 +6,15 @@ services:
     plan: free
     branch: main
     buildCommand: "./build.sh"
-    startCommand: "gunicorn crime_prediction_web.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120"
+    startCommand: "gunicorn crime_prediction_web.wsgi:application --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 180"
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.12
       - key: DEBUG
-        value: "False"
+        value: "True"
       - key: SECRET_KEY
         generateValue: true
       - key: ALLOWED_HOSTS
-        value: ".onrender.com,localhost,127.0.0.1"
+        value: "*"
       - key: CSRF_TRUSTED_ORIGINS
         value: "https://*.onrender.com"

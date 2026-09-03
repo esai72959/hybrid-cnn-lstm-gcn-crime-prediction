@@ -1,1 +1,1 @@
-web: gunicorn crime_prediction_web.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120
+web: gunicorn crime_prediction_web.wsgi:application --bind 0.0.0.0:$PORT --workers 1 --threads 2 --timeout 180

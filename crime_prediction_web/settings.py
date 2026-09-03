@@ -19,14 +19,10 @@ SECRET_KEY = config(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-# Host configuration - supports localhost, local IP, and Render subdomains
-ALLOWED_HOSTS = config(
-    'ALLOWED_HOSTS',
-    default='*,127.0.0.1,localhost,testserver,.onrender.com',
-    cast=Csv()
-)
+# Host configuration - allows all hosts
+ALLOWED_HOSTS = ['*']
 
 # CSRF trusted origins for Render HTTPS domain
 CSRF_TRUSTED_ORIGINS = config(
