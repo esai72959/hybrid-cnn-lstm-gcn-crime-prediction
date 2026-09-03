@@ -767,20 +767,21 @@ class ModelLoader:
         Load the pretrained GCN spatial-adjacency branch feature extractor (32-dim output).
         """
         if self.gcn_feature_extractor is None:
-            extractor_path = self.models_dir / self._GCN_FEATURE_EXTRACTOR_FILE
             full_path = self.models_dir / self._GCN_FULL_MODEL_FILE
-            custom_objects = {"GraphConvLayer": GraphConvLayer} if GraphConvLayer else {}
             try:
-                if extractor_path.exists():
-                    self.gcn_feature_extractor = keras.models.load_model(extractor_path, custom_objects=custom_objects)
-                elif full_path.exists():
-                    full_gcn = keras.models.load_model(full_path, custom_objects=custom_objects)
-                    layer = full_gcn.get_layer(self._GCN_EMBEDDING_LAYER)
-                    self.gcn_feature_extractor = keras.Model(inputs=full_gcn.input, outputs=layer.output, name="gcn_feature_extractor")
-                else:
-                    raise ModelLoaderError(f"GCN model file not found at '{extractor_path}' or '{full_path}'")
+                self._require_file(full_path)
+                adj_data = self.get_adjacency()
+                from src.gcn_model import CrimeGCN
+                gcn = CrimeGCN()
+                gcn.norm_adj = adj_data["norm_adj_matrix"]
+                gcn.num_nodes = len(adj_data["node_df"])
+                gcn.num_features = len(adj_data["feature_columns"])
+                full_gcn = gcn.build_model()
+                full_gcn.load_weights(full_path, by_name=True)
+                emb_layer = full_gcn.get_layer(self._GCN_EMBEDDING_LAYER)
+                self.gcn_feature_extractor = keras.Model(inputs=full_gcn.input, outputs=emb_layer.output, name="gcn_feature_extractor")
                 self.gcn_feature_extractor.trainable = False
-                logger.info("GCN feature extractor loaded successfully.")
+                logger.info("GCN feature extractor built and loaded successfully from: %s", full_path)
             except Exception as exc:
                 logger.error("Failed to load GCN feature extractor: %s", exc)
                 raise ModelLoaderError(f"Failed to load GCN feature extractor: {exc}") from exc
