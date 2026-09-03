@@ -18,3 +18,5 @@ services:
         value: "*"
       - key: CSRF_TRUSTED_ORIGINS
         value: "https://*.onrender.com"
+      - key: TF_USE_LEGACY_KERAS
+        value: "1"

@@ -1801,3 +1801,6 @@ class CrimePredictor:
         )
 
         return response
+
+
+crime_predictor = CrimePredictor()
