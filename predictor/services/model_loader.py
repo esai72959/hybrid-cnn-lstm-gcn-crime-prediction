@@ -222,179 +222,93 @@ class ModelLoader:
             model_path = self.models_dir / self._HYBRID_MODEL_FILE
             try:
                 self._require_file(model_path)
-                try:
-                    self.model = keras.models.load_model(model_path, compile=False)
-                except Exception as exc:
-                    logger.warning(
-                        "Direct hybrid load failed (%s); building explicit canonical architecture and loading weights...",
-                        exc,
-                    )
-                    from tensorflow.keras import layers, Input, Model
-                    in_h2 = Input(shape=(96,), name="fused_embedding_input")
-                    x = layers.Dense(128, name="dense")(in_h2)
-                    x = layers.BatchNormalization(name="batch_normalization")(x)
-                    x = layers.ReLU(name="re_lu")(x)
-                    x = layers.Dropout(0.3, name="dropout")(x)
-                    x = layers.Dense(64, name="dense_1")(x)
-                    x = layers.BatchNormalization(name="batch_normalization_1")(x)
-                    x = layers.ReLU(name="re_lu_1")(x)
-                    x = layers.Dropout(0.3, name="dropout_1")(x)
-                    emb_h2 = layers.Dense(32, name="hybrid_embedding")(x)
-                    x = layers.BatchNormalization(name="batch_normalization_2")(emb_h2)
-                    out_h2 = layers.Dense(1, name="crime_count_output")(x)
-                    self.model = Model(inputs=in_h2, outputs=out_h2, name="hybrid_cnn_lstm_model")
-                    try:
-                        self.model.load_weights(model_path, by_name=True)
-                    except Exception as wexc:
-                        logger.warning("Hybrid weight loading: %s", wexc)
-
+                from tensorflow.keras import layers, Input, Model
+                in_h2 = Input(shape=(96,), name="fused_embedding_input")
+                x = layers.Dense(128, name="dense")(in_h2)
+                x = layers.BatchNormalization(name="batch_normalization")(x)
+                x = layers.ReLU(name="re_lu")(x)
+                x = layers.Dropout(0.3, name="dropout")(x)
+                x = layers.Dense(64, name="dense_1")(x)
+                x = layers.BatchNormalization(name="batch_normalization_1")(x)
+                x = layers.ReLU(name="re_lu_1")(x)
+                x = layers.Dropout(0.3, name="dropout_1")(x)
+                emb_h2 = layers.Dense(32, name="hybrid_embedding")(x)
+                x = layers.BatchNormalization(name="batch_normalization_2")(emb_h2)
+                out_h2 = layers.Dense(1, name="crime_count_output")(x)
+                self.model = Model(inputs=in_h2, outputs=out_h2, name="hybrid_cnn_lstm_model")
+                self.model.load_weights(model_path, by_name=True)
                 self._verify_and_log_artifact("hybrid_2way", model_path)
-            except ModelLoaderError:
-                logger.error("Model file missing at: %s", model_path)
-                raise
+                logger.info("Hybrid 2-Way model loaded successfully from: %s", model_path)
             except Exception as exc:
-                logger.error("Failed to load hybrid model from '%s': %s",
-                              model_path, exc)
-                raise ModelLoaderError(
-                    f"Failed to load hybrid model: {exc}"
-                ) from exc
+                logger.error("Failed to load hybrid model from '%s': %s", model_path, exc)
+                raise ModelLoaderError(f"Failed to load hybrid model: {exc}") from exc
         return self.model
 
     def load_cnn_feature_extractor(self) -> keras.Model:
         """
         Load the pretrained CNN spatial branch (lazy singleton) and wrap
         it in a frozen sub-model that outputs the `_CNN_EMBEDDING_LAYER`
-        embedding instead of the branch's own auxiliary crime-count
-        prediction.
+        embedding.
         """
         if self.cnn_feature_extractor is None:
             model_path = self.models_dir / self._CNN_FEATURE_EXTRACTOR_FILE
             try:
                 self._require_file(model_path)
-                try:
-                    cnn_model = keras.models.load_model(model_path, compile=False)
-                    embedding_layer = cnn_model.get_layer(self._CNN_EMBEDDING_LAYER)
-                    feature_extractor = keras.Model(
-                        inputs=cnn_model.input,
-                        outputs=embedding_layer.output,
-                        name="cnn_feature_extractor",
-                    )
-                except Exception as exc:
-                    logger.warning(
-                        "Direct CNN load failed (%s); building explicit canonical architecture and loading weights...",
-                        exc,
-                    )
-                    from tensorflow.keras import layers, Input, Model
-                    feature_cols = self.load_feature_columns()
-                    non_spatial = {"TOTAL IPC CRIMES", "YEAR", "YEAR_INDEX", "Id", "ID", "id", "STATE/UT", "DISTRICT", "State/UT", "District"}
-                    spatial_cols = [c for c in feature_cols if c not in non_spatial]
-                    n_features = len(spatial_cols) if len(spatial_cols) > 0 else 33
-
-                    inputs = Input(shape=(n_features, 1), name="spatial_input")
-                    x = layers.Conv1D(64, kernel_size=3, padding="same", name="conv1d_1")(inputs)
-                    x = layers.BatchNormalization(name="bn_1")(x)
-                    x = layers.ReLU(name="relu_1")(x)
-                    x = layers.MaxPooling1D(pool_size=2, name="pool_1")(x)
-                    x = layers.Conv1D(128, kernel_size=3, padding="same", name="conv1d_2")(x)
-                    x = layers.BatchNormalization(name="bn_2")(x)
-                    x = layers.ReLU(name="relu_2")(x)
-                    x = layers.GlobalAveragePooling1D(name="gap")(x)
-                    x = layers.Dense(128, name="dense_1")(x)
-                    x = layers.Dropout(0.3, name="dropout_1")(x)
-                    x = layers.Dense(64, activation="relu", name="spatial_embedding")(x)
-                    emb = layers.BatchNormalization(name="embedding_bn")(x)
-                    pred = layers.Dense(1, name="crime_count_prediction")(emb)
-
-                    cnn_full = Model(inputs=inputs, outputs=pred, name="CrimeCNN_Trainer")
-                    try:
-                        cnn_full.load_weights(model_path, by_name=True, skip_mismatch=True)
-                    except Exception as wexc:
-                        logger.warning("Weight loading with skip_mismatch: %s", wexc)
-
-                    feature_extractor = Model(inputs=inputs, outputs=emb, name="cnn_feature_extractor")
-
-                feature_extractor.trainable = False
-                self.cnn_feature_extractor = feature_extractor
-                logger.info(
-                    "CNN feature extractor loaded successfully from: %s",
-                    model_path,
-                )
-            except ModelLoaderError:
-                logger.error("CNN feature extractor file missing at: %s",
-                              model_path)
-                raise
+                from tensorflow.keras import layers, Input, Model
+                in_cnn = Input(shape=(33, 1), name="cnn_spatial_input")
+                x = layers.Conv1D(64, kernel_size=3, padding="same", name="conv1d")(in_cnn)
+                x = layers.BatchNormalization(name="batch_normalization")(x)
+                x = layers.ReLU(name="re_lu")(x)
+                x = layers.MaxPooling1D(pool_size=2, padding="same", name="max_pooling1d")(x)
+                x = layers.Conv1D(128, kernel_size=3, padding="same", name="conv1d_1")(x)
+                x = layers.BatchNormalization(name="batch_normalization_1")(x)
+                x = layers.ReLU(name="re_lu_1")(x)
+                x = layers.GlobalAveragePooling1D(name="global_average_pooling1d")(x)
+                x = layers.Dense(128, activation="relu", name="dense")(x)
+                x = layers.Dropout(0.3, name="dropout")(x)
+                x = layers.Dense(64, activation="relu", name="spatial_embedding")(x)
+                emb_cnn = layers.BatchNormalization(name="embedding_bn")(x)
+                out_cnn = layers.Dense(1, name="crime_count_prediction")(emb_cnn)
+                full_cnn = Model(inputs=in_cnn, outputs=out_cnn, name="CrimeCNN_Trainer")
+                full_cnn.load_weights(model_path, by_name=True)
+                self.cnn_feature_extractor = Model(inputs=in_cnn, outputs=emb_cnn, name="cnn_feature_extractor")
+                self.cnn_feature_extractor.trainable = False
+                logger.info("CNN feature extractor loaded successfully from: %s", model_path)
             except Exception as exc:
-                logger.error(
-                    "Failed to load CNN feature extractor from '%s': %s",
-                    model_path, exc,
-                )
-                raise ModelLoaderError(
-                    f"Failed to load CNN feature extractor: {exc}"
-                ) from exc
+                logger.error("Failed to load CNN feature extractor from '%s': %s", model_path, exc)
+                raise ModelLoaderError(f"Failed to load CNN feature extractor: {exc}") from exc
         return self.cnn_feature_extractor
 
     def load_lstm_feature_extractor(self) -> keras.Model:
         """
         Load the pretrained LSTM temporal branch (lazy singleton) and
         wrap it in a frozen sub-model that outputs the
-        `_LSTM_EMBEDDING_LAYER` embedding instead of the branch's own
-        crime-count prediction.
+        `_LSTM_EMBEDDING_LAYER` embedding.
         """
         if self.lstm_feature_extractor is None:
             model_path = self.models_dir / self._LSTM_MODEL_FILE
             try:
                 self._require_file(model_path)
-                try:
-                    lstm_model = keras.models.load_model(model_path, compile=False)
-                    embedding_layer = lstm_model.get_layer(self._LSTM_EMBEDDING_LAYER)
-                    feature_extractor = keras.Model(
-                        inputs=lstm_model.input,
-                        outputs=embedding_layer.output,
-                        name="lstm_feature_extractor",
-                    )
-                except Exception as exc:
-                    logger.warning(
-                        "Direct LSTM load failed (%s); building explicit canonical architecture and loading weights...",
-                        exc,
-                    )
-                    from tensorflow.keras import layers, Input, Model
-                    in_lstm = Input(shape=(3, 34), name="lstm_input")
-                    x = layers.LSTM(128, return_sequences=True, name="lstm")(in_lstm)
-                    x = layers.BatchNormalization(name="batch_normalization")(x)
-                    x = layers.Dropout(0.3, name="dropout")(x)
-                    x = layers.LSTM(64, name="lstm_1")(x)
-                    x = layers.BatchNormalization(name="batch_normalization_1")(x)
-                    x = layers.Dense(64, activation="relu", name="dense")(x)
-                    x = layers.BatchNormalization(name="batch_normalization_2")(x)
-                    x = layers.Dropout(0.3, name="dropout_1")(x)
-                    emb_lstm = layers.Dense(32, activation="relu", name="lstm_embedding")(x)
-                    out_lstm = layers.Dense(1, name="crime_count_output")(emb_lstm)
-                    lstm_full = Model(inputs=in_lstm, outputs=out_lstm, name="lstm_temporal_branch")
-                    try:
-                        lstm_full.load_weights(model_path, by_name=True, skip_mismatch=True)
-                    except Exception as wexc:
-                        logger.warning("LSTM weight loading with skip_mismatch: %s", wexc)
-
-                    feature_extractor = Model(inputs=in_lstm, outputs=emb_lstm, name="lstm_feature_extractor")
-
-                feature_extractor.trainable = False
-                self.lstm_feature_extractor = feature_extractor
-                logger.info(
-                    "LSTM feature extractor loaded successfully from: %s",
-                    model_path,
-                )
-            except ModelLoaderError:
-                logger.error("LSTM feature extractor file missing at: %s",
-                              model_path)
-                raise
+                from tensorflow.keras import layers, Input, Model
+                in_lstm = Input(shape=(3, 34), name="lstm_temporal_input")
+                x = layers.LSTM(128, return_sequences=True, name="lstm")(in_lstm)
+                x = layers.BatchNormalization(name="batch_normalization")(x)
+                x = layers.Dropout(0.3, name="dropout")(x)
+                x = layers.LSTM(64, return_sequences=False, name="lstm_1")(x)
+                x = layers.BatchNormalization(name="batch_normalization_1")(x)
+                x = layers.Dense(64, activation="relu", name="dense")(x)
+                x = layers.BatchNormalization(name="batch_normalization_2")(x)
+                x = layers.Dropout(0.3, name="dropout_1")(x)
+                emb_lstm = layers.Dense(32, activation="relu", name="lstm_embedding")(x)
+                out_lstm = layers.Dense(1, name="crime_count_output")(emb_lstm)
+                full_lstm = Model(inputs=in_lstm, outputs=out_lstm, name="lstm_temporal_branch")
+                full_lstm.load_weights(model_path, by_name=True)
+                self.lstm_feature_extractor = Model(inputs=in_lstm, outputs=emb_lstm, name="lstm_feature_extractor")
+                self.lstm_feature_extractor.trainable = False
+                logger.info("LSTM feature extractor loaded successfully from: %s", model_path)
             except Exception as exc:
-                logger.error(
-                    "Failed to load LSTM feature extractor from '%s': %s",
-                    model_path, exc,
-                )
-                raise ModelLoaderError(
-                    f"Failed to load LSTM feature extractor: {exc}"
-                ) from exc
+                logger.error("Failed to load LSTM feature extractor from '%s': %s", model_path, exc)
+                raise ModelLoaderError(f"Failed to load LSTM feature extractor: {exc}") from exc
         return self.lstm_feature_extractor
 
     def load_encoders(self) -> None:
@@ -727,36 +641,23 @@ class ModelLoader:
             model_path = self.models_dir / self._HYBRID_GCN_MODEL_FILE
             try:
                 self._require_file(model_path)
-                try:
-                    self.hybrid_gcn_model = keras.models.load_model(model_path, compile=False)
-                except Exception as exc:
-                    logger.warning(
-                        "Direct hybrid GCN load failed (%s); building explicit canonical architecture and loading weights...",
-                        exc,
-                    )
-                    from tensorflow.keras import layers, Input, Model
-                    in_h3 = Input(shape=(128,), name="fused_embedding_input")
-                    x = layers.Dense(128, name="dense_2")(in_h3)
-                    x = layers.BatchNormalization(name="batch_normalization_3")(x)
-                    x = layers.ReLU(name="re_lu_2")(x)
-                    x = layers.Dropout(0.3, name="dropout_2")(x)
-                    x = layers.Dense(64, name="dense_3")(x)
-                    x = layers.BatchNormalization(name="batch_normalization_4")(x)
-                    x = layers.ReLU(name="re_lu_3")(x)
-                    x = layers.Dropout(0.3, name="dropout_3")(x)
-                    emb_h3 = layers.Dense(32, name="hybrid_gcn_embedding")(x)
-                    x = layers.BatchNormalization(name="batch_normalization_5")(emb_h3)
-                    out_h3 = layers.Dense(1, name="crime_count_output")(x)
-                    self.hybrid_gcn_model = Model(inputs=in_h3, outputs=out_h3, name="hybrid_cnn_lstm_gcn_model")
-                    try:
-                        self.hybrid_gcn_model.load_weights(model_path, by_name=True)
-                    except Exception as wexc:
-                        logger.warning("Hybrid-GCN weight loading: %s", wexc)
-
+                from tensorflow.keras import layers, Input, Model
+                in_h3 = Input(shape=(128,), name="fused_embedding_input")
+                x = layers.Dense(128, name="dense_2")(in_h3)
+                x = layers.BatchNormalization(name="batch_normalization_3")(x)
+                x = layers.ReLU(name="re_lu_2")(x)
+                x = layers.Dropout(0.3, name="dropout_2")(x)
+                x = layers.Dense(64, name="dense_3")(x)
+                x = layers.BatchNormalization(name="batch_normalization_4")(x)
+                x = layers.ReLU(name="re_lu_3")(x)
+                x = layers.Dropout(0.3, name="dropout_3")(x)
+                emb_h3 = layers.Dense(32, name="hybrid_gcn_embedding")(x)
+                x = layers.BatchNormalization(name="batch_normalization_5")(emb_h3)
+                out_h3 = layers.Dense(1, name="crime_count_output")(x)
+                self.hybrid_gcn_model = Model(inputs=in_h3, outputs=out_h3, name="hybrid_cnn_lstm_gcn_model")
+                self.hybrid_gcn_model.load_weights(model_path, by_name=True)
                 self._verify_and_log_artifact("hybrid_3way_gcn", model_path)
-            except ModelLoaderError:
-                logger.error("Hybrid CNN-LSTM-GCN model file missing at: %s", model_path)
-                raise
+                logger.info("Hybrid CNN-LSTM-GCN model loaded successfully from: %s", model_path)
             except Exception as exc:
                 logger.error("Failed to load Hybrid CNN-LSTM-GCN model from '%s': %s", model_path, exc)
                 raise ModelLoaderError(f"Failed to load Hybrid CNN-LSTM-GCN model: {exc}") from exc
