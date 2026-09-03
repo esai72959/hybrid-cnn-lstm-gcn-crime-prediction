@@ -214,6 +214,19 @@ class ModelLoader:
     # ----------------------------------------------------------------
     # Individual artifact loaders
     # ----------------------------------------------------------------
+    def _load_weights_safe(self, model: keras.Model, joblib_name: str, fallback_path: Path) -> None:
+        """Helper to apply weights from joblib if available, else load_weights."""
+        import joblib
+        joblib_path = self.models_dir / joblib_name
+        if joblib_path.exists():
+            layer_weights = joblib.load(joblib_path)
+            for layer, w in zip(model.layers, layer_weights):
+                if len(w) > 0:
+                    layer.set_weights(w)
+            logger.info("Loaded exact layer weights from '%s'", joblib_name)
+        else:
+            model.load_weights(fallback_path, by_name=True)
+
     def load_model(self) -> keras.Model:
         """
         Load the trained hybrid CNN-LSTM Keras model (lazy singleton).
@@ -236,7 +249,7 @@ class ModelLoader:
                 x = layers.BatchNormalization(name="batch_normalization_2")(emb_h2)
                 out_h2 = layers.Dense(1, name="crime_count_output")(x)
                 self.model = Model(inputs=in_h2, outputs=out_h2, name="hybrid_cnn_lstm_model")
-                self.model.load_weights(model_path, by_name=True)
+                self._load_weights_safe(self.model, "h2_weights.joblib", model_path)
                 self._verify_and_log_artifact("hybrid_2way", model_path)
                 logger.info("Hybrid 2-Way model loaded successfully from: %s", model_path)
             except Exception as exc:
@@ -270,7 +283,7 @@ class ModelLoader:
                 emb_cnn = layers.BatchNormalization(name="embedding_bn")(x)
                 out_cnn = layers.Dense(1, name="aux_prediction")(emb_cnn)
                 full_cnn = Model(inputs=in_cnn, outputs=out_cnn, name="CrimeCNN_Trainer")
-                full_cnn.load_weights(model_path, by_name=True)
+                self._load_weights_safe(full_cnn, "cnn_weights.joblib", model_path)
                 self.cnn_feature_extractor = Model(inputs=in_cnn, outputs=emb_cnn, name="cnn_feature_extractor")
                 self.cnn_feature_extractor.trainable = False
                 logger.info("CNN feature extractor loaded successfully from: %s", model_path)
@@ -302,7 +315,7 @@ class ModelLoader:
                 emb_lstm = layers.Dense(32, activation="relu", name="lstm_embedding")(x)
                 out_lstm = layers.Dense(1, name="crime_count_output")(emb_lstm)
                 full_lstm = Model(inputs=in_lstm, outputs=out_lstm, name="lstm_temporal_branch")
-                full_lstm.load_weights(model_path, by_name=True)
+                self._load_weights_safe(full_lstm, "lstm_weights.joblib", model_path)
                 self.lstm_feature_extractor = Model(inputs=in_lstm, outputs=emb_lstm, name="lstm_feature_extractor")
                 self.lstm_feature_extractor.trainable = False
                 logger.info("LSTM feature extractor loaded successfully from: %s", model_path)
@@ -655,7 +668,7 @@ class ModelLoader:
                 x = layers.BatchNormalization(name="batch_normalization_5")(emb_h3)
                 out_h3 = layers.Dense(1, name="crime_count_output")(x)
                 self.hybrid_gcn_model = Model(inputs=in_h3, outputs=out_h3, name="hybrid_cnn_lstm_gcn_model")
-                self.hybrid_gcn_model.load_weights(model_path, by_name=True)
+                self._load_weights_safe(self.hybrid_gcn_model, "hgcn_weights.joblib", model_path)
                 self._verify_and_log_artifact("hybrid_3way_gcn", model_path)
                 logger.info("Hybrid CNN-LSTM-GCN model loaded successfully from: %s", model_path)
             except Exception as exc:
@@ -678,7 +691,7 @@ class ModelLoader:
                 gcn.num_nodes = len(adj_data["node_df"])
                 gcn.num_features = len(adj_data["feature_columns"])
                 full_gcn = gcn.build_model()
-                full_gcn.load_weights(full_path, by_name=True)
+                self._load_weights_safe(full_gcn, "gcn_weights.joblib", full_path)
                 emb_layer = full_gcn.get_layer(self._GCN_EMBEDDING_LAYER)
                 self.gcn_feature_extractor = keras.Model(inputs=full_gcn.input, outputs=emb_layer.output, name="gcn_feature_extractor")
                 self.gcn_feature_extractor.trainable = False
