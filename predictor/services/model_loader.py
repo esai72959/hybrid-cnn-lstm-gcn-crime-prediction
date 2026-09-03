@@ -265,9 +265,9 @@ class ModelLoader:
                     )
                     from tensorflow.keras import layers, Input, Model
                     feature_cols = self.load_feature_columns()
-                    n_features = len([c for c in feature_cols if c not in ["TOTAL IPC CRIMES", "YEAR", "YEAR_INDEX", "Id", "ID", "id"]])
-                    if n_features == 0:
-                        n_features = 33
+                    non_spatial = {"TOTAL IPC CRIMES", "YEAR", "YEAR_INDEX", "Id", "ID", "id", "STATE/UT", "DISTRICT", "State/UT", "District"}
+                    spatial_cols = [c for c in feature_cols if c not in non_spatial]
+                    n_features = len(spatial_cols) if len(spatial_cols) > 0 else 33
 
                     inputs = Input(shape=(n_features, 1), name="spatial_input")
                     x = layers.Conv1D(64, kernel_size=3, padding="same", name="conv1d_1")(inputs)
