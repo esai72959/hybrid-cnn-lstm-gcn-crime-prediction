@@ -1,0 +1,691 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Prediction | Crime Prediction System — Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+
+{% block nav_prediction %}active{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'css/prediction.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ==============================================================
+     1. PREDICTION HERO
+     Reuses the site's real, already dark-mode-proven Home-hero
+     components (.hero-section / .hero-bg-gradient / .hero-bg-grid /
+     .hero-grid / .hero-copy / .hero-visual / .hero-float-card —
+     style.css sections 12.1) instead of the old single-column
+     .prediction-hero, so dark mode inherits the same tested tokens
+     used across the rest of the site. .prediction-hero-v2 only
+     trims the padding/heights for a more compact feel
+     (prediction.css) — no new color system.
+     ============================================================== -->
+<section class="hero-section prediction-hero-v2">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-bg-grid"></div>
+
+    <div class="container-xl">
+        <div class="hero-grid">
+
+            <div class="hero-copy">
+                <nav aria-label="breadcrumb" class="breadcrumb-custom">
+                    <a href="{% url 'home' %}">Home</a>
+                    <span class="sep">/</span>
+                    <span class="current">Prediction</span>
+                </nav>
+
+                <span class="eyebrow"><i class="bi bi-cpu"></i>&nbsp;Hybrid CNN-LSTM-GCN Engine</span>
+
+                <h1 class="prediction-hero-title">Hybrid CNN-LSTM-GCN Crime Prediction</h1>
+                <p class="hero-lede">
+                    Enter a state, district and target year to generate a
+                    spatio-temporal crime forecast, fusing CNN spatial pattern
+                    extraction with LSTM temporal sequencing.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#predictionForm" class="btn btn-primary-custom">
+                        <i class="bi bi-play-circle"></i>&nbsp;Run Prediction
+                    </a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-outline-custom">
+                        <i class="bi bi-grid-1x2"></i>&nbsp;Dashboard
+                    </a>
+                </div>
+
+                <div class="hero-stats-row">
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-value">96.10%</span>
+                        <span class="hero-stat-label">Model Accuracy (5-Fold CV R²)</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-value">9,840</span>
+                        <span class="hero-stat-label">Training Records</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat-item">
+                        <span class="hero-stat-value">2001–2013</span>
+                        <span class="hero-stat-label">Dataset Span</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Crime Analysis Spatio-Temporal Radar Visual -->
+            <div class="hero-visual" aria-label="AI Crime Analysis Spatio-Temporal Radar Visual">
+                <div class="hero-visual-stage">
+                    <svg class="ai-radar-svg" viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="AI Crime Analysis Radar and Spatio-Temporal Neural Network Graph">
+                        <defs>
+                            <radialGradient id="predRadarCenterGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="var(--radar-ring-pulse)" stop-opacity="0.85"/>
+                                <stop offset="100%" stop-color="var(--radar-ring-pulse)" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="predHotspotGlowAlert" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="var(--radar-hotspot-high)" stop-opacity="0.85"/>
+                                <stop offset="100%" stop-color="var(--radar-hotspot-high)" stop-opacity="0"/>
+                            </radialGradient>
+                        </defs>
+
+                        <!-- 1. Radar Grid & Concentric Range Rings -->
+                        <g class="radar-grid-group">
+                            <circle cx="260" cy="240" r="210" class="radar-grid-circle" stroke-dasharray="6 6"/>
+                            <circle cx="260" cy="240" r="160" class="radar-grid-circle"/>
+                            <circle cx="260" cy="240" r="110" class="radar-grid-circle"/>
+                            <circle cx="260" cy="240" r="60" class="radar-grid-circle"/>
+                            
+                            <!-- Grid Axes / Polar Crosshairs -->
+                            <line x1="260" y1="30" x2="260" y2="450" class="radar-grid-axis"/>
+                            <line x1="50" y1="240" x2="470" y2="240" class="radar-grid-axis"/>
+                            <line x1="110" y1="90" x2="410" y2="390" class="radar-grid-axis" stroke-dasharray="3 4"/>
+                            <line x1="410" y1="90" x2="110" y2="390" class="radar-grid-axis" stroke-dasharray="3 4"/>
+                            
+                            <!-- Range Distance Markers -->
+                            <text x="265" y="185" class="radar-range-text">100 km</text>
+                            <text x="265" y="135" class="radar-range-text">250 km</text>
+                            <text x="265" y="85" class="radar-range-text">500 km</text>
+                        </g>
+
+                        <!-- 2. Animated Pulse Rings around Center Hub -->
+                        <g class="radar-pulse-group">
+                            <circle cx="260" cy="240" r="75" class="radar-pulse-ring radar-pulse-1"/>
+                            <circle cx="260" cy="240" r="75" class="radar-pulse-ring radar-pulse-2"/>
+                        </g>
+
+                        <!-- 3. Dynamic Connecting Links between Nodes -->
+                        <g class="radar-links-group">
+                            <line x1="115" y1="105" x2="215" y2="210" class="radar-connector-line"/>
+                            <line x1="405" y1="105" x2="305" y2="210" class="radar-connector-line"/>
+                            <line x1="115" y1="365" x2="215" y2="270" class="radar-connector-line"/>
+                            <line x1="405" y1="365" x2="305" y2="270" class="radar-connector-line"/>
+                            
+                            <path d="M 115 105 Q 260 45 405 105" class="radar-interbranch-line"/>
+                            <path d="M 115 105 Q 60 235 115 365" class="radar-interbranch-line"/>
+                            <path d="M 405 105 Q 460 235 405 365" class="radar-interbranch-line"/>
+                            <path d="M 115 365 Q 260 425 405 365" class="radar-interbranch-line"/>
+                            
+                            <line x1="335" y1="170" x2="260" y2="240" class="radar-hotspot-link"/>
+                            <line x1="185" y1="285" x2="260" y2="240" class="radar-hotspot-link"/>
+                        </g>
+
+                        <!-- 4. Hotspot Alert Indicators -->
+                        <g class="radar-hotspots-group">
+                            <circle cx="335" cy="170" r="22" fill="url(#predHotspotGlowAlert)" class="hotspot-pulse"/>
+                            <circle cx="335" cy="170" r="6" class="hotspot-dot"/>
+                            <text x="345" y="165" class="radar-hotspot-label">Zone A (High Risk)</text>
+                            
+                            <circle cx="185" cy="285" r="18" fill="url(#predRadarCenterGlow)" class="hotspot-pulse"/>
+                            <circle cx="185" cy="285" r="5" class="radar-district-dot"/>
+                            <text x="135" y="302" class="radar-hotspot-label">Zone B (Active)</text>
+                        </g>
+
+                        <!-- 5. Neural Architecture Branch Nodes -->
+                        <g class="radar-node-card node-cnn">
+                            <rect x="50" y="80" width="130" height="50" rx="12" class="radar-node-box"/>
+                            <circle cx="75" cy="105" r="14" class="radar-node-icon-circle"/>
+                            <text x="75" y="109" text-anchor="middle" class="radar-node-icon-symbol"><tspan>⊞</tspan></text>
+                            <text x="98" y="99" class="radar-node-title">Spatial CNN</text>
+                            <text x="98" y="116" class="radar-node-metric">64-dim Feature</text>
+                        </g>
+
+                        <g class="radar-node-card node-lstm">
+                            <rect x="340" y="80" width="130" height="50" rx="12" class="radar-node-box"/>
+                            <circle cx="365" cy="105" r="14" class="radar-node-icon-circle"/>
+                            <text x="365" y="109" text-anchor="middle" class="radar-node-icon-symbol"><tspan>⏱</tspan></text>
+                            <text x="388" y="99" class="radar-node-title">Temporal LSTM</text>
+                            <text x="388" y="116" class="radar-node-metric">32-dim Sequence</text>
+                        </g>
+
+                        <g class="radar-node-card node-gcn">
+                            <rect x="50" y="340" width="130" height="50" rx="12" class="radar-node-box"/>
+                            <circle cx="75" cy="365" r="14" class="radar-node-icon-circle"/>
+                            <text x="75" y="369" text-anchor="middle" class="radar-node-icon-symbol"><tspan>☊</tspan></text>
+                            <text x="98" y="359" class="radar-node-title">GCN Graph</text>
+                            <text x="98" y="376" class="radar-node-metric">850 District Nodes</text>
+                        </g>
+
+                        <g class="radar-node-card node-hybrid">
+                            <rect x="340" y="340" width="130" height="50" rx="12" class="radar-node-box radar-node-box--highlight"/>
+                            <circle cx="365" cy="365" r="14" class="radar-node-icon-circle radar-node-icon-circle--highlight"/>
+                            <text x="365" y="369" text-anchor="middle" class="radar-node-icon-symbol"><tspan>✦</tspan></text>
+                            <text x="388" y="359" class="radar-node-title">3-Way Fusion</text>
+                            <text x="388" y="376" class="radar-node-metric">96.10% R² Score</text>
+                        </g>
+
+                        <!-- 6. Central Hub: AI CRIME ANALYSIS Core -->
+                        <g class="radar-center-hub">
+                            <circle cx="260" cy="240" r="54" class="radar-center-outer-ring"/>
+                            <circle cx="260" cy="240" r="46" class="radar-center-core-bg"/>
+                            <circle cx="260" cy="240" r="46" fill="url(#predRadarCenterGlow)"/>
+                            
+                            <text x="260" y="233" text-anchor="middle" class="radar-center-heading">AI CRIME</text>
+                            <text x="260" y="248" text-anchor="middle" class="radar-center-heading">ANALYSIS</text>
+                            <text x="260" y="262" text-anchor="middle" class="radar-center-badge">MULTI-VIEW</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="hero-float-card hero-float-card--top">
+                    <span class="icon-chip"><i class="bi bi-graph-up-arrow"></i></span>
+                    <div>
+                        <p class="float-title">96.47% R²</p>
+                        <p class="float-subtitle">2-Way Hybrid CNN-LSTM</p>
+                    </div>
+                </div>
+
+                <div class="hero-float-card hero-float-card--bottom">
+                    <span class="icon-chip"><i class="bi bi-diagram-3-fill"></i></span>
+                    <div>
+                        <p class="float-title">96.10% R²</p>
+                        <p class="float-subtitle">3-Way CNN-LSTM-GCN</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     2. MODEL OVERVIEW
+     (reuses .feature-card — icon / heading / paragraph — already
+      token-driven and dark-mode aware)
+     ============================================================== -->
+<section class="section">
+    <div class="container-xl">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-diagram-3"></i></div>
+                    <h3>Hybrid Architecture</h3>
+                    <p>Combines spatial, temporal, and topological graph learning for high forecasting precision.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-database"></i></div>
+                    <h3>Dataset</h3>
+                    <p>Crime in India (2001–2013) — 9,840 records across 33 engineered features.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-cpu"></i></div>
+                    <h3>Deep Learning</h3>
+                    <p>Built with TensorFlow and Keras using convolutional, recurrent, and graph neural network layers.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h3>Prediction Accuracy</h3>
+                    <p>Achieves 96.47% (2-Way) and 96.10% (3-Way GCN) across 5-fold cross-validation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     3. PREDICTION FORM
+     (.prediction-form-card / .pred-field-group / .pred-select /
+      .btn-predict are already defined in style.css section 14.2–14.4)
+     ============================================================== -->
+<section class="section pt-0" id="predictionForm">
+    <div class="container-xl">
+        <div class="prediction-form-card">
+            <div class="prediction-form-card-header text-center">
+                <h2>Run a New Prediction</h2>
+                <p class="text-muted-custom">Select a location and target year to forecast crime levels.</p>
+            </div>
+
+            <!-- State/district options come ONLY from the API (prediction.js):
+                 GET /api/states/ and GET /api/districts/?state=... .
+                 Do not hardcode <option> values here. -->
+            <form id="predictionInputForm" novalidate>
+                {% csrf_token %}
+                <div class="prediction-form-grid">
+                    <div class="pred-field-group">
+                        <label for="state" class="pred-field-label">State / UT <span class="required-mark">*</span></label>
+                        <select class="pred-select" id="state" name="state" required>
+                            <option value="" selected disabled>Loading states...</option>
+                        </select>
+                    </div>
+
+                    <div class="pred-field-group">
+                        <label for="district" class="pred-field-label">District <span class="required-mark">*</span></label>
+                        <select class="pred-select" id="district" name="district" required disabled>
+                            <option value="" selected disabled>Select State First</option>
+                        </select>
+                    </div>
+
+                    <div class="pred-field-group">
+                        <label for="year" class="pred-field-label">Prediction Year <span class="required-mark">*</span></label>
+                        <select class="pred-select" id="year" name="year" required>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027" selected>2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select>
+                        <p class="pred-field-hint">Select the future year for the crime forecast.</p>
+                    </div>
+
+                    <div class="pred-field-group">
+                        <label for="modelType" class="pred-field-label">Model Architecture <span class="required-mark">*</span></label>
+                        <select class="pred-select" id="modelType" name="model_type" required>
+                            <option value="hybrid_gcn" selected>Hybrid CNN-LSTM-GCN (3-Way Spatio-Temporal Graph)</option>
+                            <option value="hybrid">Hybrid CNN-LSTM (2-Way Baseline)</option>
+                        </select>
+                        <p class="pred-field-hint">Select model architecture for forecasting.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn-predict" id="runPredictionBtn">
+                        <span class="spinner-inline">
+                            <span class="prediction-loading-spinner" style="width:18px;height:18px;margin:0;border-width:2px;"></span>
+                        </span>
+                        <i class="bi bi-play-circle btn-predict-icon"></i>
+                        <span class="btn-predict-label">Run Prediction</span>
+                    </button>
+                </div>
+
+                <div id="predictionStatusMessage" class="pred-status-message is-hidden" role="alert"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     4. PREDICTION RESULT
+     (.prediction-result-card / .risk-card / .confidence-card /
+      .recommendation-card are already defined in style.css 14.6–14.9)
+     ============================================================== -->
+<section class="section" id="resultSection">
+    <div class="container-xl">
+        <div class="section-header--center">
+            <h2>Prediction Result</h2>
+            <p class="text-muted-custom">Results will populate here once a prediction is run.</p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-6">
+                <div class="prediction-result-card reveal-on-scroll h-100">
+                    <div class="prediction-result-header">
+                        <h2><i class="bi bi-bar-chart-line"></i>&nbsp;Predicted Crime Count</h2>
+                    </div>
+                    <div class="prediction-result-value-label">Total IPC Crimes (forecast)</div>
+                    <div class="prediction-result-value" id="predictionValue">—</div>
+
+                    <div class="prediction-result-grid">
+                        <div class="prediction-result-item">
+                            <div class="result-item-label">State</div>
+                            <div class="result-item-value" id="resultState">—</div>
+                        </div>
+                        <div class="prediction-result-item">
+                            <div class="result-item-label">District</div>
+                            <div class="result-item-value" id="resultDistrict">—</div>
+                        </div>
+                        <div class="prediction-result-item">
+                            <div class="result-item-label">Year</div>
+                            <div class="result-item-value" id="resultYear">—</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="risk-card risk-card--low reveal-on-scroll h-100" id="riskCard">
+                    <div class="risk-card-icon"><i class="bi bi-shield-exclamation"></i></div>
+                    <span class="risk-badge" id="riskLevel">—</span>
+                    <p class="mb-0 text-muted-custom" style="font-size:var(--fs-xs);">Risk classification for the selected district and year.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="confidence-card reveal-on-scroll h-100">
+                    <div class="confidence-card-header">
+                        <h3>Confidence</h3>
+                        <i class="bi bi-check2-circle" style="color:var(--color-primary);"></i>
+                    </div>
+                    <div class="confidence-value" id="confidenceValue">—</div>
+                    <div class="confidence-bar-track">
+                        <div class="confidence-bar-fill" id="confidenceBarFill" style="width:0%;"></div>
+                    </div>
+                    <p class="confidence-card-footnote">Based on the volume of matching historical records.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+            <div class="col-lg-7">
+                <div class="recommendation-card reveal-on-scroll h-100">
+                    <h3><i class="bi bi-lightbulb"></i>&nbsp;Recommendation</h3>
+                    <p class="mb-0" id="recommendation">Awaiting prediction…</p>
+                </div>
+            </div>
+
+            <!-- Circular Risk Gauge (bespoke — not in the shared component set,
+                 but built entirely from design tokens so it inherits dark mode
+                 the same way everything else does) -->
+            <div class="col-lg-5">
+                <div class="risk-gauge-card reveal-on-scroll h-100">
+                    <div class="gauge-wrapper">
+                        <svg id="riskGauge" width="180" height="180" viewBox="0 0 220 220">
+                            <circle class="gauge-ring-bg" cx="110" cy="110" r="90" fill="none" stroke-width="16"/>
+                            <circle class="gauge-ring-fill" id="riskGaugeFill" cx="110" cy="110" r="90" fill="none"
+                                    stroke-width="16" stroke-dasharray="565.5" stroke-dashoffset="565.5"
+                                    transform="rotate(-90 110 110)"/>
+                            <text x="110" y="105" text-anchor="middle" class="gauge-center-text" id="riskGaugeLabel">--</text>
+                            <text x="110" y="128" text-anchor="middle" class="gauge-sub-text">Risk Score</text>
+                        </svg>
+
+                        <div class="gauge-legend mt-2">
+                            <span><i class="dot" style="background:var(--color-primary);"></i>Low</span>
+                            <span><i class="dot" style="background:var(--color-secondary);"></i>Medium</span>
+                            <span><i class="dot" style="background:var(--color-hover);"></i>High</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spatial Neighbor Graph (GCN Branch Visualizer) -->
+        <div class="row mt-4" id="spatialNeighborCard" style="display: none;">
+            <div class="col-12">
+                <div class="card p-4" style="border-radius: var(--radius-lg); background: var(--color-card); border: 1px solid var(--color-border); box-shadow: var(--shadow-md);">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+                        <div>
+                            <h4 class="h5 fw-bold mb-1" style="color: var(--color-heading);">
+                                <i class="bi bi-diagram-3-fill me-2" style="color: var(--color-primary);"></i>Spatio-Temporal Graph Topology (GCN <i>k</i>-NN Neighborhood)
+                            </h4>
+                            <p class="small mb-0" style="color: var(--color-paragraph);">
+                                Real-time topological spatial context passed to the Graph Convolutional branch (A&#770; &isin; &#8477;<sup>850 &times; 850</sup>).
+                            </p>
+                        </div>
+                        <span class="badge px-3 py-2" style="font-size: 11px; font-weight: 700; border-radius: 20px; background: var(--color-primary-14); color: var(--color-primary); border: 1px solid var(--color-primary-30);">
+                            <i>k</i> = 5 Spatial Neighbors Active
+                        </span>
+                    </div>
+
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <div id="neighborGraphSvgContainer" style="height: 280px; width: 100%; position: relative; background: var(--color-bg); border-radius: var(--radius-md); border: 1px solid var(--color-border); overflow: hidden;">
+                                <svg id="neighborGraphSvg" width="100%" height="100%" viewBox="0 0 500 280"></svg>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <h6 class="fw-bold text-uppercase mb-2" style="font-size: 11.5px; color: var(--color-heading); letter-spacing: 0.06em;">Connected Spatial Nodes:</h6>
+                            <div id="neighborNodesList" class="d-flex flex-column gap-2" style="max-height: 240px; overflow-y: auto;">
+                                <!-- Populated dynamically by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     5. HOW PREDICTION WORKS
+     (reuses .workflow-card / .workflow-step-index from style.css 12.3)
+     ============================================================== -->
+<section class="section" style="background:var(--color-secondary-40);">
+    <div class="container-xl">
+        <div class="section-header--center">
+            <h2>How Prediction Works</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4 col-lg-3">
+                <div class="workflow-card h-100">
+                    <div class="workflow-step-index">1</div>
+                    <h3>State</h3>
+                    <p>User selects the state / UT to analyze.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="workflow-card h-100">
+                    <div class="workflow-step-index">2</div>
+                    <h3>District</h3>
+                    <p>Prediction is narrowed to a specific district.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="workflow-card h-100">
+                    <div class="workflow-step-index">3</div>
+                    <h3>Prediction Year</h3>
+                    <p>Target year defines the forecasting horizon.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="workflow-card h-100">
+                    <div class="workflow-step-index">4</div>
+                    <h3>Dataset Loader</h3>
+                    <p>Relevant historical records are retrieved from the dataset.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="workflow-card h-100">
+                    <div class="workflow-step-index">5</div>
+                    <h3>Feature Engineering</h3>
+                    <p>Raw records are transformed into 33 model-ready features.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="workflow-card h-100">
+                    <div class="workflow-step-index">6</div>
+                    <h3>Hybrid CNN-LSTM-GCN</h3>
+                    <p>The model extracts spatial, temporal, and graph patterns jointly.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="workflow-card h-100">
+                    <div class="workflow-step-index">7</div>
+                    <h3>Prediction</h3>
+                    <p>Final crime count, risk level and confidence are generated.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     6. WHY HYBRID CNN-LSTM-GCN
+     (reuses .model-accuracy-card / .model-accuracy-card--hybrid from
+      style.css 15.2 — the exact component the Performance page uses)
+     ============================================================== -->
+<section class="section">
+    <div class="container-xl">
+        <div class="section-header--center">
+            <h2>Why Hybrid CNN-LSTM-GCN</h2>
+            <p class="text-muted-custom">Benchmarked against standalone baseline architectures alongside 2-Way and 3-Way hybrid models.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="model-accuracy-card h-100">
+                    <div class="model-accuracy-icon"><i class="bi bi-grid-3x3-gap"></i></div>
+                    <div class="model-accuracy-value">84.18%</div>
+                    <div class="model-accuracy-name">CNN Baseline</div>
+                    <p class="model-accuracy-desc">Captures spatial crime patterns only. <span style="font-size:11px;opacity:0.8;">(Single-split baseline)</span></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="model-accuracy-card h-100">
+                    <div class="model-accuracy-icon"><i class="bi bi-clock-history"></i></div>
+                    <div class="model-accuracy-value">88.18%</div>
+                    <div class="model-accuracy-name">LSTM Baseline</div>
+                    <p class="model-accuracy-desc">Captures temporal trends only. <span style="font-size:11px;opacity:0.8;">(Single-split baseline)</span></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="model-accuracy-card h-100">
+                    <div class="model-accuracy-icon"><i class="bi bi-diagram-3"></i></div>
+                    <div class="model-accuracy-value">850 Nodes</div>
+                    <div class="model-accuracy-name">GCN Baseline</div>
+                    <p class="model-accuracy-desc">Models spatial graph adjacency topology. <span style="font-size:11px;opacity:0.8;">(Distance-weighted k-NN)</span></p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="model-accuracy-card model-accuracy-card--hybrid h-100">
+                    <div class="model-accuracy-icon"><i class="bi bi-layers"></i></div>
+                    <div class="model-accuracy-value">96.47%</div>
+                    <div class="model-accuracy-name">Hybrid CNN-LSTM (2-Way)</div>
+                    <p class="model-accuracy-desc">Fuses spatial and temporal representations. <span style="font-size:11px;opacity:0.8;">(5-Fold CV: 96.47% &plusmn; 1.71%)</span></p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="model-accuracy-card model-accuracy-card--hybrid h-100">
+                    <div class="model-accuracy-icon"><i class="bi bi-diagram-3-fill"></i></div>
+                    <div class="model-accuracy-value">96.10%</div>
+                    <div class="model-accuracy-name">Hybrid CNN-LSTM-GCN (3-Way)</div>
+                    <p class="model-accuracy-desc">Combines CNN, LSTM &amp; GCN spatial topology. <span style="font-size:11px;opacity:0.8;">(5-Fold CV: 96.10% &plusmn; 2.00%)</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     7. PREDICTION FEATURES
+     (reuses .feature-card again)
+     ============================================================== -->
+<section class="section" style="background:var(--color-secondary-40);">
+    <div class="container-xl">
+        <div class="section-header--center">
+            <h2>Prediction Features</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-magic"></i></div>
+                    <h3>Automatic Feature Retrieval</h3>
+                    <p>Historical features are fetched automatically for the selected district.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-clock-history"></i></div>
+                    <h3>Historical Crime Analysis</h3>
+                    <p>Twelve years of records inform every forecast.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-cpu"></i></div>
+                    <h3>AI Prediction</h3>
+                    <p>Deep learning generates the crime count forecast.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-exclamation-triangle"></i></div>
+                    <h3>Risk Classification</h3>
+                    <p>Results are classified into Low, Medium or High risk bands.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>
+                    <h3>Fast Inference</h3>
+                    <p>Predictions return in seconds via the trained model.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="feature-icon"><i class="bi bi-bounding-box-circles"></i></div>
+                    <h3>Interactive Results</h3>
+                    <p>Visual gauges and cards make results easy to interpret.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     8. QUICK ACTIONS
+     (bespoke — small, token-driven addition in prediction.css)
+     ============================================================== -->
+<section class="section">
+    <div class="container-xl">
+        <div class="section-header--center">
+            <h2>Quick Actions</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'dashboard' %}" class="quick-link-tile">
+                    <span class="quick-link-icon"><i class="bi bi-grid-1x2"></i></span>
+                    <span class="fw-semibold">Dashboard</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'dataset' %}" class="quick-link-tile">
+                    <span class="quick-link-icon"><i class="bi bi-database"></i></span>
+                    <span class="fw-semibold">Dataset</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'performance' %}" class="quick-link-tile">
+                    <span class="quick-link-icon"><i class="bi bi-speedometer2"></i></span>
+                    <span class="fw-semibold">Performance</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'home' %}" class="quick-link-tile">
+                    <span class="quick-link-icon"><i class="bi bi-house"></i></span>
+                    <span class="fw-semibold">Home</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     9. CALL TO ACTION
+     (reuses .prediction-form-card as a plain light/dark-aware panel)
+     ============================================================== -->
+<section class="section pt-0">
+    <div class="container-xl">
+        <div class="prediction-form-card text-center">
+            <h2 class="mb-3">Ready to Forecast Crime Trends?</h2>
+            <p class="text-muted-custom mx-auto mb-4" style="max-width:560px;">
+                Explore historical crime patterns and generate AI-powered
+                spatio-temporal predictions in seconds.
+            </p>
+            <a href="#predictionForm" class="btn btn-primary-custom">
+                <i class="bi bi-play-circle"></i>&nbsp;Run Prediction
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/prediction.js' %}?v={% now 'U' %}"></script>
+{% endblock %}

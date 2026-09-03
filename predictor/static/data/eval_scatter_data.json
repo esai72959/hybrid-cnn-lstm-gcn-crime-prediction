@@ -1,0 +1,3125 @@
+{
+  "cv_folds": [
+    {
+      "fold": 1,
+      "metrics_2way": {
+        "r2": 0.9774935245513916,
+        "rmse": 495.9118022642736,
+        "mae": 291.3697814941406,
+        "medae": 207.860595703125,
+        "mape": 78.70078086853027,
+        "smape": 24.091020226478577,
+        "medape": 8.988887071609497
+      },
+      "metrics_3way": {
+        "r2": 0.9729884266853333,
+        "rmse": 543.2823563764979,
+        "mae": 318.8605041503906,
+        "medae": 219.916748046875,
+        "mape": 74.33790564537048,
+        "smape": 24.339674413204193,
+        "medape": 9.87825021147728
+      }
+    },
+    {
+      "fold": 2,
+      "metrics_2way": {
+        "r2": 0.9758182764053345,
+        "rmse": 516.3288378059084,
+        "mae": 345.11334228515625,
+        "medae": 277.9010009765625,
+        "mape": 120.60952186584473,
+        "smape": 29.026266932487488,
+        "medape": 9.92603674530983
+      },
+      "metrics_3way": {
+        "r2": 0.9701533317565918,
+        "rmse": 573.6282278183319,
+        "mae": 368.9955749511719,
+        "medae": 290.595947265625,
+        "mape": 112.21616268157959,
+        "smape": 28.8349449634552,
+        "medape": 10.424109548330307
+      }
+    },
+    {
+      "fold": 3,
+      "metrics_2way": {
+        "r2": 0.9753046631813049,
+        "rmse": 496.91564299184625,
+        "mae": 326.56134033203125,
+        "medae": 267.126953125,
+        "mape": 120.23183107376099,
+        "smape": 27.573546767234802,
+        "medape": 9.799766540527344
+      },
+      "metrics_3way": {
+        "r2": 0.9774473905563354,
+        "rmse": 474.86846863105154,
+        "mae": 317.2347717285156,
+        "medae": 251.3896484375,
+        "mape": 133.79380702972412,
+        "smape": 27.67481505870819,
+        "medape": 8.827413618564606
+      }
+    },
+    {
+      "fold": 4,
+      "metrics_2way": {
+        "r2": 0.9625689387321472,
+        "rmse": 580.3014033672501,
+        "mae": 311.4649963378906,
+        "medae": 256.5128173828125,
+        "mape": 148.29334020614624,
+        "smape": 30.902540683746338,
+        "medape": 10.156182199716568
+      },
+      "metrics_3way": {
+        "r2": 0.9567751288414001,
+        "rmse": 623.5977018479141,
+        "mae": 340.340576171875,
+        "medae": 290.6968994140625,
+        "mape": 146.19839191436768,
+        "smape": 31.837958097457886,
+        "medape": 10.883209854364395
+      }
+    },
+    {
+      "fold": 5,
+      "metrics_2way": {
+        "r2": 0.9322428703308105,
+        "rmse": 826.5091877892223,
+        "mae": 281.69512939453125,
+        "medae": 189.551025390625,
+        "mape": 49.68955218791962,
+        "smape": 20.488785207271576,
+        "medape": 7.652821391820908
+      },
+      "metrics_3way": {
+        "r2": 0.9230818152427673,
+        "rmse": 880.6122869912729,
+        "mae": 331.5244140625,
+        "medae": 232.5185546875,
+        "mape": 50.441884994506836,
+        "smape": 21.63127362728119,
+        "medape": 9.741178900003433
+      }
+    }
+  ],
+  "summary": {
+    "mean_2way": {
+      "r2": 0.9646856546401977,
+      "rmse": 583.1933748437002,
+      "mae": 311.24091796875,
+      "medae": 239.790478515625
+    },
+    "mean_3way": {
+      "r2": 0.9600892186164856,
+      "rmse": 619.1978083330137,
+      "mae": 335.39116821289065,
+      "medae": 257.0235595703125
+    }
+  },
+  "scatter_points": [
+    {
+      "district": "Cuddapah",
+      "state": "Andhra Pradesh",
+      "year": 2004,
+      "actual": 4107.0,
+      "predicted_3way": 3694.8,
+      "predicted_2way": 4035.0,
+      "residual_3way": -412.2,
+      "residual_2way": -72.0
+    },
+    {
+      "district": "Vizianagaram",
+      "state": "Andhra Pradesh",
+      "year": 2004,
+      "actual": 2464.0,
+      "predicted_3way": 1997.7,
+      "predicted_2way": 2356.5,
+      "residual_3way": -466.3,
+      "residual_2way": -107.5
+    },
+    {
+      "district": "Buxar",
+      "state": "Bihar",
+      "year": 2004,
+      "actual": 2304.0,
+      "predicted_3way": 1923.4,
+      "predicted_2way": 2321.5,
+      "residual_3way": -380.6,
+      "residual_2way": 17.5
+    },
+    {
+      "district": "Motihari",
+      "state": "Bihar",
+      "year": 2004,
+      "actual": 4331.0,
+      "predicted_3way": 3946.7,
+      "predicted_2way": 4305.3,
+      "residual_3way": -384.3,
+      "residual_2way": -25.7
+    },
+    {
+      "district": "Nalanda",
+      "state": "Bihar",
+      "year": 2004,
+      "actual": 3403.0,
+      "predicted_3way": 3391.9,
+      "predicted_2way": 3747.2,
+      "residual_3way": -11.1,
+      "residual_2way": 344.2
+    },
+    {
+      "district": "Sheohar",
+      "state": "Bihar",
+      "year": 2004,
+      "actual": 389.0,
+      "predicted_3way": 571.0,
+      "predicted_2way": 796.4,
+      "residual_3way": 182.0,
+      "residual_2way": 407.4
+    },
+    {
+      "district": "Janjgir",
+      "state": "Chhattisgarh",
+      "year": 2004,
+      "actual": 2398.0,
+      "predicted_3way": 1891.9,
+      "predicted_2way": 2278.0,
+      "residual_3way": -506.1,
+      "residual_2way": -120.0
+    },
+    {
+      "district": "Sarguja",
+      "state": "Chhattisgarh",
+      "year": 2004,
+      "actual": 2765.0,
+      "predicted_3way": 2554.1,
+      "predicted_2way": 2813.1,
+      "residual_3way": -210.9,
+      "residual_2way": 48.1
+    },
+    {
+      "district": "Central",
+      "state": "Delhi Ut",
+      "year": 2004,
+      "actual": 3335.0,
+      "predicted_3way": 2836.8,
+      "predicted_2way": 3059.6,
+      "residual_3way": -498.2,
+      "residual_2way": -275.4
+    },
+    {
+      "district": "Mahendragarh",
+      "state": "Haryana",
+      "year": 2004,
+      "actual": 1233.0,
+      "predicted_3way": 1020.6,
+      "predicted_2way": 1327.7,
+      "residual_3way": -212.4,
+      "residual_2way": 94.7
+    },
+    {
+      "district": "Sirmaur",
+      "state": "Himachal Pradesh",
+      "year": 2004,
+      "actual": 692.0,
+      "predicted_3way": 687.6,
+      "predicted_2way": 943.2,
+      "residual_3way": -4.4,
+      "residual_2way": 251.2
+    },
+    {
+      "district": "Pulwama",
+      "state": "Jammu & Kashmir",
+      "year": 2004,
+      "actual": 903.0,
+      "predicted_3way": 907.2,
+      "predicted_2way": 1203.7,
+      "residual_3way": 4.2,
+      "residual_2way": 300.7
+    },
+    {
+      "district": "Bokaro",
+      "state": "Jharkhand",
+      "year": 2004,
+      "actual": 2194.0,
+      "predicted_3way": 1813.2,
+      "predicted_2way": 2202.5,
+      "residual_3way": -380.8,
+      "residual_2way": 8.5
+    },
+    {
+      "district": "Dharwad Rural",
+      "state": "Karnataka",
+      "year": 2004,
+      "actual": 918.0,
+      "predicted_3way": 770.2,
+      "predicted_2way": 1075.0,
+      "residual_3way": -147.8,
+      "residual_2way": 157.0
+    },
+    {
+      "district": "Chhindwara",
+      "state": "Madhya Pradesh",
+      "year": 2004,
+      "actual": 4126.0,
+      "predicted_3way": 3600.9,
+      "predicted_2way": 3954.8,
+      "residual_3way": -525.1,
+      "residual_2way": -171.2
+    },
+    {
+      "district": "Indore",
+      "state": "Madhya Pradesh",
+      "year": 2004,
+      "actual": 15350.0,
+      "predicted_3way": 13952.4,
+      "predicted_2way": 14282.2,
+      "residual_3way": -1397.6,
+      "residual_2way": -1067.8
+    },
+    {
+      "district": "Jabalpur Rly.",
+      "state": "Madhya Pradesh",
+      "year": 2004,
+      "actual": 515.0,
+      "predicted_3way": 470.8,
+      "predicted_2way": 670.3,
+      "residual_3way": -44.2,
+      "residual_2way": 155.3
+    },
+    {
+      "district": "Nandurbar",
+      "state": "Maharashtra",
+      "year": 2004,
+      "actual": 1247.0,
+      "predicted_3way": 1252.3,
+      "predicted_2way": 1614.0,
+      "residual_3way": 5.3,
+      "residual_2way": 367.0
+    },
+    {
+      "district": "Lawngtlai",
+      "state": "Mizoram",
+      "year": 2004,
+      "actual": 99.0,
+      "predicted_3way": 280.1,
+      "predicted_2way": 509.1,
+      "residual_3way": 181.1,
+      "residual_2way": 410.1
+    },
+    {
+      "district": "Mamit",
+      "state": "Mizoram",
+      "year": 2004,
+      "actual": 38.0,
+      "predicted_3way": 243.6,
+      "predicted_2way": 476.9,
+      "residual_3way": 205.6,
+      "residual_2way": 438.9
+    },
+    {
+      "district": "Kohima",
+      "state": "Nagaland",
+      "year": 2004,
+      "actual": 202.0,
+      "predicted_3way": 337.1,
+      "predicted_2way": 553.9,
+      "residual_3way": 135.1,
+      "residual_2way": 351.9
+    },
+    {
+      "district": "Peren",
+      "state": "Nagaland",
+      "year": 2004,
+      "actual": 14.0,
+      "predicted_3way": 194.2,
+      "predicted_2way": 427.0,
+      "residual_3way": 180.2,
+      "residual_2way": 413.0
+    },
+    {
+      "district": "Rayagada",
+      "state": "Odisha",
+      "year": 2004,
+      "actual": 951.0,
+      "predicted_3way": 875.3,
+      "predicted_2way": 1170.0,
+      "residual_3way": -75.7,
+      "residual_2way": 219.0
+    },
+    {
+      "district": "Rourkela",
+      "state": "Odisha",
+      "year": 2004,
+      "actual": 1271.0,
+      "predicted_3way": 1063.1,
+      "predicted_2way": 1387.7,
+      "residual_3way": -207.9,
+      "residual_2way": 116.7
+    },
+    {
+      "district": "Hoshiarpur",
+      "state": "Punjab",
+      "year": 2004,
+      "actual": 1175.0,
+      "predicted_3way": 1156.2,
+      "predicted_2way": 1502.6,
+      "residual_3way": -18.8,
+      "residual_2way": 327.6
+    },
+    {
+      "district": "Patiala",
+      "state": "Punjab",
+      "year": 2004,
+      "actual": 2814.0,
+      "predicted_3way": 2583.1,
+      "predicted_2way": 2832.9,
+      "residual_3way": -230.9,
+      "residual_2way": 18.9
+    },
+    {
+      "district": "Chengai",
+      "state": "Tamil Nadu",
+      "year": 2004,
+      "actual": 12560.0,
+      "predicted_3way": 10361.6,
+      "predicted_2way": 10681.8,
+      "residual_3way": -2198.4,
+      "residual_2way": -1878.2
+    },
+    {
+      "district": "Nilgiris",
+      "state": "Tamil Nadu",
+      "year": 2004,
+      "actual": 1707.0,
+      "predicted_3way": 1505.9,
+      "predicted_2way": 1914.8,
+      "residual_3way": -201.1,
+      "residual_2way": 207.8
+    },
+    {
+      "district": "Trichy Urban",
+      "state": "Tamil Nadu",
+      "year": 2004,
+      "actual": 2615.0,
+      "predicted_3way": 2033.0,
+      "predicted_2way": 2393.4,
+      "residual_3way": -582.0,
+      "residual_2way": -221.6
+    },
+    {
+      "district": "Basti",
+      "state": "Uttar Pradesh",
+      "year": 2004,
+      "actual": 975.0,
+      "predicted_3way": 853.9,
+      "predicted_2way": 1182.4,
+      "residual_3way": -121.1,
+      "residual_2way": 207.4
+    },
+    {
+      "district": "G.R.P.",
+      "state": "Uttar Pradesh",
+      "year": 2004,
+      "actual": 2916.0,
+      "predicted_3way": 1729.6,
+      "predicted_2way": 2115.7,
+      "residual_3way": -1186.4,
+      "residual_2way": -800.3
+    },
+    {
+      "district": "Kanpur Dehat",
+      "state": "Uttar Pradesh",
+      "year": 2004,
+      "actual": 1387.0,
+      "predicted_3way": 1227.1,
+      "predicted_2way": 1585.1,
+      "residual_3way": -159.9,
+      "residual_2way": 198.1
+    },
+    {
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "year": 2004,
+      "actual": 2893.0,
+      "predicted_3way": 2570.3,
+      "predicted_2way": 2832.6,
+      "residual_3way": -322.7,
+      "residual_2way": -60.4
+    },
+    {
+      "district": "Shahjahanpur",
+      "state": "Uttar Pradesh",
+      "year": 2004,
+      "actual": 2166.0,
+      "predicted_3way": 2075.4,
+      "predicted_2way": 2418.5,
+      "residual_3way": -90.6,
+      "residual_2way": 252.5
+    },
+    {
+      "district": "Kameng East",
+      "state": "Arunachal Pradesh",
+      "year": 2005,
+      "actual": 104.0,
+      "predicted_3way": 248.6,
+      "predicted_2way": 464.0,
+      "residual_3way": 144.6,
+      "residual_2way": 360.0
+    },
+    {
+      "district": "Jamui",
+      "state": "Bihar",
+      "year": 2005,
+      "actual": 1409.0,
+      "predicted_3way": 1207.8,
+      "predicted_2way": 1541.8,
+      "residual_3way": -201.2,
+      "residual_2way": 132.8
+    },
+    {
+      "district": "Bharuch",
+      "state": "Gujarat",
+      "year": 2005,
+      "actual": 2688.0,
+      "predicted_3way": 2342.9,
+      "predicted_2way": 2644.0,
+      "residual_3way": -345.1,
+      "residual_2way": -44.0
+    },
+    {
+      "district": "Bhavnagar",
+      "state": "Gujarat",
+      "year": 2005,
+      "actual": 7586.0,
+      "predicted_3way": 6111.6,
+      "predicted_2way": 6469.4,
+      "residual_3way": -1474.4,
+      "residual_2way": -1116.6
+    },
+    {
+      "district": "Surat Commr.",
+      "state": "Gujarat",
+      "year": 2005,
+      "actual": 5273.0,
+      "predicted_3way": 5084.1,
+      "predicted_2way": 5434.3,
+      "residual_3way": -188.9,
+      "residual_2way": 161.3
+    },
+    {
+      "district": "Bellary",
+      "state": "Karnataka",
+      "year": 2005,
+      "actual": 4432.0,
+      "predicted_3way": 3618.0,
+      "predicted_2way": 3977.5,
+      "residual_3way": -814.0,
+      "residual_2way": -454.5
+    },
+    {
+      "district": "Udupi",
+      "state": "Karnataka",
+      "year": 2005,
+      "actual": 2237.0,
+      "predicted_3way": 1613.7,
+      "predicted_2way": 2036.9,
+      "residual_3way": -623.3,
+      "residual_2way": -200.1
+    },
+    {
+      "district": "Railways",
+      "state": "Kerala",
+      "year": 2005,
+      "actual": 222.0,
+      "predicted_3way": 346.4,
+      "predicted_2way": 572.6,
+      "residual_3way": 124.4,
+      "residual_2way": 350.6
+    },
+    {
+      "district": "Bhopal Rly.",
+      "state": "Madhya Pradesh",
+      "year": 2005,
+      "actual": 1544.0,
+      "predicted_3way": 937.0,
+      "predicted_2way": 1228.1,
+      "residual_3way": -607.0,
+      "residual_2way": -315.9
+    },
+    {
+      "district": "Nasik Rural",
+      "state": "Maharashtra",
+      "year": 2005,
+      "actual": 4513.0,
+      "predicted_3way": 3901.6,
+      "predicted_2way": 4243.4,
+      "residual_3way": -611.4,
+      "residual_2way": -269.6
+    },
+    {
+      "district": "Sindhudurg",
+      "state": "Maharashtra",
+      "year": 2005,
+      "actual": 853.0,
+      "predicted_3way": 859.8,
+      "predicted_2way": 1145.2,
+      "residual_3way": 6.8,
+      "residual_2way": 292.2
+    },
+    {
+      "district": "Gajapati",
+      "state": "Odisha",
+      "year": 2005,
+      "actual": 420.0,
+      "predicted_3way": 507.6,
+      "predicted_2way": 727.0,
+      "residual_3way": 87.6,
+      "residual_2way": 307.0
+    },
+    {
+      "district": "Khanna",
+      "state": "Punjab",
+      "year": 2005,
+      "actual": 956.0,
+      "predicted_3way": 773.4,
+      "predicted_2way": 1036.8,
+      "residual_3way": -182.6,
+      "residual_2way": 80.8
+    },
+    {
+      "district": "Udaipur",
+      "state": "Rajasthan",
+      "year": 2005,
+      "actual": 6418.0,
+      "predicted_3way": 5925.2,
+      "predicted_2way": 6266.1,
+      "residual_3way": -492.8,
+      "residual_2way": -151.9
+    },
+    {
+      "district": "Dhalai",
+      "state": "Tripura",
+      "year": 2005,
+      "actual": 328.0,
+      "predicted_3way": 458.0,
+      "predicted_2way": 688.6,
+      "residual_3way": 130.0,
+      "residual_2way": 360.6
+    },
+    {
+      "district": "Fatehpur",
+      "state": "Uttar Pradesh",
+      "year": 2005,
+      "actual": 1142.0,
+      "predicted_3way": 970.4,
+      "predicted_2way": 1298.0,
+      "residual_3way": -171.6,
+      "residual_2way": 156.0
+    },
+    {
+      "district": "Khiri",
+      "state": "Uttar Pradesh",
+      "year": 2005,
+      "actual": 2257.0,
+      "predicted_3way": 1938.7,
+      "predicted_2way": 2311.2,
+      "residual_3way": -318.3,
+      "residual_2way": 54.2
+    },
+    {
+      "district": "Sultanpur",
+      "state": "Uttar Pradesh",
+      "year": 2005,
+      "actual": 1297.0,
+      "predicted_3way": 1268.3,
+      "predicted_2way": 1633.8,
+      "residual_3way": -28.7,
+      "residual_2way": 336.8
+    },
+    {
+      "district": "Howrah City",
+      "state": "West Bengal",
+      "year": 2005,
+      "actual": 2381.0,
+      "predicted_3way": 2084.9,
+      "predicted_2way": 2450.7,
+      "residual_3way": -296.1,
+      "residual_2way": 69.7
+    },
+    {
+      "district": "Howrah G.R.P.",
+      "state": "West Bengal",
+      "year": 2005,
+      "actual": 569.0,
+      "predicted_3way": 635.1,
+      "predicted_2way": 865.9,
+      "residual_3way": 66.1,
+      "residual_2way": 296.9
+    },
+    {
+      "district": "Jalpaiguri",
+      "state": "West Bengal",
+      "year": 2005,
+      "actual": 2886.0,
+      "predicted_3way": 2689.4,
+      "predicted_2way": 2944.5,
+      "residual_3way": -196.6,
+      "residual_2way": 58.5
+    },
+    {
+      "district": "Guntur",
+      "state": "Andhra Pradesh",
+      "year": 2006,
+      "actual": 9080.0,
+      "predicted_3way": 7494.6,
+      "predicted_2way": 7847.0,
+      "residual_3way": -1585.4,
+      "residual_2way": -1233.0
+    },
+    {
+      "district": "Changlang",
+      "state": "Arunachal Pradesh",
+      "year": 2006,
+      "actual": 153.0,
+      "predicted_3way": 323.0,
+      "predicted_2way": 536.1,
+      "residual_3way": 170.0,
+      "residual_2way": 383.1
+    },
+    {
+      "district": "C.I.D.",
+      "state": "Assam",
+      "year": 2006,
+      "actual": 18.0,
+      "predicted_3way": 247.3,
+      "predicted_2way": 424.1,
+      "residual_3way": 229.3,
+      "residual_2way": 406.1
+    },
+    {
+      "district": "Morigaon",
+      "state": "Assam",
+      "year": 2006,
+      "actual": 1194.0,
+      "predicted_3way": 1006.4,
+      "predicted_2way": 1286.1,
+      "residual_3way": -187.6,
+      "residual_2way": 92.1
+    },
+    {
+      "district": "Madhepura",
+      "state": "Bihar",
+      "year": 2006,
+      "actual": 1172.0,
+      "predicted_3way": 932.9,
+      "predicted_2way": 1218.2,
+      "residual_3way": -239.1,
+      "residual_2way": 46.2
+    },
+    {
+      "district": "Saharsa",
+      "state": "Bihar",
+      "year": 2006,
+      "actual": 1787.0,
+      "predicted_3way": 1372.5,
+      "predicted_2way": 1704.2,
+      "residual_3way": -414.5,
+      "residual_2way": -82.8
+    },
+    {
+      "district": "Dantewara",
+      "state": "Chhattisgarh",
+      "year": 2006,
+      "actual": 784.0,
+      "predicted_3way": 693.3,
+      "predicted_2way": 962.2,
+      "residual_3way": -90.7,
+      "residual_2way": 178.2
+    },
+    {
+      "district": "Himatnagar",
+      "state": "Gujarat",
+      "year": 2006,
+      "actual": 6525.0,
+      "predicted_3way": 5136.8,
+      "predicted_2way": 5497.2,
+      "residual_3way": -1388.2,
+      "residual_2way": -1027.8
+    },
+    {
+      "district": "Handwara",
+      "state": "Jammu & Kashmir",
+      "year": 2006,
+      "actual": 493.0,
+      "predicted_3way": 672.2,
+      "predicted_2way": 920.5,
+      "residual_3way": 179.2,
+      "residual_2way": 427.5
+    },
+    {
+      "district": "Lohardagga",
+      "state": "Jharkhand",
+      "year": 2006,
+      "actual": 567.0,
+      "predicted_3way": 629.1,
+      "predicted_2way": 861.6,
+      "residual_3way": 62.1,
+      "residual_2way": 294.6
+    },
+    {
+      "district": "Bangalore Commr.",
+      "state": "Karnataka",
+      "year": 2006,
+      "actual": 26284.0,
+      "predicted_3way": 28968.5,
+      "predicted_2way": 28692.2,
+      "residual_3way": 2684.5,
+      "residual_2way": 2408.2
+    },
+    {
+      "district": "Gulbarga",
+      "state": "Karnataka",
+      "year": 2006,
+      "actual": 5093.0,
+      "predicted_3way": 4440.5,
+      "predicted_2way": 4789.7,
+      "residual_3way": -652.5,
+      "residual_2way": -303.3
+    },
+    {
+      "district": "Kolar",
+      "state": "Karnataka",
+      "year": 2006,
+      "actual": 3411.0,
+      "predicted_3way": 3147.4,
+      "predicted_2way": 3413.8,
+      "residual_3way": -263.6,
+      "residual_2way": 2.8
+    },
+    {
+      "district": "Koppal",
+      "state": "Karnataka",
+      "year": 2006,
+      "actual": 1539.0,
+      "predicted_3way": 1218.9,
+      "predicted_2way": 1578.3,
+      "residual_3way": -320.1,
+      "residual_2way": 39.3
+    },
+    {
+      "district": "Mysore Rural",
+      "state": "Karnataka",
+      "year": 2006,
+      "actual": 2868.0,
+      "predicted_3way": 2274.7,
+      "predicted_2way": 2587.2,
+      "residual_3way": -593.3,
+      "residual_2way": -280.8
+    },
+    {
+      "district": "Alapuzha",
+      "state": "Kerala",
+      "year": 2006,
+      "actual": 7700.0,
+      "predicted_3way": 6965.5,
+      "predicted_2way": 7311.2,
+      "residual_3way": -734.5,
+      "residual_2way": -388.8
+    },
+    {
+      "district": "Bhind",
+      "state": "Madhya Pradesh",
+      "year": 2006,
+      "actual": 3856.0,
+      "predicted_3way": 3290.1,
+      "predicted_2way": 3626.8,
+      "residual_3way": -565.9,
+      "residual_2way": -229.2
+    },
+    {
+      "district": "Katni",
+      "state": "Madhya Pradesh",
+      "year": 2006,
+      "actual": 2871.0,
+      "predicted_3way": 2420.0,
+      "predicted_2way": 2717.5,
+      "residual_3way": -451.0,
+      "residual_2way": -153.5
+    },
+    {
+      "district": "Neemuch",
+      "state": "Madhya Pradesh",
+      "year": 2006,
+      "actual": 1816.0,
+      "predicted_3way": 1501.4,
+      "predicted_2way": 1912.0,
+      "residual_3way": -314.6,
+      "residual_2way": 96.0
+    },
+    {
+      "district": "Amravati Rural",
+      "state": "Maharashtra",
+      "year": 2006,
+      "actual": 3806.0,
+      "predicted_3way": 3483.1,
+      "predicted_2way": 3833.7,
+      "residual_3way": -322.9,
+      "residual_2way": 27.7
+    },
+    {
+      "district": "Aurangabad Rural",
+      "state": "Maharashtra",
+      "year": 2006,
+      "actual": 2591.0,
+      "predicted_3way": 2036.9,
+      "predicted_2way": 2402.1,
+      "residual_3way": -554.1,
+      "residual_2way": -188.9
+    },
+    {
+      "district": "Chandrapur",
+      "state": "Maharashtra",
+      "year": 2006,
+      "actual": 3703.0,
+      "predicted_3way": 3323.4,
+      "predicted_2way": 3658.5,
+      "residual_3way": -379.6,
+      "residual_2way": -44.5
+    },
+    {
+      "district": "Jalna",
+      "state": "Maharashtra",
+      "year": 2006,
+      "actual": 3011.0,
+      "predicted_3way": 2524.1,
+      "predicted_2way": 2803.2,
+      "residual_3way": -486.9,
+      "residual_2way": -207.8
+    },
+    {
+      "district": "Mumbai Rly.",
+      "state": "Maharashtra",
+      "year": 2006,
+      "actual": 1897.0,
+      "predicted_3way": 1324.0,
+      "predicted_2way": 1690.6,
+      "residual_3way": -573.0,
+      "residual_2way": -206.4
+    },
+    {
+      "district": "Parbhani",
+      "state": "Maharashtra",
+      "year": 2006,
+      "actual": 2512.0,
+      "predicted_3way": 2219.6,
+      "predicted_2way": 2539.5,
+      "residual_3way": -292.4,
+      "residual_2way": 27.5
+    },
+    {
+      "district": "Jalandhar",
+      "state": "Punjab",
+      "year": 2006,
+      "actual": 3671.0,
+      "predicted_3way": 3298.2,
+      "predicted_2way": 3643.5,
+      "residual_3way": -372.8,
+      "residual_2way": -27.5
+    },
+    {
+      "district": "Sikar",
+      "state": "Rajasthan",
+      "year": 2006,
+      "actual": 4156.0,
+      "predicted_3way": 3909.7,
+      "predicted_2way": 4263.8,
+      "residual_3way": -246.3,
+      "residual_2way": 107.8
+    },
+    {
+      "district": "Erode",
+      "state": "Tamil Nadu",
+      "year": 2006,
+      "actual": 5831.0,
+      "predicted_3way": 5449.1,
+      "predicted_2way": 5786.9,
+      "residual_3way": -381.9,
+      "residual_2way": -44.1
+    },
+    {
+      "district": "Salem Urban",
+      "state": "Tamil Nadu",
+      "year": 2006,
+      "actual": 2560.0,
+      "predicted_3way": 2060.2,
+      "predicted_2way": 2388.5,
+      "residual_3way": -499.8,
+      "residual_2way": -171.5
+    },
+    {
+      "district": "Thirunelveli Rural",
+      "state": "Tamil Nadu",
+      "year": 2006,
+      "actual": 6124.0,
+      "predicted_3way": 5253.5,
+      "predicted_2way": 5595.7,
+      "residual_3way": -870.5,
+      "residual_2way": -528.3
+    },
+    {
+      "district": "Trichy Rural",
+      "state": "Tamil Nadu",
+      "year": 2006,
+      "actual": 3750.0,
+      "predicted_3way": 3475.8,
+      "predicted_2way": 3804.3,
+      "residual_3way": -274.2,
+      "residual_2way": 54.3
+    },
+    {
+      "district": "Azamgarh",
+      "state": "Uttar Pradesh",
+      "year": 2006,
+      "actual": 1515.0,
+      "predicted_3way": 1248.1,
+      "predicted_2way": 1647.3,
+      "residual_3way": -266.9,
+      "residual_2way": 132.3
+    },
+    {
+      "district": "Bahraich",
+      "state": "Uttar Pradesh",
+      "year": 2006,
+      "actual": 1288.0,
+      "predicted_3way": 1173.1,
+      "predicted_2way": 1504.2,
+      "residual_3way": -114.9,
+      "residual_2way": 216.2
+    },
+    {
+      "district": "Etah",
+      "state": "Uttar Pradesh",
+      "year": 2006,
+      "actual": 2013.0,
+      "predicted_3way": 1760.2,
+      "predicted_2way": 2162.5,
+      "residual_3way": -252.8,
+      "residual_2way": 149.5
+    },
+    {
+      "district": "J.P.Nagar",
+      "state": "Uttar Pradesh",
+      "year": 2006,
+      "actual": 1204.0,
+      "predicted_3way": 1167.0,
+      "predicted_2way": 1491.9,
+      "residual_3way": -37.0,
+      "residual_2way": 287.9
+    },
+    {
+      "district": "Kannauj",
+      "state": "Uttar Pradesh",
+      "year": 2006,
+      "actual": 926.0,
+      "predicted_3way": 997.6,
+      "predicted_2way": 1300.8,
+      "residual_3way": 71.6,
+      "residual_2way": 374.8
+    },
+    {
+      "district": "Moradabad",
+      "state": "Uttar Pradesh",
+      "year": 2006,
+      "actual": 3659.0,
+      "predicted_3way": 3245.2,
+      "predicted_2way": 3576.7,
+      "residual_3way": -413.8,
+      "residual_2way": -82.3
+    },
+    {
+      "district": "Pilibhit",
+      "state": "Uttar Pradesh",
+      "year": 2006,
+      "actual": 1505.0,
+      "predicted_3way": 1403.0,
+      "predicted_2way": 1771.2,
+      "residual_3way": -102.0,
+      "residual_2way": 266.2
+    },
+    {
+      "district": "Bageshwar",
+      "state": "Uttarakhand",
+      "year": 2006,
+      "actual": 99.0,
+      "predicted_3way": 320.8,
+      "predicted_2way": 537.2,
+      "residual_3way": 221.8,
+      "residual_2way": 438.2
+    },
+    {
+      "district": "Nainital",
+      "state": "Uttarakhand",
+      "year": 2006,
+      "actual": 785.0,
+      "predicted_3way": 770.6,
+      "predicted_2way": 1049.9,
+      "residual_3way": -14.4,
+      "residual_2way": 264.9
+    },
+    {
+      "district": "Siliguri G.R.P.",
+      "state": "West Bengal",
+      "year": 2006,
+      "actual": 99.0,
+      "predicted_3way": 315.2,
+      "predicted_2way": 529.4,
+      "residual_3way": 216.2,
+      "residual_2way": 430.4
+    },
+    {
+      "district": "Nellore",
+      "state": "Andhra Pradesh",
+      "year": 2007,
+      "actual": 5991.0,
+      "predicted_3way": 5033.3,
+      "predicted_2way": 5367.4,
+      "residual_3way": -957.7,
+      "residual_2way": -623.6
+    },
+    {
+      "district": "Goalpara",
+      "state": "Assam",
+      "year": 2007,
+      "actual": 1131.0,
+      "predicted_3way": 1037.7,
+      "predicted_2way": 1342.7,
+      "residual_3way": -93.3,
+      "residual_2way": 211.7
+    },
+    {
+      "district": "Khagaria",
+      "state": "Bihar",
+      "year": 2007,
+      "actual": 1724.0,
+      "predicted_3way": 1330.3,
+      "predicted_2way": 1691.0,
+      "residual_3way": -393.7,
+      "residual_2way": -33.0
+    },
+    {
+      "district": "Jagdalpur",
+      "state": "Chhattisgarh",
+      "year": 2007,
+      "actual": 1924.0,
+      "predicted_3way": 1538.5,
+      "predicted_2way": 1942.6,
+      "residual_3way": -385.5,
+      "residual_2way": 18.6
+    },
+    {
+      "district": "Fatehabad",
+      "state": "Haryana",
+      "year": 2007,
+      "actual": 1550.0,
+      "predicted_3way": 1210.3,
+      "predicted_2way": 1541.5,
+      "residual_3way": -339.7,
+      "residual_2way": -8.5
+    },
+    {
+      "district": "Ganderbal",
+      "state": "Jammu & Kashmir",
+      "year": 2007,
+      "actual": 622.0,
+      "predicted_3way": 705.2,
+      "predicted_2way": 966.2,
+      "residual_3way": 83.2,
+      "residual_2way": 344.2
+    },
+    {
+      "district": "Leh",
+      "state": "Jammu & Kashmir",
+      "year": 2007,
+      "actual": 286.0,
+      "predicted_3way": 303.2,
+      "predicted_2way": 535.1,
+      "residual_3way": 17.2,
+      "residual_2way": 249.1
+    },
+    {
+      "district": "Udupi",
+      "state": "Karnataka",
+      "year": 2007,
+      "actual": 2389.0,
+      "predicted_3way": 1704.0,
+      "predicted_2way": 2120.2,
+      "residual_3way": -685.0,
+      "residual_2way": -268.8
+    },
+    {
+      "district": "Kozhikode Commr.",
+      "state": "Kerala",
+      "year": 2007,
+      "actual": 3883.0,
+      "predicted_3way": 3589.3,
+      "predicted_2way": 3901.5,
+      "residual_3way": -293.7,
+      "residual_2way": 18.5
+    },
+    {
+      "district": "Kozhikode Rural",
+      "state": "Kerala",
+      "year": 2007,
+      "actual": 4709.0,
+      "predicted_3way": 4314.3,
+      "predicted_2way": 4645.3,
+      "residual_3way": -394.7,
+      "residual_2way": -63.7
+    },
+    {
+      "district": "Trivandrum Rural",
+      "state": "Kerala",
+      "year": 2007,
+      "actual": 7885.0,
+      "predicted_3way": 7032.7,
+      "predicted_2way": 7347.8,
+      "residual_3way": -852.3,
+      "residual_2way": -537.2
+    },
+    {
+      "district": "Harda",
+      "state": "Madhya Pradesh",
+      "year": 2007,
+      "actual": 1418.0,
+      "predicted_3way": 1184.9,
+      "predicted_2way": 1511.3,
+      "residual_3way": -233.1,
+      "residual_2way": 93.3
+    },
+    {
+      "district": "Morena",
+      "state": "Madhya Pradesh",
+      "year": 2007,
+      "actual": 5100.0,
+      "predicted_3way": 4417.1,
+      "predicted_2way": 4772.8,
+      "residual_3way": -682.9,
+      "residual_2way": -327.2
+    },
+    {
+      "district": "Sagar",
+      "state": "Madhya Pradesh",
+      "year": 2007,
+      "actual": 8194.0,
+      "predicted_3way": 6864.3,
+      "predicted_2way": 7226.7,
+      "residual_3way": -1329.7,
+      "residual_2way": -967.3
+    },
+    {
+      "district": "Shivpuri",
+      "state": "Madhya Pradesh",
+      "year": 2007,
+      "actual": 4178.0,
+      "predicted_3way": 3889.9,
+      "predicted_2way": 4246.8,
+      "residual_3way": -288.1,
+      "residual_2way": 68.8
+    },
+    {
+      "district": "Gadchiroli",
+      "state": "Maharashtra",
+      "year": 2007,
+      "actual": 1282.0,
+      "predicted_3way": 1120.6,
+      "predicted_2way": 1469.9,
+      "residual_3way": -161.4,
+      "residual_2way": 187.9
+    },
+    {
+      "district": "Nasik Commr.",
+      "state": "Maharashtra",
+      "year": 2007,
+      "actual": 3115.0,
+      "predicted_3way": 2522.2,
+      "predicted_2way": 2774.8,
+      "residual_3way": -592.8,
+      "residual_2way": -340.2
+    },
+    {
+      "district": "Parbhani",
+      "state": "Maharashtra",
+      "year": 2007,
+      "actual": 2743.0,
+      "predicted_3way": 2493.5,
+      "predicted_2way": 2779.7,
+      "residual_3way": -249.5,
+      "residual_2way": 36.7
+    },
+    {
+      "district": "Wardha",
+      "state": "Maharashtra",
+      "year": 2007,
+      "actual": 4026.0,
+      "predicted_3way": 3497.3,
+      "predicted_2way": 3832.7,
+      "residual_3way": -528.7,
+      "residual_2way": -193.3
+    },
+    {
+      "district": "Kolasib",
+      "state": "Mizoram",
+      "year": 2007,
+      "actual": 248.0,
+      "predicted_3way": 323.8,
+      "predicted_2way": 562.6,
+      "residual_3way": 75.8,
+      "residual_2way": 314.6
+    },
+    {
+      "district": "Mokokchung",
+      "state": "Nagaland",
+      "year": 2007,
+      "actual": 84.0,
+      "predicted_3way": 197.5,
+      "predicted_2way": 423.3,
+      "residual_3way": 113.5,
+      "residual_2way": 339.3
+    },
+    {
+      "district": "Cuttack",
+      "state": "Odisha",
+      "year": 2007,
+      "actual": 3919.0,
+      "predicted_3way": 3723.6,
+      "predicted_2way": 4086.6,
+      "residual_3way": -195.4,
+      "residual_2way": 167.6
+    },
+    {
+      "district": "Nilgiris",
+      "state": "Tamil Nadu",
+      "year": 2007,
+      "actual": 1365.0,
+      "predicted_3way": 1320.9,
+      "predicted_2way": 1719.4,
+      "residual_3way": -44.1,
+      "residual_2way": 354.4
+    },
+    {
+      "district": "Salem Urban",
+      "state": "Tamil Nadu",
+      "year": 2007,
+      "actual": 1520.0,
+      "predicted_3way": 1579.8,
+      "predicted_2way": 2043.5,
+      "residual_3way": 59.8,
+      "residual_2way": 523.5
+    },
+    {
+      "district": "Aligarh",
+      "state": "Uttar Pradesh",
+      "year": 2007,
+      "actual": 3751.0,
+      "predicted_3way": 3708.0,
+      "predicted_2way": 4053.3,
+      "residual_3way": -43.0,
+      "residual_2way": 302.3
+    },
+    {
+      "district": "Azamgarh",
+      "state": "Uttar Pradesh",
+      "year": 2007,
+      "actual": 1308.0,
+      "predicted_3way": 1166.0,
+      "predicted_2way": 1550.6,
+      "residual_3way": -142.0,
+      "residual_2way": 242.6
+    },
+    {
+      "district": "Bahraich",
+      "state": "Uttar Pradesh",
+      "year": 2007,
+      "actual": 1313.0,
+      "predicted_3way": 1246.5,
+      "predicted_2way": 1593.8,
+      "residual_3way": -66.5,
+      "residual_2way": 280.8
+    },
+    {
+      "district": "Rampur",
+      "state": "Uttar Pradesh",
+      "year": 2007,
+      "actual": 2138.0,
+      "predicted_3way": 1800.0,
+      "predicted_2way": 2212.3,
+      "residual_3way": -338.0,
+      "residual_2way": 74.3
+    },
+    {
+      "district": "Varanasi",
+      "state": "Uttar Pradesh",
+      "year": 2007,
+      "actual": 3784.0,
+      "predicted_3way": 2868.3,
+      "predicted_2way": 3085.3,
+      "residual_3way": -915.7,
+      "residual_2way": -698.7
+    },
+    {
+      "district": "Asansol",
+      "state": "West Bengal",
+      "year": 2007,
+      "actual": 1491.0,
+      "predicted_3way": 1372.0,
+      "predicted_2way": 1760.7,
+      "residual_3way": -119.0,
+      "residual_2way": 269.7
+    },
+    {
+      "district": "Darjeeling",
+      "state": "West Bengal",
+      "year": 2007,
+      "actual": 1873.0,
+      "predicted_3way": 1635.6,
+      "predicted_2way": 2041.3,
+      "residual_3way": -237.4,
+      "residual_2way": 168.3
+    },
+    {
+      "district": "West Godavari",
+      "state": "Andhra Pradesh",
+      "year": 2008,
+      "actual": 8213.0,
+      "predicted_3way": 6948.0,
+      "predicted_2way": 7290.6,
+      "residual_3way": -1265.0,
+      "residual_2way": -922.4
+    },
+    {
+      "district": "Darrang",
+      "state": "Assam",
+      "year": 2008,
+      "actual": 1493.0,
+      "predicted_3way": 1375.4,
+      "predicted_2way": 1747.6,
+      "residual_3way": -117.6,
+      "residual_2way": 254.6
+    },
+    {
+      "district": "Arwal",
+      "state": "Bihar",
+      "year": 2008,
+      "actual": 694.0,
+      "predicted_3way": 588.5,
+      "predicted_2way": 818.1,
+      "residual_3way": -105.5,
+      "residual_2way": 124.1
+    },
+    {
+      "district": "Naugachia",
+      "state": "Bihar",
+      "year": 2008,
+      "actual": 1523.0,
+      "predicted_3way": 1188.4,
+      "predicted_2way": 1470.5,
+      "residual_3way": -334.6,
+      "residual_2way": -52.5
+    },
+    {
+      "district": "Janjgir",
+      "state": "Chhattisgarh",
+      "year": 2008,
+      "actual": 3011.0,
+      "predicted_3way": 2674.1,
+      "predicted_2way": 2939.5,
+      "residual_3way": -336.9,
+      "residual_2way": -71.5
+    },
+    {
+      "district": "Palanpur",
+      "state": "Gujarat",
+      "year": 2008,
+      "actual": 4107.0,
+      "predicted_3way": 3761.3,
+      "predicted_2way": 4074.5,
+      "residual_3way": -345.7,
+      "residual_2way": -32.5
+    },
+    {
+      "district": "Ambala",
+      "state": "Haryana",
+      "year": 2008,
+      "actual": 2560.0,
+      "predicted_3way": 1851.7,
+      "predicted_2way": 2234.5,
+      "residual_3way": -708.3,
+      "residual_2way": -325.5
+    },
+    {
+      "district": "Rewari",
+      "state": "Haryana",
+      "year": 2008,
+      "actual": 2361.0,
+      "predicted_3way": 1771.4,
+      "predicted_2way": 2146.5,
+      "residual_3way": -589.6,
+      "residual_2way": -214.5
+    },
+    {
+      "district": "Trivandrum Rural",
+      "state": "Kerala",
+      "year": 2008,
+      "actual": 8348.0,
+      "predicted_3way": 6946.5,
+      "predicted_2way": 7291.1,
+      "residual_3way": -1401.5,
+      "residual_2way": -1056.9
+    },
+    {
+      "district": "Katni",
+      "state": "Madhya Pradesh",
+      "year": 2008,
+      "actual": 2964.0,
+      "predicted_3way": 2638.6,
+      "predicted_2way": 2908.7,
+      "residual_3way": -325.4,
+      "residual_2way": -55.3
+    },
+    {
+      "district": "Ujjain",
+      "state": "Madhya Pradesh",
+      "year": 2008,
+      "actual": 8764.0,
+      "predicted_3way": 7607.2,
+      "predicted_2way": 7971.0,
+      "residual_3way": -1156.8,
+      "residual_2way": -793.0
+    },
+    {
+      "district": "Dhule",
+      "state": "Maharashtra",
+      "year": 2008,
+      "actual": 2783.0,
+      "predicted_3way": 2374.8,
+      "predicted_2way": 2675.1,
+      "residual_3way": -408.2,
+      "residual_2way": -107.9
+    },
+    {
+      "district": "Ri-Bhoi",
+      "state": "Meghalaya",
+      "year": 2008,
+      "actual": 229.0,
+      "predicted_3way": 306.1,
+      "predicted_2way": 542.1,
+      "residual_3way": 77.1,
+      "residual_2way": 313.1
+    },
+    {
+      "district": "Phek",
+      "state": "Nagaland",
+      "year": 2008,
+      "actual": 55.0,
+      "predicted_3way": 191.9,
+      "predicted_2way": 419.4,
+      "residual_3way": 136.9,
+      "residual_2way": 364.4
+    },
+    {
+      "district": "Erode",
+      "state": "Tamil Nadu",
+      "year": 2008,
+      "actual": 8006.0,
+      "predicted_3way": 6987.5,
+      "predicted_2way": 7346.6,
+      "residual_3way": -1018.5,
+      "residual_2way": -659.4
+    },
+    {
+      "district": "Madurai Rural",
+      "state": "Tamil Nadu",
+      "year": 2008,
+      "actual": 4791.0,
+      "predicted_3way": 4356.4,
+      "predicted_2way": 4692.9,
+      "residual_3way": -434.6,
+      "residual_2way": -98.1
+    },
+    {
+      "district": "Salem Rural",
+      "state": "Tamil Nadu",
+      "year": 2008,
+      "actual": 7381.0,
+      "predicted_3way": 5813.3,
+      "predicted_2way": 6160.3,
+      "residual_3way": -1567.7,
+      "residual_2way": -1220.7
+    },
+    {
+      "district": "Etah",
+      "state": "Uttar Pradesh",
+      "year": 2008,
+      "actual": 1984.0,
+      "predicted_3way": 1728.2,
+      "predicted_2way": 2139.3,
+      "residual_3way": -255.8,
+      "residual_2way": 155.3
+    },
+    {
+      "district": "Jaunpur",
+      "state": "Uttar Pradesh",
+      "year": 2008,
+      "actual": 2230.0,
+      "predicted_3way": 1867.4,
+      "predicted_2way": 2245.5,
+      "residual_3way": -362.6,
+      "residual_2way": 15.5
+    },
+    {
+      "district": "Jalpaiguri",
+      "state": "West Bengal",
+      "year": 2008,
+      "actual": 12992.0,
+      "predicted_3way": 10393.1,
+      "predicted_2way": 10777.6,
+      "residual_3way": -2598.9,
+      "residual_2way": -2214.4
+    },
+    {
+      "district": "Cyberabad",
+      "state": "Andhra Pradesh",
+      "year": 2009,
+      "actual": 14841.0,
+      "predicted_3way": 13972.0,
+      "predicted_2way": 14316.6,
+      "residual_3way": -869.0,
+      "residual_2way": -524.4
+    },
+    {
+      "district": "Vijayawada Rly.",
+      "state": "Andhra Pradesh",
+      "year": 2009,
+      "actual": 592.0,
+      "predicted_3way": 420.7,
+      "predicted_2way": 624.1,
+      "residual_3way": -171.3,
+      "residual_2way": 32.1
+    },
+    {
+      "district": "Bongaigaon",
+      "state": "Assam",
+      "year": 2009,
+      "actual": 1253.0,
+      "predicted_3way": 1130.0,
+      "predicted_2way": 1426.3,
+      "residual_3way": -123.0,
+      "residual_2way": 173.3
+    },
+    {
+      "district": "Udalguri",
+      "state": "Assam",
+      "year": 2009,
+      "actual": 839.0,
+      "predicted_3way": 864.9,
+      "predicted_2way": 1123.3,
+      "residual_3way": 25.9,
+      "residual_2way": 284.3
+    },
+    {
+      "district": "Bhojpur",
+      "state": "Bihar",
+      "year": 2009,
+      "actual": 3736.0,
+      "predicted_3way": 3175.6,
+      "predicted_2way": 3482.8,
+      "residual_3way": -560.4,
+      "residual_2way": -253.2
+    },
+    {
+      "district": "Jamui",
+      "state": "Bihar",
+      "year": 2009,
+      "actual": 2257.0,
+      "predicted_3way": 1540.1,
+      "predicted_2way": 1918.1,
+      "residual_3way": -716.9,
+      "residual_2way": -338.9
+    },
+    {
+      "district": "Naugachia",
+      "state": "Bihar",
+      "year": 2009,
+      "actual": 1573.0,
+      "predicted_3way": 1242.0,
+      "predicted_2way": 1551.7,
+      "residual_3way": -331.0,
+      "residual_2way": -21.3
+    },
+    {
+      "district": "Siwan",
+      "state": "Bihar",
+      "year": 2009,
+      "actual": 2242.0,
+      "predicted_3way": 2002.7,
+      "predicted_2way": 2341.8,
+      "residual_3way": -239.3,
+      "residual_2way": 99.8
+    },
+    {
+      "district": "Jagdalpur",
+      "state": "Chhattisgarh",
+      "year": 2009,
+      "actual": 2211.0,
+      "predicted_3way": 1664.7,
+      "predicted_2way": 2064.4,
+      "residual_3way": -546.3,
+      "residual_2way": -146.6
+    },
+    {
+      "district": "Daman",
+      "state": "Daman & Diu",
+      "year": 2009,
+      "actual": 208.0,
+      "predicted_3way": 276.4,
+      "predicted_2way": 492.4,
+      "residual_3way": 68.4,
+      "residual_2way": 284.4
+    },
+    {
+      "district": "New Delhi",
+      "state": "Delhi Ut",
+      "year": 2009,
+      "actual": 1492.0,
+      "predicted_3way": 1374.2,
+      "predicted_2way": 1752.6,
+      "residual_3way": -117.8,
+      "residual_2way": 260.6
+    },
+    {
+      "district": "Ahwa-Dang",
+      "state": "Gujarat",
+      "year": 2009,
+      "actual": 153.0,
+      "predicted_3way": 312.6,
+      "predicted_2way": 532.6,
+      "residual_3way": 159.6,
+      "residual_2way": 379.6
+    },
+    {
+      "district": "Palanpur",
+      "state": "Gujarat",
+      "year": 2009,
+      "actual": 4325.0,
+      "predicted_3way": 3824.3,
+      "predicted_2way": 4190.3,
+      "residual_3way": -500.7,
+      "residual_2way": -134.7
+    },
+    {
+      "district": "Fatehabad",
+      "state": "Haryana",
+      "year": 2009,
+      "actual": 1627.0,
+      "predicted_3way": 1297.5,
+      "predicted_2way": 1638.8,
+      "residual_3way": -329.5,
+      "residual_2way": 11.8
+    },
+    {
+      "district": "Mahendragarh",
+      "state": "Haryana",
+      "year": 2009,
+      "actual": 1713.0,
+      "predicted_3way": 1348.2,
+      "predicted_2way": 1706.7,
+      "residual_3way": -364.8,
+      "residual_2way": -6.3
+    },
+    {
+      "district": "Palamu",
+      "state": "Jharkhand",
+      "year": 2009,
+      "actual": 1888.0,
+      "predicted_3way": 1466.9,
+      "predicted_2way": 1846.3,
+      "residual_3way": -421.1,
+      "residual_2way": -41.7
+    },
+    {
+      "district": "Bidar",
+      "state": "Karnataka",
+      "year": 2009,
+      "actual": 3594.0,
+      "predicted_3way": 3051.9,
+      "predicted_2way": 3321.8,
+      "residual_3way": -542.1,
+      "residual_2way": -272.2
+    },
+    {
+      "district": "Dakshin Kannada",
+      "state": "Karnataka",
+      "year": 2009,
+      "actual": 4187.0,
+      "predicted_3way": 3677.6,
+      "predicted_2way": 4041.1,
+      "residual_3way": -509.4,
+      "residual_2way": -145.9
+    },
+    {
+      "district": "Davanagere",
+      "state": "Karnataka",
+      "year": 2009,
+      "actual": 3259.0,
+      "predicted_3way": 3136.2,
+      "predicted_2way": 3407.5,
+      "residual_3way": -122.8,
+      "residual_2way": 148.5
+    },
+    {
+      "district": "Kannur",
+      "state": "Kerala",
+      "year": 2009,
+      "actual": 6839.0,
+      "predicted_3way": 5997.1,
+      "predicted_2way": 6337.8,
+      "residual_3way": -841.9,
+      "residual_2way": -501.2
+    },
+    {
+      "district": "Kottayam",
+      "state": "Kerala",
+      "year": 2009,
+      "actual": 7848.0,
+      "predicted_3way": 7270.5,
+      "predicted_2way": 7616.8,
+      "residual_3way": -577.5,
+      "residual_2way": -231.2
+    },
+    {
+      "district": "Railways",
+      "state": "Kerala",
+      "year": 2009,
+      "actual": 269.0,
+      "predicted_3way": 381.8,
+      "predicted_2way": 610.7,
+      "residual_3way": 112.8,
+      "residual_2way": 341.7
+    },
+    {
+      "district": "Dindori",
+      "state": "Madhya Pradesh",
+      "year": 2009,
+      "actual": 907.0,
+      "predicted_3way": 762.2,
+      "predicted_2way": 1019.1,
+      "residual_3way": -144.8,
+      "residual_2way": 112.1
+    },
+    {
+      "district": "Solapur Commr.",
+      "state": "Maharashtra",
+      "year": 2009,
+      "actual": 1465.0,
+      "predicted_3way": 1377.1,
+      "predicted_2way": 1758.1,
+      "residual_3way": -87.9,
+      "residual_2way": 293.1
+    },
+    {
+      "district": "Ri-Bhoi",
+      "state": "Meghalaya",
+      "year": 2009,
+      "actual": 240.0,
+      "predicted_3way": 337.5,
+      "predicted_2way": 591.0,
+      "residual_3way": 97.5,
+      "residual_2way": 351.0
+    },
+    {
+      "district": "Kalahandi",
+      "state": "Odisha",
+      "year": 2009,
+      "actual": 1323.0,
+      "predicted_3way": 1140.6,
+      "predicted_2way": 1453.6,
+      "residual_3way": -182.4,
+      "residual_2way": 130.6
+    },
+    {
+      "district": "Bhatinda",
+      "state": "Punjab",
+      "year": 2009,
+      "actual": 2187.0,
+      "predicted_3way": 1551.7,
+      "predicted_2way": 1939.1,
+      "residual_3way": -635.3,
+      "residual_2way": -247.9
+    },
+    {
+      "district": "Kota City",
+      "state": "Rajasthan",
+      "year": 2009,
+      "actual": 4245.0,
+      "predicted_3way": 3673.4,
+      "predicted_2way": 4049.1,
+      "residual_3way": -571.6,
+      "residual_2way": -195.9
+    },
+    {
+      "district": "Namakkal",
+      "state": "Tamil Nadu",
+      "year": 2009,
+      "actual": 4410.0,
+      "predicted_3way": 4116.5,
+      "predicted_2way": 4472.1,
+      "residual_3way": -293.5,
+      "residual_2way": 62.1
+    },
+    {
+      "district": "South",
+      "state": "Tripura",
+      "year": 2009,
+      "actual": 1489.0,
+      "predicted_3way": 1481.4,
+      "predicted_2way": 1883.4,
+      "residual_3way": -7.6,
+      "residual_2way": 394.4
+    },
+    {
+      "district": "Balrampur",
+      "state": "Uttar Pradesh",
+      "year": 2009,
+      "actual": 415.0,
+      "predicted_3way": 537.8,
+      "predicted_2way": 773.7,
+      "residual_3way": 122.8,
+      "residual_2way": 358.7
+    },
+    {
+      "district": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "year": 2009,
+      "actual": 4117.0,
+      "predicted_3way": 3701.2,
+      "predicted_2way": 4081.1,
+      "residual_3way": -415.8,
+      "residual_2way": -35.9
+    },
+    {
+      "district": "Birbhum",
+      "state": "West Bengal",
+      "year": 2009,
+      "actual": 2702.0,
+      "predicted_3way": 1968.0,
+      "predicted_2way": 2330.0,
+      "residual_3way": -734.0,
+      "residual_2way": -372.0
+    },
+    {
+      "district": "Nalgonda",
+      "state": "Andhra Pradesh",
+      "year": 2010,
+      "actual": 7736.0,
+      "predicted_3way": 6441.2,
+      "predicted_2way": 6777.3,
+      "residual_3way": -1294.8,
+      "residual_2way": -958.7
+    },
+    {
+      "district": "Ranga Reddy",
+      "state": "Andhra Pradesh",
+      "year": 2010,
+      "actual": 1676.0,
+      "predicted_3way": 1540.7,
+      "predicted_2way": 1937.3,
+      "residual_3way": -135.3,
+      "residual_2way": 261.3
+    },
+    {
+      "district": "Kameng West",
+      "state": "Arunachal Pradesh",
+      "year": 2010,
+      "actual": 131.0,
+      "predicted_3way": 206.6,
+      "predicted_2way": 428.1,
+      "residual_3way": 75.6,
+      "residual_2way": 297.1
+    },
+    {
+      "district": "Munger",
+      "state": "Bihar",
+      "year": 2010,
+      "actual": 2052.0,
+      "predicted_3way": 1694.7,
+      "predicted_2way": 2068.8,
+      "residual_3way": -357.3,
+      "residual_2way": 16.8
+    },
+    {
+      "district": "Rajnandgaon",
+      "state": "Chhattisgarh",
+      "year": 2010,
+      "actual": 2849.0,
+      "predicted_3way": 2494.8,
+      "predicted_2way": 2762.7,
+      "residual_3way": -354.2,
+      "residual_2way": -86.3
+    },
+    {
+      "district": "Panchmahal",
+      "state": "Gujarat",
+      "year": 2010,
+      "actual": 3720.0,
+      "predicted_3way": 3056.1,
+      "predicted_2way": 3329.9,
+      "residual_3way": -663.9,
+      "residual_2way": -390.1
+    },
+    {
+      "district": "Shimla",
+      "state": "Himachal Pradesh",
+      "year": 2010,
+      "actual": 1790.0,
+      "predicted_3way": 1443.1,
+      "predicted_2way": 1812.4,
+      "residual_3way": -346.9,
+      "residual_2way": 22.4
+    },
+    {
+      "district": "Rajouri",
+      "state": "Jammu & Kashmir",
+      "year": 2010,
+      "actual": 1460.0,
+      "predicted_3way": 1175.1,
+      "predicted_2way": 1489.5,
+      "residual_3way": -284.9,
+      "residual_2way": 29.5
+    },
+    {
+      "district": "Dumka",
+      "state": "Jharkhand",
+      "year": 2010,
+      "actual": 1504.0,
+      "predicted_3way": 1221.7,
+      "predicted_2way": 1576.1,
+      "residual_3way": -282.3,
+      "residual_2way": 72.1
+    },
+    {
+      "district": "Jamtara",
+      "state": "Jharkhand",
+      "year": 2010,
+      "actual": 525.0,
+      "predicted_3way": 568.3,
+      "predicted_2way": 806.9,
+      "residual_3way": 43.3,
+      "residual_2way": 281.9
+    },
+    {
+      "district": "Trivandrum Commr.",
+      "state": "Kerala",
+      "year": 2010,
+      "actual": 5652.0,
+      "predicted_3way": 5225.6,
+      "predicted_2way": 5512.4,
+      "residual_3way": -426.4,
+      "residual_2way": -139.6
+    },
+    {
+      "district": "Ratlam",
+      "state": "Madhya Pradesh",
+      "year": 2010,
+      "actual": 4245.0,
+      "predicted_3way": 3704.7,
+      "predicted_2way": 4090.7,
+      "residual_3way": -540.3,
+      "residual_2way": -154.3
+    },
+    {
+      "district": "Seoni",
+      "state": "Madhya Pradesh",
+      "year": 2010,
+      "actual": 2906.0,
+      "predicted_3way": 2512.4,
+      "predicted_2way": 2810.0,
+      "residual_3way": -393.6,
+      "residual_2way": -96.0
+    },
+    {
+      "district": "Gondia",
+      "state": "Maharashtra",
+      "year": 2010,
+      "actual": 1982.0,
+      "predicted_3way": 1684.8,
+      "predicted_2way": 2082.7,
+      "residual_3way": -297.2,
+      "residual_2way": 100.7
+    },
+    {
+      "district": "Hingoli",
+      "state": "Maharashtra",
+      "year": 2010,
+      "actual": 1865.0,
+      "predicted_3way": 1451.0,
+      "predicted_2way": 1840.9,
+      "residual_3way": -414.0,
+      "residual_2way": -24.1
+    },
+    {
+      "district": "Cuttack",
+      "state": "Odisha",
+      "year": 2010,
+      "actual": 2340.0,
+      "predicted_3way": 1777.7,
+      "predicted_2way": 2169.5,
+      "residual_3way": -562.3,
+      "residual_2way": -170.5
+    },
+    {
+      "district": "Nuapada",
+      "state": "Odisha",
+      "year": 2010,
+      "actual": 711.0,
+      "predicted_3way": 705.2,
+      "predicted_2way": 960.9,
+      "residual_3way": -5.8,
+      "residual_2way": 249.9
+    },
+    {
+      "district": "Kapurthala",
+      "state": "Punjab",
+      "year": 2010,
+      "actual": 1159.0,
+      "predicted_3way": 1083.2,
+      "predicted_2way": 1412.3,
+      "residual_3way": -75.8,
+      "residual_2way": 253.3
+    },
+    {
+      "district": "Khanna",
+      "state": "Punjab",
+      "year": 2010,
+      "actual": 1035.0,
+      "predicted_3way": 891.0,
+      "predicted_2way": 1170.3,
+      "residual_3way": -144.0,
+      "residual_2way": 135.3
+    },
+    {
+      "district": "Ropar",
+      "state": "Punjab",
+      "year": 2010,
+      "actual": 1099.0,
+      "predicted_3way": 956.8,
+      "predicted_2way": 1235.9,
+      "residual_3way": -142.2,
+      "residual_2way": 136.9
+    },
+    {
+      "district": "Bundi",
+      "state": "Rajasthan",
+      "year": 2010,
+      "actual": 3286.0,
+      "predicted_3way": 2883.5,
+      "predicted_2way": 3137.1,
+      "residual_3way": -402.5,
+      "residual_2way": -148.9
+    },
+    {
+      "district": "Trichy Urban",
+      "state": "Tamil Nadu",
+      "year": 2010,
+      "actual": 3741.0,
+      "predicted_3way": 3355.0,
+      "predicted_2way": 3706.7,
+      "residual_3way": -386.0,
+      "residual_2way": -34.3
+    },
+    {
+      "district": "Bahraich",
+      "state": "Uttar Pradesh",
+      "year": 2010,
+      "actual": 2181.0,
+      "predicted_3way": 1836.5,
+      "predicted_2way": 2227.9,
+      "residual_3way": -344.5,
+      "residual_2way": 46.9
+    },
+    {
+      "district": "Cyberabad",
+      "state": "Andhra Pradesh",
+      "year": 2011,
+      "actual": 17645.0,
+      "predicted_3way": 15960.0,
+      "predicted_2way": 16337.3,
+      "residual_3way": -1685.0,
+      "residual_2way": -1307.7
+    },
+    {
+      "district": "Vizianagaram",
+      "state": "Andhra Pradesh",
+      "year": 2011,
+      "actual": 4818.0,
+      "predicted_3way": 3643.3,
+      "predicted_2way": 4009.0,
+      "residual_3way": -1174.7,
+      "residual_2way": -809.0
+    },
+    {
+      "district": "Dibang Valley",
+      "state": "Arunachal Pradesh",
+      "year": 2011,
+      "actual": 90.0,
+      "predicted_3way": 207.7,
+      "predicted_2way": 432.5,
+      "residual_3way": 117.7,
+      "residual_2way": 342.5
+    },
+    {
+      "district": "Gaya",
+      "state": "Bihar",
+      "year": 2011,
+      "actual": 5207.0,
+      "predicted_3way": 4807.4,
+      "predicted_2way": 5188.4,
+      "residual_3way": -399.6,
+      "residual_2way": -18.6
+    },
+    {
+      "district": "Madhepura",
+      "state": "Bihar",
+      "year": 2011,
+      "actual": 1810.0,
+      "predicted_3way": 1413.9,
+      "predicted_2way": 1788.4,
+      "residual_3way": -396.1,
+      "residual_2way": -21.6
+    },
+    {
+      "district": "Nalanda",
+      "state": "Bihar",
+      "year": 2011,
+      "actual": 4527.0,
+      "predicted_3way": 3828.2,
+      "predicted_2way": 4185.3,
+      "residual_3way": -698.8,
+      "residual_2way": -341.7
+    },
+    {
+      "district": "Rajnandgaon",
+      "state": "Chhattisgarh",
+      "year": 2011,
+      "actual": 3133.0,
+      "predicted_3way": 2651.4,
+      "predicted_2way": 2936.2,
+      "residual_3way": -481.6,
+      "residual_2way": -196.8
+    },
+    {
+      "district": "Central",
+      "state": "Delhi Ut",
+      "year": 2011,
+      "actual": 2451.0,
+      "predicted_3way": 2397.8,
+      "predicted_2way": 2660.8,
+      "residual_3way": -53.2,
+      "residual_2way": 209.8
+    },
+    {
+      "district": "Vadodara Rural",
+      "state": "Gujarat",
+      "year": 2011,
+      "actual": 3133.0,
+      "predicted_3way": 2680.2,
+      "predicted_2way": 2964.3,
+      "residual_3way": -452.8,
+      "residual_2way": -168.7
+    },
+    {
+      "district": "Ambala",
+      "state": "Haryana",
+      "year": 2011,
+      "actual": 2969.0,
+      "predicted_3way": 2130.4,
+      "predicted_2way": 2450.9,
+      "residual_3way": -838.6,
+      "residual_2way": -518.1
+    },
+    {
+      "district": "Chamba",
+      "state": "Himachal Pradesh",
+      "year": 2011,
+      "actual": 678.0,
+      "predicted_3way": 665.3,
+      "predicted_2way": 895.8,
+      "residual_3way": -12.7,
+      "residual_2way": 217.8
+    },
+    {
+      "district": "Kangra",
+      "state": "Himachal Pradesh",
+      "year": 2011,
+      "actual": 2709.0,
+      "predicted_3way": 2170.4,
+      "predicted_2way": 2500.6,
+      "residual_3way": -538.6,
+      "residual_2way": -208.4
+    },
+    {
+      "district": "Mandi",
+      "state": "Himachal Pradesh",
+      "year": 2011,
+      "actual": 1640.0,
+      "predicted_3way": 1366.5,
+      "predicted_2way": 1724.9,
+      "residual_3way": -273.5,
+      "residual_2way": 84.9
+    },
+    {
+      "district": "Handwara",
+      "state": "Jammu & Kashmir",
+      "year": 2011,
+      "actual": 535.0,
+      "predicted_3way": 627.8,
+      "predicted_2way": 852.2,
+      "residual_3way": 92.8,
+      "residual_2way": 317.2
+    },
+    {
+      "district": "Sahebganj",
+      "state": "Jharkhand",
+      "year": 2011,
+      "actual": 1128.0,
+      "predicted_3way": 1009.6,
+      "predicted_2way": 1300.5,
+      "residual_3way": -118.4,
+      "residual_2way": 172.5
+    },
+    {
+      "district": "Ernakulam Commr.",
+      "state": "Kerala",
+      "year": 2011,
+      "actual": 13192.0,
+      "predicted_3way": 13917.5,
+      "predicted_2way": 13680.6,
+      "residual_3way": 725.5,
+      "residual_2way": 488.6
+    },
+    {
+      "district": "Narsinghpur",
+      "state": "Madhya Pradesh",
+      "year": 2011,
+      "actual": 2949.0,
+      "predicted_3way": 2549.5,
+      "predicted_2way": 2833.7,
+      "residual_3way": -399.5,
+      "residual_2way": -115.3
+    },
+    {
+      "district": "Nasik Rural",
+      "state": "Maharashtra",
+      "year": 2011,
+      "actual": 4989.0,
+      "predicted_3way": 4480.5,
+      "predicted_2way": 4837.0,
+      "residual_3way": -508.5,
+      "residual_2way": -152.0
+    },
+    {
+      "district": "Solapur Rural",
+      "state": "Maharashtra",
+      "year": 2011,
+      "actual": 4716.0,
+      "predicted_3way": 4136.1,
+      "predicted_2way": 4488.7,
+      "residual_3way": -579.9,
+      "residual_2way": -227.3
+    },
+    {
+      "district": "Khasi Hills West",
+      "state": "Meghalaya",
+      "year": 2011,
+      "actual": 267.0,
+      "predicted_3way": 283.0,
+      "predicted_2way": 538.3,
+      "residual_3way": 16.0,
+      "residual_2way": 271.3
+    },
+    {
+      "district": "Champhai",
+      "state": "Mizoram",
+      "year": 2011,
+      "actual": 199.0,
+      "predicted_3way": 216.1,
+      "predicted_2way": 460.7,
+      "residual_3way": 17.1,
+      "residual_2way": 261.7
+    },
+    {
+      "district": "Wokha",
+      "state": "Nagaland",
+      "year": 2011,
+      "actual": 65.0,
+      "predicted_3way": 223.7,
+      "predicted_2way": 455.2,
+      "residual_3way": 158.7,
+      "residual_2way": 390.2
+    },
+    {
+      "district": "Dcp Ctc",
+      "state": "Odisha",
+      "year": 2011,
+      "actual": 2261.0,
+      "predicted_3way": 1652.9,
+      "predicted_2way": 2038.3,
+      "residual_3way": -608.1,
+      "residual_2way": -222.7
+    },
+    {
+      "district": "Deogarh",
+      "state": "Odisha",
+      "year": 2011,
+      "actual": 477.0,
+      "predicted_3way": 617.9,
+      "predicted_2way": 858.8,
+      "residual_3way": 140.9,
+      "residual_2way": 381.8
+    },
+    {
+      "district": "Jagatsinghpur",
+      "state": "Odisha",
+      "year": 2011,
+      "actual": 1590.0,
+      "predicted_3way": 1373.7,
+      "predicted_2way": 1736.6,
+      "residual_3way": -216.3,
+      "residual_2way": 146.6
+    },
+    {
+      "district": "Jalandhar",
+      "state": "Punjab",
+      "year": 2011,
+      "actual": 1602.0,
+      "predicted_3way": 1455.8,
+      "predicted_2way": 1869.5,
+      "residual_3way": -146.2,
+      "residual_2way": 267.5
+    },
+    {
+      "district": "Tarn Taran",
+      "state": "Punjab",
+      "year": 2011,
+      "actual": 1014.0,
+      "predicted_3way": 1077.0,
+      "predicted_2way": 1366.7,
+      "residual_3way": 63.0,
+      "residual_2way": 352.7
+    },
+    {
+      "district": "Jaipur South",
+      "state": "Rajasthan",
+      "year": 2011,
+      "actual": 4135.0,
+      "predicted_3way": 4291.8,
+      "predicted_2way": 4546.9,
+      "residual_3way": 156.8,
+      "residual_2way": 411.9
+    },
+    {
+      "district": "Thirunelveli Rural",
+      "state": "Tamil Nadu",
+      "year": 2011,
+      "actual": 7943.0,
+      "predicted_3way": 7046.0,
+      "predicted_2way": 7409.0,
+      "residual_3way": -897.0,
+      "residual_2way": -534.0
+    },
+    {
+      "district": "Kaushambi",
+      "state": "Uttar Pradesh",
+      "year": 2011,
+      "actual": 1410.0,
+      "predicted_3way": 1303.4,
+      "predicted_2way": 1642.8,
+      "residual_3way": -106.6,
+      "residual_2way": 232.8
+    },
+    {
+      "district": "Mau",
+      "state": "Uttar Pradesh",
+      "year": 2011,
+      "actual": 1270.0,
+      "predicted_3way": 1127.3,
+      "predicted_2way": 1424.2,
+      "residual_3way": -142.7,
+      "residual_2way": 154.2
+    },
+    {
+      "district": "Shahjahanpur",
+      "state": "Uttar Pradesh",
+      "year": 2011,
+      "actual": 2620.0,
+      "predicted_3way": 2406.4,
+      "predicted_2way": 2714.4,
+      "residual_3way": -213.6,
+      "residual_2way": 94.4
+    },
+    {
+      "district": "Nainital",
+      "state": "Uttarakhand",
+      "year": 2011,
+      "actual": 768.0,
+      "predicted_3way": 855.5,
+      "predicted_2way": 1111.0,
+      "residual_3way": 87.5,
+      "residual_2way": 343.0
+    },
+    {
+      "district": "Uttarkashi",
+      "state": "Uttarakhand",
+      "year": 2011,
+      "actual": 75.0,
+      "predicted_3way": 270.1,
+      "predicted_2way": 503.9,
+      "residual_3way": 195.1,
+      "residual_2way": 428.9
+    },
+    {
+      "district": "Burdwan",
+      "state": "West Bengal",
+      "year": 2011,
+      "actual": 3997.0,
+      "predicted_3way": 4266.8,
+      "predicted_2way": 4561.5,
+      "residual_3way": 269.8,
+      "residual_2way": 564.5
+    },
+    {
+      "district": "Guntakal Rly.",
+      "state": "Andhra Pradesh",
+      "year": 2012,
+      "actual": 339.0,
+      "predicted_3way": 484.3,
+      "predicted_2way": 650.8,
+      "residual_3way": 145.3,
+      "residual_2way": 311.8
+    },
+    {
+      "district": "Nellore",
+      "state": "Andhra Pradesh",
+      "year": 2012,
+      "actual": 6854.0,
+      "predicted_3way": 5624.6,
+      "predicted_2way": 5992.4,
+      "residual_3way": -1229.4,
+      "residual_2way": -861.6
+    },
+    {
+      "district": "Warangal",
+      "state": "Andhra Pradesh",
+      "year": 2012,
+      "actual": 4722.0,
+      "predicted_3way": 4012.1,
+      "predicted_2way": 4383.4,
+      "residual_3way": -709.9,
+      "residual_2way": -338.6
+    },
+    {
+      "district": "Nawadah",
+      "state": "Bihar",
+      "year": 2012,
+      "actual": 2729.0,
+      "predicted_3way": 2246.5,
+      "predicted_2way": 2549.2,
+      "residual_3way": -482.5,
+      "residual_2way": -179.8
+    },
+    {
+      "district": "Vaishali",
+      "state": "Bihar",
+      "year": 2012,
+      "actual": 5186.0,
+      "predicted_3way": 4088.0,
+      "predicted_2way": 4418.4,
+      "residual_3way": -1098.0,
+      "residual_2way": -767.6
+    },
+    {
+      "district": "Chandigarh",
+      "state": "Chandigarh",
+      "year": 2012,
+      "actual": 3606.0,
+      "predicted_3way": 3179.2,
+      "predicted_2way": 3517.7,
+      "residual_3way": -426.8,
+      "residual_2way": -88.3
+    },
+    {
+      "district": "Caw",
+      "state": "Delhi Ut",
+      "year": 2012,
+      "actual": 178.0,
+      "predicted_3way": 338.5,
+      "predicted_2way": 549.8,
+      "residual_3way": 160.5,
+      "residual_2way": 371.8
+    },
+    {
+      "district": "Grp(Rly)",
+      "state": "Delhi Ut",
+      "year": 2012,
+      "actual": 837.0,
+      "predicted_3way": 809.7,
+      "predicted_2way": 1090.6,
+      "residual_3way": -27.3,
+      "residual_2way": 253.6
+    },
+    {
+      "district": "North Goa",
+      "state": "Goa",
+      "year": 2012,
+      "actual": 2102.0,
+      "predicted_3way": 1647.4,
+      "predicted_2way": 2045.2,
+      "residual_3way": -454.6,
+      "residual_2way": -56.8
+    },
+    {
+      "district": "Mehsana",
+      "state": "Gujarat",
+      "year": 2012,
+      "actual": 5353.0,
+      "predicted_3way": 4742.5,
+      "predicted_2way": 5134.9,
+      "residual_3way": -610.5,
+      "residual_2way": -218.1
+    },
+    {
+      "district": "Shimla",
+      "state": "Himachal Pradesh",
+      "year": 2012,
+      "actual": 1530.0,
+      "predicted_3way": 1405.6,
+      "predicted_2way": 1775.3,
+      "residual_3way": -124.4,
+      "residual_2way": 245.3
+    },
+    {
+      "district": "Samba",
+      "state": "Jammu & Kashmir",
+      "year": 2012,
+      "actual": 741.0,
+      "predicted_3way": 582.2,
+      "predicted_2way": 809.2,
+      "residual_3way": -158.8,
+      "residual_2way": 68.2
+    },
+    {
+      "district": "Ernakulam Rural",
+      "state": "Kerala",
+      "year": 2012,
+      "actual": 10678.0,
+      "predicted_3way": 14760.1,
+      "predicted_2way": 14213.4,
+      "residual_3way": 4082.1,
+      "residual_2way": 3535.4
+    },
+    {
+      "district": "Alirajpur",
+      "state": "Madhya Pradesh",
+      "year": 2012,
+      "actual": 1355.0,
+      "predicted_3way": 1113.4,
+      "predicted_2way": 1419.6,
+      "residual_3way": -241.6,
+      "residual_2way": 64.6
+    },
+    {
+      "district": "Jaintia Hills",
+      "state": "Meghalaya",
+      "year": 2012,
+      "actual": 395.0,
+      "predicted_3way": 479.5,
+      "predicted_2way": 713.9,
+      "residual_3way": 84.5,
+      "residual_2way": 318.9
+    },
+    {
+      "district": "Kendrapara",
+      "state": "Odisha",
+      "year": 2012,
+      "actual": 2096.0,
+      "predicted_3way": 1600.2,
+      "predicted_2way": 1973.8,
+      "residual_3way": -495.8,
+      "residual_2way": -122.2
+    },
+    {
+      "district": "Rourkela",
+      "state": "Odisha",
+      "year": 2012,
+      "actual": 1861.0,
+      "predicted_3way": 1629.5,
+      "predicted_2way": 2012.8,
+      "residual_3way": -231.5,
+      "residual_2way": 151.8
+    },
+    {
+      "district": "Dharmapuri",
+      "state": "Tamil Nadu",
+      "year": 2012,
+      "actual": 3742.0,
+      "predicted_3way": 3623.6,
+      "predicted_2way": 3989.3,
+      "residual_3way": -118.4,
+      "residual_2way": 247.3
+    },
+    {
+      "district": "Kanyakumari",
+      "state": "Tamil Nadu",
+      "year": 2012,
+      "actual": 4810.0,
+      "predicted_3way": 4342.4,
+      "predicted_2way": 4680.5,
+      "residual_3way": -467.6,
+      "residual_2way": -129.5
+    },
+    {
+      "district": "Trichy Urban",
+      "state": "Tamil Nadu",
+      "year": 2012,
+      "actual": 2926.0,
+      "predicted_3way": 2703.7,
+      "predicted_2way": 2961.5,
+      "residual_3way": -222.3,
+      "residual_2way": 35.5
+    },
+    {
+      "district": "Barabanki",
+      "state": "Uttar Pradesh",
+      "year": 2012,
+      "actual": 2096.0,
+      "predicted_3way": 1765.5,
+      "predicted_2way": 2149.6,
+      "residual_3way": -330.5,
+      "residual_2way": 53.6
+    },
+    {
+      "district": "Bijnor",
+      "state": "Uttar Pradesh",
+      "year": 2012,
+      "actual": 3108.0,
+      "predicted_3way": 2758.3,
+      "predicted_2way": 3065.1,
+      "residual_3way": -349.7,
+      "residual_2way": -42.9
+    },
+    {
+      "district": "Sonbhadra",
+      "state": "Uttar Pradesh",
+      "year": 2012,
+      "actual": 901.0,
+      "predicted_3way": 1050.3,
+      "predicted_2way": 1349.8,
+      "residual_3way": 149.3,
+      "residual_2way": 448.8
+    },
+    {
+      "district": "Pithoragarh",
+      "state": "Uttarakhand",
+      "year": 2012,
+      "actual": 103.0,
+      "predicted_3way": 257.0,
+      "predicted_2way": 486.6,
+      "residual_3way": 154.0,
+      "residual_2way": 383.6
+    },
+    {
+      "district": "Uttar Dinajpur",
+      "state": "West Bengal",
+      "year": 2012,
+      "actual": 5212.0,
+      "predicted_3way": 4665.6,
+      "predicted_2way": 5060.2,
+      "residual_3way": -546.4,
+      "residual_2way": -151.8
+    },
+    {
+      "district": "Khammam",
+      "state": "Andhra Pradesh",
+      "year": 2013,
+      "actual": 10607.0,
+      "predicted_3way": 7566.0,
+      "predicted_2way": 7946.1,
+      "residual_3way": -3041.0,
+      "residual_2way": -2660.9
+    },
+    {
+      "district": "Krishna",
+      "state": "Andhra Pradesh",
+      "year": 2013,
+      "actual": 6876.0,
+      "predicted_3way": 5890.2,
+      "predicted_2way": 6187.0,
+      "residual_3way": -985.8,
+      "residual_2way": -689.0
+    },
+    {
+      "district": "Vijayawada Rly.",
+      "state": "Andhra Pradesh",
+      "year": 2013,
+      "actual": 773.0,
+      "predicted_3way": 1041.0,
+      "predicted_2way": 1251.0,
+      "residual_3way": 268.0,
+      "residual_2way": 478.0
+    },
+    {
+      "district": "Siang Upper",
+      "state": "Arunachal Pradesh",
+      "year": 2013,
+      "actual": 69.0,
+      "predicted_3way": 193.5,
+      "predicted_2way": 408.9,
+      "residual_3way": 124.5,
+      "residual_2way": 339.9
+    },
+    {
+      "district": "Lakhisarai",
+      "state": "Bihar",
+      "year": 2013,
+      "actual": 1326.0,
+      "predicted_3way": 1148.7,
+      "predicted_2way": 1482.0,
+      "residual_3way": -177.3,
+      "residual_2way": 156.0
+    },
+    {
+      "district": "Nawadah",
+      "state": "Bihar",
+      "year": 2013,
+      "actual": 2989.0,
+      "predicted_3way": 2501.1,
+      "predicted_2way": 2761.2,
+      "residual_3way": -487.9,
+      "residual_2way": -227.8
+    },
+    {
+      "district": "Patna",
+      "state": "Bihar",
+      "year": 2013,
+      "actual": 18302.0,
+      "predicted_3way": 15407.2,
+      "predicted_2way": 15773.0,
+      "residual_3way": -2894.8,
+      "residual_2way": -2529.0
+    },
+    {
+      "district": "Rohtas",
+      "state": "Bihar",
+      "year": 2013,
+      "actual": 4769.0,
+      "predicted_3way": 3851.1,
+      "predicted_2way": 4242.3,
+      "residual_3way": -917.9,
+      "residual_2way": -526.7
+    },
+    {
+      "district": "Saharsa",
+      "state": "Bihar",
+      "year": 2013,
+      "actual": 2792.0,
+      "predicted_3way": 2449.6,
+      "predicted_2way": 2750.8,
+      "residual_3way": -342.4,
+      "residual_2way": -41.2
+    },
+    {
+      "district": "Jashpur",
+      "state": "Chhattisgarh",
+      "year": 2013,
+      "actual": 1273.0,
+      "predicted_3way": 1301.0,
+      "predicted_2way": 1641.7,
+      "residual_3way": 28.0,
+      "residual_2way": 368.7
+    },
+    {
+      "district": "Patan",
+      "state": "Gujarat",
+      "year": 2013,
+      "actual": 3677.0,
+      "predicted_3way": 3420.9,
+      "predicted_2way": 3809.3,
+      "residual_3way": -256.1,
+      "residual_2way": 132.3
+    },
+    {
+      "district": "Bhiwani",
+      "state": "Haryana",
+      "year": 2013,
+      "actual": 3877.0,
+      "predicted_3way": 3500.7,
+      "predicted_2way": 3903.4,
+      "residual_3way": -376.3,
+      "residual_2way": 26.4
+    },
+    {
+      "district": "Mandi",
+      "state": "Himachal Pradesh",
+      "year": 2013,
+      "actual": 1831.0,
+      "predicted_3way": 1529.8,
+      "predicted_2way": 1896.6,
+      "residual_3way": -301.2,
+      "residual_2way": 65.6
+    },
+    {
+      "district": "Sirmaur",
+      "state": "Himachal Pradesh",
+      "year": 2013,
+      "actual": 814.0,
+      "predicted_3way": 948.6,
+      "predicted_2way": 1203.3,
+      "residual_3way": 134.6,
+      "residual_2way": 389.3
+    },
+    {
+      "district": "Kargil",
+      "state": "Jammu & Kashmir",
+      "year": 2013,
+      "actual": 108.0,
+      "predicted_3way": 202.9,
+      "predicted_2way": 428.1,
+      "residual_3way": 94.9,
+      "residual_2way": 320.1
+    },
+    {
+      "district": "Kishtwar",
+      "state": "Jammu & Kashmir",
+      "year": 2013,
+      "actual": 391.0,
+      "predicted_3way": 495.2,
+      "predicted_2way": 722.5,
+      "residual_3way": 104.2,
+      "residual_2way": 331.5
+    },
+    {
+      "district": "Ranchi",
+      "state": "Jharkhand",
+      "year": 2013,
+      "actual": 2860.0,
+      "predicted_3way": 2452.1,
+      "predicted_2way": 2723.1,
+      "residual_3way": -407.9,
+      "residual_2way": -136.9
+    },
+    {
+      "district": "Sahebganj",
+      "state": "Jharkhand",
+      "year": 2013,
+      "actual": 1938.0,
+      "predicted_3way": 1608.4,
+      "predicted_2way": 1991.6,
+      "residual_3way": -329.6,
+      "residual_2way": 53.6
+    },
+    {
+      "district": "K.G.F.",
+      "state": "Karnataka",
+      "year": 2013,
+      "actual": 822.0,
+      "predicted_3way": 1023.5,
+      "predicted_2way": 1320.1,
+      "residual_3way": 201.5,
+      "residual_2way": 498.1
+    },
+    {
+      "district": "Raichur",
+      "state": "Karnataka",
+      "year": 2013,
+      "actual": 3062.0,
+      "predicted_3way": 2755.3,
+      "predicted_2way": 3028.9,
+      "residual_3way": -306.7,
+      "residual_2way": -33.1
+    },
+    {
+      "district": "Kasargod",
+      "state": "Kerala",
+      "year": 2013,
+      "actual": 5401.0,
+      "predicted_3way": 4970.5,
+      "predicted_2way": 5329.3,
+      "residual_3way": -430.5,
+      "residual_2way": -71.7
+    },
+    {
+      "district": "Alirajpur",
+      "state": "Madhya Pradesh",
+      "year": 2013,
+      "actual": 1175.0,
+      "predicted_3way": 1101.3,
+      "predicted_2way": 1411.3,
+      "residual_3way": -73.7,
+      "residual_2way": 236.3
+    },
+    {
+      "district": "Shivpuri",
+      "state": "Madhya Pradesh",
+      "year": 2013,
+      "actual": 4772.0,
+      "predicted_3way": 4551.5,
+      "predicted_2way": 4931.2,
+      "residual_3way": -220.5,
+      "residual_2way": 159.2
+    },
+    {
+      "district": "Nasik Commr.",
+      "state": "Maharashtra",
+      "year": 2013,
+      "actual": 4401.0,
+      "predicted_3way": 4237.3,
+      "predicted_2way": 4608.2,
+      "residual_3way": -163.7,
+      "residual_2way": 207.2
+    },
+    {
+      "district": "Pune Rly.",
+      "state": "Maharashtra",
+      "year": 2013,
+      "actual": 498.0,
+      "predicted_3way": 647.3,
+      "predicted_2way": 801.8,
+      "residual_3way": 149.3,
+      "residual_2way": 303.8
+    },
+    {
+      "district": "Satara",
+      "state": "Maharashtra",
+      "year": 2013,
+      "actual": 6086.0,
+      "predicted_3way": 5297.4,
+      "predicted_2way": 5685.8,
+      "residual_3way": -788.6,
+      "residual_2way": -400.2
+    },
+    {
+      "district": "Aizawl",
+      "state": "Mizoram",
+      "year": 2013,
+      "actual": 844.0,
+      "predicted_3way": 791.5,
+      "predicted_2way": 1068.9,
+      "residual_3way": -52.5,
+      "residual_2way": 224.9
+    },
+    {
+      "district": "Tuensang",
+      "state": "Nagaland",
+      "year": 2013,
+      "actual": 56.0,
+      "predicted_3way": 193.8,
+      "predicted_2way": 435.9,
+      "residual_3way": 137.8,
+      "residual_2way": 379.9
+    },
+    {
+      "district": "Nayagarh",
+      "state": "Odisha",
+      "year": 2013,
+      "actual": 1520.0,
+      "predicted_3way": 1383.3,
+      "predicted_2way": 1731.4,
+      "residual_3way": -136.7,
+      "residual_2way": 211.4
+    },
+    {
+      "district": "Kapurthala",
+      "state": "Punjab",
+      "year": 2013,
+      "actual": 1267.0,
+      "predicted_3way": 1178.6,
+      "predicted_2way": 1500.6,
+      "residual_3way": -88.4,
+      "residual_2way": 233.6
+    },
+    {
+      "district": "Sangrur",
+      "state": "Punjab",
+      "year": 2013,
+      "actual": 2078.0,
+      "predicted_3way": 2004.6,
+      "predicted_2way": 2346.5,
+      "residual_3way": -73.4,
+      "residual_2way": 268.5
+    },
+    {
+      "district": "Tarn Taran",
+      "state": "Punjab",
+      "year": 2013,
+      "actual": 1076.0,
+      "predicted_3way": 1263.7,
+      "predicted_2way": 1598.0,
+      "residual_3way": 187.7,
+      "residual_2way": 522.0
+    },
+    {
+      "district": "Krishnagiri",
+      "state": "Tamil Nadu",
+      "year": 2013,
+      "actual": 5101.0,
+      "predicted_3way": 4659.4,
+      "predicted_2way": 5026.9,
+      "residual_3way": -441.6,
+      "residual_2way": -74.1
+    },
+    {
+      "district": "Sonbhadra",
+      "state": "Uttar Pradesh",
+      "year": 2013,
+      "actual": 779.0,
+      "predicted_3way": 1056.9,
+      "predicted_2way": 1372.3,
+      "residual_3way": 277.9,
+      "residual_2way": 593.3
+    },
+    {
+      "district": "Udhamsingh Nagar",
+      "state": "Uttarakhand",
+      "year": 2013,
+      "actual": 2426.0,
+      "predicted_3way": 2146.0,
+      "predicted_2way": 2451.6,
+      "residual_3way": -280.0,
+      "residual_2way": 25.6
+    },
+    {
+      "district": "Jalpaiguri",
+      "state": "West Bengal",
+      "year": 2013,
+      "actual": 7161.0,
+      "predicted_3way": 6917.6,
+      "predicted_2way": 7218.8,
+      "residual_3way": -243.4,
+      "residual_2way": 57.8
+    },
+    {
+      "district": "Kharagpur G.R.P.",
+      "state": "West Bengal",
+      "year": 2013,
+      "actual": 190.0,
+      "predicted_3way": 281.8,
+      "predicted_2way": 476.1,
+      "residual_3way": 91.8,
+      "residual_2way": 286.1
+    }
+  ]
+}

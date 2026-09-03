@@ -1,0 +1,297 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Problem & Objectives | Crime Prediction System — Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+{% block meta_description %}The problem statement, research need, objectives, and expected outcomes behind the Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="about-page">
+    <div class="container py-4 py-md-5">
+
+        <!-- 1. HERO -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <nav aria-label="breadcrumb" class="breadcrumb-custom">
+                <a href="{% url 'home' %}">Home</a>
+                <span class="sep">/</span>
+                <a href="{% url 'about' %}">About</a>
+                <span class="sep">/</span>
+                <span class="current">Problem &amp; Objectives</span>
+            </nav>
+
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-lg-6">
+                    <span class="eyebrow"><i class="bi bi-bullseye"></i>&nbsp;Research Foundation</span>
+                    <h1 class="display-5 fw-bold text-navy mt-2 mb-3">Problem &amp; Objectives</h1>
+                    <p class="lead text-muted mb-4 fs-6 fs-md-5">
+                        Crime is shaped by where and when it happens. This page outlines the core problem this research addresses, why existing approaches fall short, and the objectives guiding the design of the Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge rounded-pill badge-custom">Spatial Analysis</span>
+                        <span class="badge rounded-pill badge-custom">Temporal Modeling</span>
+                        <span class="badge rounded-pill badge-custom">Deep Learning</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-pipeline-card card shadow-sm border-0 p-4 p-md-5">
+                        <div class="d-flex align-items-start gap-3 mb-4">
+                            <i class="bi bi-question-diamond-fill text-primary fs-4 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-1">The Problem</h3>
+                                <p class="text-muted small mb-0">Crime patterns shift across both geography and time, and most models only capture one dimension at once.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-bullseye text-primary fs-4 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-1">The Objective</h3>
+                                <p class="text-muted small mb-0">Design a hybrid deep learning framework that learns spatial and temporal patterns jointly, improving prediction quality.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROBLEM STATEMENT -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Problem Statement</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    Predicting crime accurately is difficult because crime data is inherently spatio-temporal, non-linear, and resistant to the assumptions traditional statistical models rely on.
+                </p>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-geo-alt-fill fs-3 text-primary"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-navy mb-2">Spatial &amp; Temporal Coupling</h3>
+                        <p class="text-muted small mb-0">
+                            Crime incidents are distributed unevenly across districts and evolve differently over time. Analyzing either dimension in isolation discards information the other dimension depends on.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-diagram-3-fill fs-3 text-primary"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-navy mb-2">Non-Linear Relationships</h3>
+                        <p class="text-muted small mb-0">
+                            Crime is influenced by many interacting factors whose combined effect is rarely linear, making it difficult for classical statistical techniques to represent the underlying structure.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-exclamation-triangle-fill fs-3 text-primary"></i>
+                        </div>
+                        <h3 class="h5 fw-bold text-navy mb-2">Limits of Traditional Methods</h3>
+                        <p class="text-muted small mb-0">
+                            Conventional regression and time-series methods are typically built to handle either spatial distribution or temporal trends, rarely both together, which caps their predictive accuracy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. RESEARCH NEED -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Research Need</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    CNNs and LSTMs each address one half of the problem. Combining them into a single framework closes the gap left by using either architecture alone.
+                </p>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <h3 class="h6 fw-bold text-navy mb-2">CNN Alone</h3>
+                        <p class="text-muted small mb-0">
+                            Effective at extracting spatial correlations and localized patterns, but has no built-in mechanism for modeling how those patterns change over time.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <h3 class="h6 fw-bold text-navy mb-2">LSTM Alone</h3>
+                        <p class="text-muted small mb-0">
+                            Well suited to learning sequential and temporal dependencies, but does not natively capture spatial structure across districts.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card card-accent p-4">
+                        <span class="badge badge-accent-pill mb-2 d-inline-block">This Project</span>
+                        <h3 class="h6 fw-bold text-navy mb-2">Hybrid CNN-LSTM-GCN</h3>
+                        <p class="text-muted small mb-0">
+                            Combines convolutional, recurrent, and graph architectures so spatial, temporal, and topological graph representations are learned jointly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROJECT OBJECTIVES -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Project Objectives</h2>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="obj-number mb-2 text-primary fw-bold">01</div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Improve Prediction Accuracy</h3>
+                        <p class="text-muted small mb-0">
+                            Enhance the accuracy of crime forecasting through a hybrid deep learning approach.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="obj-number mb-2 text-primary fw-bold">02</div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Capture Spatial Patterns</h3>
+                        <p class="text-muted small mb-0">
+                            Identify spatial correlations and hotspot regions using convolutional feature extraction.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="obj-number mb-2 text-primary fw-bold">03</div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Learn Temporal Dependencies</h3>
+                        <p class="text-muted small mb-0">
+                            Model sequential and time-based crime trends using LSTM-based temporal learning.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="obj-number mb-2 text-primary fw-bold">04</div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Analyze Historical Trends</h3>
+                        <p class="text-muted small mb-0">
+                            Provide meaningful analysis of historical crime patterns across districts and years.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="obj-number mb-2 text-primary fw-bold">05</div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Generate Future Predictions</h3>
+                        <p class="text-muted small mb-0">
+                            Produce forward-looking crime predictions to support planning and research use cases.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="obj-number mb-2 text-primary fw-bold">06</div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Support Data-Driven Research</h3>
+                        <p class="text-muted small mb-0">
+                            Provide a research-oriented platform for exploring crime prediction and model results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. EXPECTED OUTCOME -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Expected Outcome</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    What this research is intended to deliver by the end of the project.
+                </p>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-layers-half text-primary fs-4 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-2">Hybrid CNN-LSTM-GCN Framework</h3>
+                                <p class="text-muted small mb-0">A working framework that jointly learns spatial, temporal, and graph topological crime patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-pin-map-fill text-primary fs-4 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-2">District-Level Prediction</h3>
+                                <p class="text-muted small mb-0">Crime predictions generated at the district level for practical relevance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-clock-history text-primary fs-4 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-2">Historical Trend Analysis</h3>
+                                <p class="text-muted small mb-0">Clear analysis of how crime patterns have shifted across years and regions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-graph-up-arrow text-primary fs-4 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-2">Future Forecasting</h3>
+                                <p class="text-muted small mb-0">Forward-looking estimates that extend beyond the historical dataset.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-bar-chart-fill text-primary fs-4 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-2">Model Comparison</h3>
+                                <p class="text-muted small mb-0">Benchmarking the hybrid model against standalone CNN and LSTM baselines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. NAVIGATION / CTA -->
+        <section class="mb-2 reveal-on-scroll">
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5 text-center max-w-900 mx-auto">
+                <h2 class="h3 fw-bold text-navy mb-3">See the Framework in Action</h2>
+                <p class="text-muted mb-4 max-w-700 mx-auto">
+                    Explore how these objectives translate into the platform's dashboard, prediction tool, and methodology.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'dashboard' %}" class="btn btn-accent px-4 py-2 fw-medium">View Dashboard</a>
+                    <a href="{% url 'prediction' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">Run Prediction</a>
+                    <!-- TODO: point to {% templatetag openblock %} url 'methodology' {% templatetag closeblock %} once the Methodology page exists -->
+                    <a href="{% url 'methodology' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">View Methodology</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+{% endblock %}

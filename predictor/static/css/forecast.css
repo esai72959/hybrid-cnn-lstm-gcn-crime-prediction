@@ -1,0 +1,528 @@
+/* ==============================================================
+   FORECAST PAGE — SCOPED ADDITIONS
+   Same visual design as before (colors, radii, shadows, typography
+   unchanged). Colors are now expressed as CSS variables so a dark
+   theme can override them cleanly, and dark-mode overrides have been
+   added at the bottom.
+   ============================================================== */
+
+:root {
+    --fc-navy: #24344D;
+    --fc-navy-mid: #3B4F72;
+    --fc-accent: #6E86AB;
+    --fc-cream: #E9D9C9;
+    --fc-bg-soft: #F8F6F3;
+    --fc-border: #E5E5E5;
+    --fc-text-muted: #666666;
+    --fc-card-bg: #FFFFFF;
+    --fc-hero-text: #FFFFFF;
+    --fc-hero-bg: linear-gradient(135deg, #24344D 0%, #3B4F72 55%, #6E86AB 100%);
+    --fc-risk-low: #3E9C63;
+    --fc-risk-moderate: #E0A93C;
+    --fc-risk-high: #D0554A;
+    --fc-risk-very-high: #A32E2E;
+    --fc-alert-bg: #FDECEA;
+    --fc-alert-text: #A32E2E;
+    --fc-alert-border: #F3C4BE;
+
+    /* Result-icon tone pairs (background / foreground) */
+    --fc-icon-blue-bg: #EEF1F6;
+    --fc-icon-blue-fg: #6E86AB;
+    --fc-icon-purple-bg: #F3EEF9;
+    --fc-icon-purple-fg: #8B6DBB;
+    --fc-icon-amber-bg: #FBF2E9;
+    --fc-icon-amber-fg: #B6875C;
+    --fc-icon-green-bg: #EAF6EF;
+    --fc-icon-green-fg: #3E9C63;
+
+    /* Chart-only colors (read at render time by forecast.js) */
+    --fc-chart-grid: rgba(36, 52, 77, 0.08);
+}
+
+/* ---------- Forecast Hero ---------- */
+.forecast-hero {
+    position: relative;
+    background: var(--fc-hero-bg);
+    color: var(--fc-hero-text);
+    border-radius: 0 0 32px 32px;
+    overflow: hidden;
+    padding: 64px 0 80px;
+}
+
+.forecast-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 15% 20%, rgba(233, 217, 201, 0.18) 0, transparent 45%),
+                       radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.12) 0, transparent 40%);
+    pointer-events: none;
+}
+
+.forecast-hero .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--fc-hero-text);
+}
+
+.forecast-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    margin: 20px 0 16px;
+    color: var(--fc-hero-text);
+}
+
+.forecast-hero p.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 560px;
+}
+
+.forecast-hero .hero-mini-stat {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    padding: 14px 20px;
+    backdrop-filter: blur(6px);
+}
+
+.forecast-hero .hero-mini-stat .value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--fc-cream);
+}
+
+.forecast-hero .hero-mini-stat .label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.forecast-hero .hero-illustration {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ---------- Breadcrumb ---------- */
+.cps-breadcrumb-wrap .breadcrumb-item,
+.cps-breadcrumb-wrap .breadcrumb-item a {
+    color: var(--fc-text-muted);
+}
+
+.cps-breadcrumb-wrap .breadcrumb-item.active {
+    color: var(--fc-navy);
+}
+
+/* ---------- Section headings / paragraphs on this page ---------- */
+.cps-section-title {
+    color: var(--fc-navy);
+}
+
+/* ---------- Glass Forecast Form ---------- */
+.glass-form-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(110, 134, 171, 0.18);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(36, 52, 77, 0.10);
+    padding: 40px;
+    margin-top: -64px;
+    position: relative;
+    z-index: 5;
+}
+
+.glass-form-card .form-label {
+    color: var(--fc-navy);
+}
+
+.glass-form-card .form-select {
+    background-color: var(--fc-card-bg);
+    color: var(--fc-navy);
+    border-color: var(--fc-border);
+}
+
+/* ---------- Alert (used for all Forecast error messages) ---------- */
+#forecastAlert.alert-danger {
+    background-color: var(--fc-alert-bg);
+    color: var(--fc-alert-text);
+    border: 1px solid var(--fc-alert-border);
+}
+
+/* ---------- Result Panel ---------- */
+.result-card {
+    border-radius: 18px;
+    padding: 24px;
+    height: 100%;
+    background: var(--fc-card-bg);
+    border: 1px solid var(--fc-border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(36, 52, 77, 0.08);
+}
+
+.result-card .result-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+}
+
+.result-card .result-value {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--fc-navy);
+    word-break: break-word;
+}
+
+.result-card .result-label {
+    font-size: 0.85rem;
+    color: var(--fc-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Result-icon tone utility classes */
+.icon-tone-blue { background: var(--fc-icon-blue-bg); color: var(--fc-icon-blue-fg); }
+.icon-tone-purple { background: var(--fc-icon-purple-bg); color: var(--fc-icon-purple-fg); }
+.icon-tone-amber { background: var(--fc-icon-amber-bg); color: var(--fc-icon-amber-fg); }
+.icon-tone-green { background: var(--fc-icon-green-bg); color: var(--fc-icon-green-fg); }
+
+/* Section background utility */
+.section-alt-bg {
+    background: var(--fc-bg-soft);
+}
+
+/* Risk level color states */
+.risk-text-low { color: var(--fc-risk-low) !important; }
+.risk-text-moderate { color: var(--fc-risk-moderate) !important; }
+.risk-text-high { color: var(--fc-risk-high) !important; }
+.risk-text-very-high { color: var(--fc-risk-very-high) !important; font-weight: 800; }
+
+/* ---------- Chart container ---------- */
+.cps-card {
+    background: var(--fc-card-bg);
+    border-color: var(--fc-border);
+}
+
+.cps-card h5,
+.cps-card .fw-bold {
+    color: var(--fc-navy);
+}
+
+.chart-canvas-wrap {
+    position: relative;
+    height: 340px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.chart-canvas-wrap canvas {
+    max-width: 100%;
+}
+
+.chart-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    min-height: 260px;
+    padding: 32px 20px;
+    color: var(--fc-text-muted);
+    background: var(--fc-bg-soft);
+    border: 1px dashed var(--fc-border);
+    border-radius: 14px;
+}
+
+.chart-empty-state i {
+    font-size: 2rem;
+    color: var(--fc-accent);
+}
+
+@media (max-width: 576px) {
+    .chart-canvas-wrap {
+        height: 280px;
+    }
+}
+
+/* ---------- Timeline (How Forecasting Works) ---------- */
+.predict-timeline {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.predict-timeline::before {
+    content: "";
+    position: absolute;
+    left: 27px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--fc-accent) 0 6px, transparent 6px 12px);
+}
+
+.timeline-step {
+    position: relative;
+    padding-left: 70px;
+    margin-bottom: 30px;
+}
+
+.timeline-step:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-step h6 {
+    color: var(--fc-navy);
+}
+
+.timeline-step .step-badge {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--fc-card-bg);
+    border: 2px solid var(--fc-accent);
+    color: var(--fc-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.timeline-step.final .step-badge {
+    background: var(--fc-accent);
+    color: #FFFFFF;
+}
+
+/* ---------- Quick Actions ---------- */
+.quick-action-tile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    border-radius: 16px;
+    background: var(--fc-card-bg);
+    border: 1px solid var(--fc-border);
+    text-decoration: none;
+    color: var(--fc-navy);
+    transition: all 0.25s ease;
+}
+
+.quick-action-tile:hover {
+    background: var(--fc-accent);
+    color: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(110, 134, 171, 0.25);
+}
+
+.quick-action-tile .qa-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--fc-bg-soft);
+    color: var(--fc-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.quick-action-tile:hover .qa-icon {
+    background: rgba(255, 255, 255, 0.18);
+    color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+    .glass-form-card {
+        margin-top: -40px;
+        padding: 24px;
+    }
+}
+
+/* ==============================================================
+   DARK MODE — FIXED CONTRAST & DARK NAVY THEME OVERRIDES
+   ============================================================== */
+html[data-theme="dark"],
+body.dark-mode,
+body.dark-theme,
+html[data-bs-theme="dark"] {
+    --fc-navy: #F1F5F9;
+    --fc-navy-mid: #CBD5E1;
+    --fc-accent: #60A5FA;
+    --fc-cream: #FDE68A;
+    --fc-bg-soft: #0B1120;
+    --fc-border: #1E293B;
+    --fc-text-muted: #94A3B8;
+    --fc-card-bg: #0F172A;
+    --fc-hero-text: #FFFFFF;
+    --fc-hero-bg: linear-gradient(135deg, #090D16 0%, #0F172A 60%, #1E293B 100%);
+    --fc-risk-low: #34D399;
+    --fc-risk-moderate: #FBBF24;
+    --fc-risk-high: #F87171;
+    --fc-risk-very-high: #EF4444;
+    --fc-alert-bg: #311313;
+    --fc-alert-text: #F87171;
+    --fc-alert-border: #501D1D;
+
+    --fc-icon-blue-bg: rgba(96, 165, 250, 0.15);
+    --fc-icon-blue-fg: #60A5FA;
+    --fc-icon-purple-bg: rgba(192, 132, 252, 0.15);
+    --fc-icon-purple-fg: #C084FC;
+    --fc-icon-amber-bg: rgba(251, 191, 36, 0.15);
+    --fc-icon-amber-fg: #FBBF24;
+    --fc-icon-green-bg: rgba(52, 211, 153, 0.15);
+    --fc-icon-green-fg: #34D399;
+
+    --fc-chart-grid: rgba(241, 245, 249, 0.08);
+}
+
+/* Overrides for Bootstrap's .text-muted and body background */
+html[data-theme="dark"] .text-muted,
+body.dark-mode .text-muted,
+body.dark-theme .text-muted,
+html[data-bs-theme="dark"] .text-muted {
+    color: var(--fc-text-muted) !important;
+}
+
+html[data-theme="dark"] body,
+body.dark-mode,
+body.dark-theme,
+html[data-bs-theme="dark"] body {
+    background-color: #090D16;
+}
+
+/* Glass Form Dark Mode Adjustment */
+html[data-theme="dark"] .glass-form-card,
+body.dark-mode .glass-form-card,
+body.dark-theme .glass-form-card,
+html[data-bs-theme="dark"] .glass-form-card {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: #1E293B;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="dark"] .glass-form-card .form-select,
+body.dark-mode .glass-form-card .form-select,
+body.dark-theme .glass-form-card .form-select,
+html[data-bs-theme="dark"] .glass-form-card .form-select {
+    background-color: #1E293B;
+    color: #F8FAFC;
+    border-color: #334155;
+}
+
+html[data-theme="dark"] .glass-form-card .form-select option,
+body.dark-mode .glass-form-card .form-select option,
+body.dark-theme .glass-form-card .form-select option,
+html[data-bs-theme="dark"] .glass-form-card .form-select option {
+    background-color: #0F172A;
+    color: #F8FAFC;
+}
+
+html[data-theme="dark"] .hero-eyebrow,
+body.dark-mode .hero-eyebrow,
+body.dark-theme .hero-eyebrow,
+html[data-bs-theme="dark"] .hero-eyebrow {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+html[data-theme="dark"] .forecast-hero .hero-mini-stat,
+body.dark-mode .forecast-hero .hero-mini-stat,
+body.dark-theme .forecast-hero .hero-mini-stat,
+html[data-bs-theme="dark"] .forecast-hero .hero-mini-stat {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme="dark"] .forecast-hero .hero-mini-stat .value,
+body.dark-mode .forecast-hero .hero-mini-stat .value,
+body.dark-theme .forecast-hero .hero-mini-stat .value,
+html[data-bs-theme="dark"] .forecast-hero .hero-mini-stat .value {
+    color: #38BDF8;
+}
+
+html[data-theme="dark"] .forecast-hero .hero-mini-stat .label,
+body.dark-mode .forecast-hero .hero-mini-stat .label,
+body.dark-theme .forecast-hero .hero-mini-stat .label,
+html[data-bs-theme="dark"] .forecast-hero .hero-mini-stat .label {
+    color: #94A3B8;
+}
+
+/* System dark mode fallback */
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme]):not([data-bs-theme]) body:not(.light-mode) {
+        --fc-navy: #F1F5F9;
+        --fc-navy-mid: #CBD5E1;
+        --fc-accent: #60A5FA;
+        --fc-cream: #FDE68A;
+        --fc-bg-soft: #0B1120;
+        --fc-border: #1E293B;
+        --fc-text-muted: #94A3B8;
+        --fc-card-bg: #0F172A;
+        --fc-hero-text: #FFFFFF;
+        --fc-hero-bg: linear-gradient(135deg, #090D16 0%, #0F172A 60%, #1E293B 100%);
+        --fc-risk-low: #34D399;
+        --fc-risk-moderate: #FBBF24;
+        --fc-risk-high: #F87171;
+        --fc-risk-very-high: #EF4444;
+        --fc-alert-bg: #311313;
+        --fc-alert-text: #F87171;
+        --fc-alert-border: #501D1D;
+        --fc-icon-blue-bg: rgba(96, 165, 250, 0.15);
+        --fc-icon-blue-fg: #60A5FA;
+        --fc-icon-purple-bg: rgba(192, 132, 252, 0.15);
+        --fc-icon-purple-fg: #C084FC;
+        --fc-icon-amber-bg: rgba(251, 191, 36, 0.15);
+        --fc-icon-amber-fg: #FBBF24;
+        --fc-icon-green-bg: rgba(52, 211, 153, 0.15);
+        --fc-icon-green-fg: #34D399;
+        --fc-chart-grid: rgba(241, 245, 249, 0.08);
+        background-color: #090D16;
+    }
+
+    html:not([data-theme]):not([data-bs-theme]) body:not(.light-mode) .text-muted {
+        color: var(--fc-text-muted) !important;
+    }
+
+    html:not([data-theme]):not([data-bs-theme]) body:not(.light-mode) .glass-form-card {
+        background: rgba(15, 23, 42, 0.95);
+        border-color: #1E293B;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    html:not([data-theme]):not([data-bs-theme]) body:not(.light-mode) .glass-form-card .form-select {
+        background-color: #1E293B;
+        color: #F8FAFC;
+        border-color: #334155;
+    }
+
+    html:not([data-theme]):not([data-bs-theme]) body:not(.light-mode) .glass-form-card .form-select option {
+        background-color: #0F172A;
+        color: #F8FAFC;
+    }
+}

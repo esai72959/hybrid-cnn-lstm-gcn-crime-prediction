@@ -1,0 +1,209 @@
+/* ==================================================================
+   PREDICTION PAGE — PAGE-SPECIFIC ADDITIONS ONLY
+   Everything else (hero, form card, result cards, risk/confidence/
+   recommendation cards, workflow steps, model-accuracy comparison,
+   feature cards) reuses the real components already defined in
+   style.css section 14 (and 12/15 where noted).
+
+   Every rule below reads color from the site's existing design
+   tokens (--color-*, --space-*, --radius-*, --shadow-*, --font-*)
+   defined in style.css :root / [data-theme="dark"]. No hex colors
+   are hardcoded here, so dark mode is inherited automatically —
+   there is no second, independent dark-mode system on this page.
+   ================================================================== */
+
+/* ---------- Compact two-column hero (redesign) ----------
+   Reuses .hero-section / .hero-grid / .hero-visual / .hero-float-card
+   from style.css section 12 (Home page) — these are already proven
+   dark-mode-safe token-driven components. This block only trims
+   sizing for a more compact, contained feel on the Prediction page;
+   it introduces no new colors. */
+.prediction-hero-v2 {
+    padding-block: var(--space-6);
+}
+
+.prediction-hero-v2 .hero-lede {
+    font-size: 1rem;
+    max-width: 520px;
+    margin-bottom: var(--space-4);
+}
+
+.prediction-hero-v2 .hero-actions {
+    margin-bottom: var(--space-5);
+}
+
+.prediction-hero-v2 .prediction-hero-title {
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+}
+
+.prediction-hero-v2 .hero-visual {
+    min-height: 340px;
+}
+
+@media (max-width: 991px) {
+    .prediction-hero-v2 .hero-grid {
+        grid-template-columns: 1fr;
+    }
+    .prediction-hero-v2 .hero-visual {
+        min-height: 240px;
+        order: -1;
+    }
+}
+
+@media (max-width: 575px) {
+    .prediction-hero-v2 .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .prediction-hero-v2 .hero-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ---------- Decorative node-graph (purely illustrative, no data) ---------- */
+.pred-node-graph {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.pred-node-graph .node-link {
+    stroke: var(--color-border);
+    stroke-width: 1.5;
+}
+
+.pred-node-graph .node-dot {
+    fill: var(--color-primary);
+    opacity: 0.85;
+}
+
+.pred-node-graph .node-dot--accent {
+    fill: var(--color-hover);
+    opacity: 1;
+}
+
+/* ---------- Status message (form validation / API errors) ---------- */
+.pred-status-message {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    background: var(--color-primary-08);
+    border: 1px solid var(--color-primary-30);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-small);
+    color: var(--color-heading);
+    margin-top: var(--space-4);
+}
+
+.pred-status-message.is-hidden { display: none; }
+
+.pred-status-message--warning { border-left-color: var(--color-secondary); }
+.pred-status-message--danger { border-left-color: var(--color-hover); }
+
+/* ---------- Circular Risk Gauge Card ---------- */
+.risk-gauge-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gauge-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gauge-ring-bg { stroke: var(--color-border); }
+
+.gauge-ring-fill {
+    stroke: var(--color-primary);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s ease, stroke 0.6s ease;
+}
+
+.gauge-center-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    fill: var(--color-heading);
+}
+
+.gauge-sub-text {
+    font-size: 12px;
+    fill: var(--color-paragraph);
+}
+
+.gauge-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gauge-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-xs);
+    color: var(--color-paragraph);
+    margin-right: var(--space-3);
+}
+
+.gauge-legend .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* ---------- Quick Action Tiles (no existing equivalent site-wide) ---------- */
+.quick-link-tile {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: var(--color-heading);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-fast);
+}
+
+.quick-link-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--color-primary-30);
+    color: var(--color-heading);
+}
+
+.quick-link-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-08);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* ---------- Prediction button loading spinner sizing tweak ---------- */
+#runPredictionBtn .prediction-loading-spinner {
+    border-color: rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .risk-gauge-card { padding: var(--space-3); }
+}

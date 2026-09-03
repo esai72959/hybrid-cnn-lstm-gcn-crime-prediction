@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-09-03 13:21:03 UTC",
+  "random_seed": 42,
+  "total_samples": 6935,
+  "train_samples": 4854,
+  "val_samples": 1040,
+  "test_samples": 1041,
+  "models": {
+    "hybrid_2way": {
+      "file": "hybrid_model.keras",
+      "sha256": "b6e65365f9270f65df0b25b253e39ccae40213bea838f7cd44294d0f5edb3b54",
+      "size_bytes": 338114,
+      "input_dim": 96,
+      "metrics": {
+        "r2": 0.9815980195999146,
+        "mae": 299.7576599121094,
+        "rmse": 480.18817925892347,
+        "medae": 229.0458984375,
+        "mape": 103.11598777770996
+      }
+    },
+    "hybrid_3way_gcn": {
+      "file": "hybrid_gcn_model.keras",
+      "sha256": "226a5bef62d59cf90a4be42e85afb165376d4359b817f7d7ffa86b0ca4ddff8c",
+      "size_bytes": 387309,
+      "input_dim": 128,
+      "metrics": {
+        "r2": 0.9719650149345398,
+        "mae": 383.05224609375,
+        "rmse": 592.6925847351222,
+        "medae": 254.3114013671875,
+        "mape": 48.349541425704956
+      }
+    },
+    "cnn_feature_extractor": {
+      "file": "cnn_feature_extractor.keras",
+      "sha256": "92b3ebbea89359b43507e3bf2bd4ee6f7c75685f6c1db842304a5a19a247b546",
+      "size_bytes": 671226
+    },
+    "lstm_model": {
+      "file": "lstm_model.keras",
+      "sha256": "d549393eae4aefb7573336dadf6855f52c51d247f47a6aa6587d60c2b1ccc6cc",
+      "size_bytes": 1743231
+    },
+    "gcn_feature_extractor": {
+      "file": "gcn_feature_extractor.keras",
+      "sha256": "bcf8bb5219b8c5744a230b2e57360e9bb1927694738f7a6fdae11f22786efe9d",
+      "size_bytes": 33427
+    }
+  }
+}

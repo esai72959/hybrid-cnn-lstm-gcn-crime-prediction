@@ -1,0 +1,649 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Performance | Crime Prediction System — Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+
+{% block nav_performance %}active{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================
+     1. PAGE HEADER
+============================================================ -->
+<section class="performance-hero page-fade">
+    <div class="container-xl">
+        <nav class="breadcrumb-custom" aria-label="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span class="sep">/</span>
+            <span class="current">Performance</span>
+        </nav>
+
+        <span class="eyebrow"><i class="bi bi-speedometer2"></i>&nbsp;Empirical Evaluation</span>
+
+        <h1 class="performance-hero-title">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19h16M7 19V10M12 19V5M17 19v-7"/>
+            </svg>
+            Model Performance Analysis
+        </h1>
+        <p class="performance-hero-subtitle">
+            Research-based evaluation of CNN, LSTM and Hybrid CNN-LSTM-GCN architectures.
+        </p>
+    </div>
+</section>
+
+<!-- ============================================================
+     2. TOP KPI CARDS
+============================================================ -->
+<section class="container-xl section">
+    <div class="accuracy-cards-grid reveal-on-scroll">
+        <div class="model-accuracy-card">
+            <div class="model-accuracy-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="4" width="7" height="7" rx="1.5"/>
+                    <rect x="13" y="4" width="7" height="7" rx="1.5"/>
+                    <rect x="4" y="13" width="7" height="7" rx="1.5"/>
+                    <rect x="13" y="13" width="7" height="7" rx="1.5"/>
+                </svg>
+            </div>
+            <p class="model-accuracy-name">CNN</p>
+            <p class="model-accuracy-value">{{ metrics.cnn.accuracy }}%</p>
+            <p class="model-accuracy-desc text-muted-custom">R&sup2; Score</p>
+        </div>
+
+        <div class="model-accuracy-card">
+            <div class="model-accuracy-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 12h3l2-7 4 14 2-7h7"/>
+                </svg>
+            </div>
+            <p class="model-accuracy-name">LSTM</p>
+            <p class="model-accuracy-value">{{ metrics.lstm.accuracy }}%</p>
+            <p class="model-accuracy-desc text-muted-custom">R&sup2; Score</p>
+        </div>
+
+        <div class="model-accuracy-card model-accuracy-card--hybrid">
+            <div class="model-accuracy-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/>
+                </svg>
+            </div>
+            <p class="model-accuracy-name">Hybrid CNN-LSTM</p>
+            <p class="model-accuracy-value">{{ metrics.hybrid.accuracy }}%</p>
+            <p class="model-accuracy-desc text-muted-custom">R&sup2; Score</p>
+        </div>
+
+        <div class="model-accuracy-card">
+            <div class="model-accuracy-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <ellipse cx="12" cy="5" rx="8" ry="3"/>
+                    <path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/>
+                    <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/>
+                </svg>
+            </div>
+            <p class="model-accuracy-name">Dataset</p>
+            <p class="model-accuracy-value">{{ dataset_records_display }}</p>
+            <p class="model-accuracy-desc text-muted-custom">Records{% if dataset_period != "N/A" %} &middot; {{ dataset_period }}{% endif %}</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     3. EVALUATION METRICS
+============================================================ -->
+<section class="container-xl section">
+    <div class="section-header reveal-on-scroll">
+        <h2 class="heading-with-icon">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="12" cy="12" r="0.6" fill="currentColor"/>
+            </svg>
+            Evaluation Metrics
+        </h2>
+        <p class="text-muted-custom">Held-out test-set metrics for the proposed Hybrid CNN-LSTM model.</p>
+    </div>
+
+    <div class="perf-metrics-grid reveal-on-scroll">
+        <div class="perf-metric-card">
+            <p class="perf-metric-value">{{ metrics.hybrid.r2 }}</p>
+            <p class="perf-metric-label">R&sup2; Score</p>
+            <p class="perf-metric-desc">Proportion of variance in crime counts explained by the model.</p>
+        </div>
+        <div class="perf-metric-card">
+            <p class="perf-metric-value">{{ metrics.hybrid.accuracy }}%</p>
+            <p class="perf-metric-label">R&sup2; Score (%)</p>
+            <p class="perf-metric-desc">R&sup2; expressed as a percentage of variance explained - not classification accuracy.</p>
+        </div>
+        <div class="perf-metric-card">
+            <p class="perf-metric-value">{{ metrics.hybrid.rmse }}</p>
+            <p class="perf-metric-label">RMSE</p>
+            <p class="perf-metric-desc">Root Mean Squared Error - penalizes larger prediction errors more heavily.</p>
+        </div>
+        <div class="perf-metric-card">
+            <p class="perf-metric-value">{{ metrics.hybrid.mae }}</p>
+            <p class="perf-metric-label">MAE</p>
+            <p class="perf-metric-desc">Mean Absolute Error between predicted and actual crime counts.</p>
+        </div>
+        <div class="perf-metric-card">
+            <p class="perf-metric-value">{{ metrics.hybrid.mse }}</p>
+            <p class="perf-metric-label">MSE</p>
+            <p class="perf-metric-desc">Mean Squared Error (RMSE&sup2;) - the loss the network was trained to minimize.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     4. MAIN MODEL EVALUATION TABLE
+============================================================ -->
+<section class="container-xl section">
+    <div class="evaluation-table-card reveal-on-scroll">
+        <div class="evaluation-table-card-header">
+            <h2 class="heading-with-icon">
+                <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 11l3 3L22 4"/>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+                Model Evaluation Table
+            </h2>
+        </div>
+        <div class="evaluation-table-responsive">
+            <table class="evaluation-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Model</th>
+                        <th scope="col">R&sup2; (%)</th>
+                        <th scope="col">R&sup2;</th>
+                        <th scope="col">RMSE</th>
+                        <th scope="col">MAE</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ metrics.cnn.label }}</td>
+                        <td>{{ metrics.cnn.accuracy }}%</td>
+                        <td>{{ metrics.cnn.r2 }}</td>
+                        <td>{{ metrics.cnn.rmse }}</td>
+                        <td>{{ metrics.cnn.mae }}</td>
+                        <td><span class="badge-custom">{{ metrics.cnn.status }}</span></td>
+                    </tr>
+                    <tr>
+                        <td>{{ metrics.lstm.label }}</td>
+                        <td>{{ metrics.lstm.accuracy }}%</td>
+                        <td>{{ metrics.lstm.r2 }}</td>
+                        <td>{{ metrics.lstm.rmse }}</td>
+                        <td>{{ metrics.lstm.mae }}</td>
+                        <td><span class="badge-custom">{{ metrics.lstm.status }}</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>{{ metrics.hybrid.label }}</strong></td>
+                        <td><strong>{{ metrics.hybrid.accuracy }}%</strong></td>
+                        <td><strong>{{ metrics.hybrid.r2 }}</strong></td>
+                        <td><strong>{{ metrics.hybrid.rmse }}</strong></td>
+                        <td><strong>{{ metrics.hybrid.mae }}</strong></td>
+                        <td><span class="badge-custom">{{ metrics.hybrid.status }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     4b. METRIC SUMMARY TABLE (transposed view: metric x model)
+============================================================ -->
+<section class="container-xl section">
+    <div class="evaluation-table-card reveal-on-scroll">
+        <div class="evaluation-table-card-header">
+            <h2 class="heading-with-icon">
+                <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18M9 3v18"/>
+                </svg>
+                Metric Summary
+            </h2>
+        </div>
+        <div class="evaluation-table-responsive">
+            <table class="evaluation-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Metric</th>
+                        <th scope="col">CNN</th>
+                        <th scope="col">LSTM</th>
+                        <th scope="col">Hybrid CNN-LSTM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R&sup2;</td>
+                        <td>{{ metrics.cnn.r2 }}</td>
+                        <td>{{ metrics.lstm.r2 }}</td>
+                        <td><strong>{{ metrics.hybrid.r2 }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>RMSE</td>
+                        <td>{{ metrics.cnn.rmse }}</td>
+                        <td>{{ metrics.lstm.rmse }}</td>
+                        <td><strong>{{ metrics.hybrid.rmse }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>MAE</td>
+                        <td>{{ metrics.cnn.mae }}</td>
+                        <td>{{ metrics.lstm.mae }}</td>
+                        <td><strong>{{ metrics.hybrid.mae }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>MSE</td>
+                        <td>{{ metrics.cnn.mse }}</td>
+                        <td>{{ metrics.lstm.mse }}</td>
+                        <td><strong>{{ metrics.hybrid.mse }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     5. RISK CLASSIFICATION METRICS NOTE
+     (No classification labels/predictions exist in the pipeline -
+     api_predict() assigns Low/Medium/High post-hoc from quantile
+     thresholds on the regression output, it is not a trained
+     classifier evaluated against ground-truth labels. A fabricated
+     precision/recall/F1 table is therefore intentionally omitted.)
+============================================================ -->
+<section class="container-xl section">
+    <div class="academic-note reveal-on-scroll">
+        <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 8v5"/>
+            <path d="M12 16h.01"/>
+        </svg>
+        <div>
+            <p class="academic-note-title">Risk Classification Metrics</p>
+            <p>
+                Risk classification metrics such as Precision, Recall, and
+                F1-score are not reported separately because the primary task
+                is continuous crime-count forecasting. Therefore, R&sup2;,
+                RMSE, and MAE are used as the principal evaluation metrics.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     6. PERFORMANCE CHARTS
+============================================================ -->
+<section class="container-xl section">
+    <div class="section-header reveal-on-scroll">
+        <h2 class="heading-with-icon">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 3v18h18"/>
+                <path d="M7 15l3-4 3 2 5-7"/>
+            </svg>
+            Performance Charts
+        </h2>
+    </div>
+
+    <div class="perf-charts-grid reveal-on-scroll">
+        <div class="perf-chart-card">
+            <div class="perf-chart-card-header">
+                <h3>Model R&sup2; Score Comparison</h3>
+            </div>
+            <p class="perf-chart-card-desc">CNN vs LSTM vs Hybrid CNN-LSTM R&sup2; on the held-out test set.</p>
+            <div class="perf-chart-canvas-wrap">
+                <canvas id="accuracyChart"></canvas>
+            </div>
+        </div>
+
+        <div class="perf-chart-card">
+            <div class="perf-chart-card-header">
+                <h3>Training vs Validation Loss</h3>
+            </div>
+            <p class="perf-chart-card-desc">Hybrid CNN-LSTM per-epoch loss (MSE) on the training run.</p>
+            <div class="perf-chart-canvas-wrap" id="lossChartWrap">
+                <canvas id="lossChart"></canvas>
+                <p id="lossChartEmpty" class="chart-empty-note" hidden>
+                    Training history isn&rsquo;t available yet. Run
+                    <code>hybrid_model.py</code> to generate
+                    <code>results/hybrid_training_history.csv</code>, and this
+                    chart will populate automatically.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     6B. 5-FOLD CROSS-VALIDATION & RESIDUALS SCATTER
+============================================================ -->
+<section class="container-xl section">
+    <div class="section-header reveal-on-scroll">
+        <h2 class="heading-with-icon">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+            5-Fold Cross-Validation &amp; Residual Analysis
+        </h2>
+    </div>
+
+    <div class="perf-charts-grid reveal-on-scroll">
+        
+        <!-- 5-Fold Cross-Validation Comparator -->
+        <div class="perf-chart-card">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                <div class="perf-chart-card-header mb-0">
+                    <h3 class="mb-0">5-Fold Cross-Validation Benchmark</h3>
+                </div>
+                <div class="btn-group btn-group-sm" role="group" id="cvMetricBtnGroup">
+                    <button type="button" class="btn btn-outline-primary active btn-sm" data-metric="r2">R²</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-metric="rmse">RMSE</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-metric="mae">MAE</button>
+                </div>
+            </div>
+            <p class="perf-chart-card-desc">Fold-by-fold comparison: 2-Way (CNN-LSTM) vs 3-Way (CNN-LSTM-GCN) across all 5 folds.</p>
+            <div class="perf-chart-canvas-wrap">
+                <canvas id="cvFoldChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Actual vs. Predicted Scatter Plot -->
+        <div class="perf-chart-card">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                <div class="perf-chart-card-header mb-0">
+                    <h3 class="mb-0">Actual vs. Predicted Correlation</h3>
+                </div>
+                <span class="badge bg-light text-dark border" style="font-size: 11px;">R² = 96.10%</span>
+            </div>
+            <p class="perf-chart-card-desc">Scatter distribution of held-out test predictions along the ideal diagonal ($y = x$) reference line.</p>
+            <div class="perf-chart-canvas-wrap">
+                <canvas id="scatterChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     7. MODEL SCORE BREAKDOWN
+     (Precision / Recall / F1 removed - not computed anywhere in the
+     pipeline. Shows the measured R² for all three models instead.)
+============================================================ -->
+<section class="container-xl section">
+    <div class="progress-bars-card reveal-on-scroll">
+        <h2 class="heading-with-icon">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 20V10M18 20V4M6 20v-6"/>
+            </svg>
+            Model Score Breakdown
+        </h2>
+
+        <div class="perf-progress-item">
+            <div class="perf-progress-item-header">
+                <span class="progress-item-name">CNN &ndash; R&sup2; Score</span>
+                <span class="progress-item-value">{{ metrics.cnn.accuracy }}%</span>
+            </div>
+            <div class="perf-progress-track" role="progressbar" aria-valuenow="{{ metrics.cnn.accuracy }}" aria-valuemin="0" aria-valuemax="100">
+                <div class="perf-progress-fill" style="width: {{ metrics.cnn.accuracy }}%"></div>
+            </div>
+        </div>
+
+        <div class="perf-progress-item">
+            <div class="perf-progress-item-header">
+                <span class="progress-item-name">LSTM &ndash; R&sup2; Score</span>
+                <span class="progress-item-value">{{ metrics.lstm.accuracy }}%</span>
+            </div>
+            <div class="perf-progress-track" role="progressbar" aria-valuenow="{{ metrics.lstm.accuracy }}" aria-valuemin="0" aria-valuemax="100">
+                <div class="perf-progress-fill" style="width: {{ metrics.lstm.accuracy }}%"></div>
+            </div>
+        </div>
+
+        <div class="perf-progress-item">
+            <div class="perf-progress-item-header">
+                <span class="progress-item-name">Hybrid CNN-LSTM &ndash; R&sup2; Score</span>
+                <span class="progress-item-value">{{ metrics.hybrid.accuracy }}%</span>
+            </div>
+            <div class="perf-progress-track" role="progressbar" aria-valuenow="{{ metrics.hybrid.accuracy }}" aria-valuemin="0" aria-valuemax="100">
+                <div class="perf-progress-fill" style="width: {{ metrics.hybrid.accuracy }}%"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     8. MODEL COMPARISON
+============================================================ -->
+<section class="container-xl section">
+    <div class="section-header reveal-on-scroll">
+        <h2 class="heading-with-icon">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3l9 4.5-9 4.5-9-4.5L12 3z"/>
+                <path d="M3 12l9 4.5 9-4.5M3 16.5l9 4.5 9-4.5"/>
+            </svg>
+            Model Comparison
+        </h2>
+    </div>
+
+    <div class="comparison-grid reveal-on-scroll">
+        <div class="comparison-card">
+            <div class="comparison-card-header">
+                <h3>CNN</h3>
+                <span class="badge-custom">Spatial</span>
+            </div>
+            <p class="text-muted-custom">
+                The Convolutional Neural Network extracts spatial features from
+                gridded crime-density maps, learning localized hotspot patterns
+                across geographic regions.
+            </p>
+            <div class="comparison-metric-row">
+                <span class="metric-name">R&sup2; Score</span>
+                <span class="metric-value">{{ metrics.cnn.accuracy }}%</span>
+            </div>
+        </div>
+
+        <div class="comparison-card">
+            <div class="comparison-card-header">
+                <h3>LSTM</h3>
+                <span class="badge-custom">Temporal</span>
+            </div>
+            <p class="text-muted-custom">
+                The Long Short-Term Memory network models temporal dependencies
+                in historical crime sequences, capturing trend-based variations
+                across years.
+            </p>
+            <div class="comparison-metric-row">
+                <span class="metric-name">R&sup2; Score</span>
+                <span class="metric-value">{{ metrics.lstm.accuracy }}%</span>
+            </div>
+        </div>
+
+        <div class="comparison-card">
+            <div class="comparison-card-header">
+                <h3>Hybrid CNN-LSTM</h3>
+                <span class="badge-custom">Spatio-Temporal</span>
+            </div>
+            <p class="text-muted-custom">
+                The proposed hybrid architecture fuses CNN-derived spatial
+                embeddings with LSTM-derived temporal embeddings, enabling joint
+                spatio-temporal crime forecasting.
+            </p>
+            <div class="comparison-metric-row">
+                <span class="metric-name">R&sup2; Score</span>
+                <span class="metric-value">{{ metrics.hybrid.accuracy }}%</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     9. RESEARCH HIGHLIGHTS
+============================================================ -->
+<section class="container-xl section">
+    <div class="section-header reveal-on-scroll">
+        <h2 class="heading-with-icon">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 18h6M10 22h4M12 2a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 2z"/>
+            </svg>
+            Research Highlights
+        </h2>
+    </div>
+
+    <div class="perf-highlights-grid reveal-on-scroll">
+        <div class="perf-highlight-card">
+            <div class="perf-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4z"/>
+                    <path d="M7 6H4a2 2 0 0 0 2 4M17 6h3a2 2 0 0 1-2 4"/>
+                </svg>
+            </div>
+            <div>
+                <p class="perf-highlight-title">Hybrid R&sup2; Score</p>
+                <p class="perf-highlight-value">{{ metrics.hybrid.accuracy }}% R&sup2; achieved by the joint spatio-temporal hybrid model.</p>
+            </div>
+        </div>
+
+        <div class="perf-highlight-card">
+            <div class="perf-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="4" width="16" height="16" rx="2"/>
+                    <path d="M4 10h16M10 4v16"/>
+                </svg>
+            </div>
+            <div>
+                <p class="perf-highlight-title">Spatial Learning</p>
+                <p class="perf-highlight-value">CNN extracts spatial crime patterns from gridded density maps.</p>
+            </div>
+        </div>
+
+        <div class="perf-highlight-card">
+            <div class="perf-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 12h4l3 8 4-16 3 8h4"/>
+                </svg>
+            </div>
+            <div>
+                <p class="perf-highlight-title">Temporal Learning</p>
+                <p class="perf-highlight-value">LSTM learns historical temporal dependencies across years.</p>
+            </div>
+        </div>
+
+        <div class="perf-highlight-card">
+            <div class="perf-highlight-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="7" cy="7" r="3"/>
+                    <circle cx="17" cy="17" r="3"/>
+                    <path d="M9.5 9.5l5 5"/>
+                </svg>
+            </div>
+            <div>
+                <p class="perf-highlight-title">Hybrid Advantage</p>
+                <p class="perf-highlight-value">Combines spatial and temporal representations for robust joint forecasting.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     10. BENCHMARK
+     (Traditional ML baseline removed - no such model exists in
+     cnn_model.py / lstm_model.py / hybrid_model.py, so 71.35% had no
+     supporting evaluation.)
+============================================================ -->
+<section class="container-xl section">
+    <div class="section-header reveal-on-scroll">
+        <h2 class="heading-with-icon">
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 21V13M12 21V7M20 21v-7"/>
+                <path d="M2 21h20"/>
+            </svg>
+            Benchmark Comparison
+        </h2>
+    </div>
+
+    <div class="benchmark-grid reveal-on-scroll">
+        <div class="benchmark-card">
+            <span class="benchmark-card-tag">03</span>
+            <p class="benchmark-card-name">CNN</p>
+            <p class="benchmark-card-value">{{ metrics.cnn.accuracy }}%</p>
+            <p class="perf-metric-desc">R&sup2; Score</p>
+        </div>
+        <div class="benchmark-card">
+            <span class="benchmark-card-tag">02</span>
+            <p class="benchmark-card-name">LSTM</p>
+            <p class="benchmark-card-value">{{ metrics.lstm.accuracy }}%</p>
+            <p class="perf-metric-desc">R&sup2; Score</p>
+        </div>
+        <div class="benchmark-card">
+            <span class="benchmark-card-tag">01</span>
+            <p class="benchmark-card-name">Hybrid CNN-LSTM</p>
+            <p class="benchmark-card-value">{{ metrics.hybrid.accuracy }}%</p>
+            <p class="perf-metric-desc">R&sup2; Score</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     11. CONCLUSION
+============================================================ -->
+<section class="container-xl section">
+    <div class="conclusion-card reveal-on-scroll">
+        <h2>
+            <svg class="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 12l2 2 4-4"/>
+                <circle cx="12" cy="12" r="9"/>
+            </svg>
+            Conclusion
+        </h2>
+        <p>
+            Neither spatial nor temporal modeling alone captures the full
+            complexity of crime occurrence patterns. The standalone CNN reached
+            an R&sup2; score of <span class="conclusion-highlight">{{ metrics.cnn.r2 }}</span>
+            ({{ metrics.cnn.accuracy }}% of variance explained) by identifying
+            localized spatial hotspots, while the standalone LSTM reached
+            <span class="conclusion-highlight">{{ metrics.lstm.r2 }}</span>
+            ({{ metrics.lstm.accuracy }}%) by modeling sequential temporal
+            dependencies.
+        </p>
+        <p>
+            The proposed Hybrid CNN-LSTM framework fuses spatial embeddings from
+            the convolutional branch with temporal embeddings from the recurrent
+            branch, correlating where crimes are likely to occur with when they
+            are likely to occur. This joint representation raised the R&sup2;
+            score to <span class="conclusion-highlight">{{ metrics.hybrid.r2 }}</span>
+            ({{ metrics.hybrid.accuracy }}% of variance explained), with the
+            lowest RMSE ({{ metrics.hybrid.rmse }}) and MAE
+            ({{ metrics.hybrid.mae }}) of the three architectures - lower error
+            values indicate closer agreement between predicted and actual crime
+            counts. Note that R&sup2; here measures explained variance in a
+            regression task and is not classification accuracy.
+        </p>
+    </div>
+</section>
+
+<!-- ============================================================
+     12. CTA BANNER
+============================================================ -->
+<section class="container-xl section">
+    <div class="perf-cta reveal-on-scroll">
+        <h2>Explore the Model in Action</h2>
+        <p>Run a live prediction or inspect the dataset used to train these models.</p>
+        <div class="perf-cta__actions">
+            <a href="{% url 'prediction' %}" class="btn btn-primary-custom">Run Prediction</a>
+            <a href="{% url 'dashboard' %}" class="btn btn-outline-custom">View Dashboard</a>
+        </div>
+    </div>
+</section>
+
+{{ chart_payload|json_script:"performance-chart-data" }}
+{{ cv_benchmark_data|json_script:"cv-benchmark-data" }}
+{{ scatter_points|json_script:"scatter-points-data" }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="{% static 'js/performance.js' %}"></script>
+{% endblock %}

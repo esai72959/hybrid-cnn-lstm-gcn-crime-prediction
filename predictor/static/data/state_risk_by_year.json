@@ -1,0 +1,2880 @@
+{
+  "metadata": {
+    "source": "Crimes in India (2001-2013)",
+    "aggregation": "State average per district (Total Crimes / District Count)",
+    "thresholds": {
+      "Low": "<= 1500",
+      "Moderate": "1501 - 4000",
+      "High": "> 4000"
+    },
+    "color_palette": {
+      "Low": "#2E7D32",
+      "Moderate": "#F59E0B",
+      "High": "#DC2626"
+    },
+    "years": [
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013
+    ]
+  },
+  "by_year": {
+    "2001": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 658,
+        "district_count": 2,
+        "avg_crimes_per_district": 329.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 130089,
+        "district_count": 28,
+        "avg_crimes_per_district": 4646.04,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2342,
+        "district_count": 13,
+        "avg_crimes_per_district": 180.15,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 36877,
+        "district_count": 27,
+        "avg_crimes_per_district": 1365.81,
+        "risk_level": "Low"
+      },
+      "BIHAR": {
+        "total_crimes": 88432,
+        "district_count": 44,
+        "avg_crimes_per_district": 2009.82,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3397,
+        "district_count": 1,
+        "avg_crimes_per_district": 3397.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 38460,
+        "district_count": 19,
+        "avg_crimes_per_district": 2024.21,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 350,
+        "district_count": 1,
+        "avg_crimes_per_district": 350.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 239,
+        "district_count": 2,
+        "avg_crimes_per_district": 119.5,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 54384,
+        "district_count": 12,
+        "avg_crimes_per_district": 4532.0,
+        "risk_level": "High"
+      },
+      "GOA": {
+        "total_crimes": 2341,
+        "district_count": 2,
+        "avg_crimes_per_district": 1170.5,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 103419,
+        "district_count": 30,
+        "avg_crimes_per_district": 3447.3,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 38759,
+        "district_count": 20,
+        "avg_crimes_per_district": 1937.95,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 11499,
+        "district_count": 13,
+        "avg_crimes_per_district": 884.54,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 19505,
+        "district_count": 23,
+        "avg_crimes_per_district": 848.04,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 25447,
+        "district_count": 24,
+        "avg_crimes_per_district": 1060.29,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 109098,
+        "district_count": 31,
+        "avg_crimes_per_district": 3519.29,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 103847,
+        "district_count": 16,
+        "avg_crimes_per_district": 6490.44,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 36,
+        "district_count": 1,
+        "avg_crimes_per_district": 36.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 181741,
+        "district_count": 48,
+        "avg_crimes_per_district": 3786.27,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 171233,
+        "district_count": 45,
+        "avg_crimes_per_district": 3805.18,
+        "risk_level": "Moderate"
+      },
+      "MANIPUR": {
+        "total_crimes": 2489,
+        "district_count": 9,
+        "avg_crimes_per_district": 276.56,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 1687,
+        "district_count": 7,
+        "avg_crimes_per_district": 241.0,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 2246,
+        "district_count": 8,
+        "avg_crimes_per_district": 280.75,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1234,
+        "district_count": 10,
+        "avg_crimes_per_district": 123.4,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 46661,
+        "district_count": 34,
+        "avg_crimes_per_district": 1372.38,
+        "risk_level": "Low"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4068,
+        "district_count": 1,
+        "avg_crimes_per_district": 4068.0,
+        "risk_level": "High"
+      },
+      "PUNJAB": {
+        "total_crimes": 27774,
+        "district_count": 24,
+        "avg_crimes_per_district": 1157.25,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 155185,
+        "district_count": 33,
+        "avg_crimes_per_district": 4702.58,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 444,
+        "district_count": 4,
+        "avg_crimes_per_district": 111.0,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 154801,
+        "district_count": 38,
+        "avg_crimes_per_district": 4073.71,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 2801,
+        "district_count": 4,
+        "avg_crimes_per_district": 700.25,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 178129,
+        "district_count": 71,
+        "avg_crimes_per_district": 2508.86,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8073,
+        "district_count": 13,
+        "avg_crimes_per_district": 621.0,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 61563,
+        "district_count": 23,
+        "avg_crimes_per_district": 2676.65,
+        "risk_level": "Moderate"
+      },
+      "TELANGANA": {
+        "total_crimes": 130089,
+        "district_count": 28,
+        "avg_crimes_per_district": 4646.04,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2002": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 608,
+        "district_count": 2,
+        "avg_crimes_per_district": 304.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 143610,
+        "district_count": 28,
+        "avg_crimes_per_district": 5128.93,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2228,
+        "district_count": 13,
+        "avg_crimes_per_district": 171.38,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 36346,
+        "district_count": 27,
+        "avg_crimes_per_district": 1346.15,
+        "risk_level": "Low"
+      },
+      "BIHAR": {
+        "total_crimes": 94040,
+        "district_count": 44,
+        "avg_crimes_per_district": 2137.27,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3806,
+        "district_count": 1,
+        "avg_crimes_per_district": 3806.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 37950,
+        "district_count": 19,
+        "avg_crimes_per_district": 1997.37,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 349,
+        "district_count": 1,
+        "avg_crimes_per_district": 349.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 261,
+        "district_count": 2,
+        "avg_crimes_per_district": 130.5,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 49137,
+        "district_count": 13,
+        "avg_crimes_per_district": 3779.77,
+        "risk_level": "Moderate"
+      },
+      "GOA": {
+        "total_crimes": 2440,
+        "district_count": 2,
+        "avg_crimes_per_district": 1220.0,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 106675,
+        "district_count": 30,
+        "avg_crimes_per_district": 3555.83,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 40152,
+        "district_count": 20,
+        "avg_crimes_per_district": 2007.6,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 12243,
+        "district_count": 13,
+        "avg_crimes_per_district": 941.77,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 19967,
+        "district_count": 24,
+        "avg_crimes_per_district": 831.96,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 31439,
+        "district_count": 24,
+        "avg_crimes_per_district": 1309.96,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 113699,
+        "district_count": 31,
+        "avg_crimes_per_district": 3667.71,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 104200,
+        "district_count": 16,
+        "avg_crimes_per_district": 6512.5,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 53,
+        "district_count": 1,
+        "avg_crimes_per_district": 53.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 191799,
+        "district_count": 48,
+        "avg_crimes_per_district": 3995.81,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 165462,
+        "district_count": 45,
+        "avg_crimes_per_district": 3676.93,
+        "risk_level": "Moderate"
+      },
+      "MANIPUR": {
+        "total_crimes": 2584,
+        "district_count": 9,
+        "avg_crimes_per_district": 287.11,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 1664,
+        "district_count": 7,
+        "avg_crimes_per_district": 237.71,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 2820,
+        "district_count": 8,
+        "avg_crimes_per_district": 352.5,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1114,
+        "district_count": 10,
+        "avg_crimes_per_district": 111.4,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 47728,
+        "district_count": 34,
+        "avg_crimes_per_district": 1403.76,
+        "risk_level": "Low"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4437,
+        "district_count": 1,
+        "avg_crimes_per_district": 4437.0,
+        "risk_level": "High"
+      },
+      "PUNJAB": {
+        "total_crimes": 28794,
+        "district_count": 24,
+        "avg_crimes_per_district": 1199.75,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 151248,
+        "district_count": 33,
+        "avg_crimes_per_district": 4583.27,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 485,
+        "district_count": 4,
+        "avg_crimes_per_district": 121.25,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 166942,
+        "district_count": 37,
+        "avg_crimes_per_district": 4511.95,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 3075,
+        "district_count": 4,
+        "avg_crimes_per_district": 768.75,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 146037,
+        "district_count": 71,
+        "avg_crimes_per_district": 2056.86,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 7976,
+        "district_count": 13,
+        "avg_crimes_per_district": 613.54,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 58962,
+        "district_count": 25,
+        "avg_crimes_per_district": 2358.48,
+        "risk_level": "Moderate"
+      },
+      "TELANGANA": {
+        "total_crimes": 143610,
+        "district_count": 28,
+        "avg_crimes_per_district": 5128.93,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2003": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 644,
+        "district_count": 2,
+        "avg_crimes_per_district": 322.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 156951,
+        "district_count": 29,
+        "avg_crimes_per_district": 5412.1,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2061,
+        "district_count": 15,
+        "avg_crimes_per_district": 137.4,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 38195,
+        "district_count": 27,
+        "avg_crimes_per_district": 1414.63,
+        "risk_level": "Low"
+      },
+      "BIHAR": {
+        "total_crimes": 92263,
+        "district_count": 44,
+        "avg_crimes_per_district": 2096.89,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 2806,
+        "district_count": 1,
+        "avg_crimes_per_district": 2806.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 38449,
+        "district_count": 20,
+        "avg_crimes_per_district": 1922.45,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 338,
+        "district_count": 1,
+        "avg_crimes_per_district": 338.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 269,
+        "district_count": 2,
+        "avg_crimes_per_district": 134.5,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 47404,
+        "district_count": 12,
+        "avg_crimes_per_district": 3950.33,
+        "risk_level": "Moderate"
+      },
+      "GOA": {
+        "total_crimes": 2244,
+        "district_count": 2,
+        "avg_crimes_per_district": 1122.0,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 103709,
+        "district_count": 30,
+        "avg_crimes_per_district": 3456.97,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 38612,
+        "district_count": 20,
+        "avg_crimes_per_district": 1930.6,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 12011,
+        "district_count": 13,
+        "avg_crimes_per_district": 923.92,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 21233,
+        "district_count": 24,
+        "avg_crimes_per_district": 884.71,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 32203,
+        "district_count": 24,
+        "avg_crimes_per_district": 1341.79,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 112405,
+        "district_count": 31,
+        "avg_crimes_per_district": 3625.97,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 98824,
+        "district_count": 19,
+        "avg_crimes_per_district": 5201.26,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 31,
+        "district_count": 1,
+        "avg_crimes_per_district": 31.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 191078,
+        "district_count": 51,
+        "avg_crimes_per_district": 3746.63,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 164306,
+        "district_count": 45,
+        "avg_crimes_per_district": 3651.24,
+        "risk_level": "Moderate"
+      },
+      "MANIPUR": {
+        "total_crimes": 2537,
+        "district_count": 9,
+        "avg_crimes_per_district": 281.89,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 1669,
+        "district_count": 7,
+        "avg_crimes_per_district": 238.43,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 3456,
+        "district_count": 8,
+        "avg_crimes_per_district": 432.0,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 976,
+        "district_count": 10,
+        "avg_crimes_per_district": 97.6,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 47281,
+        "district_count": 34,
+        "avg_crimes_per_district": 1390.62,
+        "risk_level": "Low"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4517,
+        "district_count": 1,
+        "avg_crimes_per_district": 4517.0,
+        "risk_level": "High"
+      },
+      "PUNJAB": {
+        "total_crimes": 28756,
+        "district_count": 24,
+        "avg_crimes_per_district": 1198.17,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 145579,
+        "district_count": 33,
+        "avg_crimes_per_district": 4411.48,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 443,
+        "district_count": 4,
+        "avg_crimes_per_district": 110.75,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 157186,
+        "district_count": 37,
+        "avg_crimes_per_district": 4248.27,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 3514,
+        "district_count": 4,
+        "avg_crimes_per_district": 878.5,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 95073,
+        "district_count": 71,
+        "avg_crimes_per_district": 1339.06,
+        "risk_level": "Low"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 7923,
+        "district_count": 13,
+        "avg_crimes_per_district": 609.46,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 61174,
+        "district_count": 25,
+        "avg_crimes_per_district": 2446.96,
+        "risk_level": "Moderate"
+      },
+      "TELANGANA": {
+        "total_crimes": 156951,
+        "district_count": 29,
+        "avg_crimes_per_district": 5412.1,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2004": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 748,
+        "district_count": 2,
+        "avg_crimes_per_district": 374.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 158756,
+        "district_count": 29,
+        "avg_crimes_per_district": 5474.34,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2256,
+        "district_count": 15,
+        "avg_crimes_per_district": 150.4,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 40675,
+        "district_count": 27,
+        "avg_crimes_per_district": 1506.48,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 108060,
+        "district_count": 44,
+        "avg_crimes_per_district": 2455.91,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 2889,
+        "district_count": 1,
+        "avg_crimes_per_district": 2889.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 41927,
+        "district_count": 20,
+        "avg_crimes_per_district": 2096.35,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 409,
+        "district_count": 1,
+        "avg_crimes_per_district": 409.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 198,
+        "district_count": 2,
+        "avg_crimes_per_district": 99.0,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 53623,
+        "district_count": 12,
+        "avg_crimes_per_district": 4468.58,
+        "risk_level": "High"
+      },
+      "GOA": {
+        "total_crimes": 2127,
+        "district_count": 2,
+        "avg_crimes_per_district": 1063.5,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 105469,
+        "district_count": 30,
+        "avg_crimes_per_district": 3515.63,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 39096,
+        "district_count": 20,
+        "avg_crimes_per_district": 1954.8,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 12326,
+        "district_count": 13,
+        "avg_crimes_per_district": 948.15,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 21191,
+        "district_count": 24,
+        "avg_crimes_per_district": 882.96,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 31439,
+        "district_count": 24,
+        "avg_crimes_per_district": 1309.96,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 114440,
+        "district_count": 31,
+        "avg_crimes_per_district": 3691.61,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 104025,
+        "district_count": 19,
+        "avg_crimes_per_district": 5475.0,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 70,
+        "district_count": 1,
+        "avg_crimes_per_district": 70.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 196867,
+        "district_count": 51,
+        "avg_crimes_per_district": 3860.14,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 176302,
+        "district_count": 45,
+        "avg_crimes_per_district": 3917.82,
+        "risk_level": "Moderate"
+      },
+      "MANIPUR": {
+        "total_crimes": 2535,
+        "district_count": 9,
+        "avg_crimes_per_district": 281.67,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 1752,
+        "district_count": 7,
+        "avg_crimes_per_district": 250.29,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 1515,
+        "district_count": 8,
+        "avg_crimes_per_district": 189.38,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 984,
+        "district_count": 10,
+        "avg_crimes_per_district": 98.4,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 48739,
+        "district_count": 34,
+        "avg_crimes_per_district": 1433.5,
+        "risk_level": "Low"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4620,
+        "district_count": 1,
+        "avg_crimes_per_district": 4620.0,
+        "risk_level": "High"
+      },
+      "PUNJAB": {
+        "total_crimes": 25630,
+        "district_count": 24,
+        "avg_crimes_per_district": 1067.92,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 154859,
+        "district_count": 33,
+        "avg_crimes_per_district": 4692.7,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 631,
+        "district_count": 4,
+        "avg_crimes_per_district": 157.75,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 166606,
+        "district_count": 38,
+        "avg_crimes_per_district": 4384.37,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 3081,
+        "district_count": 4,
+        "avg_crimes_per_district": 770.25,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 130181,
+        "district_count": 71,
+        "avg_crimes_per_district": 1833.54,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8634,
+        "district_count": 13,
+        "avg_crimes_per_district": 664.15,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 69350,
+        "district_count": 25,
+        "avg_crimes_per_district": 2774.0,
+        "risk_level": "Moderate"
+      },
+      "TELANGANA": {
+        "total_crimes": 158756,
+        "district_count": 29,
+        "avg_crimes_per_district": 5474.34,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2005": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 682,
+        "district_count": 2,
+        "avg_crimes_per_district": 341.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 157123,
+        "district_count": 29,
+        "avg_crimes_per_district": 5418.03,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2304,
+        "district_count": 15,
+        "avg_crimes_per_district": 153.6,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 42006,
+        "district_count": 30,
+        "avg_crimes_per_district": 1400.2,
+        "risk_level": "Low"
+      },
+      "BIHAR": {
+        "total_crimes": 97850,
+        "district_count": 44,
+        "avg_crimes_per_district": 2223.86,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3133,
+        "district_count": 1,
+        "avg_crimes_per_district": 3133.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 43633,
+        "district_count": 21,
+        "avg_crimes_per_district": 2077.76,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 434,
+        "district_count": 1,
+        "avg_crimes_per_district": 434.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 243,
+        "district_count": 2,
+        "avg_crimes_per_district": 121.5,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 56065,
+        "district_count": 12,
+        "avg_crimes_per_district": 4672.08,
+        "risk_level": "High"
+      },
+      "GOA": {
+        "total_crimes": 2119,
+        "district_count": 2,
+        "avg_crimes_per_district": 1059.5,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 113414,
+        "district_count": 30,
+        "avg_crimes_per_district": 3780.47,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 42664,
+        "district_count": 21,
+        "avg_crimes_per_district": 2031.62,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 12345,
+        "district_count": 13,
+        "avg_crimes_per_district": 949.62,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 20115,
+        "district_count": 24,
+        "avg_crimes_per_district": 838.12,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 35175,
+        "district_count": 24,
+        "avg_crimes_per_district": 1465.62,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 117580,
+        "district_count": 31,
+        "avg_crimes_per_district": 3792.9,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 104350,
+        "district_count": 19,
+        "avg_crimes_per_district": 5492.11,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 42,
+        "district_count": 1,
+        "avg_crimes_per_district": 42.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 189172,
+        "district_count": 51,
+        "avg_crimes_per_district": 3709.25,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 187027,
+        "district_count": 45,
+        "avg_crimes_per_district": 4156.16,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 2913,
+        "district_count": 9,
+        "avg_crimes_per_district": 323.67,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 1880,
+        "district_count": 7,
+        "avg_crimes_per_district": 268.57,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 2156,
+        "district_count": 8,
+        "avg_crimes_per_district": 269.5,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1049,
+        "district_count": 10,
+        "avg_crimes_per_district": 104.9,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 51685,
+        "district_count": 34,
+        "avg_crimes_per_district": 1520.15,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4575,
+        "district_count": 1,
+        "avg_crimes_per_district": 4575.0,
+        "risk_level": "High"
+      },
+      "PUNJAB": {
+        "total_crimes": 27136,
+        "district_count": 24,
+        "avg_crimes_per_district": 1130.67,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 140917,
+        "district_count": 33,
+        "avg_crimes_per_district": 4270.21,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 552,
+        "district_count": 4,
+        "avg_crimes_per_district": 138.0,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 162360,
+        "district_count": 37,
+        "avg_crimes_per_district": 4388.11,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 3356,
+        "district_count": 4,
+        "avg_crimes_per_district": 839.0,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 122108,
+        "district_count": 71,
+        "avg_crimes_per_district": 1719.83,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8033,
+        "district_count": 13,
+        "avg_crimes_per_district": 617.92,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 66406,
+        "district_count": 25,
+        "avg_crimes_per_district": 2656.24,
+        "risk_level": "Moderate"
+      },
+      "TELANGANA": {
+        "total_crimes": 157123,
+        "district_count": 29,
+        "avg_crimes_per_district": 5418.03,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2006": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 676,
+        "district_count": 2,
+        "avg_crimes_per_district": 338.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 173909,
+        "district_count": 29,
+        "avg_crimes_per_district": 5996.86,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2294,
+        "district_count": 15,
+        "avg_crimes_per_district": 152.93,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 43673,
+        "district_count": 30,
+        "avg_crimes_per_district": 1455.77,
+        "risk_level": "Low"
+      },
+      "BIHAR": {
+        "total_crimes": 100665,
+        "district_count": 44,
+        "avg_crimes_per_district": 2287.84,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3126,
+        "district_count": 1,
+        "avg_crimes_per_district": 3126.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 45177,
+        "district_count": 21,
+        "avg_crimes_per_district": 2151.29,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 435,
+        "district_count": 1,
+        "avg_crimes_per_district": 435.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 288,
+        "district_count": 2,
+        "avg_crimes_per_district": 144.0,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 57963,
+        "district_count": 12,
+        "avg_crimes_per_district": 4830.25,
+        "risk_level": "High"
+      },
+      "GOA": {
+        "total_crimes": 2204,
+        "district_count": 2,
+        "avg_crimes_per_district": 1102.0,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 120972,
+        "district_count": 30,
+        "avg_crimes_per_district": 4032.4,
+        "risk_level": "High"
+      },
+      "HARYANA": {
+        "total_crimes": 50509,
+        "district_count": 22,
+        "avg_crimes_per_district": 2295.86,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 13093,
+        "district_count": 13,
+        "avg_crimes_per_district": 1007.15,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 20787,
+        "district_count": 24,
+        "avg_crimes_per_district": 866.12,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 36364,
+        "district_count": 24,
+        "avg_crimes_per_district": 1515.17,
+        "risk_level": "Moderate"
+      },
+      "KARNATAKA": {
+        "total_crimes": 117710,
+        "district_count": 31,
+        "avg_crimes_per_district": 3797.1,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 105255,
+        "district_count": 19,
+        "avg_crimes_per_district": 5539.74,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 80,
+        "district_count": 1,
+        "avg_crimes_per_district": 80.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 194711,
+        "district_count": 51,
+        "avg_crimes_per_district": 3817.86,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 191788,
+        "district_count": 45,
+        "avg_crimes_per_district": 4261.96,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 2884,
+        "district_count": 9,
+        "avg_crimes_per_district": 320.44,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 1935,
+        "district_count": 7,
+        "avg_crimes_per_district": 276.43,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 2073,
+        "district_count": 8,
+        "avg_crimes_per_district": 259.12,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1103,
+        "district_count": 10,
+        "avg_crimes_per_district": 110.3,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 52792,
+        "district_count": 34,
+        "avg_crimes_per_district": 1552.71,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4687,
+        "district_count": 2,
+        "avg_crimes_per_district": 2343.5,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 32068,
+        "district_count": 25,
+        "avg_crimes_per_district": 1282.72,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 141992,
+        "district_count": 38,
+        "avg_crimes_per_district": 3736.63,
+        "risk_level": "Moderate"
+      },
+      "SIKKIM": {
+        "total_crimes": 703,
+        "district_count": 4,
+        "avg_crimes_per_district": 175.75,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 148972,
+        "district_count": 37,
+        "avg_crimes_per_district": 4026.27,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 3940,
+        "district_count": 4,
+        "avg_crimes_per_district": 985.0,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 127001,
+        "district_count": 71,
+        "avg_crimes_per_district": 1788.75,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8412,
+        "district_count": 13,
+        "avg_crimes_per_district": 647.08,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 68052,
+        "district_count": 24,
+        "avg_crimes_per_district": 2835.5,
+        "risk_level": "Moderate"
+      },
+      "TELANGANA": {
+        "total_crimes": 173909,
+        "district_count": 29,
+        "avg_crimes_per_district": 5996.86,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2007": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 807,
+        "district_count": 1,
+        "avg_crimes_per_district": 807.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 175087,
+        "district_count": 29,
+        "avg_crimes_per_district": 6037.48,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2286,
+        "district_count": 15,
+        "avg_crimes_per_district": 152.4,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 45282,
+        "district_count": 30,
+        "avg_crimes_per_district": 1509.4,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 109420,
+        "district_count": 44,
+        "avg_crimes_per_district": 2486.82,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3643,
+        "district_count": 1,
+        "avg_crimes_per_district": 3643.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 45845,
+        "district_count": 21,
+        "avg_crimes_per_district": 2183.1,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 425,
+        "district_count": 1,
+        "avg_crimes_per_district": 425.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 260,
+        "district_count": 2,
+        "avg_crimes_per_district": 130.0,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 56065,
+        "district_count": 13,
+        "avg_crimes_per_district": 4312.69,
+        "risk_level": "High"
+      },
+      "GOA": {
+        "total_crimes": 2479,
+        "district_count": 2,
+        "avg_crimes_per_district": 1239.5,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 123195,
+        "district_count": 30,
+        "avg_crimes_per_district": 4106.5,
+        "risk_level": "High"
+      },
+      "HARYANA": {
+        "total_crimes": 51597,
+        "district_count": 22,
+        "avg_crimes_per_district": 2345.32,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 14222,
+        "district_count": 13,
+        "avg_crimes_per_district": 1094.0,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 21443,
+        "district_count": 24,
+        "avg_crimes_per_district": 893.46,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 38489,
+        "district_count": 26,
+        "avg_crimes_per_district": 1480.35,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 120606,
+        "district_count": 31,
+        "avg_crimes_per_district": 3890.52,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 108530,
+        "district_count": 19,
+        "avg_crimes_per_district": 5712.11,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 56,
+        "district_count": 1,
+        "avg_crimes_per_district": 56.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 202386,
+        "district_count": 51,
+        "avg_crimes_per_district": 3968.35,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 195707,
+        "district_count": 45,
+        "avg_crimes_per_district": 4349.04,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 3259,
+        "district_count": 9,
+        "avg_crimes_per_district": 362.11,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 2079,
+        "district_count": 7,
+        "avg_crimes_per_district": 297.0,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 2083,
+        "district_count": 8,
+        "avg_crimes_per_district": 260.38,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1180,
+        "district_count": 11,
+        "avg_crimes_per_district": 107.27,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 54872,
+        "district_count": 34,
+        "avg_crimes_per_district": 1613.88,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 5054,
+        "district_count": 2,
+        "avg_crimes_per_district": 2527.0,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 35793,
+        "district_count": 25,
+        "avg_crimes_per_district": 1431.72,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 148870,
+        "district_count": 38,
+        "avg_crimes_per_district": 3917.63,
+        "risk_level": "Moderate"
+      },
+      "SIKKIM": {
+        "total_crimes": 667,
+        "district_count": 4,
+        "avg_crimes_per_district": 166.75,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 172754,
+        "district_count": 37,
+        "avg_crimes_per_district": 4669.03,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 4273,
+        "district_count": 4,
+        "avg_crimes_per_district": 1068.25,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 150258,
+        "district_count": 71,
+        "avg_crimes_per_district": 2116.31,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 9599,
+        "district_count": 13,
+        "avg_crimes_per_district": 738.38,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 81102,
+        "district_count": 24,
+        "avg_crimes_per_district": 3379.25,
+        "risk_level": "Moderate"
+      },
+      "TELANGANA": {
+        "total_crimes": 175087,
+        "district_count": 29,
+        "avg_crimes_per_district": 6037.48,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2008": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 882,
+        "district_count": 2,
+        "avg_crimes_per_district": 441.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 179275,
+        "district_count": 29,
+        "avg_crimes_per_district": 6181.9,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2374,
+        "district_count": 15,
+        "avg_crimes_per_district": 158.27,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 53333,
+        "district_count": 30,
+        "avg_crimes_per_district": 1777.77,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 122669,
+        "district_count": 44,
+        "avg_crimes_per_district": 2787.93,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3931,
+        "district_count": 1,
+        "avg_crimes_per_district": 3931.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 51442,
+        "district_count": 21,
+        "avg_crimes_per_district": 2449.62,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 401,
+        "district_count": 1,
+        "avg_crimes_per_district": 401.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 248,
+        "district_count": 2,
+        "avg_crimes_per_district": 124.0,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 49350,
+        "district_count": 17,
+        "avg_crimes_per_district": 2902.94,
+        "risk_level": "Moderate"
+      },
+      "GOA": {
+        "total_crimes": 2742,
+        "district_count": 2,
+        "avg_crimes_per_district": 1371.0,
+        "risk_level": "Low"
+      },
+      "GUJARAT": {
+        "total_crimes": 123808,
+        "district_count": 31,
+        "avg_crimes_per_district": 3993.81,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 55344,
+        "district_count": 22,
+        "avg_crimes_per_district": 2515.64,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 13976,
+        "district_count": 13,
+        "avg_crimes_per_district": 1075.08,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 20604,
+        "district_count": 27,
+        "avg_crimes_per_district": 763.11,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 38686,
+        "district_count": 26,
+        "avg_crimes_per_district": 1487.92,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 127540,
+        "district_count": 33,
+        "avg_crimes_per_district": 3864.85,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 110620,
+        "district_count": 18,
+        "avg_crimes_per_district": 6145.56,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 95,
+        "district_count": 1,
+        "avg_crimes_per_district": 95.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 206556,
+        "district_count": 53,
+        "avg_crimes_per_district": 3897.28,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 206243,
+        "district_count": 45,
+        "avg_crimes_per_district": 4583.18,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 3349,
+        "district_count": 10,
+        "avg_crimes_per_district": 334.9,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 2318,
+        "district_count": 7,
+        "avg_crimes_per_district": 331.14,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 1989,
+        "district_count": 8,
+        "avg_crimes_per_district": 248.62,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1202,
+        "district_count": 11,
+        "avg_crimes_per_district": 109.27,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 56755,
+        "district_count": 36,
+        "avg_crimes_per_district": 1576.53,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4989,
+        "district_count": 2,
+        "avg_crimes_per_district": 2494.5,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 35314,
+        "district_count": 25,
+        "avg_crimes_per_district": 1412.56,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 151174,
+        "district_count": 39,
+        "avg_crimes_per_district": 3876.26,
+        "risk_level": "Moderate"
+      },
+      "SIKKIM": {
+        "total_crimes": 730,
+        "district_count": 4,
+        "avg_crimes_per_district": 182.5,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 176833,
+        "district_count": 38,
+        "avg_crimes_per_district": 4653.5,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 5336,
+        "district_count": 4,
+        "avg_crimes_per_district": 1334.0,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 168996,
+        "district_count": 72,
+        "avg_crimes_per_district": 2347.17,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8856,
+        "district_count": 13,
+        "avg_crimes_per_district": 681.23,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 105419,
+        "district_count": 24,
+        "avg_crimes_per_district": 4392.46,
+        "risk_level": "High"
+      },
+      "TELANGANA": {
+        "total_crimes": 179275,
+        "district_count": 29,
+        "avg_crimes_per_district": 6181.9,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2009": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 941,
+        "district_count": 2,
+        "avg_crimes_per_district": 470.5,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 180441,
+        "district_count": 29,
+        "avg_crimes_per_district": 6222.1,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2362,
+        "district_count": 16,
+        "avg_crimes_per_district": 147.62,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 55313,
+        "district_count": 30,
+        "avg_crimes_per_district": 1843.77,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 122931,
+        "district_count": 44,
+        "avg_crimes_per_district": 2793.89,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3555,
+        "district_count": 1,
+        "avg_crimes_per_district": 3555.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 51370,
+        "district_count": 21,
+        "avg_crimes_per_district": 2446.19,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 442,
+        "district_count": 1,
+        "avg_crimes_per_district": 442.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 276,
+        "district_count": 2,
+        "avg_crimes_per_district": 138.0,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 50251,
+        "district_count": 17,
+        "avg_crimes_per_district": 2955.94,
+        "risk_level": "Moderate"
+      },
+      "GOA": {
+        "total_crimes": 3005,
+        "district_count": 2,
+        "avg_crimes_per_district": 1502.5,
+        "risk_level": "Moderate"
+      },
+      "GUJARAT": {
+        "total_crimes": 115183,
+        "district_count": 31,
+        "avg_crimes_per_district": 3715.58,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 56229,
+        "district_count": 22,
+        "avg_crimes_per_district": 2555.86,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 13315,
+        "district_count": 15,
+        "avg_crimes_per_district": 887.67,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 21975,
+        "district_count": 28,
+        "avg_crimes_per_district": 784.82,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 37436,
+        "district_count": 26,
+        "avg_crimes_per_district": 1439.85,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 134042,
+        "district_count": 33,
+        "avg_crimes_per_district": 4061.88,
+        "risk_level": "High"
+      },
+      "KERALA": {
+        "total_crimes": 118369,
+        "district_count": 18,
+        "avg_crimes_per_district": 6576.06,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 134,
+        "district_count": 1,
+        "avg_crimes_per_district": 134.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 207762,
+        "district_count": 53,
+        "avg_crimes_per_district": 3920.04,
+        "risk_level": "Moderate"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 199598,
+        "district_count": 45,
+        "avg_crimes_per_district": 4435.51,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 2852,
+        "district_count": 10,
+        "avg_crimes_per_district": 285.2,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 2448,
+        "district_count": 7,
+        "avg_crimes_per_district": 349.71,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 2047,
+        "district_count": 8,
+        "avg_crimes_per_district": 255.88,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1059,
+        "district_count": 11,
+        "avg_crimes_per_district": 96.27,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 55740,
+        "district_count": 36,
+        "avg_crimes_per_district": 1548.33,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4591,
+        "district_count": 2,
+        "avg_crimes_per_district": 2295.5,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 35545,
+        "district_count": 25,
+        "avg_crimes_per_district": 1421.8,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 166565,
+        "district_count": 39,
+        "avg_crimes_per_district": 4270.9,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 669,
+        "district_count": 4,
+        "avg_crimes_per_district": 167.25,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 174691,
+        "district_count": 40,
+        "avg_crimes_per_district": 4367.27,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 5486,
+        "district_count": 4,
+        "avg_crimes_per_district": 1371.5,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 172884,
+        "district_count": 72,
+        "avg_crimes_per_district": 2401.17,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8802,
+        "district_count": 13,
+        "avg_crimes_per_district": 677.08,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 113036,
+        "district_count": 24,
+        "avg_crimes_per_district": 4709.83,
+        "risk_level": "High"
+      },
+      "TELANGANA": {
+        "total_crimes": 180441,
+        "district_count": 29,
+        "avg_crimes_per_district": 6222.1,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2010": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 980,
+        "district_count": 2,
+        "avg_crimes_per_district": 490.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 181438,
+        "district_count": 33,
+        "avg_crimes_per_district": 5498.12,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2439,
+        "district_count": 17,
+        "avg_crimes_per_district": 143.47,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 61668,
+        "district_count": 30,
+        "avg_crimes_per_district": 2055.6,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 127453,
+        "district_count": 44,
+        "avg_crimes_per_district": 2896.66,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3373,
+        "district_count": 1,
+        "avg_crimes_per_district": 3373.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 54958,
+        "district_count": 21,
+        "avg_crimes_per_district": 2617.05,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 378,
+        "district_count": 1,
+        "avg_crimes_per_district": 378.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 203,
+        "district_count": 2,
+        "avg_crimes_per_district": 101.5,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 51292,
+        "district_count": 17,
+        "avg_crimes_per_district": 3017.18,
+        "risk_level": "Moderate"
+      },
+      "GOA": {
+        "total_crimes": 3293,
+        "district_count": 2,
+        "avg_crimes_per_district": 1646.5,
+        "risk_level": "Moderate"
+      },
+      "GUJARAT": {
+        "total_crimes": 116439,
+        "district_count": 32,
+        "avg_crimes_per_district": 3638.72,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 59120,
+        "district_count": 22,
+        "avg_crimes_per_district": 2687.27,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 13049,
+        "district_count": 15,
+        "avg_crimes_per_district": 869.93,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 23223,
+        "district_count": 28,
+        "avg_crimes_per_district": 829.39,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 38889,
+        "district_count": 26,
+        "avg_crimes_per_district": 1495.73,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 142322,
+        "district_count": 34,
+        "avg_crimes_per_district": 4185.94,
+        "risk_level": "High"
+      },
+      "KERALA": {
+        "total_crimes": 148313,
+        "district_count": 18,
+        "avg_crimes_per_district": 8239.61,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 42,
+        "district_count": 1,
+        "avg_crimes_per_district": 42.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 214269,
+        "district_count": 53,
+        "avg_crimes_per_district": 4042.81,
+        "risk_level": "High"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 208168,
+        "district_count": 45,
+        "avg_crimes_per_district": 4625.96,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 2715,
+        "district_count": 10,
+        "avg_crimes_per_district": 271.5,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 2505,
+        "district_count": 7,
+        "avg_crimes_per_district": 357.86,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 2174,
+        "district_count": 8,
+        "avg_crimes_per_district": 271.75,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1059,
+        "district_count": 11,
+        "avg_crimes_per_district": 96.27,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 56459,
+        "district_count": 36,
+        "avg_crimes_per_district": 1568.31,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 3935,
+        "district_count": 2,
+        "avg_crimes_per_district": 1967.5,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 36648,
+        "district_count": 26,
+        "avg_crimes_per_district": 1409.54,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 162957,
+        "district_count": 40,
+        "avg_crimes_per_district": 4073.93,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 552,
+        "district_count": 4,
+        "avg_crimes_per_district": 138.0,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 185678,
+        "district_count": 40,
+        "avg_crimes_per_district": 4641.95,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 5805,
+        "district_count": 5,
+        "avg_crimes_per_district": 1161.0,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 174179,
+        "district_count": 73,
+        "avg_crimes_per_district": 2386.01,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 9240,
+        "district_count": 13,
+        "avg_crimes_per_district": 710.77,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 129616,
+        "district_count": 24,
+        "avg_crimes_per_district": 5400.67,
+        "risk_level": "High"
+      },
+      "TELANGANA": {
+        "total_crimes": 181438,
+        "district_count": 33,
+        "avg_crimes_per_district": 5498.12,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2011": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 793,
+        "district_count": 2,
+        "avg_crimes_per_district": 396.5,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 189780,
+        "district_count": 33,
+        "avg_crimes_per_district": 5750.91,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2286,
+        "district_count": 17,
+        "avg_crimes_per_district": 134.47,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 66714,
+        "district_count": 30,
+        "avg_crimes_per_district": 2223.8,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 135896,
+        "district_count": 44,
+        "avg_crimes_per_district": 3088.55,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3542,
+        "district_count": 1,
+        "avg_crimes_per_district": 3542.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 57218,
+        "district_count": 22,
+        "avg_crimes_per_district": 2600.82,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 372,
+        "district_count": 1,
+        "avg_crimes_per_district": 372.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 224,
+        "district_count": 2,
+        "avg_crimes_per_district": 112.0,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 53353,
+        "district_count": 17,
+        "avg_crimes_per_district": 3138.41,
+        "risk_level": "Moderate"
+      },
+      "GOA": {
+        "total_crimes": 3449,
+        "district_count": 2,
+        "avg_crimes_per_district": 1724.5,
+        "risk_level": "Moderate"
+      },
+      "GUJARAT": {
+        "total_crimes": 123371,
+        "district_count": 34,
+        "avg_crimes_per_district": 3628.56,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 60741,
+        "district_count": 22,
+        "avg_crimes_per_district": 2760.95,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 14312,
+        "district_count": 15,
+        "avg_crimes_per_district": 954.13,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 24504,
+        "district_count": 29,
+        "avg_crimes_per_district": 844.97,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 35838,
+        "district_count": 26,
+        "avg_crimes_per_district": 1378.38,
+        "risk_level": "Low"
+      },
+      "KARNATAKA": {
+        "total_crimes": 137600,
+        "district_count": 35,
+        "avg_crimes_per_district": 3931.43,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 172137,
+        "district_count": 20,
+        "avg_crimes_per_district": 8606.85,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 44,
+        "district_count": 1,
+        "avg_crimes_per_district": 44.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 217094,
+        "district_count": 53,
+        "avg_crimes_per_district": 4096.11,
+        "risk_level": "High"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 204902,
+        "district_count": 45,
+        "avg_crimes_per_district": 4553.38,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 3218,
+        "district_count": 10,
+        "avg_crimes_per_district": 321.8,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 2755,
+        "district_count": 7,
+        "avg_crimes_per_district": 393.57,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 1821,
+        "district_count": 8,
+        "avg_crimes_per_district": 227.62,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1083,
+        "district_count": 11,
+        "avg_crimes_per_district": 98.45,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 61277,
+        "district_count": 36,
+        "avg_crimes_per_district": 1702.14,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4362,
+        "district_count": 2,
+        "avg_crimes_per_district": 2181.0,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 34883,
+        "district_count": 28,
+        "avg_crimes_per_district": 1245.82,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 165622,
+        "district_count": 41,
+        "avg_crimes_per_district": 4039.56,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 596,
+        "district_count": 4,
+        "avg_crimes_per_district": 149.0,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 192879,
+        "district_count": 39,
+        "avg_crimes_per_district": 4945.62,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 5803,
+        "district_count": 5,
+        "avg_crimes_per_district": 1160.6,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 195135,
+        "district_count": 76,
+        "avg_crimes_per_district": 2567.57,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8774,
+        "district_count": 13,
+        "avg_crimes_per_district": 674.92,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 143197,
+        "district_count": 25,
+        "avg_crimes_per_district": 5727.88,
+        "risk_level": "High"
+      },
+      "TELANGANA": {
+        "total_crimes": 189780,
+        "district_count": 33,
+        "avg_crimes_per_district": 5750.91,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2012": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 683,
+        "district_count": 3,
+        "avg_crimes_per_district": 227.67,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 192522,
+        "district_count": 33,
+        "avg_crimes_per_district": 5834.0,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2420,
+        "district_count": 17,
+        "avg_crimes_per_district": 142.35,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 77682,
+        "district_count": 32,
+        "avg_crimes_per_district": 2427.56,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 146614,
+        "district_count": 44,
+        "avg_crimes_per_district": 3332.14,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 3606,
+        "district_count": 1,
+        "avg_crimes_per_district": 3606.0,
+        "risk_level": "Moderate"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 54598,
+        "district_count": 28,
+        "avg_crimes_per_district": 1949.93,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 318,
+        "district_count": 1,
+        "avg_crimes_per_district": 318.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 239,
+        "district_count": 2,
+        "avg_crimes_per_district": 119.5,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 54287,
+        "district_count": 17,
+        "avg_crimes_per_district": 3193.35,
+        "risk_level": "Moderate"
+      },
+      "GOA": {
+        "total_crimes": 3608,
+        "district_count": 2,
+        "avg_crimes_per_district": 1804.0,
+        "risk_level": "Moderate"
+      },
+      "GUJARAT": {
+        "total_crimes": 130121,
+        "district_count": 34,
+        "avg_crimes_per_district": 3827.09,
+        "risk_level": "Moderate"
+      },
+      "HARYANA": {
+        "total_crimes": 62480,
+        "district_count": 23,
+        "avg_crimes_per_district": 2716.52,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 12557,
+        "district_count": 15,
+        "avg_crimes_per_district": 837.13,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 24608,
+        "district_count": 30,
+        "avg_crimes_per_district": 820.27,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 40946,
+        "district_count": 26,
+        "avg_crimes_per_district": 1574.85,
+        "risk_level": "Moderate"
+      },
+      "KARNATAKA": {
+        "total_crimes": 134021,
+        "district_count": 35,
+        "avg_crimes_per_district": 3829.17,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 158989,
+        "district_count": 20,
+        "avg_crimes_per_district": 7949.45,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 60,
+        "district_count": 1,
+        "avg_crimes_per_district": 60.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 220335,
+        "district_count": 53,
+        "avg_crimes_per_district": 4157.26,
+        "risk_level": "High"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 202700,
+        "district_count": 45,
+        "avg_crimes_per_district": 4504.44,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 3737,
+        "district_count": 10,
+        "avg_crimes_per_district": 373.7,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 2557,
+        "district_count": 7,
+        "avg_crimes_per_district": 365.29,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 1766,
+        "district_count": 8,
+        "avg_crimes_per_district": 220.75,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1090,
+        "district_count": 11,
+        "avg_crimes_per_district": 99.09,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 67957,
+        "district_count": 36,
+        "avg_crimes_per_district": 1887.69,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 4281,
+        "district_count": 2,
+        "avg_crimes_per_district": 2140.5,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 35790,
+        "district_count": 28,
+        "avg_crimes_per_district": 1278.21,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 170948,
+        "district_count": 42,
+        "avg_crimes_per_district": 4070.19,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 528,
+        "district_count": 4,
+        "avg_crimes_per_district": 132.0,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 200474,
+        "district_count": 39,
+        "avg_crimes_per_district": 5140.36,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 6264,
+        "district_count": 9,
+        "avg_crimes_per_district": 696.0,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 198093,
+        "district_count": 76,
+        "avg_crimes_per_district": 2606.49,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 8882,
+        "district_count": 13,
+        "avg_crimes_per_district": 683.23,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 161427,
+        "district_count": 29,
+        "avg_crimes_per_district": 5566.45,
+        "risk_level": "High"
+      },
+      "TELANGANA": {
+        "total_crimes": 192522,
+        "district_count": 33,
+        "avg_crimes_per_district": 5834.0,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    },
+    "2013": {
+      "ANDAMAN AND NICOBAR": {
+        "total_crimes": 612,
+        "district_count": 3,
+        "avg_crimes_per_district": 204.0,
+        "risk_level": "Low"
+      },
+      "ANDHRA PRADESH": {
+        "total_crimes": 218015,
+        "district_count": 33,
+        "avg_crimes_per_district": 6606.52,
+        "risk_level": "High"
+      },
+      "ARUNACHAL PRADESH": {
+        "total_crimes": 2776,
+        "district_count": 18,
+        "avg_crimes_per_district": 154.22,
+        "risk_level": "Low"
+      },
+      "ASSAM": {
+        "total_crimes": 87186,
+        "district_count": 33,
+        "avg_crimes_per_district": 2642.0,
+        "risk_level": "Moderate"
+      },
+      "BIHAR": {
+        "total_crimes": 167455,
+        "district_count": 44,
+        "avg_crimes_per_district": 3805.8,
+        "risk_level": "Moderate"
+      },
+      "CHANDIGARH": {
+        "total_crimes": 4077,
+        "district_count": 1,
+        "avg_crimes_per_district": 4077.0,
+        "risk_level": "High"
+      },
+      "CHHATTISGARH": {
+        "total_crimes": 56870,
+        "district_count": 28,
+        "avg_crimes_per_district": 2031.07,
+        "risk_level": "Moderate"
+      },
+      "DADRA AND NAGAR HAVELI": {
+        "total_crimes": 314,
+        "district_count": 1,
+        "avg_crimes_per_district": 314.0,
+        "risk_level": "Low"
+      },
+      "DAMAN AND DIU": {
+        "total_crimes": 246,
+        "district_count": 2,
+        "avg_crimes_per_district": 123.0,
+        "risk_level": "Low"
+      },
+      "DELHI": {
+        "total_crimes": 80184,
+        "district_count": 18,
+        "avg_crimes_per_district": 4454.67,
+        "risk_level": "High"
+      },
+      "GOA": {
+        "total_crimes": 4312,
+        "district_count": 2,
+        "avg_crimes_per_district": 2156.0,
+        "risk_level": "Moderate"
+      },
+      "GUJARAT": {
+        "total_crimes": 157435,
+        "district_count": 34,
+        "avg_crimes_per_district": 4630.44,
+        "risk_level": "High"
+      },
+      "HARYANA": {
+        "total_crimes": 72098,
+        "district_count": 24,
+        "avg_crimes_per_district": 3004.08,
+        "risk_level": "Moderate"
+      },
+      "HIMACHAL PRADESH": {
+        "total_crimes": 13750,
+        "district_count": 15,
+        "avg_crimes_per_district": 916.67,
+        "risk_level": "Low"
+      },
+      "JAMMU AND KASHMIR": {
+        "total_crimes": 25390,
+        "district_count": 30,
+        "avg_crimes_per_district": 846.33,
+        "risk_level": "Low"
+      },
+      "JHARKHAND": {
+        "total_crimes": 48208,
+        "district_count": 26,
+        "avg_crimes_per_district": 1854.15,
+        "risk_level": "Moderate"
+      },
+      "KARNATAKA": {
+        "total_crimes": 136689,
+        "district_count": 35,
+        "avg_crimes_per_district": 3905.4,
+        "risk_level": "Moderate"
+      },
+      "KERALA": {
+        "total_crimes": 176334,
+        "district_count": 20,
+        "avg_crimes_per_district": 8816.7,
+        "risk_level": "High"
+      },
+      "LAKSHADWEEP": {
+        "total_crimes": 40,
+        "district_count": 1,
+        "avg_crimes_per_district": 40.0,
+        "risk_level": "Low"
+      },
+      "MADHYA PRADESH": {
+        "total_crimes": 227453,
+        "district_count": 54,
+        "avg_crimes_per_district": 4212.09,
+        "risk_level": "High"
+      },
+      "MAHARASHTRA": {
+        "total_crimes": 234385,
+        "district_count": 45,
+        "avg_crimes_per_district": 5208.56,
+        "risk_level": "High"
+      },
+      "MANIPUR": {
+        "total_crimes": 3178,
+        "district_count": 10,
+        "avg_crimes_per_district": 317.8,
+        "risk_level": "Low"
+      },
+      "MEGHALAYA": {
+        "total_crimes": 3259,
+        "district_count": 11,
+        "avg_crimes_per_district": 296.27,
+        "risk_level": "Low"
+      },
+      "MIZORAM": {
+        "total_crimes": 1709,
+        "district_count": 10,
+        "avg_crimes_per_district": 170.9,
+        "risk_level": "Low"
+      },
+      "NAGALAND": {
+        "total_crimes": 1216,
+        "district_count": 11,
+        "avg_crimes_per_district": 110.55,
+        "risk_level": "Low"
+      },
+      "ORISSA": {
+        "total_crimes": 71718,
+        "district_count": 36,
+        "avg_crimes_per_district": 1992.17,
+        "risk_level": "Moderate"
+      },
+      "PUDUCHERRY": {
+        "total_crimes": 3756,
+        "district_count": 2,
+        "avg_crimes_per_district": 1878.0,
+        "risk_level": "Moderate"
+      },
+      "PUNJAB": {
+        "total_crimes": 36667,
+        "district_count": 28,
+        "avg_crimes_per_district": 1309.54,
+        "risk_level": "Low"
+      },
+      "RAJASTHAN": {
+        "total_crimes": 196224,
+        "district_count": 43,
+        "avg_crimes_per_district": 4563.35,
+        "risk_level": "High"
+      },
+      "SIKKIM": {
+        "total_crimes": 851,
+        "district_count": 4,
+        "avg_crimes_per_district": 212.75,
+        "risk_level": "Low"
+      },
+      "TAMIL NADU": {
+        "total_crimes": 203579,
+        "district_count": 39,
+        "avg_crimes_per_district": 5219.97,
+        "risk_level": "High"
+      },
+      "TRIPURA": {
+        "total_crimes": 6210,
+        "district_count": 9,
+        "avg_crimes_per_district": 690.0,
+        "risk_level": "Low"
+      },
+      "UTTAR PRADESH": {
+        "total_crimes": 226445,
+        "district_count": 76,
+        "avg_crimes_per_district": 2979.54,
+        "risk_level": "Moderate"
+      },
+      "UTTARANCHAL": {
+        "total_crimes": 9546,
+        "district_count": 13,
+        "avg_crimes_per_district": 734.31,
+        "risk_level": "Low"
+      },
+      "WEST BENGAL": {
+        "total_crimes": 169535,
+        "district_count": 29,
+        "avg_crimes_per_district": 5846.03,
+        "risk_level": "High"
+      },
+      "TELANGANA": {
+        "total_crimes": 218015,
+        "district_count": 33,
+        "avg_crimes_per_district": 6606.52,
+        "risk_level": "High",
+        "note": "Formed in 2014; showing unified AP baseline"
+      }
+    }
+  }
+}

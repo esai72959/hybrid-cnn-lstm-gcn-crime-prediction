@@ -1,0 +1,28 @@
+# Python & Virtual Environments
+venv/
+venv_backup/
+env/
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django & Static Collection
+staticfiles/
+db.sqlite3
+db.sqlite3-journal
+*.log
+user_data/
+scratch_*.json
+audit_table.md
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

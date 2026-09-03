@@ -1,0 +1,355 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Forecast | Crime Prediction System — Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="{% static 'css/forecast.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ==============================================================
+     1. HERO
+     ============================================================== -->
+<section class="forecast-hero">
+    <div class="container position-relative">
+        <nav aria-label="breadcrumb" class="breadcrumb-custom">
+            <a href="{% url 'home' %}">Home</a>
+            <span class="sep">/</span>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <span class="sep">/</span>
+            <span class="current">Forecast</span>
+        </nav>
+
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="eyebrow">
+                    <i class="bi bi-graph-up-arrow"></i>&nbsp;Hybrid CNN-LSTM-GCN Forecast Engine
+                </span>
+                <h1>Future Crime Forecast</h1>
+                <p class="hero-subtitle">
+                    Project crime trends beyond the historical dataset. Select a state,
+                    district and future year, and the existing Hybrid CNN-LSTM-GCN prediction
+                    service will generate a forward-looking forecast with a risk assessment.
+                </p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="#forecastForm" class="btn btn-lg cps-btn-primary px-4">
+                        <i class="bi bi-magic me-2"></i>Generate Forecast
+                    </a>
+                    <a href="{% url 'prediction' %}" class="btn btn-lg btn-outline-light px-4">
+                        <i class="bi bi-play-circle me-2"></i>Run Prediction
+                    </a>
+                </div>
+
+                <div class="d-flex flex-wrap gap-3 mt-5">
+                    <div class="hero-mini-stat">
+                        <div class="value">2014+</div>
+                        <div class="label">Forecast Horizon</div>
+                    </div>
+                    <div class="hero-mini-stat">
+                        <div class="value">2001&ndash;2013</div>
+                        <div class="label">Historical Dataset Span</div>
+                    </div>
+                    <div class="hero-mini-stat">
+                        <div class="value">96.47%</div>
+                        <div class="label">Hybrid Model R&sup2; (5-Fold CV)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 text-center">
+                <svg class="hero-illustration" viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="forecastGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#E9D9C9"/>
+                            <stop offset="100%" stop-color="#6E86AB"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="210" cy="180" r="150" fill="rgba(255,255,255,0.06)"/>
+                    <circle cx="210" cy="180" r="110" fill="rgba(255,255,255,0.08)"/>
+                    <polyline points="70,260 130,230 190,235 250,190 310,150 360,110"
+                              fill="none" stroke="#E9D9C9" stroke-width="3" stroke-linecap="round"/>
+                    <polyline points="310,150 360,110" fill="none" stroke="#FFFFFF"
+                              stroke-width="3" stroke-linecap="round" stroke-dasharray="6 8"/>
+                    <circle cx="70" cy="260" r="5" fill="#FFFFFF"/>
+                    <circle cx="190" cy="235" r="5" fill="#FFFFFF"/>
+                    <circle cx="310" cy="150" r="6" fill="#E9D9C9"/>
+                    <circle cx="360" cy="110" r="8" fill="#FFFFFF"/>
+                    <text x="330" y="95" fill="#FFFFFF" font-size="12" font-family="Inter, sans-serif">Forecast</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     2. FORECAST FORM
+     ============================================================== -->
+<section class="pb-5" id="forecastForm">
+    <div class="container">
+        <div class="glass-form-card">
+            <div class="text-center mb-4">
+                <h2 class="cps-section-title">Generate a Future Forecast</h2>
+                <p class="text-muted mb-0">Select a location and a year beyond the historical dataset.</p>
+            </div>
+
+            <div id="forecastAlert" class="alert alert-danger d-none" role="alert"></div>
+
+            <form id="forecastInputForm" novalidate>
+                {% csrf_token %}
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <label for="forecastState" class="form-label fw-semibold">State / UT</label>
+                        <select class="form-select" id="forecastState" name="state" required>
+                            <option value="">Loading States...</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="forecastDistrict" class="form-label fw-semibold">District</label>
+                        <select class="form-select" id="forecastDistrict" name="district" required disabled>
+                            <option value="">Select State First</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="forecastYear" class="form-label fw-semibold">Forecast Year</label>
+                        <select class="form-select" id="forecastYear" name="year" required>
+                            <option value="">Select Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-lg cps-btn-primary px-5" id="generateForecastBtn">
+                        <i class="bi bi-magic me-2"></i>Generate Forecast
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     3. FORECAST RESULT
+     ============================================================== -->
+<section class="py-5 d-none" id="forecastResults">
+    <div class="container">
+        <h2 class="cps-section-title text-center mb-2">Forecast Result</h2>
+        <p class="text-muted text-center mb-5">Generated using the existing Hybrid CNN-LSTM-GCN prediction service.</p>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-blue">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="result-label">State</div>
+                    <div class="result-value fs-6" id="fcState">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-blue">
+                        <i class="bi bi-pin-map"></i>
+                    </div>
+                    <div class="result-label">District</div>
+                    <div class="result-value fs-6" id="fcDistrict">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-blue">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <div class="result-label">Forecast Year</div>
+                    <div class="result-value fs-6" id="fcYear">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-purple">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+                   <div class="result-label">Model</div>
+<div class="result-value fs-6" id="fcModel">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-blue">
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="result-label">Predicted Crime Count</div>
+                    <div class="result-value" id="fcPredictedCount">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-amber">
+                        <i class="bi bi-shield-exclamation"></i>
+                    </div>
+                    <div class="result-label">Risk Level</div>
+                    <div class="result-value" id="fcRiskLevel">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-amber">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <div class="result-label">Risk Score</div>
+                    <div class="result-value" id="fcRiskScore">&mdash;</div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-green">
+                        <i class="bi bi-check2-circle"></i>
+                    </div>
+                    <div class="result-label">Confidence</div>
+                    <div class="result-value" id="fcConfidence">&mdash;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8">
+                <div class="result-card">
+                    <div class="result-icon icon-tone-purple">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <div class="result-label">Recommendation</div>
+                    <div class="result-value fs-6" id="fcRecommendation">Awaiting forecast&hellip;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historical Trend + Forecast Chart -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="cps-card p-4">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
+                        <h5 class="fw-bold mb-0">Historical Crime Trend &amp; Future Forecast</h5>
+                        <div class="btn-group btn-group-sm" role="group" id="fanToggleGroup">
+                            <button type="button" class="btn btn-outline-primary active btn-sm" id="btnFanOn">Fan Chart Ribbon</button>
+                            <button type="button" class="btn btn-outline-primary btn-sm" id="btnFanOff">Point Only</button>
+                        </div>
+                    </div>
+                    <p class="text-muted small mb-4">
+                        Historical crime counts (2001&ndash;2013) with shaded confidence envelope (fan ribbon) modeling dynamic extrapolation uncertainty up to {{ request.POST.year|default:"2030" }}.
+                    </p>
+
+                    <!-- Empty state — shown until a forecast has been generated -->
+                    <div id="forecastChartEmpty" class="chart-empty-state">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <p class="mb-0">Select a state, district and forecast year to view the historical trend and future forecast.</p>
+                    </div>
+
+                    <!-- Chart — hidden until a forecast has been generated -->
+                    <div id="forecastChartWrap" class="chart-canvas-wrap d-none">
+                        <canvas id="forecastTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     4. HOW FORECASTING WORKS
+     ============================================================== -->
+<section class="py-5 section-alt-bg">
+    <div class="container">
+        <h2 class="cps-section-title text-center mb-5">How Forecasting Works</h2>
+
+        <div class="predict-timeline">
+            <div class="timeline-step">
+                <div class="step-badge"><i class="bi bi-clock-history"></i></div>
+                <h6 class="fw-bold mb-1">Historical Crime Data</h6>
+                <p class="text-muted small mb-0">Thirteen years (2001&ndash;2013) of records for the selected district.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="step-badge"><i class="bi bi-sliders"></i></div>
+                <h6 class="fw-bold mb-1">Feature Engineering</h6>
+                <p class="text-muted small mb-0">Raw records are transformed into 33 model-ready features.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="step-badge"><i class="bi bi-grid-3x3-gap"></i></div>
+                <h6 class="fw-bold mb-1">CNN Spatial Feature Extraction</h6>
+                <p class="text-muted small mb-0">Spatial crime patterns across districts are captured.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="step-badge"><i class="bi bi-arrow-repeat"></i></div>
+                <h6 class="fw-bold mb-1">LSTM Temporal Learning</h6>
+                <p class="text-muted small mb-0">Sequential year-over-year trends are learned.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="step-badge"><i class="bi bi-diagram-3"></i></div>
+                <h6 class="fw-bold mb-1">Hybrid CNN-LSTM-GCN</h6>
+                <p class="text-muted small mb-0">Spatial, temporal, and topological graph embeddings are fused for inference.</p>
+            </div>
+            <div class="timeline-step">
+                <div class="step-badge"><i class="bi bi-graph-up-arrow"></i></div>
+                <h6 class="fw-bold mb-1">Future Crime Forecast</h6>
+                <p class="text-muted small mb-0">A predicted crime count is generated for the selected future year.</p>
+            </div>
+            <div class="timeline-step final">
+                <div class="step-badge"><i class="bi bi-flag"></i></div>
+                <h6 class="fw-bold mb-1">Risk Assessment</h6>
+                <p class="text-muted small mb-0">The forecast is classified into a risk level with a recommendation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==============================================================
+     5. QUICK ACTIONS
+     ============================================================== -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="cps-section-title text-center mb-5">Quick Actions</h2>
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'dashboard' %}" class="quick-action-tile">
+                    <span class="qa-icon"><i class="bi bi-grid-1x2"></i></span>
+                    <span class="fw-semibold">Dashboard</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'prediction' %}" class="quick-action-tile">
+                    <span class="qa-icon"><i class="bi bi-play-circle"></i></span>
+                    <span class="fw-semibold">Run Prediction</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'performance' %}" class="quick-action-tile">
+                    <span class="qa-icon"><i class="bi bi-speedometer2"></i></span>
+                    <span class="fw-semibold">Performance</span>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <a href="{% url 'home' %}" class="quick-action-tile">
+                    <span class="qa-icon"><i class="bi bi-house"></i></span>
+                    <span class="fw-semibold">Home</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="{% static 'js/forecast.js' %}"></script>
+{% endblock %}

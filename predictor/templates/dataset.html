@@ -1,0 +1,1123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dataset | Crime Prediction System — Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+
+{% block nav_dataset %}active{% endblock %}
+
+{% block extra_css %}
+<!-- Bootstrap Icons: dataset.html already relies on 30+ bi-* classes.
+     Included here defensively in case it isn't already loaded globally
+     via a shared block on Prediction/Forecast — remove this line if so. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="{% static 'css/dataset.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ============================================================
+     1. HERO SECTION
+============================================================ -->
+<section class="dataset-hero">
+    <div class="container-xl">
+        <div class="dataset-hero__grid">
+
+            <!-- LEFT: breadcrumb, title, description -->
+            <div class="dataset-hero__content">
+
+                <nav aria-label="breadcrumb" class="breadcrumb-custom">
+                    <a href="{% url 'home' %}">Home</a>
+                    <span class="sep">/</span>
+                    <span class="current">Dataset</span>
+                </nav>
+
+                <span class="eyebrow"><i class="bi bi-database-fill"></i>&nbsp;Data Repository</span>
+
+                <h1 class="dataset-hero__title">
+                    <span class="dataset-hero__icon" aria-hidden="true">
+                        <i class="bi bi-database-fill-gear"></i>
+                    </span>
+                    Historical Crime Dataset
+                </h1>
+
+                <p class="dataset-hero__subtitle">
+                    This dataset comprises historical, district-level crime records
+                    used to train, validate and test the Hybrid CNN-LSTM-GCN
+                    spatio-temporal crime prediction model. It provides the spatial
+                    and temporal foundation on which all model predictions in this
+                    project are based.
+                </p>
+            </div>
+
+            <!-- RIGHT: decorative dataset visualization (non-functional) -->
+            <div class="dataset-hero__visual" aria-hidden="true">
+
+                <div class="dataset-hero__visual-stage">
+
+                    <svg class="dataset-hero__visual-lines" viewBox="0 0 320 260" preserveAspectRatio="none">
+                        <line x1="160" y1="130" x2="52" y2="46" />
+                        <line x1="160" y1="130" x2="268" y2="52" />
+                        <line x1="160" y1="130" x2="46" y2="210" />
+                        <line x1="160" y1="130" x2="266" y2="206" />
+                    </svg>
+
+                    <div class="dataset-hero__node dataset-hero__node--core">
+                        <i class="bi bi-database-fill"></i>
+                    </div>
+
+                    <div class="dataset-hero__node dataset-hero__node--dot" style="top: 18%; left: 14%;"></div>
+                    <div class="dataset-hero__node dataset-hero__node--dot" style="top: 14%; left: 82%;"></div>
+                    <div class="dataset-hero__node dataset-hero__node--dot" style="top: 78%; left: 12%;"></div>
+                    <div class="dataset-hero__node dataset-hero__node--dot" style="top: 76%; left: 80%;"></div>
+
+                    <div class="dataset-hero__grid-chip" style="top: 42%; left: 6%;">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+
+                    <div class="dataset-hero__chip dataset-hero__chip--top">
+                        <span class="dataset-hero__chip-icon"><i class="bi bi-collection-fill"></i></span>
+                        <span class="dataset-hero__chip-text">
+                            <span class="dataset-hero__chip-value">{{ overview.total_records }}</span>
+                            <span class="dataset-hero__chip-label">Records</span>
+                        </span>
+                    </div>
+
+                    <div class="dataset-hero__chip dataset-hero__chip--mid">
+                        <span class="dataset-hero__chip-icon"><i class="bi bi-calendar-range-fill"></i></span>
+                        <span class="dataset-hero__chip-text">
+                            <span class="dataset-hero__chip-value">{{ overview.year_range }}</span>
+                            <span class="dataset-hero__chip-label">Coverage</span>
+                        </span>
+                    </div>
+
+                    <div class="dataset-hero__chip dataset-hero__chip--bottom">
+                        <span class="dataset-hero__chip-icon"><i class="bi bi-columns-gap"></i></span>
+                        <span class="dataset-hero__chip-text">
+                            <span class="dataset-hero__chip-value">{{ overview.total_features }}</span>
+                            <span class="dataset-hero__chip-label">Features</span>
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     2. DATASET OVERVIEW
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <h2 class="section__heading">
+        <i class="bi bi-database-fill-check section__heading-icon" aria-hidden="true"></i>
+        Dataset Overview
+    </h2>
+
+    <div class="row dataset-overview-grid g-4">
+
+        <!-- Total Records -->
+        <div class="col-md-4 col-lg-2">
+            <div class="dataset-overview-card">
+                <i class="bi bi-database-fill"></i>
+
+                <p class="dataset-overview-card__value">
+                    {{ overview.total_records }}
+                </p>
+
+                <span class="dataset-overview-card__label">
+                    Total Records
+                </span>
+            </div>
+        </div>
+
+
+        <!-- States -->
+        <div class="col-md-4 col-lg-2">
+            <div class="dataset-overview-card">
+                <i class="bi bi-map-fill"></i>
+
+                <p class="dataset-overview-card__value">
+                    {{ overview.total_states }}
+                </p>
+
+                <span class="dataset-overview-card__label">
+                    States / UTs
+                </span>
+            </div>
+        </div>
+
+
+        <!-- Districts -->
+        <div class="col-md-4 col-lg-2">
+            <div class="dataset-overview-card">
+                <i class="bi bi-geo-alt-fill"></i>
+
+                <p class="dataset-overview-card__value">
+                    {{ overview.total_districts }}
+                </p>
+
+                <span class="dataset-overview-card__label">
+                    Districts
+                </span>
+            </div>
+        </div>
+
+
+        <!-- Years -->
+        <div class="col-md-4 col-lg-2">
+            <div class="dataset-overview-card">
+                <i class="bi bi-calendar-range-fill"></i>
+
+                <p class="dataset-overview-card__value">
+                    {{ overview.year_range }}
+                </p>
+
+                <span class="dataset-overview-card__label">
+                    Years Covered
+                </span>
+            </div>
+        </div>
+
+
+        <!-- Features -->
+        <div class="col-md-4 col-lg-2">
+            <div class="dataset-overview-card">
+                <i class="bi bi-columns-gap"></i>
+
+                <p class="dataset-overview-card__value">
+                    {{ overview.total_features }}
+                </p>
+
+                <span class="dataset-overview-card__label">
+                    Features
+                </span>
+            </div>
+        </div>
+
+
+        <!-- Dataset Status -->
+        <div class="col-md-4 col-lg-2">
+            <div class="dataset-overview-card">
+                <i class="bi bi-patch-check-fill"></i>
+
+                <p class="dataset-overview-card__value">
+                    {{ overview.status }}
+                </p>
+
+                <span class="dataset-overview-card__label">
+                    Dataset Status
+                </span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ============================================================
+     2B. SPATIO-TEMPORAL CRIME RISK MAP (2001–2013)
+============================================================ -->
+<section class="container-xl section reveal-on-scroll" id="mapSection">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+        <h2 class="section__heading mb-0">
+            <i class="bi bi-geo-alt-fill section__heading-icon" aria-hidden="true"></i>
+            Interactive Spatio-Temporal Risk Map (India)
+        </h2>
+        <div class="d-flex flex-wrap align-items-center gap-3 mt-2 mt-md-0">
+            <!-- District Boundaries Layer Toggle -->
+            <div class="form-check form-switch d-flex align-items-center gap-2 mb-0" style="background:#F1F5F9; padding: 4px 12px 4px 34px; border-radius: 20px; border: 1px solid #E2E8F0;">
+                <input class="form-check-input" type="checkbox" id="toggleDistrictMarkers" checked style="cursor: pointer;">
+                <label class="form-check-label small fw-semibold text-dark mb-0" for="toggleDistrictMarkers" style="cursor: pointer; font-size: 12px;">
+                    <i class="bi bi-bounding-box-circles text-primary me-1"></i>District Boundaries (Outlines)
+                </label>
+            </div>
+
+            <!-- Historical Year Dropdown -->
+            <div class="d-flex align-items-center gap-2">
+                <label for="mapYearSelect" class="fw-semibold text-muted small text-uppercase mb-0">Year:</label>
+                <select id="mapYearSelect" class="form-select form-select-sm" style="width: auto; font-weight: 600; min-width: 100px;">
+                    <option value="2013" selected>2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                </select>
+            </div>
+
+            <!-- Reset Map View Button -->
+            <button id="btnResetMapZoom" class="btn btn-outline-secondary btn-sm" title="Reset Map View">
+                <i class="bi bi-arrows-fullscreen"></i>
+            </button>
+        </div>
+    </div>
+    <p class="text-muted mb-4">
+        Explore state-level and district-level historical crime risk classified across 3 tiers 
+        (Low &le;1,500, Moderate 1,501–4,000, High &gt;4,000 crimes/year). District boundary outlines render inside each state polygon with real-time hover inspection.
+    </p>
+
+    <div class="card overflow-hidden" style="border-radius: var(--radius-lg); background: var(--color-card); border: 1px solid var(--color-border); box-shadow: var(--shadow-md);">
+        <div class="position-relative">
+            <div id="indiaRiskMap" style="height: 540px; width: 100%; z-index: 1; background: var(--color-bg);"></div>
+            
+            <!-- Map Overlay Info Panel (Theme-Aware) -->
+            <div id="mapInfoPanel" class="position-absolute p-3 shadow-md" 
+                 style="top: 16px; right: 16px; z-index: 999; min-width: 260px; max-width: 320px; background: var(--color-card); border-radius: var(--radius-md); border: 1px solid var(--color-border); pointer-events: none;">
+                <h6 class="fw-bold mb-1" id="hoverStateName" style="color: var(--color-heading);">Hover over a State / District</h6>
+                <div id="hoverStateDetails" class="small" style="color: var(--color-paragraph);">
+                    Select or hover over any state or internal district boundary outline to inspect crime counts and risk tiers.
+                </div>
+            </div>
+
+            <!-- Floating Legend (Theme-Aware) -->
+            <div class="position-absolute p-2 px-3 shadow-md d-flex flex-wrap align-items-center gap-3"
+                 style="bottom: 16px; left: 16px; z-index: 999; background: var(--color-card); border-radius: var(--radius-md); border: 1px solid var(--color-border); font-size: 12px; color: var(--color-heading);">
+                <span class="fw-bold text-uppercase" style="font-size: 11px; color: var(--color-heading); letter-spacing: 0.04em;">Risk Level:</span>
+                <span class="d-inline-flex align-items-center gap-1" style="color: var(--color-heading);"><span style="width: 12px; height: 12px; border-radius: 3px; background: #2E7D32; display: inline-block;"></span> Low (&le;1,500)</span>
+                <span class="d-inline-flex align-items-center gap-1" style="color: var(--color-heading);"><span style="width: 12px; height: 12px; border-radius: 3px; background: #F59E0B; display: inline-block;"></span> Moderate (1,501–4,000)</span>
+                <span class="d-inline-flex align-items-center gap-1" style="color: var(--color-heading);"><span style="width: 12px; height: 12px; border-radius: 3px; background: #DC2626; display: inline-block;"></span> High (&gt;4,000)</span>
+                <span class="d-inline-flex align-items-center gap-1 ms-2 border-start ps-2" style="color: var(--color-paragraph);"><span style="width:14px; height:2px; background:var(--color-heading); display:inline-block; border-top:1px dashed var(--color-heading);"></span> District Outline</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     3. SEARCH & FILTER SECTION
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <div class="dataset-filter-card">
+
+        <form method="get" action="{% url 'dataset' %}">
+
+            <div class="row g-3 align-items-end">
+
+                <!-- Search -->
+                <div class="col-lg-4">
+
+                    <label
+                        for="datasetSearch"
+                        class="form-label"
+                    >
+                        Search
+                    </label>
+
+                    <div class="dataset-search-box">
+
+                        <i class="bi bi-search"></i>
+
+                        <input
+                            type="text"
+                            id="datasetSearch"
+                            name="q"
+                            class="form-control"
+                            placeholder="Search by state or district name"
+                            value="{{ selected_q }}"
+                        >
+
+                    </div>
+                </div>
+
+
+                <!-- State -->
+                <div class="col-md-4 col-lg-2">
+
+                    <div class="dataset-filter-group">
+
+                        <label
+                            for="stateFilter"
+                            class="form-label"
+                        >
+                            State
+                        </label>
+
+                        <select
+                            id="stateFilter"
+                            name="state"
+                            class="form-select"
+                        >
+
+                            <option value="">
+                                All States
+                            </option>
+
+                            {% for state in all_states %}
+
+                                <option
+                                    value="{{ state }}"
+                                    {% if selected_state|lower == state|lower %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ state }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <!-- District -->
+                <div class="col-md-4 col-lg-2">
+
+                    <div class="dataset-filter-group">
+
+                        <label
+                            for="districtFilter"
+                            class="form-label"
+                        >
+                            District
+                        </label>
+
+                        <select
+                            id="districtFilter"
+                            name="district"
+                            class="form-select"
+                            {% if not selected_state %}
+                                disabled
+                            {% endif %}
+                        >
+
+                            <option value="">
+                                All Districts
+                            </option>
+
+                            {% for district in districts %}
+
+                                <option
+                                    value="{{ district }}"
+                                    {% if selected_district|lower == district|lower %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ district }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <!-- Year -->
+                <div class="col-md-4 col-lg-2">
+
+                    <div class="dataset-filter-group">
+
+                        <label
+                            for="yearFilter"
+                            class="form-label"
+                        >
+                            Year
+                        </label>
+
+                        <select
+                            id="yearFilter"
+                            name="year"
+                            class="form-select"
+                        >
+
+                            <option value="">
+                                All Years
+                            </option>
+
+                            {% for year in years %}
+
+                                <option
+                                    value="{{ year }}"
+                                    {% if selected_year == year|stringformat:"i" %}
+                                        selected
+                                    {% endif %}
+                                >
+                                    {{ year }}
+                                </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="col-lg-2">
+
+                    <div class="d-flex gap-2">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100"
+                        >
+                            <i class="bi bi-funnel-fill"></i>
+                            Search
+                        </button>
+
+                        <a
+                            href="{% url 'dataset' %}"
+                            class="btn btn-outline-secondary w-100"
+                        >
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                            Reset
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     4. DATASET STATISTICS
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <h2 class="section__heading">
+        <i class="bi bi-bar-chart-line-fill section__heading-icon" aria-hidden="true"></i>
+        Dataset Statistics
+    </h2>
+
+    <div class="row dataset-stats-grid g-4">
+
+        <!-- Average IPC Crime Count -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-stat-card">
+
+                <i class="bi bi-graph-up-arrow"></i>
+
+                <h4>
+                    Average IPC Crime Count
+                </h4>
+
+                <p class="dataset-stat-card__value">
+                    {{ stats.avg_crime_count }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Highest Volume Region -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-stat-card">
+
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+                <h4>
+                    Highest Volume Region
+                </h4>
+
+                <p class="dataset-stat-card__value">
+                    {{ stats.highest_volume_region }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Lowest Volume Region -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-stat-card">
+
+                <i class="bi bi-shield-check"></i>
+
+                <h4>
+                    Lowest Volume Region
+                </h4>
+
+                <p class="dataset-stat-card__value">
+                    {{ stats.lowest_volume_region }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Growth Trend -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-stat-card">
+
+                <i class="bi bi-arrow-up-right-circle-fill"></i>
+
+                <h4>
+                    Growth Trend
+                </h4>
+
+                <p class="dataset-stat-card__value">
+                    {{ stats.growth_trend }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     5. DATASET RECORDS
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <h2 class="section__heading">
+        <i class="bi bi-table section__heading-icon" aria-hidden="true"></i>
+        Dataset Records
+    </h2>
+
+
+    {% if page_records %}
+
+        <div class="dataset-table-card">
+
+            <div class="table-responsive">
+
+                <table class="dataset-table table align-middle mb-0">
+
+                    <thead>
+
+                        <tr>
+
+                            {% for header in table_headers %}
+
+                                <th scope="col">
+                                    {{ header }}
+                                </th>
+
+                            {% endfor %}
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for record in page_records %}
+
+                            <tr>
+
+                                {% for value in record %}
+
+                                    <td>
+                                        {{ value }}
+                                    </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- ====================================================
+             PAGINATION
+        ==================================================== -->
+
+        {% if page_obj.has_other_pages %}
+
+            <nav
+                aria-label="Dataset pagination"
+                class="mt-4"
+            >
+
+                <ul class="pagination dataset-pagination">
+
+                    <!-- Previous -->
+                    {% if page_obj.has_previous %}
+
+                        <li class="page-item">
+
+                            <a
+                                class="page-link"
+                                href="?q={{ selected_q }}&state={{ selected_state }}&district={{ selected_district }}&year={{ selected_year }}&page={{ page_obj.previous_page_number }}"
+                            >
+
+                                <i class="bi bi-chevron-left"></i>
+                                Previous
+
+                            </a>
+
+                        </li>
+
+                    {% else %}
+
+                        <li class="page-item disabled">
+
+                            <span class="page-link">
+
+                                <i class="bi bi-chevron-left"></i>
+                                Previous
+
+                            </span>
+
+                        </li>
+
+                    {% endif %}
+
+
+                    <!-- Page Numbers -->
+                    {% for number in page_obj.paginator.page_range %}
+
+                        {% if page_obj.number == number %}
+
+                            <li
+                                class="page-item active"
+                                aria-current="page"
+                            >
+
+                                <span class="page-link">
+                                    {{ number }}
+                                </span>
+
+                            </li>
+
+                        {% elif number > page_obj.number|add:"-3" and number < page_obj.number|add:"3" %}
+
+                            <li class="page-item">
+
+                                <a
+                                    class="page-link"
+                                    href="?q={{ selected_q }}&state={{ selected_state }}&district={{ selected_district }}&year={{ selected_year }}&page={{ number }}"
+                                >
+                                    {{ number }}
+                                </a>
+
+                            </li>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+
+                    <!-- Next -->
+                    {% if page_obj.has_next %}
+
+                        <li class="page-item">
+
+                            <a
+                                class="page-link"
+                                href="?q={{ selected_q }}&state={{ selected_state }}&district={{ selected_district }}&year={{ selected_year }}&page={{ page_obj.next_page_number }}"
+                            >
+
+                                Next
+                                <i class="bi bi-chevron-right"></i>
+
+                            </a>
+
+                        </li>
+
+                    {% else %}
+
+                        <li class="page-item disabled">
+
+                            <span class="page-link">
+
+                                Next
+                                <i class="bi bi-chevron-right"></i>
+
+                            </span>
+
+                        </li>
+
+                    {% endif %}
+
+                </ul>
+
+            </nav>
+
+        {% endif %}
+
+
+    {% else %}
+
+        <!-- ====================================================
+             EMPTY STATE
+        ==================================================== -->
+
+        <div class="dataset-empty-state text-center py-5">
+
+            <i class="bi bi-inbox fs-1 text-muted"></i>
+
+            <h4 class="mt-3">
+                No Matching Records Found
+            </h4>
+
+            <p class="text-muted">
+
+                No dataset records match the selected search criteria.
+                Try adjusting the state, district or year filters, or
+                reset the search to view the full dataset.
+
+            </p>
+
+            <a
+                href="{% url 'dataset' %}"
+                class="btn btn-primary mt-2"
+            >
+
+                <i class="bi bi-arrow-counterclockwise"></i>
+                Reset Filters
+
+            </a>
+
+        </div>
+
+    {% endif %}
+
+</section>
+
+
+<!-- ============================================================
+     6. DATASET INSIGHTS
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <h2 class="section__heading">
+        <i class="bi bi-lightbulb-fill section__heading-icon" aria-hidden="true"></i>
+        Dataset Insights
+    </h2>
+
+    <div class="row dataset-insights-grid g-4">
+
+        <!-- Temporal -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-insight-card">
+
+                <i class="bi bi-clock-history"></i>
+
+                <h4>
+                    Temporal Analysis
+                </h4>
+
+                <p>
+                    Records span thirteen consecutive years, enabling the
+                    LSTM branch to learn temporal dependencies and
+                    year-over-year patterns in crime occurrence.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Spatial -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-insight-card">
+
+                <i class="bi bi-geo-fill"></i>
+
+                <h4>
+                    Spatial Analysis
+                </h4>
+
+                <p>
+                    District-level records across states and union
+                    territories provide the spatial information required
+                    to model regional crime patterns.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Feature Engineering -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-insight-card">
+
+                <i class="bi bi-diagram-3-fill"></i>
+
+                <h4>
+                    33 Features
+                </h4>
+
+                <p>
+                    Thirty-three engineered features are available for
+                    the Hybrid CNN-LSTM-GCN model input pipeline.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Preprocessing -->
+        <div class="col-md-6 col-lg-3">
+
+            <div class="dataset-insight-card">
+
+                <i class="bi bi-funnel-fill"></i>
+
+                <h4>
+                    Preprocessing
+                </h4>
+
+                <p>
+                    The dataset is prepared and formatted through the
+                    existing project data pipeline before being supplied
+                    to the prediction system.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     7. DATASET INFORMATION
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <div class="dataset-info-panel">
+
+        <h2 class="section__heading">
+            <i class="bi bi-info-circle-fill section__heading-icon" aria-hidden="true"></i>
+            Dataset Information
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- Source -->
+            <div class="col-md-6">
+
+                <h5>
+                    <i class="bi bi-info-circle-fill"></i>
+                    Source
+                </h5>
+
+                <p>
+                    The dataset contains historical district-level crime
+                    records aggregated into a structured dataset used by
+                    the Hybrid CNN-LSTM-GCN crime prediction system.
+                </p>
+
+            </div>
+
+
+            <!-- Collection Period -->
+            <div class="col-md-6">
+
+                <h5>
+                    <i class="bi bi-calendar-check-fill"></i>
+                    Collection Period
+                </h5>
+
+                <p>
+                    The available dataset covers annual reporting years
+                    from 2001 to 2013.
+                </p>
+
+            </div>
+
+
+            <!-- Feature Pipeline -->
+            <div class="col-md-6">
+
+                <h5>
+                    <i class="bi bi-diagram-3-fill"></i>
+                    Feature Pipeline
+                </h5>
+
+                <p>
+                    The feature-engineered dataset contains the structured
+                    inputs used by the project's prediction pipeline.
+                </p>
+
+            </div>
+
+
+            <!-- Dataset Structure -->
+            <div class="col-md-6">
+
+                <h5>
+                    <i class="bi bi-table"></i>
+                    Dataset Structure
+                </h5>
+
+                <p>
+                    Records are organized by state, district and year,
+                    together with crime indicators and engineered
+                    numerical features.
+                </p>
+
+            </div>
+
+
+            <!-- Data Integrity -->
+            <div class="col-md-6">
+
+                <h5>
+                    <i class="bi bi-shield-lock-fill"></i>
+                    Data Integrity
+                </h5>
+
+                <p>
+                    Dataset records are loaded through the project's
+                    DatasetLoader and validated against the expected
+                    dataframe structure before being used by the
+                    application.
+                </p>
+
+            </div>
+
+
+            <!-- Model Usage -->
+            <div class="col-md-6">
+
+                <h5>
+                    <i class="bi bi-cpu-fill"></i>
+                    Model Usage
+                </h5>
+
+                <p>
+                    The engineered dataset provides the spatial and
+                    temporal information required by the Hybrid CNN-LSTM-GCN
+                    prediction framework.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     8. DOWNLOAD RESOURCES
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <h2 class="section__heading">
+        <i class="bi bi-folder2-open section__heading-icon" aria-hidden="true"></i>
+        Download Resources
+    </h2>
+
+    <div class="dataset-download-card">
+
+        <i class="bi bi-folder2-open"></i>
+
+        <h4>
+            Dataset Downloads
+        </h4>
+
+        <p>
+            Download functionality is not currently configured in the
+            application.
+        </p>
+
+        <span class="text-muted">
+            Download not configured
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     9. PUT THE DATASET TO WORK
+============================================================ -->
+<section class="container-xl section reveal-on-scroll">
+
+    <div class="dataset-cta">
+
+        <h2>
+            Put the Dataset to Work
+        </h2>
+
+        <p>
+            Generate a live crime prediction or review the model's
+            evaluated performance.
+        </p>
+
+        <div class="dataset-cta__actions">
+
+            <a
+                href="{% url 'prediction' %}"
+                class="btn btn-lg btn-primary"
+            >
+
+                <i class="bi bi-play-fill"></i>
+                Run Prediction
+
+            </a>
+
+            <a
+                href="{% url 'performance' %}"
+                class="btn btn-lg btn-outline-light"
+            >
+
+                <i class="bi bi-bar-chart-fill"></i>
+                View Performance
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     DATASET JAVASCRIPT
+============================================================ -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="{% static 'js/dataset_map.js' %}"></script>
+<script src="{% static 'js/dataset.js' %}"></script>
+
+{% endblock %}

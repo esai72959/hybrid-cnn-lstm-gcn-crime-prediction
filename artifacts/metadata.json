@@ -1,0 +1,8 @@
+{
+    "project_title": "Hybrid CNN-LSTM Framework for Spatio-Temporal Crime Prediction",
+    "dataset_name": "Crimes_in_india_2001-2013_cleaned.csv",
+    "target_column": "TOTAL IPC CRIMES",
+    "number_of_features": 35,
+    "generated_at": "2026-08-02T16:30:07.306970",
+    "sklearn_version": "1.7.2"
+}

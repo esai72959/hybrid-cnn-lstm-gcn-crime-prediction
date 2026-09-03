@@ -1,0 +1,408 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Methodology | Crime Prediction System — Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+{% block meta_description %}The research methodology behind the Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction: data, preprocessing, feature engineering, architecture, and evaluation.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="about-page">
+    <div class="container py-4 py-md-5">
+
+        <!-- 1. HERO -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <nav aria-label="breadcrumb" class="breadcrumb-custom">
+                <a href="{% url 'home' %}">Home</a>
+                <span class="sep">/</span>
+                <a href="{% url 'about' %}">About</a>
+                <span class="sep">/</span>
+                <span class="current">Methodology</span>
+            </nav>
+
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-lg-6">
+                    <span class="eyebrow"><i class="bi bi-diagram-3-fill"></i>&nbsp;Research Methodology</span>
+                    <h1 class="display-5 fw-bold text-navy mt-2 mb-3">Research Methodology</h1>
+                    <p class="lead text-muted mb-4 fs-6 fs-md-5">
+                        Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction
+                    </p>
+                    <p class="text-body mb-0">
+                        The methodology combines spatial learning through a Convolutional Neural Network (CNN) with temporal learning through a Long Short-Term Memory (LSTM) network and topological graph convolutions (GCN), allowing the framework to learn district-level spatial patterns, year-over-year temporal trends, and spatial graph adjacency before producing a crime prediction.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-pipeline-card card shadow-sm border-0 p-4">
+                        <div class="pipeline-mini d-flex flex-column align-items-center gap-2">
+                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Historical Crime Data</div>
+                            <div class="pipeline-arrow py-1"><i class="bi bi-arrow-down fs-5"></i></div>
+                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Data Preprocessing</div>
+                            <div class="pipeline-arrow py-1"><i class="bi bi-arrow-down fs-5"></i></div>
+                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Feature Engineering</div>
+                            <div class="pipeline-arrow py-1"><i class="bi bi-arrow-down fs-5"></i></div>
+                            <div class="pipeline-node pipeline-node-accent w-100 text-center py-2 px-3 fw-bold">Hybrid CNN-LSTM-GCN</div>
+                            <div class="pipeline-arrow py-1"><i class="bi bi-arrow-down fs-5"></i></div>
+                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Crime Prediction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. DATASET & DATA COLLECTION -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Dataset &amp; Data Collection</h2>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-database-fill-check fs-3 text-primary mt-1"></i>
+                            <div>
+                                <h3 class="h5 fw-bold text-navy mb-2">Historical District-Level Records</h3>
+                                <p class="text-body mb-0">
+                                    The framework is trained on historical district-level crime records spanning 2001&ndash;2013. Each record contains crime-related attributes that are used for analysis and as the basis for prediction.
+                                </p>
+                                <p class="small text-muted mt-3 mb-0">
+                                    <i class="bi bi-box-arrow-up-right me-1"></i>
+                                    Source: <a href="https://www.kaggle.com/datasets/meruvulikith/crimes-in-india-dataset-2001-2013" target="_blank" rel="noopener noreferrer" class="text-navy">Crimes in India Dataset 2001&ndash;2013</a> (Kaggle)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <span class="badge rounded-pill badge-custom fs-6 px-3 py-2">2001 &ndash; 2013</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DATA PREPROCESSING -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Data Preprocessing</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    Raw crime records are prepared through several stages before being used to train the model.
+                </p>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-brush-fill fs-3 text-primary"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Data Cleaning</h3>
+                        <p class="text-muted small mb-0">Removing inconsistencies and errors from the raw crime records.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-patch-question-fill fs-3 text-primary"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Handling Missing Values</h3>
+                        <p class="text-muted small mb-0">Identifying and addressing gaps in the dataset prior to model training.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-sliders fs-3 text-primary"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Normalization &amp; Scaling</h3>
+                        <p class="text-muted small mb-0">Scaling feature values to a consistent range suitable for model input.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-box-seam-fill fs-3 text-primary"></i>
+                        </div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Training Preparation</h3>
+                        <p class="text-muted small mb-0">Structuring the cleaned, scaled dataset into a form ready for model training.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FEATURE ENGINEERING -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Feature Engineering</h2>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5 text-center max-w-900 mx-auto">
+                <span class="badge badge-accent-pill mb-3 d-inline-block mx-auto">33 Model-Ready Features</span>
+                <p class="text-body mb-0">
+                    The project prepares 33 model-ready spatial and temporal features from the preprocessed dataset. Engineered features give the CNN and LSTM branches structured signals to learn from directly, helping each branch capture spatial and temporal patterns more effectively than raw, unprocessed data would allow.
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. CNN BRANCH — SPATIAL LEARNING -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">CNN Branch &mdash; Spatial Learning</h2>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="bi bi-grid-3x3-gap-fill fs-3 text-primary mt-1"></i>
+                    <div>
+                        <p class="text-body mb-0">
+                            The CNN branch is responsible for extracting spatial patterns from the engineered features. It learns localized crime patterns across regions and districts, identifying spatial correlations that are not easily captured by traditional methods. The output of this branch is a spatial feature representation that is passed forward for fusion with the temporal branch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. LSTM BRANCH — TEMPORAL LEARNING -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">LSTM Branch &mdash; Temporal Learning</h2>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="bi bi-clock-history fs-3 text-primary mt-1"></i>
+                    <div>
+                        <p class="text-body mb-0">
+                            The LSTM branch models temporal dependencies within the crime data. It learns trends and relationships across historical years, capturing how crime patterns evolve over time. The output of this branch is a temporal feature representation that is passed forward for fusion with the spatial branch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. HYBRID CNN-LSTM-GCN ARCHITECTURE -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Hybrid CNN-LSTM-GCN Architecture</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    Spatial, temporal, and topological graph representations are learned in parallel, then fused into a unified hybrid representation before prediction.
+                </p>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5">
+                <div class="arch-diagram d-flex flex-column align-items-center max-w-700 mx-auto w-100">
+
+                    <!-- Node 1 -->
+                    <div class="arch-box w-100 text-center py-2 px-3 fw-semibold">Historical Crime Data</div>
+
+                    <div class="arch-arrow py-2"><i class="bi bi-arrow-down fs-4"></i></div>
+
+                    <!-- Node 2 -->
+                    <div class="arch-box w-100 text-center py-2 px-3 fw-semibold">Data Preprocessing</div>
+
+                    <div class="arch-arrow py-2"><i class="bi bi-arrow-down fs-4"></i></div>
+
+                    <!-- Node 3 -->
+                    <div class="arch-box w-100 text-center py-2 px-3 fw-semibold">Feature Engineering</div>
+
+                    <!-- Split Arrows SVG -->
+                    <div class="arch-svg-connector w-100 d-flex justify-content-center my-1">
+                        <svg width="100%" height="40" viewBox="0 0 400 40" preserveAspectRatio="none">
+                            <path d="M 200 0 L 200 15 L 100 15 L 100 32" stroke="#6f89b3" stroke-width="2" fill="none" />
+                            <path d="M 200 0 L 200 15 L 300 15 L 300 32" stroke="#6f89b3" stroke-width="2" fill="none" />
+                            <polygon points="95,30 100,40 105,30" fill="#6f89b3" />
+                            <polygon points="295,30 300,40 305,30" fill="#6f89b3" />
+                        </svg>
+                    </div>
+
+                    <!-- Parallel Branches -->
+                    <div class="w-100 row g-3 justify-content-center">
+                        <div class="col-6">
+                            <div class="arch-box arch-branch w-100 text-center p-3 h-100">
+                                <span class="d-block fw-bold text-navy">CNN Branch</span>
+                                <span class="d-block small text-muted mt-1">Spatial Learning</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="arch-box arch-branch w-100 text-center p-3 h-100">
+                                <span class="d-block fw-bold text-navy">LSTM Branch</span>
+                                <span class="d-block small text-muted mt-1">Temporal Learning</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Merge Arrows SVG -->
+                    <div class="arch-svg-connector w-100 d-flex justify-content-center my-1">
+                        <svg width="100%" height="40" viewBox="0 0 400 40" preserveAspectRatio="none">
+                            <path d="M 100 0 L 100 20 L 200 20 L 200 32" stroke="#6f89b3" stroke-width="2" fill="none" />
+                            <path d="M 300 0 L 300 20 L 200 20 L 200 32" stroke="#6f89b3" stroke-width="2" fill="none" />
+                            <polygon points="195,30 200,40 205,30" fill="#6f89b3" />
+                        </svg>
+                    </div>
+
+                    <!-- Node: Fusion -->
+                    <div class="arch-box arch-highlight w-100 text-center py-3 px-3 fw-bold fs-5">Hybrid CNN-LSTM-GCN Feature Fusion</div>
+
+                    <div class="arch-arrow py-2"><i class="bi bi-arrow-down fs-4"></i></div>
+
+                    <!-- Node: Prediction -->
+                    <div class="arch-box w-100 text-center py-2 px-3 fw-semibold">Crime Prediction</div>
+
+                    <div class="arch-arrow py-2"><i class="bi bi-arrow-down fs-4"></i></div>
+
+                    <!-- Node: Result -->
+                    <div class="arch-box w-100 text-center py-2 px-3 fw-semibold">Forecast / Result</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. MODEL TRAINING & EVALUATION -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Model Training &amp; Evaluation</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    The primary task is continuous crime-count prediction, not classification. The trained model is evaluated using standard regression metrics.
+                </p>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 academic-card card-accent p-4 h-100 justify-content-center">
+                        <div class="display-6 fw-bold text-primary mb-1">0.9749</div>
+                        <div class="text-primary small fw-semibold text-uppercase">R&sup2; Score</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 academic-card p-4 h-100 justify-content-center">
+                        <div class="display-6 fw-bold text-navy mb-1">0.1123</div>
+                        <div class="text-muted small fw-semibold text-uppercase">RMSE</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 academic-card p-4 h-100 justify-content-center">
+                        <div class="display-6 fw-bold text-navy mb-1">0.0842</div>
+                        <div class="text-muted small fw-semibold text-uppercase">MAE</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card shadow-sm border-0 academic-card p-4 h-100 justify-content-center">
+                        <div class="display-6 fw-bold text-navy mb-1">0.0126</div>
+                        <div class="text-muted small fw-semibold text-uppercase">MSE</div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-muted small text-center max-w-700 mx-auto mt-4 mb-0">
+                R&sup2; reflects how well the model explains variance in crime counts, while RMSE, MAE, and MSE measure the average prediction error &mdash; together describing regression performance rather than classification accuracy.
+            </p>
+        </section>
+
+        <!-- 9. PREDICTION WORKFLOW -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Prediction Workflow</h2>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="timeline-container">
+                <div class="row g-4 position-relative">
+                    <div class="col-6 col-md-4 col-lg text-center position-relative">
+                        <div class="timeline-step p-3">
+                            <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">01</div>
+                            <h3 class="h6 fw-bold text-navy mb-2">State Selection</h3>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg text-center position-relative">
+                        <div class="timeline-step p-3">
+                            <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">02</div>
+                            <h3 class="h6 fw-bold text-navy mb-2">District Selection</h3>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg text-center position-relative">
+                        <div class="timeline-step p-3">
+                            <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">03</div>
+                            <h3 class="h6 fw-bold text-navy mb-2">Year Selection</h3>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg text-center position-relative">
+                        <div class="timeline-step p-3">
+                            <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">04</div>
+                            <h3 class="h6 fw-bold text-navy mb-2">Feature Preparation</h3>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg text-center position-relative">
+                        <div class="timeline-step p-3">
+                            <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">05</div>
+                            <h3 class="h6 fw-bold text-navy mb-2">Hybrid CNN-LSTM-GCN</h3>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg text-center position-relative">
+                        <div class="timeline-step p-3">
+                            <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">06</div>
+                            <h3 class="h6 fw-bold text-navy mb-2">Crime Prediction</h3>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg text-center position-relative">
+                        <div class="timeline-step p-3">
+                            <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">07</div>
+                            <h3 class="h6 fw-bold text-navy mb-2">Risk / Result Display</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-muted small text-center max-w-700 mx-auto mt-4 mb-0">
+                The future forecast workflow follows the same steps, with a future year selected in place of a historical one so the framework produces a forward-looking estimate instead of a result validated against a known record.
+            </p>
+        </section>
+
+        <!-- 10. METHODOLOGY SUMMARY -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Methodology Summary</h2>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5 text-center max-w-900 mx-auto">
+                <div class="d-flex flex-wrap align-items-center justify-content-center gap-2">
+                    <span class="badge rounded-pill badge-custom">Data</span>
+                    <i class="bi bi-arrow-right text-primary"></i>
+                    <span class="badge rounded-pill badge-custom">Preprocessing</span>
+                    <i class="bi bi-arrow-right text-primary"></i>
+                    <span class="badge rounded-pill badge-custom">Feature Engineering</span>
+                    <i class="bi bi-arrow-right text-primary"></i>
+                    <span class="badge rounded-pill badge-custom">CNN + LSTM</span>
+                    <i class="bi bi-arrow-right text-primary"></i>
+                    <span class="badge rounded-pill badge-custom">Hybrid Fusion</span>
+                    <i class="bi bi-arrow-right text-primary"></i>
+                    <span class="badge rounded-pill badge-custom">Prediction</span>
+                    <i class="bi bi-arrow-right text-primary"></i>
+                    <span class="badge rounded-pill badge-accent-pill">Evaluation</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. CTA -->
+        <section class="mb-2 reveal-on-scroll">
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5 text-center max-w-900 mx-auto">
+                <h2 class="h3 fw-bold text-navy mb-3">Put the Methodology to Work</h2>
+                <p class="text-muted mb-4 max-w-700 mx-auto">
+                    Explore the platform's dashboard, generate a live prediction, or review model performance in detail.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'dashboard' %}" class="btn btn-accent px-4 py-2 fw-medium">Dashboard</a>
+                    <a href="{% url 'prediction' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">Run Prediction</a>
+                    <a href="{% url 'performance' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">Model Performance</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+{% endblock %}

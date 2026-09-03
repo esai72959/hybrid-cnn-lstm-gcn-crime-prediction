@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact | Crime Prediction System — Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+
+{% block nav_contact %}active{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-4 py-md-5">
+    <nav aria-label="breadcrumb" class="breadcrumb-custom mb-4">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Contact</span>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="row justify-content-center text-center mb-4 mb-md-5">
+        <div class="col-lg-8">
+            <span class="eyebrow justify-content-center"><i class="bi bi-person-lines-fill"></i>&nbsp;Project Information</span>
+            <h1 class="display-5 fw-bold text-navy mb-2 mt-2">Contact &amp; Project Details</h1>
+            <p class="lead text-muted">
+                Information about the academic project and research team.
+            </p>
+            <hr class="w-25 mx-auto border-2 opacity-50 my-3 text-primary">
+        </div>
+    </div>
+
+    <!-- Project Information Section -->
+    <section class="mb-5">
+        <div class="card shadow-sm border-0 academic-card h-100">
+            <div class="card-header bg-transparent border-bottom py-3">
+                <h2 class="h5 mb-0 fw-bold text-navy d-flex align-items-center">
+                    <i class="bi bi-journal-text me-2 text-primary"></i>Project Information
+                </h2>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4">
+                    <div class="col-md-12">
+                        <div class="info-item">
+                            <span class="info-label text-uppercase text-muted fw-semibold">Project Title</span>
+                            <div class="info-value fw-bold fs-5 text-navy">
+                                Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-item">
+                            <span class="info-label text-uppercase text-muted fw-semibold">Department</span>
+                            <div class="info-value fw-medium">Computer Science and Engineering</div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-item">
+                            <span class="info-label text-uppercase text-muted fw-semibold">College</span>
+                            <div class="info-value fw-medium">CMR Technical Campus</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-item">
+                            <span class="info-label text-uppercase text-muted fw-semibold">Academic Year</span>
+                            <div class="info-value fw-medium">2023 – 2027</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="info-item">
+                            <span class="info-label text-uppercase text-muted fw-semibold">Research Area</span>
+                            <div class="info-value fw-medium">Deep Learning, Spatio-Temporal Analysis, Crime Prediction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Team Section -->
+    <section class="mb-5">
+        <div class="d-flex align-items-center mb-4">
+            <h2 class="h4 mb-0 fw-bold text-navy">
+                <i class="bi bi-people-fill me-2 text-primary"></i>Research Team
+            </h2>
+        </div>
+
+        <div class="row g-4">
+            <!-- Student 1 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 academic-card team-card">
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="avatar-placeholder mb-3 d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary fw-bold rounded-circle">
+                                EE
+                            </div>
+                            <h3 class="h5 fw-bold text-navy mb-1">E. Sai Eshwar</h3>
+                            <p class="text-muted mb-0 small fw-semibold">Computer Science and Engineering</p>
+                        </div>
+                        <div class="pt-3 border-top mt-3">
+                            <a href="mailto:esai72959@gmail.com" class="email-link d-inline-flex align-items-center text-decoration-none">
+                                <i class="bi bi-envelope-fill me-2"></i>
+                                <span>esai72959@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student 2 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 academic-card team-card">
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="avatar-placeholder mb-3 d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary fw-bold rounded-circle">
+                                PN
+                            </div>
+                            <h3 class="h5 fw-bold text-navy mb-1">P. Nainitha</h3>
+                            <p class="text-muted mb-0 small fw-semibold">Computer Science and Engineering</p>
+                        </div>
+                        <div class="pt-3 border-top mt-3">
+                            <a href="mailto:pagillnainitha2005@gmail.com" class="email-link d-inline-flex align-items-center text-decoration-none">
+                                <i class="bi bi-envelope-fill me-2"></i>
+                                <span>pagillnainitha2005@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student 3 -->
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 academic-card team-card">
+                    <div class="card-body p-4 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="avatar-placeholder mb-3 d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary fw-bold rounded-circle">
+                                NR
+                            </div>
+                            <h3 class="h5 fw-bold text-navy mb-1">N. Rohit</h3>
+                            <p class="text-muted mb-0 small fw-semibold">Computer Science and Engineering</p>
+                        </div>
+                        <div class="pt-3 border-top mt-3">
+                            <a href="mailto:nallapurohit@gmail.com" class="email-link d-inline-flex align-items-center text-decoration-none">
+                                <i class="bi bi-envelope-fill me-2"></i>
+                                <span>nallapurohit@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Guide Section -->
+    <section>
+        <div class="d-flex align-items-center mb-4">
+            <h2 class="h4 mb-0 fw-bold text-navy">
+                <i class="bi bi-person-badge-fill me-2 text-primary"></i>Project Guide
+            </h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-sm border-0 academic-card h-100">
+                    <div class="card-body p-4">
+                        <div class="avatar-placeholder mb-3 d-inline-flex align-items-center justify-content-center bg-primary-subtle text-primary fw-bold rounded-circle">
+                            MB
+                        </div>
+                        <h3 class="h5 fw-bold text-navy mb-1">Dr. B. Mohan Babu</h3>
+                        <p class="text-primary fw-semibold mb-2 small">Associate Professor</p>
+                        <p class="text-muted mb-0 small">
+                            Department of Computer Science and Engineering<br>
+                            CMR Technical Campus
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

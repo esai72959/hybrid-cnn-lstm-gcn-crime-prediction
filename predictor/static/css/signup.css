@@ -1,0 +1,203 @@
+/* ============================================================
+   SIGNUP — Authentication Presentation Layer
+   Hybrid CNN-LSTM Framework for Spatio-Temporal Crime Prediction
+   ------------------------------------------------------------
+   Shares the same design tokens and base auth components as
+   login.css (duplicated here so signup.html only needs to load
+   one stylesheet, matching the original file structure). No new
+   colors, radii, shadows, or fonts — everything reads from the
+   tokens already defined in style.css.
+   ============================================================ */
+
+/* ---------- Icon badge (same visual language as .feature-icon) ---------- */
+.auth-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-icon-badge svg { width: 26px; height: 26px; }
+
+/* ---------- Feature bullet list (brand-copy column) ---------- */
+.auth-points {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.auth-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--fs-small);
+  color: var(--color-paragraph);
+}
+.auth-points li i {
+  color: var(--color-primary);
+  margin-top: 0.2rem;
+}
+
+/* ---------- Password input: room for the show/hide toggle ---------- */
+.pred-input-wrap { position: relative; }
+.pred-input-wrap .pred-input { padding-right: 2.75rem; }
+
+.auth-toggle-visibility {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  color: var(--color-paragraph);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+.auth-toggle-visibility:hover { color: var(--color-primary); }
+
+/* ---------- Field validation states (mirrors .contact-form__input) ---------- */
+.pred-input.is-valid { border-color: var(--color-primary); }
+.pred-input.is-invalid { border-color: var(--color-secondary); }
+
+.auth-field-error {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-xs);
+  color: var(--color-secondary);
+  margin-top: 0.4rem;
+}
+.auth-field-error.show { display: flex; }
+
+[data-theme="dark"] .auth-field-error,
+[data-theme="dark"] .pred-input.is-invalid { color: #E9D9C9; }
+
+/* ---------- Submit button loading state (mirrors .btn-predict.is-loading) ---------- */
+.btn .spinner-inline { display: none; }
+.btn.is-loading .spinner-inline { display: inline-block; }
+.btn.is-loading .btn-label { opacity: 0.85; }
+.btn:disabled,
+.btn.is-loading {
+  cursor: not-allowed;
+  opacity: 0.75;
+  transform: none !important;
+}
+
+/* ---------- Non-field / server-side alert ---------- */
+.auth-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-4);
+  background: var(--color-secondary-40);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-heading);
+}
+.auth-alert i { color: var(--color-secondary); margin-top: 0.15rem; }
+
+/* ---------- Footer switch link ---------- */
+.auth-switch {
+  text-align: center;
+  margin-top: var(--space-4);
+  font-size: var(--fs-small);
+  color: var(--color-paragraph);
+  margin-bottom: 0;
+}
+.auth-switch a { font-weight: 600; margin-left: 4px; }
+
+/* ============================================================
+   SIGNUP-ONLY ADDITIONS
+   ============================================================ */
+
+/* ---------- Password strength meter ---------- */
+.pw-strength { margin-top: 0.6rem; }
+
+.pw-strength-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  height: 4px;
+}
+.pw-strength-bar {
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+.pw-strength-bar.is-active { background: var(--color-primary); }
+
+.pw-strength-label {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: var(--fs-xs);
+  color: var(--color-paragraph);
+}
+.pw-strength-label .val { font-weight: 600; color: var(--color-heading); }
+
+/* ---------- Password requirement checklist ---------- */
+.pw-req-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 0.75rem;
+}
+.pw-req-list li {
+  font-size: var(--fs-xs);
+  color: var(--color-paragraph);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition-fast);
+}
+.pw-req-list li i { color: var(--color-border); font-size: 0.85rem; }
+.pw-req-list li.met { color: var(--color-heading); }
+.pw-req-list li.met i { color: var(--color-primary); }
+
+@media (max-width: 420px) {
+  .pw-req-list { grid-template-columns: 1fr; }
+}
+
+/* ---------- Confirm password match indicator ---------- */
+.auth-match-msg {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--fs-xs);
+  margin-top: 0.4rem;
+}
+.auth-match-msg.show { display: flex; }
+.auth-match-msg.match { color: var(--color-primary); }
+.auth-match-msg.no-match { color: var(--color-secondary); }
+
+/* ---------- Terms & conditions row ---------- */
+.auth-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: var(--space-3) 0 var(--space-4);
+  font-size: var(--fs-small);
+  color: var(--color-paragraph);
+  line-height: 1.5;
+}
+.auth-terms input {
+  margin-top: 0.2rem;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+.auth-terms label { cursor: pointer; }
+.auth-terms a { font-weight: 600; }

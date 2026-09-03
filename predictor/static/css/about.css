@@ -1,0 +1,247 @@
+/* ============================================================
+   ABOUT PAGE STYLESHEET - HYBRID CNN-LSTM SYSTEM
+============================================================ */
+
+/* Root Structural & Color Definitions */
+.about-page {
+    font-family: inherit;
+    color: var(--bs-body-color, #243653);
+}
+
+.text-navy {
+    color: var(--bs-heading-color, #243653) !important;
+}
+
+.max-w-700 {
+    max-width: 700px;
+}
+
+.max-w-900 {
+    max-width: 900px;
+}
+
+.tiny-text {
+    font-size: 0.825rem;
+    line-height: 1.4;
+}
+
+/* Eyebrows & Badges */
+.eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: #6f89b3;
+}
+
+.badge-custom {
+    background-color: rgba(111, 137, 179, 0.12);
+    color: #4b648a;
+    border: 1px solid rgba(111, 137, 179, 0.25);
+    font-weight: 500;
+    padding: 0.5em 0.85em;
+}
+
+/* Academic Card Base Styling */
+.academic-card {
+    background-color: var(--bs-card-bg, #ffffff);
+    border: 1px solid var(--bs-card-border-color, rgba(0, 0, 0, 0.08)) !important;
+    border-radius: 0.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.academic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Accent Card Variant */
+.card-accent {
+    border: 1px solid rgba(111, 137, 179, 0.4) !important;
+    background-color: rgba(111, 137, 179, 0.03);
+}
+
+.badge-accent-pill {
+    background-color: #6f89b3;
+    color: #ffffff;
+    font-size: 0.725rem;
+    padding: 0.35em 0.75em;
+    border-radius: 50rem;
+}
+
+/* Pipeline & Architecture Diagram Boxes */
+.hero-pipeline-card {
+    background-color: var(--bs-card-bg, #ffffff);
+    border: 1px solid var(--bs-card-border-color, rgba(0, 0, 0, 0.08)) !important;
+    border-radius: 0.75rem;
+}
+
+.pipeline-node, .arch-box {
+    background-color: var(--bs-tertiary-bg, #f8f9fa);
+    border: 1px solid var(--bs-border-color, #e9ecef);
+    border-radius: 0.5rem;
+    color: var(--bs-body-color, #243653);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pipeline-node-accent, .arch-highlight {
+    background-color: rgba(111, 137, 179, 0.15) !important;
+    border-color: #6f89b3 !important;
+    color: #243653 !important;
+}
+
+.arch-branch {
+    background-color: var(--bs-card-bg, #ffffff);
+}
+
+/* Arrow & Connector Styling */
+.pipeline-arrow, .arch-arrow {
+    color: #6f89b3 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.arch-svg-connector {
+    max-width: 100%;
+    overflow: visible;
+}
+
+.arch-svg-connector path,
+.arch-svg-connector polygon {
+    transition: stroke 0.2s ease, fill 0.2s ease;
+}
+
+/* Objectives Grid Numbering */
+.obj-number {
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+}
+
+/* Timeline Components */
+.step-num {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(111, 137, 179, 0.15);
+    color: #6f89b3;
+    border: 2px solid #6f89b3;
+}
+
+/* Button Custom Colors (No Bright Blue) */
+.btn-accent {
+    background-color: #6f89b3;
+    border-color: #6f89b3;
+    color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.btn-accent:hover, .btn-accent:focus {
+    background-color: #5a739d;
+    border-color: #5a739d;
+    color: #ffffff;
+}
+
+.btn-outline-accent {
+    background-color: transparent;
+    border-color: #6f89b3;
+    color: #6f89b3;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-accent:hover, .btn-outline-accent:focus {
+    background-color: rgba(111, 137, 179, 0.1);
+    border-color: #5a739d;
+    color: #5a739d;
+}
+
+/* ============================================================
+   DARK MODE INTEGRATION
+============================================================ */
+
+[data-bs-theme="dark"] .text-navy,
+body.dark-mode .text-navy,
+.dark-mode .text-navy {
+    color: #f1f5f9 !important;
+}
+
+[data-bs-theme="dark"] .academic-card,
+body.dark-mode .academic-card,
+.dark-mode .academic-card,
+[data-bs-theme="dark"] .hero-pipeline-card,
+body.dark-mode .hero-pipeline-card,
+.dark-mode .hero-pipeline-card {
+    background-color: var(--bs-dark-surface, #1e293b) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .pipeline-node,
+body.dark-mode .pipeline-node,
+.dark-mode .pipeline-node,
+[data-bs-theme="dark"] .arch-box,
+body.dark-mode .arch-box,
+.dark-mode .arch-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+}
+
+[data-bs-theme="dark"] .pipeline-node-accent,
+body.dark-mode .pipeline-node-accent,
+.dark-mode .pipeline-node-accent,
+[data-bs-theme="dark"] .arch-highlight,
+body.dark-mode .arch-highlight,
+.dark-mode .arch-highlight {
+    background-color: rgba(111, 137, 179, 0.25) !important;
+    border-color: #6f89b3 !important;
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .pipeline-arrow,
+body.dark-mode .pipeline-arrow,
+.dark-mode .pipeline-arrow,
+[data-bs-theme="dark"] .arch-arrow,
+body.dark-mode .arch-arrow,
+.dark-mode .arch-arrow {
+    color: #9ec5fe !important;
+}
+
+[data-bs-theme="dark"] .arch-svg-connector path,
+body.dark-mode .arch-svg-connector path,
+.dark-mode .arch-svg-connector path {
+    stroke: #9ec5fe !important;
+}
+
+[data-bs-theme="dark"] .arch-svg-connector polygon,
+body.dark-mode .arch-svg-connector polygon,
+.dark-mode .arch-svg-connector polygon {
+    fill: #9ec5fe !important;
+}
+
+[data-bs-theme="dark"] .badge-custom,
+body.dark-mode .badge-custom,
+.dark-mode .badge-custom {
+    background-color: rgba(111, 137, 179, 0.25);
+    color: #9ec5fe;
+    border-color: rgba(111, 137, 179, 0.4);
+}
+
+[data-bs-theme="dark"] .card-accent,
+body.dark-mode .card-accent,
+.dark-mode .card-accent {
+    background-color: rgba(111, 137, 179, 0.12) !important;
+    border-color: #6f89b3 !important;
+}
+
+[data-bs-theme="dark"] .btn-outline-accent,
+body.dark-mode .btn-outline-accent,
+.dark-mode .btn-outline-accent {
+    color: #9ec5fe;
+    border-color: #6f89b3;
+}
+
+[data-bs-theme="dark"] .btn-outline-accent:hover,
+body.dark-mode .btn-outline-accent:hover,
+.dark-mode .btn-outline-accent:hover {
+    background-color: rgba(111, 137, 179, 0.25);
+    color: #ffffff;
+}

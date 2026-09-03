@@ -1,0 +1,529 @@
+{% extends "base.html" %}
+
+{% block title %}Crime Prediction System | Hybrid CNN-LSTM-GCN Research Platform{% endblock %}
+
+{% block meta_description %}A premium AI research platform applying a Hybrid CNN-LSTM-GCN deep learning architecture to spatio-temporal crime prediction across India, 2001–2013, achieving 96.47% ± 1.71% R² (2-Way) and 96.10% ± 2.00% R² (3-Way GCN) 5-fold cross-validated performance.{% endblock %}
+
+{% block nav_home %}active{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+{% endblock %}
+
+{% block content %}
+
+<!-- ==================================================================
+     HERO SECTION
+     ================================================================== -->
+<section class="hero-section page-fade" aria-labelledby="hero-heading">
+  <div class="container-xl">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <div class="eyebrow">AI Research Platform</div>
+        <h1 id="hero-heading">
+          Hybrid CNN&#8209;LSTM-GCN Framework for<br>
+          <span class="hero-highlight">Spatio&#8209;Temporal Crime Prediction</span>
+        </h1>
+        <p class="hero-subtitle">
+          A deep learning research system that fuses Convolutional Neural Networks with
+          Long Short&#8209;Term Memory networks and Graph Convolutions to model how crime evolves across space and time —
+          trained on <span id="heroDatasetRecordsText">9,840</span> historical records spanning 2001–2013, reaching 96.47% R² (2-Way) and 96.10% R² (3-Way GCN) across 5-fold cross-validation.
+        </p>
+
+        <div class="hero-actions">
+          <a href="{% url 'prediction' %}" class="btn btn-primary-custom btn-lg-custom">
+            <i class="bi bi-play-fill" aria-hidden="true"></i> Run Prediction
+          </a>
+          <a href="{% url 'dashboard' %}" class="btn btn-outline-custom btn-lg-custom">
+            <i class="bi bi-grid-1x2" aria-hidden="true"></i> Explore Dashboard
+          </a>
+        </div>
+
+        <div class="hero-meta" role="list" aria-label="Key research metrics">
+          <div class="hero-meta-item" role="listitem">
+            <span class="hero-meta-value">96.47%</span>
+            <span class="hero-meta-label">2-Way R&sup2; (5-Fold CV)</span>
+          </div>
+          <div class="hero-meta-divider" aria-hidden="true"></div>
+          <div class="hero-meta-item" role="listitem">
+            <span class="hero-meta-value" id="heroDatasetRecords">9,840</span>
+            <span class="hero-meta-label">Dataset Records</span>
+          </div>
+          <div class="hero-meta-divider" aria-hidden="true"></div>
+          <div class="hero-meta-item" role="listitem">
+            <span class="hero-meta-value">2001–2013</span>
+            <span class="hero-meta-label">Study Period</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Spatiotemporal Crime Pattern Illustration">
+        <svg class="hero-svg" viewBox="0 0 480 460" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Animated illustration of crime hotspots spreading across a spatial grid over time">
+          <defs>
+            <linearGradient id="hsGrad1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="var(--color-primary, #6E86AB)"/>
+              <stop offset="100%" stop-color="var(--color-hover, #566A89)"/>
+            </linearGradient>
+            <!-- Ambient Radial Halo for Light Theme -->
+            <radialGradient id="hsGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="var(--color-accent, #E9D9C9)" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="var(--color-accent, #E9D9C9)" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- 1. Coordinate Grid with Rounded Border -->
+          <rect x="40" y="30" width="400" height="370" rx="18" class="hero-grid-bg"/>
+          
+          <g class="hero-grid-line">
+            <path d="M40 90 H440 M40 150 H440 M40 210 H440 M40 270 H440 M40 330 H440" />
+            <path d="M105 30 V400 M175 30 V400 M245 30 V400 M315 30 V400 M380 30 V400" />
+          </g>
+
+          <!-- 2. Timeline Axis Underneath -->
+          <line x1="40" y1="430" x2="440" y2="430" class="hero-timeline-axis"/>
+          <circle cx="90" cy="430" r="4.5" class="hero-timeline-dot"/>
+          <circle cx="240" cy="430" r="4.5" class="hero-timeline-dot"/>
+          <circle cx="390" cy="430" r="5" class="hero-timeline-dot--active"/>
+          <text x="90" y="452" text-anchor="middle" class="hero-timeline-text">2001</text>
+          <text x="240" y="452" text-anchor="middle" class="hero-timeline-text">2007</text>
+          <text x="390" y="452" text-anchor="middle" class="hero-timeline-text--active">2013</text>
+
+          <!-- 3. Dynamic Spatio-Temporal Cluster Nodes with Halos -->
+          <!-- Top Left Node -->
+          <g class="hs-cluster">
+            <circle cx="140" cy="150" r="36" fill="url(#hsGlow)"/>
+            <circle cx="140" cy="150" r="11" fill="url(#hsGrad1)"/>
+            <circle class="hs-pulse" cx="140" cy="150" r="11" fill="none" stroke="var(--color-primary, #6E86AB)" stroke-width="2"/>
+          </g>
+
+          <!-- Center Node -->
+          <g class="hs-cluster">
+            <circle cx="260" cy="220" r="48" fill="url(#hsGlow)"/>
+            <circle cx="260" cy="220" r="15" fill="url(#hsGrad1)"/>
+            <circle class="hs-pulse hs-pulse-delay" cx="260" cy="220" r="15" fill="none" stroke="var(--color-primary, #6E86AB)" stroke-width="2"/>
+          </g>
+
+          <!-- Top Right Node -->
+          <g class="hs-cluster">
+            <circle cx="350" cy="130" r="32" fill="url(#hsGlow)"/>
+            <circle cx="350" cy="130" r="9" fill="url(#hsGrad1)"/>
+            <circle class="hs-pulse" cx="350" cy="130" r="9" fill="none" stroke="var(--color-primary, #6E86AB)" stroke-width="2"/>
+          </g>
+
+          <!-- Bottom Left Node -->
+          <g class="hs-cluster">
+            <circle cx="200" cy="320" r="42" fill="url(#hsGlow)"/>
+            <circle cx="200" cy="320" r="13" fill="url(#hsGrad1)"/>
+            <circle class="hs-pulse hs-pulse-delay" cx="200" cy="320" r="13" fill="none" stroke="var(--color-primary, #6E86AB)" stroke-width="2"/>
+          </g>
+
+          <!-- 4. Dashed Connecting Links -->
+          <path d="M140 150 Q200 190 260 220" class="hero-connector-link"/>
+          <path d="M260 220 Q310 175 350 130" class="hero-connector-link"/>
+          <path d="M260 220 Q230 270 200 320" class="hero-connector-link"/>
+
+          <!-- 5. Floating Model Performance Badges (2-Way & 3-Way) -->
+          <!-- 2-Way Baseline Badge -->
+          <g class="hs-chip-card">
+            <rect x="270" y="270" width="162" height="34" rx="8" class="hero-badge-pill"/>
+            <text x="351" y="292" text-anchor="middle" class="hero-badge-text">2-Way: <tspan fill="#60A5FA" font-weight="800">96.47%</tspan> R²</text>
+          </g>
+
+          <!-- 3-Way Proposed Badge -->
+          <g class="hs-chip-card">
+            <rect x="270" y="312" width="162" height="34" rx="8" class="hero-badge-pill"/>
+            <text x="351" y="334" text-anchor="middle" class="hero-badge-text">3-Way: <tspan fill="#34D399" font-weight="800">96.10%</tspan> R²</text>
+          </g>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     STATISTICS SECTION — uses shared CPS.animateCounters system
+     ================================================================== -->
+<section class="stats-section reveal-on-scroll" aria-labelledby="stats-heading">
+  <div class="container-xl">
+    <h2 id="stats-heading" class="visually-hidden">Project Statistics</h2>
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-database-fill" aria-hidden="true"></i></div>
+        <div class="stat-number"><span id="datasetRecords" data-counter="9840" data-decimals="0">9840</span></div>
+        <div class="stat-label">Dataset Records</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-columns-gap" aria-hidden="true"></i></div>
+        <div class="stat-number"><span id="featuresCount" data-counter="33" data-decimals="0">33</span></div>
+        <div class="stat-label">Features Engineered</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon"><i class="bi bi-calendar-range" aria-hidden="true"></i></div>
+        <div class="stat-number stat-number-static">2001–2013</div>
+        <div class="stat-label">Dataset Coverage</div>
+      </div>
+
+      <div class="stat-card stat-card-highlight">
+        <div class="stat-icon"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i></div>
+        <div class="stat-number"><span id="hybridAccuracy" data-counter="96.47" data-decimals="2">96.47</span>%</div>
+        <div class="stat-label">2-Way Hybrid R&sup2; (5-Fold CV)</div>
+      </div>
+
+      <div class="stat-card stat-card-highlight">
+        <div class="stat-icon"><i class="bi bi-diagram-3-fill" aria-hidden="true"></i></div>
+        <div class="stat-number"><span id="hybridGcnAccuracy" data-counter="96.10" data-decimals="2">96.10</span>%</div>
+        <div class="stat-label">3-Way Hybrid R&sup2; (5-Fold CV)</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     PROJECT WORKFLOW
+     ================================================================== -->
+<section class="workflow-section reveal-on-scroll" aria-labelledby="workflow-heading">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="eyebrow">Methodology</div>
+      <h2 id="workflow-heading">Project Workflow</h2>
+      <p class="section-subtitle">From raw records to future crime predictions — every stage of the research pipeline.</p>
+    </div>
+
+    <div class="workflow-diagram">
+
+      <!-- Stage 1: linear preprocessing pipeline -->
+      <div class="workflow-stage workflow-stage-linear">
+        <div class="workflow-node">
+          <div class="workflow-node-icon"><i class="bi bi-database" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">01</div>
+          <h3 class="workflow-node-title">Dataset</h3>
+          <p class="workflow-node-desc">Historical crime records from 2001–2013.</p>
+        </div>
+        <div class="workflow-link" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+
+        <div class="workflow-node">
+          <div class="workflow-node-icon"><i class="bi bi-funnel" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">02</div>
+          <h3 class="workflow-node-title">Preprocessing</h3>
+          <p class="workflow-node-desc">Cleaning and normalization of historical records.</p>
+        </div>
+        <div class="workflow-link" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+
+        <div class="workflow-node">
+          <div class="workflow-node-icon"><i class="bi bi-diagram-3" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">03</div>
+          <h3 class="workflow-node-title">Feature Engineering</h3>
+          <p class="workflow-node-desc">33 engineered spatial and temporal features.</p>
+        </div>
+      </div>
+
+      <!-- Split connector: Feature Engineering branches into CNN + LSTM + GCN -->
+      <div class="workflow-tree workflow-tree-split" aria-hidden="true">
+        <span class="tree-trunk"></span>
+        <span class="tree-bar"></span>
+        <span class="tree-branch tree-branch-left"></span>
+        <span class="tree-branch tree-branch-center"></span>
+        <span class="tree-branch tree-branch-right"></span>
+      </div>
+      <div class="workflow-link-vertical workflow-link-mobile" aria-hidden="true"><i class="bi bi-arrow-down"></i></div>
+
+      <!-- Stage 2: parallel CNN / LSTM / GCN branches -->
+      <div class="workflow-stage workflow-stage-branch">
+        <div class="workflow-node workflow-node-branch">
+          <div class="workflow-node-icon"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">04a</div>
+          <h3 class="workflow-node-title">CNN</h3>
+          <span class="workflow-node-tag">Spatial Learning</span>
+          <p class="workflow-node-desc">Extracts spatial crime patterns.</p>
+        </div>
+        <div class="workflow-link-vertical workflow-link-inline-mobile" aria-hidden="true"><i class="bi bi-arrow-down"></i></div>
+        <div class="workflow-node workflow-node-branch">
+          <div class="workflow-node-icon"><i class="bi bi-clock-history" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">04b</div>
+          <h3 class="workflow-node-title">LSTM</h3>
+          <span class="workflow-node-tag">Temporal Learning</span>
+          <p class="workflow-node-desc">Learns temporal crime dependencies.</p>
+        </div>
+        <div class="workflow-link-vertical workflow-link-inline-mobile" aria-hidden="true"><i class="bi bi-arrow-down"></i></div>
+        <div class="workflow-node workflow-node-branch">
+          <div class="workflow-node-icon"><i class="bi bi-diagram-3" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">04c</div>
+          <h3 class="workflow-node-title">GCN</h3>
+          <span class="workflow-node-tag">Graph Topology</span>
+          <p class="workflow-node-desc">Models spatial graph propagation.</p>
+        </div>
+      </div>
+
+      <!-- Merge connector: CNN + LSTM + GCN fuse into the Hybrid model -->
+      <div class="workflow-tree workflow-tree-merge" aria-hidden="true">
+        <span class="tree-branch tree-branch-left"></span>
+        <span class="tree-branch tree-branch-center"></span>
+        <span class="tree-branch tree-branch-right"></span>
+        <span class="tree-bar"></span>
+        <span class="tree-trunk"></span>
+      </div>
+      <div class="workflow-link-vertical workflow-link-mobile" aria-hidden="true"><i class="bi bi-arrow-down"></i></div>
+
+      <!-- Stage 3: hybrid fusion -->
+      <div class="workflow-stage workflow-stage-single">
+        <div class="workflow-node workflow-node-hybrid">
+          <div class="workflow-node-icon"><i class="bi bi-layers" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">05</div>
+          <h3 class="workflow-node-title">Hybrid CNN&#8209;LSTM-GCN</h3>
+          <p class="workflow-node-desc">Fuses spatial, temporal, and topological graph representations.</p>
+        </div>
+      </div>
+
+      <div class="workflow-link-vertical" aria-hidden="true"><i class="bi bi-arrow-down"></i></div>
+
+      <!-- Stage 4: prediction output -->
+      <div class="workflow-stage workflow-stage-single">
+        <div class="workflow-node workflow-node-final">
+          <div class="workflow-node-icon"><i class="bi bi-shield-check" aria-hidden="true"></i></div>
+          <div class="workflow-node-index">06</div>
+          <h3 class="workflow-node-title">Crime Prediction</h3>
+          <p class="workflow-node-desc">Generates district-level crime forecasts.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     TECHNOLOGY STACK
+     ================================================================== -->
+<section class="tech-section reveal-on-scroll" aria-labelledby="tech-heading">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="eyebrow">Built With</div>
+      <h2 id="tech-heading">Technology Stack</h2>
+      <p class="section-subtitle">A research-grade toolset spanning deep learning, data science and web delivery.</p>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-card"><i class="bi bi-filetype-py" aria-hidden="true"></i><span>Python</span></div>
+      <div class="tech-card"><i class="bi bi-cpu" aria-hidden="true"></i><span>TensorFlow</span></div>
+      <div class="tech-card"><i class="bi bi-diagram-2" aria-hidden="true"></i><span>Keras</span></div>
+      <div class="tech-card"><i class="bi bi-hexagon" aria-hidden="true"></i><span>Django</span></div>
+      <div class="tech-card"><i class="bi bi-grid-3x3" aria-hidden="true"></i><span>NumPy</span></div>
+      <div class="tech-card"><i class="bi bi-table" aria-hidden="true"></i><span>Pandas</span></div>
+      <div class="tech-card"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Matplotlib</span></div>
+      <div class="tech-card"><i class="bi bi-diagram-3" aria-hidden="true"></i><span>Scikit-learn</span></div>
+      <div class="tech-card"><i class="bi bi-bootstrap" aria-hidden="true"></i><span>Bootstrap</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     PROJECT FEATURES
+     ================================================================== -->
+<section class="features-section reveal-on-scroll" aria-labelledby="features-heading">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="eyebrow">Capabilities</div>
+      <h2 id="features-heading">Project Features</h2>
+      <p class="section-subtitle">Everything the platform offers, from raw analysis to interactive prediction.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></div>
+        <h3>Spatio&#8209;Temporal Prediction</h3>
+        <p>Models how crime shifts across both location and time simultaneously.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-cpu-fill" aria-hidden="true"></i></div>
+        <h3>Deep Learning</h3>
+        <p>Powered by TensorFlow and Keras neural network architectures.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-layers-fill" aria-hidden="true"></i></div>
+        <h3>Hybrid CNN&#8209;LSTM-GCN</h3>
+        <p>Fuses spatial feature extraction with sequential temporal learning.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-graph-up" aria-hidden="true"></i></div>
+        <h3>Crime Trend Analysis</h3>
+        <p>Surfaces long-term patterns hidden in over a decade of records.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-bar-chart-steps" aria-hidden="true"></i></div>
+        <h3>Performance Comparison</h3>
+        <p>Benchmarks CNN, LSTM and Hybrid models side by side.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-crosshair" aria-hidden="true"></i></div>
+        <h3>Future Crime Prediction</h3>
+        <p>Generates forward-looking predictions from historical trends.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></div>
+        <h3>Interactive Dashboard</h3>
+        <p>Visual, explorable insights across regions and years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     RESEARCH HIGHLIGHTS
+     ================================================================== -->
+<section class="research-section reveal-on-scroll" aria-labelledby="research-heading">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="eyebrow">Research Highlights</div>
+      <h2 id="research-heading">Why This Research Matters</h2>
+    </div>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-value">96.47% &amp; 96.10%</div>
+        <div class="research-title">5-Fold Cross-Validation</div>
+        <p>Rigorous 5-fold CV on all 6,935 samples achieves 96.47% &plusmn; 1.71% R&sup2; for the 2-Way (CNN-LSTM) baseline and 96.10% &plusmn; 2.00% R&sup2; with the 3-Way (CNN-LSTM-GCN) spatial graph branch.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon"><i class="bi bi-clock-history" aria-hidden="true"></i></div>
+        <div class="research-title">Historical Dataset</div>
+        <p>Trained across 13 years of real crime records, from 2001 to 2013.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon"><i class="bi bi-cpu" aria-hidden="true"></i></div>
+        <div class="research-title">Deep Learning</div>
+        <p>Built on modern neural network techniques for sequence, spatial, and graph topology data.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-icon"><i class="bi bi-layers" aria-hidden="true"></i></div>
+        <div class="research-title">Hybrid Architecture</div>
+        <p>Evaluates CNN spatial feature extraction, LSTM temporal sequences, and GCN topological graph features in a multi-view fusion framework.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     WHY HYBRID CNN-LSTM-GCN
+     ================================================================== -->
+<section class="comparison-section reveal-on-scroll" aria-labelledby="comparison-heading">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="eyebrow">Architecture Evaluation</div>
+      <h2 id="comparison-heading">Why Multi-View Hybrid Modeling?</h2>
+      <p class="section-subtitle">A rigorously cross-validated framework achieving 96%+ R&sup2;, evaluated across spatial, temporal, and topological graph convolution branches.</p>
+    </div>
+
+    <div class="comparison-layout">
+      <div class="comparison-card">
+        <div class="comparison-icon"><i class="bi bi-grid-3x3-gap-fill" aria-hidden="true"></i></div>
+        <h3>CNN Spatial</h3>
+        <p>Extracts localized spatial patterns across administrative districts.</p>
+        <div class="comparison-score">R&sup2; 84.18% <small style="font-size:10px;opacity:0.8;">(Single-split baseline)</small></div>
+      </div>
+
+      <div class="comparison-connector" aria-hidden="true"><i class="bi bi-plus-lg"></i></div>
+
+      <div class="comparison-card">
+        <div class="comparison-icon"><i class="bi bi-clock-history" aria-hidden="true"></i></div>
+        <h3>LSTM Temporal</h3>
+        <p>Learns sequential temporal dependencies across historical years.</p>
+        <div class="comparison-score">R&sup2; 88.18% <small style="font-size:10px;opacity:0.8;">(Single-split baseline)</small></div>
+      </div>
+
+      <div class="comparison-connector" aria-hidden="true"><i class="bi bi-plus-lg"></i></div>
+
+      <div class="comparison-card">
+        <div class="comparison-icon"><i class="bi bi-diagram-3-fill" aria-hidden="true"></i></div>
+        <h3>GCN Spatial Graph</h3>
+        <p>Models non-Euclidean spatial propagation across district adjacency topology.</p>
+        <div class="comparison-score">Spatial Graph Topology <small style="font-size:10px;opacity:0.8;">(850-Node Adjacency)</small></div>
+      </div>
+
+      <div class="comparison-connector" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+
+      <div class="comparison-card comparison-card-hybrid">
+        <div class="comparison-icon"><i class="bi bi-layers-fill" aria-hidden="true"></i></div>
+        <h3>Hybrid Architecture</h3>
+        <p>Fuses spatial, temporal, and topological representations into a unified prediction head.</p>
+        <div class="comparison-score comparison-score-hybrid">2-Way: 96.47% &plusmn; 1.71% | 3-Way: 96.10% &plusmn; 2.00% <small style="font-size:10px;opacity:0.8;">(5-Fold CV, n=6,935)</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================================
+     CALL TO ACTION
+     ================================================================== -->
+<section class="cta-banner reveal-on-scroll" aria-labelledby="cta-heading">
+  <div class="container-xl">
+    <div class="cta-banner-inner">
+      <h2 id="cta-heading">Ready to explore crime prediction insights?</h2>
+      <p>Run a live prediction or dive into the dashboard to see the model in action.</p>
+      <div class="cta-actions">
+        <a href="{% url 'prediction' %}" class="btn btn-primary-custom btn-lg-custom">
+          <i class="bi bi-play-fill" aria-hidden="true"></i> Run Prediction
+        </a>
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-custom btn-lg-custom btn-outline-on-dark">
+          <i class="bi bi-grid-1x2" aria-hidden="true"></i> View Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', async function () {
+
+    // Only ever overwrite a stat with a real, finite number from the API.
+    // A missing/null/zero-by-omission field keeps the page's known research
+    // value instead of collapsing to 0, and the Hero always mirrors whichever
+    // number the Stats section ends up showing, so the two can't disagree.
+    function isRealNumber(value) {
+        return typeof value === 'number' && Number.isFinite(value);
+    }
+
+    function setCounter(elementId, value) {
+        if (!isRealNumber(value)) return null;
+        const el = document.getElementById(elementId);
+        if (el) el.setAttribute('data-counter', value);
+        return value;
+    }
+
+    try {
+        const response = await fetch('/api/dashboard/');
+        const data = await response.json();
+
+        if (data.status === "success") {
+
+            const records = setCounter('datasetRecords', data.dataset && data.dataset.records);
+            setCounter('featuresCount', data.research && data.research.features);
+            setCounter('hybridAccuracy', data.models && (data.models.hybrid_accuracy || (data.models.hybrid && data.models.hybrid.accuracy)));
+            setCounter('hybridGcnAccuracy', data.models && (data.models.hybrid_gcn_accuracy || (data.models.hybrid_gcn && data.models.hybrid_gcn.accuracy)));
+
+            if (records !== null) {
+                const formatted = records.toLocaleString('en-IN');
+                const heroValue = document.getElementById('heroDatasetRecords');
+                const heroText = document.getElementById('heroDatasetRecordsText');
+                if (heroValue) heroValue.textContent = formatted;
+                if (heroText) heroText.textContent = formatted;
+            }
+        }
+    } catch (error) {
+        console.error("Dashboard API Error:", error);
+    } finally {
+        if (window.CPS && typeof CPS.animateCounters === 'function') {
+            CPS.animateCounters('[data-counter]');
+        }
+    }
+
+});
+</script>
+{% endblock %}
