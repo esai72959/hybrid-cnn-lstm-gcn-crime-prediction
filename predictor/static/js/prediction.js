@@ -456,69 +456,115 @@ if (window.CPS.__predictionInitialized) {
             const RISK_COLORS = {
                 'Low': '#2E7D32',
                 'Moderate': '#F59E0B',
-                'High': '#DC2626'
+                'High': '#DC2626',
+                'Very High': '#991B1B'
             };
 
-            const cx = 250, cy = 140;
-            const radiusX = 170, radiusY = 85;
+            const cx = 300, cy = 175;
+            const count = neighbors.length;
+            // Adaptive radius based on neighbor count
+            const radiusX = count <= 3 ? 170 : 205;
+            const radiusY = count <= 3 ? 95 : 120;
 
             let svgContent = `
                 <defs>
                     <radialGradient id="neighborCenterGlow" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="var(--radar-ring-pulse, #3B82F6)" stop-opacity="0.6"/>
-                        <stop offset="100%" stop-color="var(--radar-ring-pulse, #3B82F6)" stop-opacity="0"/>
+                        <stop offset="0%" stop-color="var(--radar-ring-pulse, #38BDF8)" stop-opacity="0.5"/>
+                        <stop offset="100%" stop-color="var(--radar-ring-pulse, #38BDF8)" stop-opacity="0"/>
                     </radialGradient>
+                    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+                        <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.3"/>
+                    </filter>
                 </defs>
             `;
 
-            // Draw connecting lines and distance pills
+            // Draw connecting lines and centered distance badges
             neighbors.forEach((n, i) => {
-                const angle = (i * (2 * Math.PI / neighbors.length)) - (Math.PI / 2);
+                const angle = (i * (2 * Math.PI / count)) - (Math.PI / 2);
                 const nx = cx + radiusX * Math.cos(angle);
                 const ny = cy + radiusY * Math.sin(angle);
 
-                const midX = (cx + nx) / 2;
-                const midY = (cy + ny) / 2;
+                // Position badge at midpoint
+                const midX = cx + (nx - cx) * 0.50;
+                const midY = cy + (ny - cy) * 0.50;
+
+                const distText = `${n.distance_km} km`;
+                const badgeWidth = Math.max(54, distText.length * 7.5 + 14);
 
                 svgContent += `
                     <line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" 
-                          stroke="var(--radar-link-line, #8CA3C6)" stroke-width="1.8" stroke-dasharray="4 4"/>
-                    <rect x="${midX - 32}" y="${midY - 11}" width="64" height="22" rx="6" 
-                          fill="var(--color-card, #1F2C3D)" stroke="var(--color-border, #8CA3C6)" stroke-width="1.2"/>
-                    <text x="${midX}" y="${midY + 4}" text-anchor="middle" font-size="10.5" font-weight="700" 
-                          fill="var(--color-primary, #8CA3C6)">${n.distance_km} km</text>
+                          stroke="var(--radar-link-line, #64748B)" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.8"/>
+                    <g filter="url(#badgeShadow)">
+                        <rect x="${midX - badgeWidth / 2}" y="${midY - 10}" width="${badgeWidth}" height="20" rx="10" 
+                              fill="var(--color-card, #1E293B)" stroke="var(--color-border, #475569)" stroke-width="1.2"/>
+                        <text x="${midX}" y="${midY + 3.5}" text-anchor="middle" font-size="10" font-weight="700" 
+                              fill="var(--color-primary, #38BDF8)" letter-spacing="0.02em">${distText}</text>
+                    </g>
                 `;
             });
 
             // Target Node in Center
-            const displayName = targetName.length > 11 ? targetName.slice(0, 10) + '..' : targetName;
+            const displayName = targetName.length > 12 ? targetName.slice(0, 11) + '..' : targetName;
             svgContent += `
-                <circle cx="${cx}" cy="${cy}" r="46" fill="url(#neighborCenterGlow)"/>
-                <circle cx="${cx}" cy="${cy}" r="27" fill="var(--radar-center-bg, #24344D)" stroke="var(--color-primary, #8CA3C6)" stroke-width="3"/>
-                <text x="${cx}" y="${cy + 4}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">${displayName}</text>
-                <text x="${cx}" y="${cy + 40}" text-anchor="middle" font-size="9.5" font-weight="800" fill="var(--color-primary, #8CA3C6)" letter-spacing="0.06em">TARGET NODE</text>
+                <g class="target-node-group">
+                    <circle cx="${cx}" cy="${cy}" r="48" fill="url(#neighborCenterGlow)"/>
+                    <circle cx="${cx}" cy="${cy}" r="32" fill="var(--radar-center-bg, #0F172A)" stroke="var(--color-primary, #38BDF8)" stroke-width="2.8"/>
+                    <text x="${cx}" y="${cy - 2}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF">${displayName}</text>
+                    <text x="${cx}" y="${cy + 13}" text-anchor="middle" font-size="8.5" font-weight="800" fill="var(--color-primary, #38BDF8)" letter-spacing="0.08em">TARGET</text>
+                </g>
             `;
 
-            // Neighbor Nodes
+            // Neighbor Nodes with Smart Collision-Free Label Alignment
             neighbors.forEach((n, i) => {
-                const angle = (i * (2 * Math.PI / neighbors.length)) - (Math.PI / 2);
+                const angle = (i * (2 * Math.PI / count)) - (Math.PI / 2);
                 const nx = cx + radiusX * Math.cos(angle);
                 const ny = cy + radiusY * Math.sin(angle);
                 const col = RISK_COLORS[n.risk_level] || '#64748B';
 
+                const cosA = Math.cos(angle);
+                const sinA = Math.sin(angle);
+
+                let textAnchor = 'middle';
+                let labelX = nx;
+                let labelY = ny;
+
+                if (cosA > 0.35) {
+                    // Right side
+                    textAnchor = 'start';
+                    labelX = nx + 22;
+                    labelY = ny + 4;
+                } else if (cosA < -0.35) {
+                    // Left side
+                    textAnchor = 'end';
+                    labelX = nx - 22;
+                    labelY = ny + 4;
+                } else if (sinA < -0.5) {
+                    // Top
+                    textAnchor = 'middle';
+                    labelX = nx;
+                    labelY = ny - 22;
+                } else {
+                    // Bottom
+                    textAnchor = 'middle';
+                    labelX = nx;
+                    labelY = ny + 26;
+                }
+
                 svgContent += `
-                    <g style="cursor: pointer;">
-                        <circle cx="${nx}" cy="${ny}" r="18" fill="var(--color-card, #1F2C3D)" stroke="${col}" stroke-width="3"/>
-                        <circle cx="${nx}" cy="${ny}" r="7" fill="${col}"/>
-                        <text x="${nx}" y="${ny - 22}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--color-heading, #F4F6F9)">${n.district}</text>
+                    <g class="neighbor-node-group" data-neighbor-index="${i}" style="cursor: pointer;">
+                        <circle cx="${nx}" cy="${ny}" r="16" fill="var(--color-card, #1E293B)" stroke="${col}" stroke-width="2.6"/>
+                        <circle cx="${nx}" cy="${ny}" r="6" fill="${col}"/>
+                        <text x="${labelX}" y="${labelY}" text-anchor="${textAnchor}" font-size="11" font-weight="700" fill="var(--color-heading, #F8FAFC)">
+                            ${n.district}
+                        </text>
                     </g>
                 `;
             });
 
             svg.innerHTML = svgContent;
 
-            list.innerHTML = neighbors.map(n => `
-                <div class="p-2 px-3 rounded d-flex justify-content-between align-items-center" style="background: var(--color-bg); border: 1px solid var(--color-border); font-size: 12px; transition: background var(--transition-fast);">
+            list.innerHTML = neighbors.map((n, i) => `
+                <div class="neighbor-list-item p-2 px-3 rounded d-flex justify-content-between align-items-center" data-neighbor-index="${i}" style="background: var(--color-bg); border: 1px solid var(--color-border); font-size: 12px; transition: all 0.2s ease;">
                     <div>
                         <strong style="color: var(--color-heading); display: block; font-size: 13px; font-weight: 700;">${n.district}</strong>
                         <span style="color: var(--color-paragraph); font-size: 11.5px;">${n.state} &bull; <strong style="color: var(--color-primary); font-weight: 700;">${n.distance_km} km away</strong></span>
@@ -528,6 +574,36 @@ if (window.CPS.__predictionInitialized) {
                     </span>
                 </div>
             `).join('');
+
+            // Synchronized hover effects between SVG nodes and list items
+            const svgGroups = svg.querySelectorAll('.neighbor-node-group');
+            const listItems = list.querySelectorAll('.neighbor-list-item');
+
+            const setHoverState = (index, isActive) => {
+                const grp = svg.querySelector(`.neighbor-node-group[data-neighbor-index="${index}"]`);
+                const item = list.querySelector(`.neighbor-list-item[data-neighbor-index="${index}"]`);
+                if (grp) {
+                    const c = grp.querySelector('circle');
+                    if (c) c.setAttribute('r', isActive ? '19' : '16');
+                }
+                if (item) {
+                    item.style.borderColor = isActive ? 'var(--color-primary)' : 'var(--color-border)';
+                    item.style.background = isActive ? 'var(--color-card)' : 'var(--color-bg)';
+                    item.style.transform = isActive ? 'translateX(4px)' : 'none';
+                }
+            };
+
+            svgGroups.forEach(grp => {
+                const idx = grp.getAttribute('data-neighbor-index');
+                grp.addEventListener('mouseenter', () => setHoverState(idx, true));
+                grp.addEventListener('mouseleave', () => setHoverState(idx, false));
+            });
+
+            listItems.forEach(item => {
+                const idx = item.getAttribute('data-neighbor-index');
+                item.addEventListener('mouseenter', () => setHoverState(idx, true));
+                item.addEventListener('mouseleave', () => setHoverState(idx, false));
+            });
         };
 
         /* ---------------------------------------------------------------- */
