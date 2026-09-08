@@ -320,8 +320,24 @@ class DatasetLoader:
         try:
             self._ensure_loaded()
             normalized_state = str(state).strip().upper()
-            if normalized_state in self._cached_districts_by_state:
-                return list(self._cached_districts_by_state[normalized_state])
+            
+            STATE_ALIASES = {
+                "TELANGANA": "ANDHRA PRADESH",
+                "ORISSA": "ODISHA",
+                "UTTARANCHAL": "UTTARAKHAND",
+                "DELHI": "DELHI UT",
+                "PONDICHERRY": "PUDUCHERRY",
+                "A&N ISLANDS": "A & N ISLANDS",
+                "D&N HAVELI": "D & N HAVELI",
+                "DAMAN AND DIU": "DAMAN & DIU",
+                "DADRA & NAGAR HAVELI": "D & N HAVELI",
+                "DADRA AND NAGAR HAVELI": "D & N HAVELI",
+                "JAMMU AND KASHMIR": "JAMMU & KASHMIR",
+            }
+            resolved_state = STATE_ALIASES.get(normalized_state, normalized_state)
+
+            if resolved_state in self._cached_districts_by_state:
+                return list(self._cached_districts_by_state[resolved_state])
 
             self._require_columns([self._COL_STATE, self._COL_DISTRICT])
             dataframe = self._ensure_loaded()
@@ -331,7 +347,7 @@ class DatasetLoader:
                 .astype(str)
                 .str.strip()
                 .str.upper()
-                == normalized_state
+                == resolved_state
             )
 
             districts = (

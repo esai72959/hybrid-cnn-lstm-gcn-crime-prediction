@@ -39,8 +39,19 @@ os.environ["TF_DETERMINISTIC_OPS"] = "1"
 os.environ["TF_CUDNN_DETERMINISTIC"] = "1"
 random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
-tf.random.set_seed(RANDOM_SEED)
-tf.keras.utils.set_random_seed(RANDOM_SEED)
+try:
+    if hasattr(tf.random, "set_seed"):
+        tf.random.set_seed(RANDOM_SEED)
+    elif hasattr(tf, "set_random_seed"):
+        tf.set_random_seed(RANDOM_SEED)
+except Exception:
+    pass
+
+try:
+    if hasattr(tf.keras.utils, "set_random_seed"):
+        tf.keras.utils.set_random_seed(RANDOM_SEED)
+except Exception:
+    pass
 try:
     tf.config.experimental.enable_op_determinism()
 except Exception:
@@ -80,7 +91,15 @@ logger = logging.getLogger("CrimeGCN")
 # --------------------------------------------------------------------------- #
 # Custom Native Keras Spectral Graph Convolution Layer
 # --------------------------------------------------------------------------- #
-@tf.keras.utils.register_keras_serializable(package="CrimeGCN")
+if hasattr(tf.keras.utils, "register_keras_serializable"):
+    register_keras_serializable = tf.keras.utils.register_keras_serializable
+else:
+    def register_keras_serializable(package="CrimeGCN", name=None):
+        def decorator(cls):
+            return cls
+        return decorator
+
+@register_keras_serializable(package="CrimeGCN")
 class GraphConvLayer(layers.Layer):
     """
     Spectral Graph Convolutional Layer implementing Kipf & Welling (ICLR 2017):
@@ -114,10 +133,10 @@ class GraphConvLayer(layers.Layer):
                 self.adj_matrix = None
 
     def build(self, input_shape):
-        feature_dim = input_shape[-1]
+        feature_dim = int(input_shape[-1])
         self.kernel = self.add_weight(
             name="kernel",
-            shape=(feature_dim, self.units),
+            shape=(feature_dim, int(self.units)),
             initializer=self.kernel_initializer,
             regularizer=self.kernel_regularizer,
             trainable=True,
@@ -125,7 +144,7 @@ class GraphConvLayer(layers.Layer):
         if self.use_bias:
             self.bias = self.add_weight(
                 name="bias",
-                shape=(self.units,),
+                shape=(int(self.units),),
                 initializer="zeros",
                 trainable=True,
             )
@@ -288,7 +307,12 @@ class CrimeGCN:
         if self.norm_adj is None:
             self.load_data()
 
-        he_init = initializers.HeNormal(seed=self.config.random_state)
+        if hasattr(initializers, "HeNormal"):
+            he_init = initializers.HeNormal(seed=self.config.random_state)
+        elif hasattr(initializers, "he_normal"):
+            he_init = initializers.he_normal(seed=self.config.random_state)
+        else:
+            he_init = "he_normal"
         l2_reg = regularizers.l2(self.config.l2_lambda)
 
         inputs = Input(shape=(self.num_nodes, self.num_features), name="graph_node_features_input")

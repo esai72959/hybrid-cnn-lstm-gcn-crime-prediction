@@ -209,6 +209,22 @@ class CrimePredictor:
             raise PredictionError("'state' is required and cannot be empty.")
 
         normalized_state = str(state).strip().upper()
+        STATE_ALIASES = {
+            "TELANGANA": "ANDHRA PRADESH",
+            "ORISSA": "ODISHA",
+            "UTTARANCHAL": "UTTARAKHAND",
+            "DELHI": "DELHI UT",
+            "PONDICHERRY": "PUDUCHERRY",
+            "A&N ISLANDS": "A & N ISLANDS",
+            "ANDAMAN & NICOBAR": "A & N ISLANDS",
+            "ANDAMAN AND NICOBAR": "A & N ISLANDS",
+            "D&N HAVELI": "D & N HAVELI",
+            "DADRA & NAGAR HAVELI": "D & N HAVELI",
+            "DADRA AND NAGAR HAVELI": "D & N HAVELI",
+            "DAMAN AND DIU": "DAMAN & DIU",
+            "JAMMU AND KASHMIR": "JAMMU & KASHMIR",
+        }
+        resolved_state = STATE_ALIASES.get(normalized_state, normalized_state)
 
         try:
             known_states = self.dataset_loader.get_states()
@@ -217,34 +233,16 @@ class CrimePredictor:
             raise PredictionError(f"Unable to validate state: {exc}") from exc
 
         known_states_upper = {s.strip().upper() for s in known_states}
-        if normalized_state not in known_states_upper:
+        if resolved_state not in known_states_upper and normalized_state not in known_states_upper:
             raise PredictionError(
-                f"Unknown state '{state}'. It was not found in the "
-                "dataset."
+                f"Unknown state '{state}'. It was not found in the dataset."
             )
 
-        return normalized_state
+        return resolved_state
 
     def _validate_district(self, state: str, district: Any) -> str:
         """
         Verify that `district` is non-empty and exists under `state`.
-
-        Parameters
-        ----------
-        state : str
-            Already-validated, normalized state name.
-        district : Any
-            Raw district value supplied by the caller.
-
-        Returns
-        -------
-        str
-            The normalized (stripped, upper-cased) district name.
-
-        Raises
-        ------
-        PredictionError
-            If `district` is empty or not found under the given state.
         """
         if district is None or str(district).strip() == "":
             raise PredictionError(
@@ -264,14 +262,19 @@ class CrimePredictor:
                 f"Unable to validate district: {exc}"
             ) from exc
 
-        known_districts_upper = {d.strip().upper() for d in known_districts}
-        if normalized_district not in known_districts_upper:
-            raise PredictionError(
-                f"Unknown district '{district}' for state '{state}'. It "
-                "was not found in the dataset."
-            )
+        known_districts_upper = {d.strip().upper(): d.strip().upper() for d in known_districts}
+        if normalized_district in known_districts_upper:
+            return known_districts_upper[normalized_district]
 
-        return normalized_district
+        # Check for close/prefix matches (e.g. HYDERABAD -> HYDERABAD CITY)
+        for kd_upper, original in known_districts_upper.items():
+            if kd_upper.startswith(normalized_district) or normalized_district.startswith(kd_upper):
+                return original
+
+        raise PredictionError(
+            f"Unknown district '{district}' for state '{state}'. It "
+            "was not found in the dataset."
+        )
 
     def _validate_prediction_year(self, state: str, district: str):
         """

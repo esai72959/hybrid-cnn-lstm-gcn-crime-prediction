@@ -23,5 +23,6 @@ urlpatterns = [
     path('api/predict/', views.api_predict, name='api_predict'),
     path('api/forecast-trend/', views.api_forecast_trend, name='api_forecast_trend'),
     path('api/dashboard/', views.api_dashboard, name='api_dashboard'),
+    path('api/dashboard-data/', views.api_dashboard_data, name='api_dashboard_data'),
     path('api/forecast/', views.api_forecast, name='api_forecast'),
 ]

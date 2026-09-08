@@ -42,8 +42,19 @@ os.environ["TF_DETERMINISTIC_OPS"] = "1"
 os.environ["TF_CUDNN_DETERMINISTIC"] = "1"
 random.seed(RANDOM_SEED)
 np.random.seed(RANDOM_SEED)
-tf.random.set_seed(RANDOM_SEED)
-tf.keras.utils.set_random_seed(RANDOM_SEED)
+try:
+    if hasattr(tf.random, "set_seed"):
+        tf.random.set_seed(RANDOM_SEED)
+    elif hasattr(tf, "set_random_seed"):
+        tf.set_random_seed(RANDOM_SEED)
+except Exception:
+    pass
+
+try:
+    if hasattr(tf.keras.utils, "set_random_seed"):
+        tf.keras.utils.set_random_seed(RANDOM_SEED)
+except Exception:
+    pass
 try:
     tf.config.experimental.enable_op_determinism()
 except Exception:

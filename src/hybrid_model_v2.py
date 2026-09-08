@@ -310,8 +310,12 @@ def build_hybrid_gcn_model(input_dim: int = FUSION_INPUT_DIM) -> Model:
           -> Dense(32, HeNormal, L2, "hybrid_gcn_embedding")
           -> Dense(1, Linear, "crime_count_output")
     """
-    logger.info("Building 3-Way Hybrid CNN-LSTM-GCN Model (input_dim=%d)...", input_dim)
-    he_init = initializers.HeNormal(seed=RANDOM_SEED)
+    if hasattr(initializers, "HeNormal"):
+        he_init = initializers.HeNormal(seed=RANDOM_SEED)
+    elif hasattr(initializers, "he_normal"):
+        he_init = initializers.he_normal(seed=RANDOM_SEED)
+    else:
+        he_init = "he_normal"
     l2_reg = regularizers.l2(L2_LAMBDA)
 
     inputs = layers.Input(shape=(input_dim,), name="fused_3way_embedding_input")

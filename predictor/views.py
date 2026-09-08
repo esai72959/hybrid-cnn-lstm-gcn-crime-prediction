@@ -631,8 +631,26 @@ def _prediction_result_to_dict(result):
     return result_dict
 
 
+# Module-level State Name Aliases & Reorganization Mapping
+STATE_ALIASES = {
+    "TELANGANA": "ANDHRA PRADESH",
+    "ORISSA": "ODISHA",
+    "UTTARANCHAL": "UTTARAKHAND",
+    "DELHI": "DELHI UT",
+    "PONDICHERRY": "PUDUCHERRY",
+    "A&N ISLANDS": "A & N ISLANDS",
+    "ANDAMAN & NICOBAR": "A & N ISLANDS",
+    "ANDAMAN AND NICOBAR": "A & N ISLANDS",
+    "D&N HAVELI": "D & N HAVELI",
+    "DADRA & NAGAR HAVELI": "D & N HAVELI",
+    "DADRA AND NAGAR HAVELI": "D & N HAVELI",
+    "DAMAN AND DIU": "DAMAN & DIU",
+    "JAMMU AND KASHMIR": "JAMMU & KASHMIR",
+}
+
+
 def _get_yearly_crime_trend_for_location(state, district):
-    """Return real historical crime values for one selected location."""
+    """Return real historical crime values for one selected location with robust alias resolution."""
     df = dataset_loader.get_dataframe()
     if (
         df is None
@@ -645,13 +663,25 @@ def _get_yearly_crime_trend_for_location(state, district):
     state_col = "STATE/UT" if "STATE/UT" in df.columns else "State/UT"
     district_col = "DISTRICT" if "DISTRICT" in df.columns else "District"
 
+    st_norm = str(state).strip().upper()
+    dt_norm = str(district).strip().upper()
+    resolved_state = STATE_ALIASES.get(st_norm, st_norm)
+
     filtered = df[
-        (df[state_col].astype(str).str.strip().str.upper() == state.upper())
+        (df[state_col].astype(str).str.strip().str.upper() == resolved_state)
         & (
             df[district_col].astype(str).str.strip().str.upper()
-            == district.upper()
+            == dt_norm
         )
     ].copy()
+
+    if filtered.empty:
+        # Fallback: substring matching (e.g. HYDERABAD matching HYDERABAD CITY)
+        state_df = df[df[state_col].astype(str).str.strip().str.upper() == resolved_state]
+        if not state_df.empty:
+            match = state_df[state_df[district_col].astype(str).str.strip().str.upper().str.contains(dt_norm, regex=False)]
+            if not match.empty:
+                filtered = match.copy()
 
     if filtered.empty:
         return []
@@ -831,37 +861,15 @@ def api_forecast_trend(request):
         }, status=400)
 
     try:
-        df = dataset_loader.get_dataframe()
-
-        if df is None or df.empty:
-            return JsonResponse({
-                "status": "error",
-                "message": "Dataset could not be loaded."
-            }, status=500)
-
-        # Normalize column key lookup
-        state_col = "STATE/UT" if "STATE/UT" in df.columns else "State/UT"
-        district_col = "DISTRICT" if "DISTRICT" in df.columns else "District"
-        year_col = "YEAR" if "YEAR" in df.columns else "Year"
-        crime_col = "TOTAL IPC CRIMES" if "TOTAL IPC CRIMES" in df.columns else "Total Ipc Crimes"
-
-        filtered = df[
-            (df[state_col].astype(str).str.strip().str.upper() == str(state).strip().upper()) &
-            (df[district_col].astype(str).str.strip().str.upper() == str(district).strip().upper())
-        ].copy()
-
-        if filtered.empty:
+        trend_items = _get_yearly_crime_trend_for_location(state, district)
+        if not trend_items:
             return JsonResponse({
                 "status": "error",
                 "message": "No historical data found for this district."
             }, status=404)
 
-        filtered[year_col] = pd.to_numeric(filtered[year_col], errors="coerce")
-        filtered[crime_col] = pd.to_numeric(filtered[crime_col], errors="coerce")
-        filtered = filtered.dropna(subset=[year_col, crime_col]).sort_values(year_col)
-
-        years = [int(y) for y in filtered[year_col].tolist()]
-        values = [int(v) for v in filtered[crime_col].tolist()]
+        years = [item["year"] for item in trend_items]
+        values = [item["total_crimes"] for item in trend_items]
 
         return JsonResponse({
             "status": "success",

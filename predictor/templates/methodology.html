@@ -496,6 +496,68 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 5-Model Comparative Benchmark Table -->
+            <div class="card shadow-sm border-0 academic-card p-4 mt-4 max-w-900 mx-auto">
+                <h3 class="h6 fw-bold text-navy mb-3"><i class="bi bi-table text-primary me-2"></i>Empirical Model Comparison (Test Set $N=1,041$)</h3>
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover align-middle mb-0 text-start small">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Model Architecture</th>
+                                <th>Modalities Captured</th>
+                                <th>R&sup2; Score</th>
+                                <th>RMSE</th>
+                                <th>MAE</th>
+                                <th>Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-primary fw-bold">
+                                <td><i class="bi bi-trophy-fill text-warning me-1"></i> Hybrid CNN-LSTM-GCN (3-Way)</td>
+                                <td>Spatial (1D-CNN) + Temporal (LSTM) + Graph (GCN)</td>
+                                <td>98.10%</td>
+                                <td>488.40</td>
+                                <td>273.29</td>
+                                <td><span class="badge bg-success">1 (Proposed)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-semibold">Hybrid CNN-LSTM (2-Way)</td>
+                                <td>Spatial (1D-CNN) + Temporal (LSTM)</td>
+                                <td>97.49%</td>
+                                <td>560.84</td>
+                                <td>304.57</td>
+                                <td><span class="badge bg-light text-dark border">2</span></td>
+                            </tr>
+                            <tr>
+                                <td>1D-CNN (Standalone)</td>
+                                <td>Spatial Cross-Crime Interactions</td>
+                                <td>91.41%</td>
+                                <td>1,038.56</td>
+                                <td>597.10</td>
+                                <td><span class="badge bg-light text-dark border">3</span></td>
+                            </tr>
+                            <tr>
+                                <td>LSTM (Standalone)</td>
+                                <td>Sequential Longitudinal Dynamics</td>
+                                <td>81.34%</td>
+                                <td>1,524.81</td>
+                                <td>920.35</td>
+                                <td><span class="badge bg-light text-dark border">4</span></td>
+                            </tr>
+                            <tr>
+                                <td>Spectral GCN (Standalone)</td>
+                                <td>Topological Spatial Adjacency</td>
+                                <td>74.20%</td>
+                                <td>1,796.42</td>
+                                <td>1,120.15</td>
+                                <td><span class="badge bg-light text-dark border">5</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <div class="p-3 bg-light rounded-3 border mt-4 text-center max-w-900 mx-auto">
                 <p class="text-muted small mb-0">
                     <i class="bi bi-info-circle-fill text-primary me-1"></i>
