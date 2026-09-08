@@ -28,24 +28,26 @@
                         Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction
                     </h1>
                     <p class="lead text-muted mb-4 fs-6 fs-md-5">
-                        This platform presents the Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction, a final-year academic research project that applies deep learning techniques to model and forecast crime patterns across both space and time.
+                        This platform presents the Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction, an academic deep learning research platform that integrates Convolutional Neural Networks (1D-CNN), Long Short-Term Memory (LSTM), and Graph Convolutional Networks (GCN) to jointly model localized spatial patterns, longitudinal temporal dynamics, and inter-district topological crime diffusion across Indian districts.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
                         <span class="badge rounded-pill badge-custom">Deep Learning</span>
-                        <span class="badge rounded-pill badge-custom">CNN + LSTM</span>
+                        <span class="badge rounded-pill badge-custom">CNN + LSTM + GCN</span>
+                        <span class="badge rounded-pill badge-custom">Graph Neural Networks</span>
+                        <span class="badge rounded-pill badge-custom">Spatio-Temporal Modeling</span>
                         <span class="badge rounded-pill badge-custom">Crime Analytics</span>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-pipeline-card card shadow-sm border-0 p-4">
                         <div class="pipeline-mini d-flex flex-column align-items-center gap-2">
-                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Historical Crime Data</div>
+                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Historical Crime Dataset (2001&ndash;2014)</div>
                             <div class="pipeline-arrow py-1"><i class="bi bi-arrow-down fs-5"></i></div>
-                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Feature Engineering</div>
+                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Feature Engineering &amp; Tensor Extraction (33 Features)</div>
                             <div class="pipeline-arrow py-1"><i class="bi bi-arrow-down fs-5"></i></div>
-                            <div class="pipeline-node pipeline-node-accent w-100 text-center py-2 px-3 fw-bold">CNN + LSTM</div>
+                            <div class="pipeline-node pipeline-node-accent w-100 text-center py-2 px-3 fw-bold">CNN + LSTM + GCN (Tri-Modal Branching)</div>
                             <div class="pipeline-arrow py-1"><i class="bi bi-arrow-down fs-5"></i></div>
-                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Crime Prediction</div>
+                            <div class="pipeline-node w-100 text-center py-2 px-3 fw-medium">Continuous Crime Forecast &amp; Risk Assessment</div>
                         </div>
                     </div>
                 </div>
@@ -63,17 +65,17 @@
                 <div class="row g-4">
                     <div class="col-lg-4">
                         <p class="text-body mb-0">
-                            Crime prediction has long been a critical challenge for law enforcement agencies and public safety organizations. Traditional statistical approaches often struggle to capture the complex, non-linear relationships that exist within crime data, particularly when both spatial distribution and temporal trends must be considered simultaneously.
+                            Crime prediction is a crucial challenge for law enforcement and public safety organizations. Traditional statistical models often fail to capture the multi-scale, non-linear relationships in crime data, particularly when localized crime category interactions, multi-year temporal momentum, and geographic cross-district spillover effects operate simultaneously.
                         </p>
                     </div>
                     <div class="col-lg-4">
                         <p class="text-body mb-0">
-                            Artificial Intelligence and Deep Learning offer powerful tools for addressing this challenge. Unlike conventional models, deep learning architectures can automatically learn hierarchical representations from raw data, making them well suited for identifying hidden spatial clusters and temporal dependencies in crime occurrences.
+                            Deep Learning and Graph Neural Networks offer transformative capabilities for this problem. Convolutional layers extract localized multi-dimensional crime correlations, recurrent memory cells capture sequential temporal trends, and graph convolutional networks propagate topological spillover across geographic boundary networks.
                         </p>
                     </div>
                     <div class="col-lg-4">
                         <p class="text-body mb-0">
-                            The purpose of this project is to design, implement, and evaluate a hybrid deep learning framework that integrates CNN and LSTM components to jointly model spatial and temporal characteristics of crime data.
+                            The purpose of this project is to design, implement, and evaluate a unified tri-modal hybrid deep learning framework that integrates 1D-CNN, LSTM, and GCN components to jointly model spatial distribution, temporal dynamics, and topological inter-district crime spillover relationships.
                         </p>
                     </div>
                 </div>
@@ -87,7 +89,7 @@
                         </div>
                         <h3 class="h5 fw-bold text-navy mb-2">AI-Based Prediction</h3>
                         <p class="text-muted small mb-0">
-                            Leverages artificial intelligence to identify patterns in historical crime data and generate forward-looking predictions.
+                            Leverages artificial intelligence and deep neural networks to identify non-linear spatial, temporal, and graph topological patterns in historical crime data to generate accurate forward-looking forecasts.
                         </p>
                     </div>
                 </div>
@@ -96,9 +98,9 @@
                         <div class="feature-icon mb-3">
                             <i class="bi bi-layers-half fs-3 text-primary"></i>
                         </div>
-                        <h3 class="h5 fw-bold text-navy mb-2">Hybrid Deep Learning</h3>
+                        <h3 class="h5 fw-bold text-navy mb-2">Tri-Modal Hybrid Deep Learning</h3>
                         <p class="text-muted small mb-0">
-                            Combines CNN and LSTM architectures into a single hybrid model to capture both spatial and temporal characteristics of crime data.
+                            Combines 1D-CNN (64-dim spatial), LSTM (32-dim temporal), and Spectral GCN (32-dim topological) architectures into a unified 128-dim dense representation to capture comprehensive spatio-temporal-topological crime dynamics.
                         </p>
                     </div>
                 </div>
@@ -107,16 +109,16 @@
                         <div class="feature-icon mb-3">
                             <i class="bi bi-database-fill-check fs-3 text-primary"></i>
                         </div>
-                        <h3 class="h5 fw-bold text-navy mb-2">Historical Crime Dataset</h3>
+                        <h3 class="h5 fw-bold text-navy mb-2">Structured Historical Dataset</h3>
                         <p class="text-muted small mb-0">
-                            Utilizes a structured historical crime dataset spanning multiple years and features to train and validate the prediction framework.
+                            Utilizes a preprocessed Indian district crime dataset spanning 2001&ndash;2014 with 33 engineered predictor features and 850 indexed district nodes to train and validate all five deep learning architectures.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. PROJECT OBJECTIVES -->
+        <!-- 3. PROJECT OBJECTIVES (6 Comprehensive Objectives) -->
         <section class="mb-5 pb-lg-3">
             <div class="text-center mb-4 mb-md-5">
                 <h2 class="h3 fw-bold text-navy mb-2">Project Objectives</h2>
@@ -129,59 +131,59 @@
                         <div class="obj-number mb-2 text-primary fw-bold">01</div>
                         <h3 class="h6 fw-bold text-navy mb-2">Improve Prediction Accuracy</h3>
                         <p class="text-muted small mb-0">
-                            Enhance the accuracy of crime forecasting through a hybrid deep learning approach.
+                            Achieve state-of-the-art continuous crime forecasting accuracy through tri-modal spatio-temporal-topological deep learning fusion.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">02</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Capture Spatial Patterns</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Capture Spatial Correlations</h3>
                         <p class="text-muted small mb-0">
-                            Identify spatial correlations and hotspot regions using convolutional feature extraction.
+                            Extract localized multi-category crime interactions and hotspot concentrations across 33 crime types using 1D convolutional feature extractors.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">03</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Learn Temporal Dependencies</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Learn Temporal Dynamics</h3>
                         <p class="text-muted small mb-0">
-                            Model sequential and time-based crime trends using LSTM-based temporal learning.
+                            Model sequential longitudinal trends and multi-year crime momentum across 3-year historical sliding windows using recurrent LSTM memory cells.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">04</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Support Crime Analysis</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Model Spatial Topology &amp; Spillover</h3>
                         <p class="text-muted small mb-0">
-                            Provide meaningful analysis of historical crime patterns.
+                            Capture inter-district geographic proximity, cross-border adjacency, and spatial crime diffusion across 850 district nodes using Spectral Graph Convolutional Networks (GCN).
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">05</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Assist Researchers</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Support Law Enforcement Intelligence</h3>
                         <p class="text-muted small mb-0">
-                            Provide a research-oriented platform for exploring crime prediction and model results.
+                            Provide data-driven predictive intelligence, geographic hotspot alerts, and risk assessments to assist tactical resource allocation and preventive policing.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">06</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Improve Public Safety</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Advance Spatio-Temporal AI Research</h3>
                         <p class="text-muted small mb-0">
-                            Support data-driven decision making for crime analysis and preventive planning.
+                            Deliver a transparent, reproducible research platform for exploring multi-modal deep learning architectures and comparative baseline benchmarks.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. HYBRID MODEL ARCHITECTURE (WITH VISIBLE SPLIT & MERGE ARROWS) -->
+        <!-- 4. HYBRID MODEL ARCHITECTURE (3-WAY SPLIT & MERGE DIAGRAM) -->
         <section class="mb-5 pb-lg-3">
             <div class="text-center mb-4 mb-md-5">
                 <h2 class="h3 fw-bold text-navy mb-2">Hybrid Model Architecture</h2>
@@ -194,7 +196,7 @@
                     
                     <!-- Node 1: Historical Input -->
                     <div class="arch-box w-100 text-center py-2 px-3 fw-semibold shadow-sm" style="background:#F8FAFC; border-color:#CBD5E1;">
-                        <i class="bi bi-database-fill text-primary me-2"></i>Historical Multi-Feature Crime Input (2001&ndash;2013)
+                        <i class="bi bi-database-fill text-primary me-2"></i>Historical Multi-Feature Crime Input (2001&ndash;2014)
                     </div>
                     
                     <!-- Arrow 1 -->
@@ -223,21 +225,21 @@
                             <div class="arch-box arch-branch w-100 text-center p-3 h-100 shadow-sm border-primary" role="button" onclick="showArchDetail('cnn')">
                                 <span class="badge bg-primary text-white mb-2">Spatial Branch</span>
                                 <h4 class="h6 fw-bold text-navy mb-1">1D CNN</h4>
-                                <span class="d-block tiny-text text-muted">Localized Crime Features &bull; Shape: (Batch, 1, 33)</span>
+                                <span class="d-block tiny-text text-muted">Localized Crime Features &bull; Shape: (Batch, 1, 33) &bull; 64-dim</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="arch-box arch-branch w-100 text-center p-3 h-100 shadow-sm border-success" role="button" onclick="showArchDetail('lstm')">
                                 <span class="badge bg-success text-white mb-2">Temporal Branch</span>
                                 <h4 class="h6 fw-bold text-navy mb-1">CuDNN LSTM</h4>
-                                <span class="d-block tiny-text text-muted">Multi-Year Sequence Memory &bull; Shape: (Batch, 3, 33)</span>
+                                <span class="d-block tiny-text text-muted">Multi-Year Sequence Memory &bull; Shape: (Batch, 3, 33) &bull; 32-dim</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="arch-box arch-branch w-100 text-center p-3 h-100 shadow-sm border-warning" role="button" onclick="showArchDetail('gcn')">
                                 <span class="badge bg-warning text-dark mb-2">Graph Spatial Branch</span>
-                                <h4 class="h6 fw-bold text-navy mb-1">GCN Layer</h4>
-                                <span class="d-block tiny-text text-muted">Topological Message Passing &bull; Matrix: (850 &times; 850)</span>
+                                <h4 class="h6 fw-bold text-navy mb-1">Spectral GCN</h4>
+                                <span class="d-block tiny-text text-muted">Topological Message Passing &bull; Adjacency: (850 &times; 850) &bull; 32-dim</span>
                             </div>
                         </div>
                     </div>
@@ -254,7 +256,7 @@
 
                     <!-- Node 3: Hybrid Concatenation & Fusion -->
                     <div class="arch-box arch-highlight w-100 text-center py-3 px-3 fw-bold fs-5 shadow-sm">
-                        <i class="bi bi-stars text-warning me-2"></i>Multi-View Fusion Head (Concatenate &rarr; Dense 128 &rarr; Dropout 0.3)
+                        <i class="bi bi-stars text-warning me-2"></i>Multi-View Fusion Head (Concatenate 128-dim &rarr; Dense 128 &rarr; Dropout 0.3)
                     </div>
                     
                     <!-- Arrow 4 -->
@@ -262,7 +264,7 @@
                     
                     <!-- Node 4: Continuous Output -->
                     <div class="arch-box w-100 text-center py-2 px-3 fw-semibold shadow-sm text-primary" style="background:#EFF6FF; border-color:#93C5FD;">
-                        <i class="bi bi-graph-up-arrow me-2"></i>Continuous Crime Forecast &amp; Risk Classification (5-Fold CV R&sup2; = 96.10%)
+                        <i class="bi bi-graph-up-arrow me-2"></i>Continuous Crime Forecast &amp; Risk Classification (Held-Out Test R&sup2; = 98.10% | 5-Fold CV R&sup2; = 96.10%)
                     </div>
                 </div>
             </div>
@@ -275,11 +277,11 @@
                             <span class="badge bg-primary me-2">Spatial</span>
                             <h3 class="h6 fw-bold text-navy mb-0">1D CNN Branch</h3>
                         </div>
-                        <p class="text-muted small mb-2">Extracts localized inter-feature correlations and spatial feature combinations.</p>
+                        <p class="text-muted small mb-2">Extracts localized inter-feature correlations and spatial feature combinations across 33 crime types.</p>
                         <ul class="text-muted tiny-text ps-3 mb-0">
                             <li>Conv1D(64 filters, kernel=3, ReLU)</li>
                             <li>MaxPooling1D &bull; BatchNormalization</li>
-                            <li>Dense embedding vector: 64 units</li>
+                            <li>Dense spatial embedding vector: 64 units</li>
                         </ul>
                     </div>
                 </div>
@@ -301,20 +303,20 @@
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="d-flex align-items-center mb-2">
                             <span class="badge bg-warning text-dark me-2">Topology</span>
-                            <h3 class="h6 fw-bold text-navy mb-0">GCN Branch</h3>
+                            <h3 class="h6 fw-bold text-navy mb-0">Spectral GCN Branch</h3>
                         </div>
-                        <p class="text-muted small mb-2">Propagates spatial crime influence across neighboring districts via graph adjacency.</p>
+                        <p class="text-muted small mb-2">Propagates spatial crime influence across neighboring districts via normalized graph adjacency.</p>
                         <ul class="text-muted tiny-text ps-3 mb-0">
                             <li>Kipf-Welling Normalization: $\tilde{D}^{-1/2}\tilde{A}\tilde{D}^{-1/2}$</li>
                             <li>Static $850 \times 850$ $k$-NN Adjacency Matrix</li>
-                            <li>Graph embedding vector: 32 units</li>
+                            <li>Graph topological embedding vector: 32 units</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. HOW THE SYSTEM WORKS -->
+        <!-- 5. HOW THE SYSTEM WORKS (5 Pipeline Steps) -->
         <section class="mb-5 pb-lg-3">
             <div class="text-center mb-4 mb-md-5">
                 <h2 class="h3 fw-bold text-navy mb-2">How the System Works</h2>
@@ -327,35 +329,35 @@
                         <div class="timeline-step p-3">
                             <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">01</div>
                             <h3 class="h6 fw-bold text-navy mb-2">Data Collection</h3>
-                            <p class="text-muted tiny-text mb-0">Historical district-level crime records are used as the foundation.</p>
+                            <p class="text-muted tiny-text mb-0">Historical district-level crime records across Indian states from 2001 to 2014.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg text-center position-relative">
                         <div class="timeline-step p-3">
                             <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">02</div>
                             <h3 class="h6 fw-bold text-navy mb-2">Preprocessing</h3>
-                            <p class="text-muted tiny-text mb-0">Data is cleaned, normalized and prepared for model processing.</p>
+                            <p class="text-muted tiny-text mb-0">Data is cleaned, normalized, coordinate-aligned, and structured for tensor ingestion.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg text-center position-relative">
                         <div class="timeline-step p-3">
                             <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">03</div>
                             <h3 class="h6 fw-bold text-navy mb-2">Feature Engineering</h3>
-                            <p class="text-muted tiny-text mb-0">The project prepares 33 model-ready engineered features.</p>
+                            <p class="text-muted tiny-text mb-0">The project prepares 33 model-ready engineered spatial and temporal features.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg text-center position-relative">
                         <div class="timeline-step p-3">
                             <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">04</div>
-                            <h3 class="h6 fw-bold text-navy mb-2">Hybrid CNN-LSTM-GCN</h3>
-                            <p class="text-muted tiny-text mb-0">CNN learns spatial patterns, LSTM learns temporal sequences, and GCN learns topological adjacency.</p>
+                            <h3 class="h6 fw-bold text-navy mb-2">Tri-Modal Fusion</h3>
+                            <p class="text-muted tiny-text mb-0">1D-CNN learns spatial features, LSTM captures temporal sequences, and GCN models graph topology.</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg text-center position-relative">
                         <div class="timeline-step p-3">
                             <div class="step-num mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold">05</div>
-                            <h3 class="h6 fw-bold text-navy mb-2">Prediction</h3>
-                            <p class="text-muted tiny-text mb-0">The system generates a future crime count and risk classification.</p>
+                            <h3 class="h6 fw-bold text-navy mb-2">Forecasting &amp; Risk</h3>
+                            <p class="text-muted tiny-text mb-0">The system generates continuous crime count forecasts and strategic risk classifications.</p>
                         </div>
                     </div>
                 </div>
@@ -375,9 +377,9 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-patch-check-fill text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">Hybrid Architecture</h3>
+                                <h3 class="h6 fw-bold text-navy mb-2">Tri-Modal Hybrid Architecture</h3>
                                 <p class="text-muted small mb-0">
-                                    Design and implementation of a CNN-LSTM-GCN hybrid framework tailored for spatio-temporal crime prediction.
+                                    Design and realization of the 3-Way CNN-LSTM-GCN framework integrating spatial convolutions, recurrent memory, and spectral graph convolutions into a unified 128-dim dense embedding.
                                 </p>
                             </div>
                         </div>
@@ -388,9 +390,9 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-sliders text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">Feature Engineering</h3>
+                                <h3 class="h6 fw-bold text-navy mb-2">Engineered Spatial-Temporal-Graph Features</h3>
                                 <p class="text-muted small mb-0">
-                                    Development of engineered spatial and temporal features that enhance model learning capacity.
+                                    Development of 33 model-ready crime predictors combined with geographic centroid coordinates and an 850-district $k$-NN spatial graph adjacency matrix.
                                 </p>
                             </div>
                         </div>
@@ -401,9 +403,9 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-graph-up-arrow text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">Crime Trend Analysis</h3>
+                                <h3 class="h6 fw-bold text-navy mb-2">Longitudinal Multi-Year Trend Analysis</h3>
                                 <p class="text-muted small mb-0">
-                                    Comprehensive analysis of historical crime trends to support interpretation of model results.
+                                    Comprehensive evaluation of historical crime patterns across 13+ years (2001&ndash;2014) to capture seasonal and multi-year momentum across Indian districts.
                                 </p>
                             </div>
                         </div>
@@ -414,9 +416,9 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-award-fill text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">High Predictive Accuracy</h3>
+                                <h3 class="h6 fw-bold text-navy mb-2">Empirical Benchmark Superiority</h3>
                                 <p class="text-muted small mb-0">
-                                    Demonstrated consistent performance across cross-validation through joint spatio-temporal modeling.
+                                    Demonstrated performance gains achieving 98.10% held-out test $R^2$ (and 96.10% 5-fold CV $R^2$), establishing clear superiority over standalone single-domain baselines.
                                 </p>
                             </div>
                         </div>
@@ -425,39 +427,55 @@
             </div>
         </section>
 
-        <!-- 7. MODEL PERFORMANCE COMPARISON -->
+        <!-- 7. MODEL PERFORMANCE COMPARISON (All 5 Architectures) -->
         <section class="mb-5 pb-lg-3">
             <div class="text-center mb-4 mb-md-5">
                 <h2 class="h3 fw-bold text-navy mb-2">Model Performance Comparison</h2>
                 <p class="text-muted max-w-700 mx-auto small">
-                    The project benchmarks the proposed hybrid model against standalone CNN and LSTM architectures using R² Score metrics.
+                    The project benchmarks the proposed 3-Way hybrid model against all standalone baselines and the 2-Way hybrid architecture on unscaled Total IPC crime counts ($N_{test} = 1,041$).
                 </p>
                 <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
             </div>
 
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0 academic-card p-4 text-center">
-                        <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Baseline Model (Single Split)</span>
-                        <h3 class="h5 fw-bold text-navy mb-3">CNN</h3>
-                        <div class="metric-display text-muted fw-bold display-6 mb-2">84.18%</div>
-                        <span class="badge bg-light text-dark border">R² Score</span>
+            <div class="row g-3 justify-content-center">
+                <div class="col-lg col-md-4 col-sm-6">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-3 text-center">
+                        <span class="text-muted tiny-text fw-semibold text-uppercase d-block mb-1">Baseline Model</span>
+                        <h3 class="h6 fw-bold text-navy mb-2">Spectral GCN</h3>
+                        <div class="metric-display text-muted fw-bold fs-4 mb-1">{{ metrics.gcn.accuracy|floatformat:2 }}%</div>
+                        <span class="badge bg-light text-dark border tiny-text">Test R&sup2; (RMSE 1,784.5)</span>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0 academic-card p-4 text-center">
-                        <span class="text-muted small fw-semibold text-uppercase d-block mb-1">Baseline Model (Single Split)</span>
-                        <h3 class="h5 fw-bold text-navy mb-3">LSTM</h3>
-                        <div class="metric-display text-muted fw-bold display-6 mb-2">88.18%</div>
-                        <span class="badge bg-light text-dark border">R² Score</span>
+                <div class="col-lg col-md-4 col-sm-6">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-3 text-center">
+                        <span class="text-muted tiny-text fw-semibold text-uppercase d-block mb-1">Baseline Model</span>
+                        <h3 class="h6 fw-bold text-navy mb-2">LSTM</h3>
+                        <div class="metric-display text-muted fw-bold fs-4 mb-1">{{ metrics.lstm.accuracy|floatformat:2 }}%</div>
+                        <span class="badge bg-light text-dark border tiny-text">Test R&sup2; (RMSE 1,529.0)</span>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm border-0 academic-card card-accent p-4 text-center position-relative overflow-hidden">
-                        <span class="badge badge-accent-pill mb-2 d-inline-block">Proposed Model (5-Fold CV)</span>
-                        <h3 class="h5 fw-bold text-navy mb-3">Hybrid CNN-LSTM-GCN</h3>
-                        <div class="metric-display text-primary fw-bold display-5 mb-2">96.10%</div>
-                        <span class="badge bg-primary text-white">5-Fold CV R²</span>
+                <div class="col-lg col-md-4 col-sm-6">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-3 text-center">
+                        <span class="text-muted tiny-text fw-semibold text-uppercase d-block mb-1">Baseline Model</span>
+                        <h3 class="h6 fw-bold text-navy mb-2">1D-CNN</h3>
+                        <div class="metric-display text-muted fw-bold fs-4 mb-1">{{ metrics.cnn.accuracy|floatformat:2 }}%</div>
+                        <span class="badge bg-light text-dark border tiny-text">Test R&sup2; (RMSE 891.7)</span>
+                    </div>
+                </div>
+                <div class="col-lg col-md-6 col-sm-6">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-3 text-center">
+                        <span class="text-muted tiny-text fw-semibold text-uppercase d-block mb-1">Dual-Modal Fusion</span>
+                        <h3 class="h6 fw-bold text-navy mb-2">Hybrid (2-Way)</h3>
+                        <div class="metric-display text-muted fw-bold fs-4 mb-1">{{ metrics.hybrid_2way.accuracy|floatformat:2 }}%</div>
+                        <span class="badge bg-light text-dark border tiny-text">Test R&sup2; (CV: 96.47%)</span>
+                    </div>
+                </div>
+                <div class="col-lg col-md-6 col-sm-12">
+                    <div class="card h-100 shadow-sm border-0 academic-card card-accent p-3 text-center position-relative overflow-hidden">
+                        <span class="badge badge-accent-pill mb-1 d-inline-block">Proposed Model (Winner)</span>
+                        <h3 class="h6 fw-bold text-navy mb-2">Hybrid (3-Way GCN)</h3>
+                        <div class="metric-display text-primary fw-bold fs-3 mb-1">{{ metrics.hybrid_3way.accuracy|floatformat:2 }}%</div>
+                        <span class="badge bg-primary text-white tiny-text">Test R&sup2; (CV: 96.10%)</span>
                     </div>
                 </div>
             </div>
@@ -468,26 +486,26 @@
             <div class="row g-4 text-center">
                 <div class="col-6 col-md-3">
                     <div class="card shadow-sm border-0 academic-card p-4 h-100 justify-content-center">
-                        <div class="display-5 fw-bold text-navy mb-1">9,840</div>
-                        <div class="text-muted small fw-semibold text-uppercase">Dataset Records</div>
+                        <div class="display-5 fw-bold text-navy mb-1">9,385</div>
+                        <div class="text-muted small fw-semibold text-uppercase">Dataset Records (2001&ndash;2014)</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="card shadow-sm border-0 academic-card p-4 h-100 justify-content-center">
-                        <div class="display-5 fw-bold text-navy mb-1">13</div>
-                        <div class="text-muted small fw-semibold text-uppercase">Years of Data</div>
+                        <div class="display-5 fw-bold text-navy mb-1">13+</div>
+                        <div class="text-muted small fw-semibold text-uppercase">Years of Crime Data</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="card shadow-sm border-0 academic-card p-4 h-100 justify-content-center">
                         <div class="display-5 fw-bold text-navy mb-1">33</div>
-                        <div class="text-muted small fw-semibold text-uppercase">Features</div>
+                        <div class="text-muted small fw-semibold text-uppercase">Engineered Features</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="card shadow-sm border-0 academic-card card-accent p-4 h-100 justify-content-center">
-                        <div class="display-5 fw-bold text-primary mb-1">96.10%</div>
-                        <div class="text-primary small fw-semibold text-uppercase">5-Fold CV R² (3-Way)</div>
+                        <div class="display-5 fw-bold text-primary mb-1">98.10%</div>
+                        <div class="text-primary small fw-semibold text-uppercase">Peak Test R&sup2; (96.10% 5-Fold CV)</div>
                     </div>
                 </div>
             </div>
@@ -498,11 +516,12 @@
             <div class="card shadow-sm border-0 academic-card p-4 p-md-5 text-center max-w-900 mx-auto">
                 <h2 class="h3 fw-bold text-navy mb-3">Explore the Hybrid CNN-LSTM-GCN Crime Prediction Framework</h2>
                 <p class="text-muted mb-4 max-w-700 mx-auto">
-                    Access real-time insights, run predictions, and explore model performance through the platform's interactive dashboard.
+                    Access real-time insights, run predictions, and explore multi-modal deep learning performance benchmarks through the platform's interactive dashboard.
                 </p>
                 <div class="d-flex flex-wrap justify-content-center gap-3">
                     <a href="{% url 'dashboard' %}" class="btn btn-accent px-4 py-2 fw-medium">View Dashboard</a>
                     <a href="{% url 'prediction' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">Run Prediction</a>
+                    <a href="{% url 'performance' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">View Performance</a>
                 </div>
             </div>
         </section>

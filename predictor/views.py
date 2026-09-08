@@ -563,7 +563,7 @@ def dataset(request):
 
 
 def about(request):
-    return render(request, "about.html")
+    return render(request, "about.html", {"metrics": MODEL_PERFORMANCE_METRICS})
 def problem_objectives(request):
     return render(request, 'problem_objectives.html')
 def methodology(request):
