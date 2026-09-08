@@ -245,3 +245,211 @@ body.dark-mode .btn-outline-accent:hover,
     background-color: rgba(111, 137, 179, 0.25);
     color: #ffffff;
 }
+/* ============================================================
+   INTERACTIVE PIPELINE DIAGRAM & WORKFLOW STEPPER
+============================================================ */
+
+/* Mode Switcher Pills */
+.pipeline-mode-switcher .btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+/* Interactive Pipeline Canvas */
+.interactive-pipeline-container {
+    position: relative;
+    background: linear-gradient(180deg, rgba(111, 137, 179, 0.03) 0%, rgba(111, 137, 179, 0.08) 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(111, 137, 179, 0.15);
+}
+
+.pipeline-interactive-node {
+    cursor: pointer;
+    background-color: var(--bs-card-bg, #ffffff);
+    border: 2px solid var(--bs-border-color, #e2e8f0);
+    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    position: relative;
+}
+
+.pipeline-interactive-node:hover {
+    transform: translateY(-3px);
+    border-color: #6f89b3;
+    box-shadow: 0 0.5rem 1.25rem rgba(111, 137, 179, 0.18) !important;
+}
+
+.pipeline-interactive-node.is-active-node {
+    border-color: #4C6EF5 !important;
+    background-color: rgba(76, 110, 245, 0.06) !important;
+    box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.2), 0 0.5rem 1.25rem rgba(76, 110, 245, 0.15) !important;
+}
+
+.pipeline-interactive-node.node-dimmed {
+    opacity: 0.25 !important;
+    filter: grayscale(80%) !important;
+    pointer-events: none !important;
+    transform: scale(0.96) !important;
+}
+
+/* Node Badges & Icons */
+.node-badge-sm {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* SVG Flow Connectors */
+.flow-svg-connector {
+    display: block;
+    width: 100%;
+    height: 38px;
+    overflow: visible;
+}
+
+.flow-svg-path {
+    stroke: #6f89b3;
+    stroke-width: 2.2;
+    stroke-dasharray: 6, 6;
+    animation: flowAnimation 1.2s linear infinite;
+    fill: none;
+}
+
+.flow-svg-arrow {
+    fill: #6f89b3;
+}
+
+@keyframes flowAnimation {
+    0% {
+        stroke-dashoffset: 24;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Inspector Drawer Card */
+.inspector-card {
+    background-color: var(--bs-card-bg, #ffffff);
+    border: 1px solid var(--bs-border-color, rgba(0, 0, 0, 0.08)) !important;
+    border-radius: 0.85rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.inspector-card.inspector-updated {
+    border-color: #4C6EF5 !important;
+    box-shadow: 0 0 0 2px rgba(76, 110, 245, 0.2) !important;
+}
+
+.inspector-spec-box {
+    background-color: var(--bs-tertiary-bg, #f8f9fa);
+    border: 1px solid var(--bs-border-color, #e9ecef);
+    border-radius: 0.5rem;
+    padding: 0.65rem 0.85rem;
+}
+
+/* ============================================================
+   INTERACTIVE WORKFLOW STEPPER
+============================================================ */
+.stepper-nav-container {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    padding-bottom: 0.5rem;
+}
+
+.stepper-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.stepper-btn:hover {
+    background-color: rgba(111, 137, 179, 0.08);
+}
+
+.stepper-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.stepper-btn.active-step .stepper-badge {
+    box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.25);
+}
+
+.stepper-btn.active-step .stepper-label {
+    color: #4C6EF5 !important;
+    font-weight: 700 !important;
+}
+
+.stepper-display-card {
+    background: var(--bs-card-bg, #ffffff);
+    border: 1px solid var(--bs-border-color, rgba(0, 0, 0, 0.08));
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.04);
+}
+
+/* Dark Mode Extensions */
+[data-bs-theme="dark"] .interactive-pipeline-container,
+body.dark-mode .interactive-pipeline-container {
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .pipeline-interactive-node,
+body.dark-mode .pipeline-interactive-node {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #f1f5f9;
+}
+
+[data-bs-theme="dark"] .pipeline-interactive-node:hover,
+body.dark-mode .pipeline-interactive-node:hover {
+    border-color: #9ec5fe;
+}
+
+[data-bs-theme="dark"] .pipeline-interactive-node.is-active-node,
+body.dark-mode .pipeline-interactive-node.is-active-node {
+    background-color: rgba(76, 110, 245, 0.15) !important;
+    border-color: #748ffc !important;
+}
+
+[data-bs-theme="dark"] .flow-svg-path,
+body.dark-mode .flow-svg-path {
+    stroke: #9ec5fe;
+}
+
+[data-bs-theme="dark"] .flow-svg-arrow,
+body.dark-mode .flow-svg-arrow {
+    fill: #9ec5fe;
+}
+
+[data-bs-theme="dark"] .inspector-card,
+body.dark-mode .inspector-card,
+[data-bs-theme="dark"] .stepper-display-card,
+body.dark-mode .stepper-display-card {
+    background-color: var(--bs-dark-surface, #1e293b) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .inspector-spec-box,
+body.dark-mode .inspector-spec-box {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+}

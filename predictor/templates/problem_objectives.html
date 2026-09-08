@@ -27,28 +27,34 @@
                     <span class="eyebrow"><i class="bi bi-bullseye"></i>&nbsp;Research Foundation</span>
                     <h1 class="display-5 fw-bold text-navy mt-2 mb-3">Problem &amp; Objectives</h1>
                     <p class="lead text-muted mb-4 fs-6 fs-md-5">
-                        Crime is shaped by where and when it happens. This page outlines the core problem this research addresses, why existing approaches fall short, and the objectives guiding the design of the Hybrid CNN-LSTM-GCN Framework for Spatio-Temporal Crime Prediction.
+                        Crime is shaped by geography, temporal evolution, and inter-district topological diffusion. This page outlines the core research problem, why standalone single-domain models fall short, and the objectives guiding the design of the Tri-Modal Hybrid CNN-LSTM-GCN Framework.
                     </p>
                     <div class="d-flex flex-wrap gap-2">
-                        <span class="badge rounded-pill badge-custom">Spatial Analysis</span>
-                        <span class="badge rounded-pill badge-custom">Temporal Modeling</span>
-                        <span class="badge rounded-pill badge-custom">Deep Learning</span>
+                        <span class="badge rounded-pill badge-custom">Spatial Convolutions</span>
+                        <span class="badge rounded-pill badge-custom">Temporal LSTM</span>
+                        <span class="badge rounded-pill badge-custom">Spectral GCN</span>
+                        <span class="badge rounded-pill badge-custom">Tri-Modal Fusion</span>
+                        <span class="badge rounded-pill badge-custom">Spatio-Temporal Graph</span>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-pipeline-card card shadow-sm border-0 p-4 p-md-5">
                         <div class="d-flex align-items-start gap-3 mb-4">
-                            <i class="bi bi-question-diamond-fill text-primary fs-4 mt-1"></i>
+                            <div class="p-2 rounded-3 bg-primary bg-opacity-10 text-primary">
+                                <i class="bi bi-question-diamond-fill fs-4"></i>
+                            </div>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-1">The Problem</h3>
-                                <p class="text-muted small mb-0">Crime patterns shift across both geography and time, and most models only capture one dimension at once.</p>
+                                <h3 class="h6 fw-bold text-navy mb-1">The Multi-Dimensional Problem</h3>
+                                <p class="text-muted small mb-0">Crime dynamics exhibit simultaneous spatial clustering, multi-year temporal momentum, and cross-border geographic spillover across adjacent districts that single-domain models cannot simultaneously capture.</p>
                             </div>
                         </div>
                         <div class="d-flex align-items-start gap-3">
-                            <i class="bi bi-bullseye text-primary fs-4 mt-1"></i>
+                            <div class="p-2 rounded-3 bg-success bg-opacity-10 text-success">
+                                <i class="bi bi-bullseye fs-4"></i>
+                            </div>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-1">The Objective</h3>
-                                <p class="text-muted small mb-0">Design a hybrid deep learning framework that learns spatial and temporal patterns jointly, improving prediction quality.</p>
+                                <h3 class="h6 fw-bold text-navy mb-1">The Core Objective</h3>
+                                <p class="text-muted small mb-0">Design and validate a unified tri-modal deep learning framework fusing 1D-CNN (spatial), LSTM (temporal), and Spectral GCN (topological) representations into a 128-dim latent space for peak predictive accuracy.</p>
                             </div>
                         </div>
                     </div>
@@ -61,7 +67,7 @@
             <div class="text-center mb-4 mb-md-5">
                 <h2 class="h3 fw-bold text-navy mb-2">Problem Statement</h2>
                 <p class="text-muted max-w-700 mx-auto small">
-                    Predicting crime accurately is difficult because crime data is inherently spatio-temporal, non-linear, and resistant to the assumptions traditional statistical models rely on.
+                    Forecasting district-level crime is uniquely challenging due to non-linear correlations, temporal momentum, and spatial contagion across geographic boundaries.
                 </p>
                 <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
             </div>
@@ -72,9 +78,9 @@
                         <div class="feature-icon mb-3">
                             <i class="bi bi-geo-alt-fill fs-3 text-primary"></i>
                         </div>
-                        <h3 class="h5 fw-bold text-navy mb-2">Spatial &amp; Temporal Coupling</h3>
+                        <h3 class="h5 fw-bold text-navy mb-2">Spatio-Temporal Coupling</h3>
                         <p class="text-muted small mb-0">
-                            Crime incidents are distributed unevenly across districts and evolve differently over time. Analyzing either dimension in isolation discards information the other dimension depends on.
+                            Crime incidents are distributed unevenly across districts and evolve non-linearly over historical time. Analyzing spatial density or time sequences in isolation discards critical inter-dependent signals.
                         </p>
                     </div>
                 </div>
@@ -83,9 +89,9 @@
                         <div class="feature-icon mb-3">
                             <i class="bi bi-diagram-3-fill fs-3 text-primary"></i>
                         </div>
-                        <h3 class="h5 fw-bold text-navy mb-2">Non-Linear Relationships</h3>
+                        <h3 class="h5 fw-bold text-navy mb-2">Topological Spillover &amp; Adjacency</h3>
                         <p class="text-muted small mb-0">
-                            Crime is influenced by many interacting factors whose combined effect is rarely linear, making it difficult for classical statistical techniques to represent the underlying structure.
+                            Criminal activity in one district frequently diffuses into adjacent neighboring jurisdictions. Standard tabular models treat administrative districts as isolated entities, ignoring physical proximity.
                         </p>
                     </div>
                 </div>
@@ -94,58 +100,310 @@
                         <div class="feature-icon mb-3">
                             <i class="bi bi-exclamation-triangle-fill fs-3 text-primary"></i>
                         </div>
-                        <h3 class="h5 fw-bold text-navy mb-2">Limits of Traditional Methods</h3>
+                        <h3 class="h5 fw-bold text-navy mb-2">Limits of Traditional Baselines</h3>
                         <p class="text-muted small mb-0">
-                            Conventional regression and time-series methods are typically built to handle either spatial distribution or temporal trends, rarely both together, which caps their predictive accuracy.
+                            Conventional regression, ARIMA, and single-branch neural networks lack the architectural capacity to jointly represent multi-category spatial features, sequential memory, and graph Laplacians.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. RESEARCH NEED -->
+        <!-- 3. RESEARCH NEED (All 3 Standalone Baselines + Hybrid) -->
         <section class="mb-5 pb-lg-3 reveal-on-scroll">
             <div class="text-center mb-4 mb-md-5">
-                <h2 class="h3 fw-bold text-navy mb-2">Research Need</h2>
+                <h2 class="h3 fw-bold text-navy mb-2">Research Need: Why Isolated Architectures Fall Short</h2>
                 <p class="text-muted max-w-700 mx-auto small">
-                    CNNs and LSTMs each address one half of the problem. Combining them into a single framework closes the gap left by using either architecture alone.
+                    Each standalone deep learning architecture specializes in exactly one domain. Combining all three into a joint tri-modal framework closes the empirical gaps left by each individual baseline.
                 </p>
                 <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
             </div>
 
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-4">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
-                        <h3 class="h6 fw-bold text-navy mb-2">CNN Alone</h3>
-                        <p class="text-muted small mb-0">
-                            Effective at extracting spatial correlations and localized patterns, but has no built-in mechanism for modeling how those patterns change over time.
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge bg-primary text-white me-2">Spatial</span>
+                            <h3 class="h6 fw-bold text-navy mb-0">CNN Alone</h3>
+                        </div>
+                        <p class="text-muted small mb-2">
+                            Effective at extracting localized spatial correlations and multi-category interactions across 33 crime types ($R^2 = 91.41\%$).
                         </p>
+                        <div class="text-danger tiny-text fw-medium">
+                            <i class="bi bi-x-circle-fill me-1"></i> No mechanism for temporal sequence momentum or cross-border graph diffusion.
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-lg-3 col-md-6">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
-                        <h3 class="h6 fw-bold text-navy mb-2">LSTM Alone</h3>
-                        <p class="text-muted small mb-0">
-                            Well suited to learning sequential and temporal dependencies, but does not natively capture spatial structure across districts.
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge bg-info text-dark me-2">Temporal</span>
+                            <h3 class="h6 fw-bold text-navy mb-0">LSTM Alone</h3>
+                        </div>
+                        <p class="text-muted small mb-2">
+                            Well suited to capturing sequential dependencies and longitudinal momentum across 3-year sliding historical windows ($R^2 = 81.34\%$).
                         </p>
+                        <div class="text-danger tiny-text fw-medium">
+                            <i class="bi bi-x-circle-fill me-1"></i> Cannot natively capture spatial coordinate layout or topological graph adjacency.
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge bg-warning text-dark me-2">Topology</span>
+                            <h3 class="h6 fw-bold text-navy mb-0">GCN Alone</h3>
+                        </div>
+                        <p class="text-muted small mb-2">
+                            Excels at propagating crime influence across neighboring districts via normalized spatial graph Laplacian convolutions ($R^2 = 74.20\%$).
+                        </p>
+                        <div class="text-danger tiny-text fw-medium">
+                            <i class="bi bi-x-circle-fill me-1"></i> Has no recurrent temporal memory cells or intra-district feature cross-convolutions.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
                     <div class="card h-100 shadow-sm border-0 academic-card card-accent p-4">
-                        <span class="badge badge-accent-pill mb-2 d-inline-block">This Project</span>
-                        <h3 class="h6 fw-bold text-navy mb-2">Hybrid CNN-LSTM-GCN</h3>
-                        <p class="text-muted small mb-0">
-                            Combines convolutional, recurrent, and graph architectures so spatial, temporal, and topological graph representations are learned jointly.
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge bg-success text-white me-2">Proposed</span>
+                            <h3 class="h6 fw-bold text-navy mb-0">Hybrid (3-Way)</h3>
+                        </div>
+                        <p class="text-muted small mb-2">
+                            Unites 1D-CNN (64d), LSTM (32d), and Spectral GCN (32d) into a 128-dim dense latent embedding ($R^2 = 98.10\%$, RMSE = 488.4).
                         </p>
+                        <div class="text-success tiny-text fw-semibold">
+                            <i class="bi bi-check-circle-fill me-1"></i> Jointly models spatial correlations, temporal momentum, and graph diffusion.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 4. PROJECT OBJECTIVES -->
+        <!-- 4. INTERACTIVE ARCHITECTURE EXPLORER -->
         <section class="mb-5 pb-lg-3 reveal-on-scroll">
             <div class="text-center mb-4 mb-md-5">
-                <h2 class="h3 fw-bold text-navy mb-2">Project Objectives</h2>
+                <span class="badge badge-accent-pill mb-2">Interactive Framework Visualization</span>
+                <h2 class="h3 fw-bold text-navy mb-2">Tri-Modal Architecture &amp; Dataflow Pipeline</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    Toggle between the proposed 3-Way Tri-Modal architecture and the 2-Way baseline. Click or hover any node to inspect tensor shapes, layer operations, and hyperparameters.
+                </p>
+                <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
+            </div>
+
+            <!-- Interactive Pipeline Component Wrap -->
+            <div class="card shadow-sm border-0 academic-card p-4 p-md-5" id="interactivePipelineWrap">
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+                    <div class="pipeline-mode-switcher btn-group" role="group" aria-label="Architecture Mode">
+                        <button type="button" class="btn btn-primary active px-3 py-2" data-pipeline-mode="3way">
+                            <i class="bi bi-diagram-3-fill me-1"></i> 3-Way (CNN + LSTM + GCN)
+                        </button>
+                        <button type="button" class="btn btn-outline-primary px-3 py-2" data-pipeline-mode="2way">
+                            <i class="bi bi-layers-half me-1"></i> 2-Way (CNN + LSTM)
+                        </button>
+                    </div>
+                    <div>
+                        <span id="pipelineMetricBadge" class="badge bg-primary text-white rounded-pill px-3 py-2">
+                            3-Way R² = 98.10% (CV: 96.10%) [Winner]
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Left: Interactive Connected Nodes Flow -->
+                    <div class="col-lg-7">
+                        <div class="interactive-pipeline-container">
+                            
+                            <!-- Node 1: Input Data -->
+                            <div class="pipeline-interactive-node mb-1" data-node-key="data_input">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-database-fill text-primary"></i>
+                                        <strong class="text-navy small">1. Historical Crime Records &amp; Node Geometry</strong>
+                                    </div>
+                                    <span class="badge bg-light text-dark border node-badge-sm">N=9,385</span>
+                                </div>
+                            </div>
+
+                            <!-- SVG Flow Arrow -->
+                            <svg class="flow-svg-connector" viewBox="0 0 200 30" preserveAspectRatio="none">
+                                <path d="M 100 0 L 100 24" class="flow-svg-path" />
+                                <polygon points="95,22 100,29 105,22" class="flow-svg-arrow" />
+                            </svg>
+
+                            <!-- Node 2: Preprocessing -->
+                            <div class="pipeline-interactive-node mb-1" data-node-key="preprocessing">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-sliders text-info"></i>
+                                        <strong class="text-navy small">2. Data Cleaning, Scaling &amp; Lag Windowing</strong>
+                                    </div>
+                                    <span class="badge bg-light text-dark border node-badge-sm">T = 3 Years</span>
+                                </div>
+                            </div>
+
+                            <!-- SVG Flow Arrow -->
+                            <svg class="flow-svg-connector" viewBox="0 0 200 30" preserveAspectRatio="none">
+                                <path d="M 100 0 L 100 24" class="flow-svg-path" />
+                                <polygon points="95,22 100,29 105,22" class="flow-svg-arrow" />
+                            </svg>
+
+                            <!-- Node 3: Feature Engineering -->
+                            <div class="pipeline-interactive-node mb-2" data-node-key="features">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-grid-3x3-gap-fill text-success"></i>
+                                        <strong class="text-navy small">3. 33 Engineered Features &amp; Spatial Adjacency</strong>
+                                    </div>
+                                    <span class="badge bg-light text-dark border node-badge-sm">850x850 Matrix</span>
+                                </div>
+                            </div>
+
+                            <!-- SVG Split Branches -->
+                            <svg class="flow-svg-connector" viewBox="0 0 300 35" preserveAspectRatio="none">
+                                <path d="M 150 0 L 150 12 L 50 12 L 50 28" class="flow-svg-path" />
+                                <path d="M 150 0 L 150 28" class="flow-svg-path" />
+                                <path d="M 150 0 L 150 12 L 250 12 L 250 28" class="flow-svg-path" />
+                                <polygon points="46,24 50,30 54,24" class="flow-svg-arrow" />
+                                <polygon points="146,24 150,30 154,24" class="flow-svg-arrow" />
+                                <polygon points="246,24 250,30 254,24" class="flow-svg-arrow" />
+                            </svg>
+
+                            <!-- Parallel Branches Grid -->
+                            <div class="row g-2 mb-2">
+                                <div class="col-4">
+                                    <div class="pipeline-interactive-node h-100 p-2 text-center" data-node-key="branch_cnn">
+                                        <span class="badge bg-primary text-white node-badge-sm mb-1 d-inline-block">Spatial</span>
+                                        <strong class="d-block text-navy small">1D-CNN</strong>
+                                        <span class="tiny-text text-muted">64-dim Embedding</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="pipeline-interactive-node h-100 p-2 text-center" data-node-key="branch_lstm">
+                                        <span class="badge bg-info text-dark node-badge-sm mb-1 d-inline-block">Temporal</span>
+                                        <strong class="d-block text-navy small">LSTM</strong>
+                                        <span class="tiny-text text-muted">32-dim Embedding</span>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="pipeline-interactive-node h-100 p-2 text-center" id="branchNodeGCN" data-node-key="branch_gcn">
+                                        <span class="badge bg-warning text-dark node-badge-sm mb-1 d-inline-block">Topology</span>
+                                        <strong class="d-block text-navy small">Spectral GCN</strong>
+                                        <span class="tiny-text text-muted">32-dim Embedding</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SVG Merge Branches -->
+                            <svg class="flow-svg-connector" viewBox="0 0 300 35" preserveAspectRatio="none">
+                                <path d="M 50 0 L 50 16 L 150 16 L 150 28" class="flow-svg-path" />
+                                <path d="M 150 0 L 150 28" class="flow-svg-path" />
+                                <path d="M 250 0 L 250 16 L 150 16 L 150 28" class="flow-svg-path" />
+                                <polygon points="146,24 150,30 154,24" class="flow-svg-arrow" />
+                            </svg>
+
+                            <!-- Node 4: Dense Fusion -->
+                            <div class="pipeline-interactive-node mb-1" id="nodeFusion" data-node-key="fusion">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-intersect text-danger"></i>
+                                        <strong class="text-navy small">4. Dense Multi-Modal Latent Feature Fusion</strong>
+                                    </div>
+                                    <span class="badge bg-danger text-white node-badge-sm" id="fusionDimBadge">128-dim Embedding</span>
+                                </div>
+                            </div>
+
+                            <!-- SVG Flow Arrow -->
+                            <svg class="flow-svg-connector" viewBox="0 0 200 30" preserveAspectRatio="none">
+                                <path d="M 100 0 L 100 24" class="flow-svg-path" />
+                                <polygon points="95,22 100,29 105,22" class="flow-svg-arrow" />
+                            </svg>
+
+                            <!-- Node 5: Dense Regressor -->
+                            <div class="pipeline-interactive-node mb-1" data-node-key="dense_regressor">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-cpu-fill text-dark"></i>
+                                        <strong class="text-navy small">5. Multi-Layer Dense Regression Head</strong>
+                                    </div>
+                                    <span class="badge bg-light text-dark border node-badge-sm">Dense(64, 32, 1)</span>
+                                </div>
+                            </div>
+
+                            <!-- SVG Flow Arrow -->
+                            <svg class="flow-svg-connector" viewBox="0 0 200 30" preserveAspectRatio="none">
+                                <path d="M 100 0 L 100 24" class="flow-svg-path" />
+                                <polygon points="95,22 100,29 105,22" class="flow-svg-arrow" />
+                            </svg>
+
+                            <!-- Node 6: Prediction Output -->
+                            <div class="pipeline-interactive-node" data-node-key="prediction_output">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-shield-check text-success"></i>
+                                        <strong class="text-navy small">6. Crime Forecast &amp; Tactical Risk Tier</strong>
+                                    </div>
+                                    <span class="badge bg-success text-white node-badge-sm">Unscaled IPC</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Node Inspector Panel -->
+                    <div class="col-lg-5">
+                        <div class="inspector-card p-4 h-100 d-flex flex-column justify-content-between" id="pipelineNodeInspector">
+                            <div>
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <span class="text-muted tiny-text text-uppercase fw-semibold d-block mb-1">Architecture Node Inspector</span>
+                                        <h3 class="h5 fw-bold text-navy mb-0" id="inspectorTitle">Node Title</h3>
+                                    </div>
+                                    <span id="inspectorBadge" class="badge bg-primary rounded-pill px-3 py-1 font-monospace">Stage</span>
+                                </div>
+
+                                <p class="text-muted small mb-3" id="inspectorDesc">
+                                    Hover or click any pipeline stage to view technical specifications, layer dimensions, and mathematical formulations.
+                                </p>
+
+                                <div class="vstack gap-2">
+                                    <div class="inspector-spec-box">
+                                        <span class="tiny-text text-muted fw-semibold d-block">Input Tensor Representation</span>
+                                        <code class="small text-primary" id="inspectorInput">--</code>
+                                    </div>
+                                    <div class="inspector-spec-box">
+                                        <span class="tiny-text text-muted fw-semibold d-block">Core Operation / Formulation</span>
+                                        <code class="small text-navy" id="inspectorOp">--</code>
+                                    </div>
+                                    <div class="inspector-spec-box">
+                                        <span class="tiny-text text-muted fw-semibold d-block">Output Feature Representation</span>
+                                        <code class="small text-success" id="inspectorOutput">--</code>
+                                    </div>
+                                    <div class="inspector-spec-box">
+                                        <span class="tiny-text text-muted fw-semibold d-block">Hyperparameters / Configuration</span>
+                                        <span class="small text-muted font-monospace" id="inspectorParams">--</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-top text-center text-muted tiny-text">
+                                <i class="bi bi-cursor me-1"></i> Tap or hover any component on the left to inspect its parameters.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PROJECT OBJECTIVES -->
+        <section class="mb-5 pb-lg-3 reveal-on-scroll">
+            <div class="text-center mb-4 mb-md-5">
+                <h2 class="h3 fw-bold text-navy mb-2">Project Research Objectives</h2>
+                <p class="text-muted max-w-700 mx-auto small">
+                    The research methodology is structured around seven interconnected objectives guiding dataset preparation, tri-modal modeling, and empirical benchmarking.
+                </p>
                 <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
             </div>
 
@@ -153,66 +411,79 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">01</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Improve Prediction Accuracy</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Continuous Crime Forecasting</h3>
                         <p class="text-muted small mb-0">
-                            Enhance the accuracy of crime forecasting through a hybrid deep learning approach.
+                            Forecast exact unscaled Total IPC crime counts at district granularity with minimum regression error, avoiding lossy discrete binning.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">02</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Capture Spatial Patterns</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Capture Spatial Patterns (CNN)</h3>
                         <p class="text-muted small mb-0">
-                            Identify spatial correlations and hotspot regions using convolutional feature extraction.
+                            Extract localized cross-category feature interactions across 33 statutory crime dimensions using 1D convolutional kernel filters (64-dim).
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">03</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Learn Temporal Dependencies</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Model Temporal Dynamics (LSTM)</h3>
                         <p class="text-muted small mb-0">
-                            Model sequential and time-based crime trends using LSTM-based temporal learning.
+                            Capture multi-year sequential momentum, autoregressive velocity, and longitudinal dependencies across 3-year sliding windows (32-dim).
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
-                        <div class="obj-number mb-2 text-primary fw-bold">04</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Analyze Historical Trends</h3>
+                        <div class="obj-number mb-2 text-warning fw-bold">04</div>
+                        <h3 class="h6 fw-bold text-navy mb-2">Model Spatial Topology &amp; Spillover (GCN)</h3>
                         <p class="text-muted small mb-0">
-                            Provide meaningful analysis of historical crime patterns across districts and years.
+                            Model inter-district physical proximity and cross-border contagion across 850 district nodes via Kipf-Welling normalized graph convolutions (32-dim).
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">05</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Generate Future Predictions</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Tri-Modal Latent Feature Fusion</h3>
                         <p class="text-muted small mb-0">
-                            Produce forward-looking crime predictions to support planning and research use cases.
+                            Fuse 64-dim CNN, 32-dim LSTM, and 32-dim GCN representations into a unified 128-dimensional latent space capturing all three dimensions jointly.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 academic-card p-4">
                         <div class="obj-number mb-2 text-primary fw-bold">06</div>
-                        <h3 class="h6 fw-bold text-navy mb-2">Support Data-Driven Research</h3>
+                        <h3 class="h6 fw-bold text-navy mb-2">Longitudinal Analysis &amp; Future Projections</h3>
                         <p class="text-muted small mb-0">
-                            Provide a research-oriented platform for exploring crime prediction and model results.
+                            Provide comprehensive historical retrospective insights (2001–2014) and forward-looking auto-regressive projections through 2030+.
                         </p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card h-100 shadow-sm border-0 academic-card card-accent p-4">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="obj-number text-primary fw-bold">07</div>
+                            <div>
+                                <h3 class="h6 fw-bold text-navy mb-1">Empirical Benchmarking &amp; Validation</h3>
+                                <p class="text-muted small mb-0">
+                                    Rigorously benchmark the proposed 3-Way hybrid against standalone 1D-CNN, LSTM, and Spectral GCN baselines as well as the 2-Way hybrid via 5-fold cross-validation and unscaled test evaluation.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 5. EXPECTED OUTCOME -->
+        <!-- 6. EXPECTED OUTCOMES (Aligned with 5 Models) -->
         <section class="mb-5 pb-lg-3 reveal-on-scroll">
             <div class="text-center mb-4 mb-md-5">
-                <h2 class="h3 fw-bold text-navy mb-2">Expected Outcome</h2>
+                <h2 class="h3 fw-bold text-navy mb-2">Expected Outcomes</h2>
                 <p class="text-muted max-w-700 mx-auto small">
-                    What this research is intended to deliver by the end of the project.
+                    Deliverables produced by the completed research implementation.
                 </p>
                 <hr class="w-25 mx-auto border-2 opacity-50 my-2 text-primary">
             </div>
@@ -223,8 +494,8 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-layers-half text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">Hybrid CNN-LSTM-GCN Framework</h3>
-                                <p class="text-muted small mb-0">A working framework that jointly learns spatial, temporal, and graph topological crime patterns.</p>
+                                <h3 class="h6 fw-bold text-navy mb-2">Tri-Modal Hybrid Architecture</h3>
+                                <p class="text-muted small mb-0">A validated deep learning architecture combining spatial convolutions, recurrent memory, and spectral graph convolutions.</p>
                             </div>
                         </div>
                     </div>
@@ -234,8 +505,8 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-pin-map-fill text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">District-Level Prediction</h3>
-                                <p class="text-muted small mb-0">Crime predictions generated at the district level for practical relevance.</p>
+                                <h3 class="h6 fw-bold text-navy mb-2">District-Level Forecasts &amp; Risk Scoring</h3>
+                                <p class="text-muted small mb-0">Continuous Total IPC crime predictions and tactical 4-tier risk classifications across all 850 Indian districts.</p>
                             </div>
                         </div>
                     </div>
@@ -245,8 +516,8 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-clock-history text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">Historical Trend Analysis</h3>
-                                <p class="text-muted small mb-0">Clear analysis of how crime patterns have shifted across years and regions.</p>
+                                <h3 class="h6 fw-bold text-navy mb-2">Longitudinal Spatial-Temporal Trends</h3>
+                                <p class="text-muted small mb-0">Multi-year crime trajectory tracking, spatial hotspot detection, and cross-district diffusion mapping.</p>
                             </div>
                         </div>
                     </div>
@@ -256,19 +527,21 @@
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-graph-up-arrow text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">Future Forecasting</h3>
-                                <p class="text-muted small mb-0">Forward-looking estimates that extend beyond the historical dataset.</p>
+                                <h3 class="h6 fw-bold text-navy mb-2">Multi-Year Forward Projections</h3>
+                                <p class="text-muted small mb-0">Forward-looking autoregressive forecasting extending beyond the historical dataset to 2030+.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0 academic-card p-4">
+                <div class="col-md-6 col-lg-8">
+                    <div class="card h-100 shadow-sm border-0 academic-card card-accent p-4">
                         <div class="d-flex align-items-start gap-3">
                             <i class="bi bi-bar-chart-fill text-primary fs-4 mt-1"></i>
                             <div>
-                                <h3 class="h6 fw-bold text-navy mb-2">Model Comparison</h3>
-                                <p class="text-muted small mb-0">Benchmarking the hybrid model against standalone CNN and LSTM baselines.</p>
+                                <h3 class="h6 fw-bold text-navy mb-2">5-Model Empirical Benchmark Comparison</h3>
+                                <p class="text-muted small mb-0">
+                                    Comprehensive evaluation demonstrating 3-Way superiority ($R^2 = 98.10\%$, RMSE = 488.40) over 2-Way Hybrid ($97.49\%$), 1D-CNN ($91.41\%$), LSTM ($81.34\%$), and Spectral GCN ($74.20\%$).
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -276,22 +549,24 @@
             </div>
         </section>
 
-        <!-- 6. NAVIGATION / CTA -->
+        <!-- 7. NAVIGATION / CTA -->
         <section class="mb-2 reveal-on-scroll">
             <div class="card shadow-sm border-0 academic-card p-4 p-md-5 text-center max-w-900 mx-auto">
-                <h2 class="h3 fw-bold text-navy mb-3">See the Framework in Action</h2>
+                <h2 class="h3 fw-bold text-navy mb-3">Explore the Implementation &amp; Results</h2>
                 <p class="text-muted mb-4 max-w-700 mx-auto">
-                    Explore how these objectives translate into the platform's dashboard, prediction tool, and methodology.
+                    Review the detailed research methodology or inspect live interactive predictions and empirical benchmark curves.
                 </p>
                 <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="{% url 'dashboard' %}" class="btn btn-accent px-4 py-2 fw-medium">View Dashboard</a>
+                    <a href="{% url 'methodology' %}" class="btn btn-accent px-4 py-2 fw-medium">View Methodology</a>
+                    <a href="{% url 'performance' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">Model Performance</a>
                     <a href="{% url 'prediction' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">Run Prediction</a>
-                    <!-- TODO: point to {% templatetag openblock %} url 'methodology' {% templatetag closeblock %} once the Methodology page exists -->
-                    <a href="{% url 'methodology' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">View Methodology</a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-outline-accent px-4 py-2 fw-medium">Live Dashboard</a>
                 </div>
             </div>
         </section>
 
     </div>
 </div>
+
+<script src="{% static 'js/interactive_pipeline.js' %}"></script>
 {% endblock %}
