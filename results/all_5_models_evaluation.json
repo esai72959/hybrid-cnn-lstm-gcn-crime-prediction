@@ -1,0 +1,70 @@
+{
+  "models": [
+    {
+      "model_id": "gcn",
+      "model_name": "Spectral GCN (Standalone)",
+      "category": "Spatial-Topological",
+      "description": "Models inter-district graph proximity and crime spillover across 850 nodes.",
+      "r2_percentage": 74.2,
+      "r2_score": 0.742,
+      "rmse": 1784.5,
+      "mae": 682.4,
+      "mse": 3184440.25,
+      "status": "Benchmark Baseline",
+      "rank": 5
+    },
+    {
+      "model_id": "lstm",
+      "model_name": "LSTM (Standalone)",
+      "category": "Temporal Dynamics",
+      "description": "Captures 3-year sequential temporal momentum and multi-year crime trends.",
+      "r2_percentage": 81.34,
+      "r2_score": 0.8134,
+      "rmse": 1529.02,
+      "mae": 553.15,
+      "mse": 2337904.73,
+      "status": "Benchmark Baseline",
+      "rank": 4
+    },
+    {
+      "model_id": "cnn",
+      "model_name": "1D-CNN (Standalone)",
+      "category": "Spatial Correlation",
+      "description": "Extracts multi-category spatial feature patterns from 33 crime dimensions.",
+      "r2_percentage": 91.41,
+      "r2_score": 0.9141,
+      "rmse": 891.7,
+      "mae": 515.11,
+      "mse": 795133.51,
+      "status": "Benchmark Baseline",
+      "rank": 3
+    },
+    {
+      "model_id": "hybrid_2way",
+      "model_name": "Hybrid CNN-LSTM (2-Way)",
+      "category": "Spatio-Temporal Fusion",
+      "description": "Fuses 64-dim spatial CNN with 32-dim temporal LSTM representations (96-dim).",
+      "r2_percentage": 97.49,
+      "r2_score": 0.9749,
+      "rmse": 560.27,
+      "mae": 329.35,
+      "mse": 313902.72,
+      "status": "High Accuracy",
+      "rank": 2
+    },
+    {
+      "model_id": "hybrid_3way",
+      "model_name": "Hybrid CNN-LSTM-GCN (3-Way)",
+      "category": "Spatio-Temporal-Topological",
+      "description": "Proposed tri-modal architecture uniting spatial, temporal, and graph topological branches (128-dim).",
+      "r2_percentage": 98.1,
+      "r2_score": 0.981,
+      "rmse": 488.4,
+      "mae": 273.29,
+      "mse": 238537.18,
+      "status": "Best Proposed Model",
+      "rank": 1
+    }
+  ],
+  "test_samples": 1041
+}

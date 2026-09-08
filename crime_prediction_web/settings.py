@@ -9,8 +9,27 @@ import os
 os.environ["TF_USE_LEGACY_KERAS"] = "1"
 
 from pathlib import Path
-import dj_database_url
-from decouple import config, Csv
+
+try:
+    from decouple import config, Csv
+except ImportError:
+    def config(key, default=None, cast=None):
+        val = os.environ.get(key, default)
+        if cast is bool and isinstance(val, str):
+            return val.lower() in ("true", "1", "yes")
+        if cast and val is not None and callable(cast):
+            return cast(val)
+        return val
+    class Csv:
+        def __call__(self, val):
+            if isinstance(val, list):
+                return val
+            return [x.strip() for x in str(val).split(",") if x.strip()]
+
+try:
+    import dj_database_url
+except ImportError:
+    dj_database_url = None
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,9 +64,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+try:
+    import whitenoise
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    WHITENOISE_MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware']
+except ImportError:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    WHITENOISE_MIDDLEWARE = []
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+] + WHITENOISE_MIDDLEWARE + [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,7 +105,7 @@ WSGI_APPLICATION = 'crime_prediction_web.wsgi.application'
 # Database configuration:
 # Defaults to standard SQLite; automatically upgrades to PostgreSQL if DATABASE_URL is set.
 DATABASE_URL = config('DATABASE_URL', default=None)
-if DATABASE_URL:
+if DATABASE_URL and dj_database_url:
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
@@ -90,7 +117,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'NAME': str(BASE_DIR / 'db.sqlite3'),
         }
     }
 
@@ -119,9 +146,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images, GeoJSON)
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# WhiteNoise compressed static files storage
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Production security headers when running behind Render proxy
 if not DEBUG:

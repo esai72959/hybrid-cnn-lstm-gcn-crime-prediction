@@ -1,0 +1,6 @@
+model_id,model_name,category,description,r2_percentage,r2_score,rmse,mae,mse,status,rank
+gcn,Spectral GCN (Standalone),Spatial-Topological,Models inter-district graph proximity and crime spillover across 850 nodes.,74.2,0.742,1784.5,682.4,3184440.25,Benchmark Baseline,5
+lstm,LSTM (Standalone),Temporal Dynamics,Captures 3-year sequential temporal momentum and multi-year crime trends.,81.34,0.8134,1529.02,553.15,2337904.73,Benchmark Baseline,4
+cnn,1D-CNN (Standalone),Spatial Correlation,Extracts multi-category spatial feature patterns from 33 crime dimensions.,91.41,0.9141,891.7,515.11,795133.51,Benchmark Baseline,3
+hybrid_2way,Hybrid CNN-LSTM (2-Way),Spatio-Temporal Fusion,Fuses 64-dim spatial CNN with 32-dim temporal LSTM representations (96-dim).,97.49,0.9749,560.27,329.35,313902.72,High Accuracy,2
+hybrid_3way,Hybrid CNN-LSTM-GCN (3-Way),Spatio-Temporal-Topological,"Proposed tri-modal architecture uniting spatial, temporal, and graph topological branches (128-dim).",98.1,0.981,488.4,273.29,238537.18,Best Proposed Model,1

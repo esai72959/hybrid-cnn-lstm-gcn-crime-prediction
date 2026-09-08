@@ -43,19 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Distinct accent colors per model series. The site's locked palette
-  // only defines two brand colors (primary/secondary), which isn't
-  // enough to tell three bars apart, so these three chart-only accents
-  // are used purely for series identification - text, gridlines and
-  // legends still come from the theme variables below.
+  // Distinct accent colors per model series for 5-model evaluation
   const SERIES_COLOR = {
+    gcn: '#845EC2',
+    lstm: '#008F7A',
     cnn: '#4C6EF5',
-    lstm: '#12B886',
+    hybrid_2way: '#20C997',
+    hybrid_3way: '#F59F00',
     hybrid: '#F59F00',
   };
   const SERIES_BORDER = {
+    gcn: '#6B46C1',
+    lstm: '#006C5B',
     cnn: '#3B5BDB',
-    lstm: '#0CA678',
+    hybrid_2way: '#0CA678',
+    hybrid_3way: '#E8590C',
     hybrid: '#E8590C',
   };
 
@@ -117,8 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const theme = getThemeColors();
     const labels = payload.labels || [];
     const values = payload.accuracy || [];
-    const barColors = [SERIES_COLOR.cnn, SERIES_COLOR.lstm, SERIES_COLOR.hybrid];
-    const borderColors = [SERIES_BORDER.cnn, SERIES_BORDER.lstm, SERIES_BORDER.hybrid];
+    const barColors = [
+      SERIES_COLOR.gcn,
+      SERIES_COLOR.lstm,
+      SERIES_COLOR.cnn,
+      SERIES_COLOR.hybrid_2way,
+      SERIES_COLOR.hybrid_3way,
+    ];
+    const borderColors = [
+      SERIES_BORDER.gcn,
+      SERIES_BORDER.lstm,
+      SERIES_BORDER.cnn,
+      SERIES_BORDER.hybrid_2way,
+      SERIES_BORDER.hybrid_3way,
+    ];
 
     accuracyChartInstance = new Chart(canvas, {
       type: 'bar',
@@ -132,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             borderColor: borderColors.slice(0, labels.length),
             borderWidth: 1.5,
             borderRadius: 6,
-            maxBarThickness: 70,
+            maxBarThickness: 55,
           },
         ],
       },

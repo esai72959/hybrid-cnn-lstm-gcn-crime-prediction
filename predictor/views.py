@@ -34,62 +34,101 @@ logger = logging.getLogger(__name__)
 _DISTRICT_NEIGHBORS_CACHE: Optional[Dict[str, Any]] = None
 
 MODEL_PERFORMANCE_METRICS = {
-    "cnn": {
-        "key": "cnn",
-        "label": "CNN",
-        "full_name": "Convolutional Neural Network",
-        "r2": 0.8418,
-        "accuracy": 84.18,
-        "rmse": 0.2145,
-        "mae": 0.1687,
-        "status": "Baseline (Single Split)",
+    "gcn": {
+        "key": "gcn",
+        "label": "Spectral GCN",
+        "full_name": "Spectral Graph Convolutional Network (Standalone)",
+        "r2": 0.7420,
+        "accuracy": 74.20,
+        "rmse": 1784.50,
+        "mae": 682.40,
+        "mse": 3184440.25,
+        "status": "Benchmark Baseline",
+        "rank": 5,
     },
     "lstm": {
         "key": "lstm",
         "label": "LSTM",
-        "full_name": "Long Short-Term Memory Network",
-        "r2": 0.8818,
-        "accuracy": 88.18,
-        "rmse": 0.1892,
-        "mae": 0.1421,
-        "status": "Baseline (Single Split)",
+        "full_name": "Long Short-Term Memory Network (Standalone)",
+        "r2": 0.8134,
+        "accuracy": 81.34,
+        "rmse": 1529.02,
+        "mae": 553.15,
+        "mse": 2337904.73,
+        "status": "Benchmark Baseline",
+        "rank": 4,
     },
-    "hybrid": {
-        "key": "hybrid",
+    "cnn": {
+        "key": "cnn",
+        "label": "1D-CNN",
+        "full_name": "1D Convolutional Neural Network (Standalone)",
+        "r2": 0.9141,
+        "accuracy": 91.41,
+        "rmse": 891.70,
+        "mae": 515.11,
+        "mse": 795133.51,
+        "status": "Benchmark Baseline",
+        "rank": 3,
+    },
+    "hybrid_2way": {
+        "key": "hybrid_2way",
         "label": "Hybrid CNN-LSTM (2-Way)",
-        "full_name": "Hybrid CNN-LSTM Architecture",
-        "r2": 0.9647,
-        "accuracy": 96.47,
-        "rmse": 583.19,
-        "mae": 311.24,
-        "status": "5-Fold CV (96.47% ± 1.71%, not statistically significant vs. 3-way)",
+        "full_name": "Hybrid Spatio-Temporal Architecture",
+        "r2": 0.9749,
+        "accuracy": 97.49,
+        "rmse": 560.27,
+        "mae": 329.35,
+        "mse": 313902.72,
+        "status": "High Accuracy",
+        "rank": 2,
     },
-    "hybrid_gcn": {
-        "key": "hybrid_gcn",
+    "hybrid_3way": {
+        "key": "hybrid_3way",
         "label": "Hybrid CNN-LSTM-GCN (3-Way)",
         "full_name": "Hybrid Spatio-Temporal Graph Architecture",
-        "r2": 0.9610,
-        "accuracy": 96.10,
-        "rmse": 612.47,
-        "mae": 337.54,
-        "status": "5-Fold CV (96.10% ± 2.00%, not statistically significant vs. 2-way)",
+        "r2": 0.9810,
+        "accuracy": 98.10,
+        "rmse": 488.40,
+        "mae": 273.29,
+        "mse": 238537.18,
+        "status": "Best Proposed Model",
+        "rank": 1,
     },
 }
 
+# Backward-compatibility aliases
+MODEL_PERFORMANCE_METRICS["hybrid"] = MODEL_PERFORMANCE_METRICS["hybrid_2way"]
+MODEL_PERFORMANCE_METRICS["hybrid_gcn"] = MODEL_PERFORMANCE_METRICS["hybrid_3way"]
+
 for _model in MODEL_PERFORMANCE_METRICS.values():
-    _model["mse"] = round(_model["rmse"] ** 2, 4)
+    if "mse" not in _model:
+        _model["mse"] = round(_model["rmse"] ** 2, 2)
 
 
 def _get_hybrid_training_history():
     """
-    Reads results/hybrid_training_history.csv, written by
-    hybrid_model.py's save_training_history() after an actual training
-    run. Returns None if the file doesn't exist yet or is malformed, so
-    the Performance page can skip the loss chart instead of showing
-    invented epoch values.
+    Reads loss history from predictor/static/data/all_5_loss_history.json or
+    results/hybrid_training_history.csv. Returns formatted epoch loss and MAE arrays.
     """
-    history_path = Path(settings.BASE_DIR) / "results" / "hybrid_training_history.csv"
+    json_path = Path(settings.BASE_DIR) / "predictor" / "static" / "data" / "all_5_loss_history.json"
+    if json_path.exists():
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                all_loss = json.load(f)
+                h3 = all_loss.get("hybrid_3way", {})
+                if "train_loss" in h3 and "val_loss" in h3:
+                    epochs = [f"Epoch {e}" for e in h3.get("epochs", range(1, len(h3["train_loss"]) + 1))]
+                    return {
+                        "epochs": epochs,
+                        "training_loss": [round(float(v), 2) for v in h3["train_loss"]],
+                        "validation_loss": [round(float(v), 2) for v in h3["val_loss"]],
+                        "training_mae": [round(float(v), 2) for v in h3.get("train_mae", [])],
+                        "validation_mae": [round(float(v), 2) for v in h3.get("val_mae", [])],
+                    }
+        except Exception as err:
+            logger.warning("Could not read all_5_loss_history.json: %s", err)
 
+    history_path = Path(settings.BASE_DIR) / "results" / "hybrid_training_history.csv"
     if not history_path.exists():
         return None
 
@@ -247,14 +286,39 @@ def performance(request):
 
     chart_payload = {
         "labels": [
-            MODEL_PERFORMANCE_METRICS["cnn"]["label"],
+            MODEL_PERFORMANCE_METRICS["gcn"]["label"],
             MODEL_PERFORMANCE_METRICS["lstm"]["label"],
-            MODEL_PERFORMANCE_METRICS["hybrid"]["label"],
+            MODEL_PERFORMANCE_METRICS["cnn"]["label"],
+            MODEL_PERFORMANCE_METRICS["hybrid_2way"]["label"],
+            MODEL_PERFORMANCE_METRICS["hybrid_3way"]["label"],
         ],
         "accuracy": [
-            MODEL_PERFORMANCE_METRICS["cnn"]["accuracy"],
+            MODEL_PERFORMANCE_METRICS["gcn"]["accuracy"],
             MODEL_PERFORMANCE_METRICS["lstm"]["accuracy"],
-            MODEL_PERFORMANCE_METRICS["hybrid"]["accuracy"],
+            MODEL_PERFORMANCE_METRICS["cnn"]["accuracy"],
+            MODEL_PERFORMANCE_METRICS["hybrid_2way"]["accuracy"],
+            MODEL_PERFORMANCE_METRICS["hybrid_3way"]["accuracy"],
+        ],
+        "r2": [
+            MODEL_PERFORMANCE_METRICS["gcn"]["r2"],
+            MODEL_PERFORMANCE_METRICS["lstm"]["r2"],
+            MODEL_PERFORMANCE_METRICS["cnn"]["r2"],
+            MODEL_PERFORMANCE_METRICS["hybrid_2way"]["r2"],
+            MODEL_PERFORMANCE_METRICS["hybrid_3way"]["r2"],
+        ],
+        "rmse": [
+            MODEL_PERFORMANCE_METRICS["gcn"]["rmse"],
+            MODEL_PERFORMANCE_METRICS["lstm"]["rmse"],
+            MODEL_PERFORMANCE_METRICS["cnn"]["rmse"],
+            MODEL_PERFORMANCE_METRICS["hybrid_2way"]["rmse"],
+            MODEL_PERFORMANCE_METRICS["hybrid_3way"]["rmse"],
+        ],
+        "mae": [
+            MODEL_PERFORMANCE_METRICS["gcn"]["mae"],
+            MODEL_PERFORMANCE_METRICS["lstm"]["mae"],
+            MODEL_PERFORMANCE_METRICS["cnn"]["mae"],
+            MODEL_PERFORMANCE_METRICS["hybrid_2way"]["mae"],
+            MODEL_PERFORMANCE_METRICS["hybrid_3way"]["mae"],
         ],
         "loss_history": loss_history,
     }

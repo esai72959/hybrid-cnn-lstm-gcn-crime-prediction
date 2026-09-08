@@ -3835,8 +3835,8 @@ border-color:
    -------------------------------------------------------------------- */
 .accuracy-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-3);
 }
 
 .model-accuracy-card {
@@ -3844,7 +3844,7 @@ border-color:
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-4) var(--space-3);
   text-align: center;
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-fast);
 }
@@ -3872,7 +3872,7 @@ border-color:
 
 .model-accuracy-value {
   font-family: var(--font-display);
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--color-heading);
   line-height: 1.1;
@@ -3907,8 +3907,8 @@ border-color:
    -------------------------------------------------------------------- */
 .comparison-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-3);
 }
 
 .comparison-card {
@@ -4136,7 +4136,7 @@ border-color:
    -------------------------------------------------------------------- */
 .perf-highlights-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--space-3);
 }
 
@@ -4188,7 +4188,7 @@ border-color:
    -------------------------------------------------------------------- */
 .benchmark-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: var(--space-3);
 }
 
@@ -4302,19 +4302,25 @@ border-color:
    15.12 PERFORMANCE PAGE RESPONSIVE
    -------------------------------------------------------------------- */
 @media (max-width: 1199px) {
+  .accuracy-cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .comparison-grid { grid-template-columns: repeat(3, 1fr); }
   .perf-metrics-grid { grid-template-columns: repeat(3, 1fr); }
-  .perf-highlights-grid { grid-template-columns: repeat(2, 1fr); }
-  .benchmark-grid { grid-template-columns: repeat(2, 1fr); }
+  .perf-highlights-grid { grid-template-columns: repeat(3, 1fr); }
+  .benchmark-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 991px) {
-  .accuracy-cards-grid { grid-template-columns: 1fr; }
-  .comparison-grid { grid-template-columns: 1fr; }
+  .accuracy-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .comparison-grid { grid-template-columns: repeat(2, 1fr); }
+  .perf-highlights-grid { grid-template-columns: repeat(2, 1fr); }
+  .benchmark-grid { grid-template-columns: repeat(2, 1fr); }
   .perf-charts-grid { grid-template-columns: 1fr; }
   .performance-footer-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 767px) {
+  .accuracy-cards-grid { grid-template-columns: 1fr; }
+  .comparison-grid { grid-template-columns: 1fr; }
   .perf-metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .perf-highlights-grid { grid-template-columns: 1fr; }
   .benchmark-grid { grid-template-columns: 1fr; }
