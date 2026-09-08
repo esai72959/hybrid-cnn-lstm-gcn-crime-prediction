@@ -1447,10 +1447,11 @@ class CrimePredictor:
     # These are deliberately kept as tunable class constants (rather
     # than inlined in calculate_risk_level) so they can be recalibrated
     # against the dataset's actual crime-count distribution without
-    # touching any method body.
-    _RISK_LOW_MAX: float = 50.0
-    _RISK_MODERATE_MAX: float = 150.0
-    _RISK_HIGH_MAX: float = 300.0
+    # Tuned against Indian national district IPC crime distribution percentiles:
+    # 25th percentile ~838, Median ~2,037, 75th percentile ~3,859, 95th percentile ~7,959.
+    _RISK_LOW_MAX: float = 1000.0
+    _RISK_MODERATE_MAX: float = 3500.0
+    _RISK_HIGH_MAX: float = 8000.0
 
     _RISK_LEVEL_LOW: str = "Low"
     _RISK_LEVEL_MODERATE: str = "Moderate"
@@ -1458,31 +1459,9 @@ class CrimePredictor:
     _RISK_LEVEL_VERY_HIGH: str = "Very High"
 
     # ----------------------------------------------------------------
-    # Confidence heuristic constants (class constants â€” see
+    # Confidence heuristic constants (class constants — see
     # calculate_confidence)
     # ----------------------------------------------------------------
-    # The heuristic is deliberately simple and fully deterministic: it
-    # is NOT a model-derived probability (the hybrid model has no
-    # softmax/uncertainty head), but a transparent proxy for how much
-    # the pipeline is being asked to extrapolate.
-    #
-    #   confidence = _CONFIDENCE_BASE
-    #                - (years_ahead * _CONFIDENCE_YEAR_PENALTY)
-    #                + min(extra_history * _CONFIDENCE_HISTORY_BONUS_PER_RECORD,
-    #                      _CONFIDENCE_HISTORY_BONUS_CAP)
-    #
-    # clamped to [_CONFIDENCE_MIN, _CONFIDENCE_MAX].
-    #
-    # - years_ahead: prediction_year - latest_dataset_year. Every extra
-    #   year beyond the last observed data point is a year of pure
-    #   extrapolation with no ground truth to anchor it, so confidence
-    #   is penalized per year.
-    # - extra_history: historical records available beyond the minimum
-    #   the LSTM branch requires (_LSTM_SEQUENCE_LENGTH, Part 4). More
-    #   history for a state/district means the LSTM sequence is drawn
-    #   from a more established trend, so a small bonus is awarded
-    #   (capped, so a district with 13 years of history isn't treated
-    #   as dramatically more reliable than one with 6).
     _CONFIDENCE_BASE: float = 95.0
     _CONFIDENCE_YEAR_PENALTY: float = 6.0
     _CONFIDENCE_HISTORY_BONUS_PER_RECORD: float = 0.5
@@ -1493,33 +1472,11 @@ class CrimePredictor:
     _MODEL_NAME: str = "Hybrid CNN-LSTM"
 
     # ----------------------------------------------------------------
-    # Risk-level classification
+    # Risk-level and score classification
     # ----------------------------------------------------------------
     def calculate_risk_level(self, predicted_crime_count: float) -> str:
         """
         Classify a predicted crime count into a discrete risk level.
-
-        Uses the ascending, mutually-exclusive thresholds defined as
-        class constants (`_RISK_LOW_MAX`, `_RISK_MODERATE_MAX`,
-        `_RISK_HIGH_MAX`) rather than hardcoded values, so thresholds
-        can be recalibrated without touching this method.
-
-        Parameters
-        ----------
-        predicted_crime_count : float
-            The predicted crime count returned by `predict_hybrid()`
-            (Part 5).
-
-        Returns
-        -------
-        str
-            One of "Low", "Moderate", "High", "Very High".
-
-        Raises
-        ------
-        PredictionError
-            If `predicted_crime_count` is negative or not a real
-            number.
         """
         try:
             count = max(0.0, float(predicted_crime_count))
@@ -1543,6 +1500,23 @@ class CrimePredictor:
             count, risk_level,
         )
         return risk_level
+
+    def calculate_risk_score(self, predicted_crime_count: float) -> float:
+        """
+        Calculate a continuous, proportional risk score (0-100%) based on the
+        Indian district crime count distribution.
+        """
+        count = max(0.0, float(predicted_crime_count))
+        if count <= self._RISK_LOW_MAX:  # <= 1000
+            score = 10.0 + (count / self._RISK_LOW_MAX) * 20.0
+        elif count <= self._RISK_MODERATE_MAX:  # 1001 - 3500
+            score = 30.0 + ((count - self._RISK_LOW_MAX) / (self._RISK_MODERATE_MAX - self._RISK_LOW_MAX)) * 30.0
+        elif count <= self._RISK_HIGH_MAX:  # 3501 - 8000
+            score = 60.0 + ((count - self._RISK_MODERATE_MAX) / (self._RISK_HIGH_MAX - self._RISK_MODERATE_MAX)) * 25.0
+        else:  # > 8000
+            extra = min(14.0, ((count - self._RISK_HIGH_MAX) / 20000.0) * 14.0)
+            score = 85.0 + extra
+        return round(float(min(99.0, max(5.0, score))), 1)
 
     # ----------------------------------------------------------------
     # Confidence estimation
@@ -1786,6 +1760,7 @@ class CrimePredictor:
             "prediction_year": validated_year,
             "predicted_crime_count": float(predicted_crime_count),
             "risk_level": risk_level,
+            "risk_score": self.calculate_risk_score(predicted_crime_count),
             "confidence": confidence,
             "latest_dataset_year": latest_dataset_year,
             "model": model_name,
